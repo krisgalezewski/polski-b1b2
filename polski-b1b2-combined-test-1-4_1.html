@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Combined Test: Units 1–4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-2:#44403C;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --purple:#6D28D9;--purple-light:#EDE9FE;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+  --shadow:0 2px 8px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+}
+html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+
+/* ── LAYOUT ── */
+#app{display:flex;min-height:100vh}
+#sidebar{width:280px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;transition:transform 0.3s}
+#main{flex:1;overflow-y:auto}
+.main-inner{max-width:720px;margin:0 auto;padding:36px 32px 100px}
+
+/* ── SIDEBAR ── */
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:3px;text-transform:uppercase;letter-spacing:0.8px}
+.sidebar-section{padding:14px 20px 6px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#57534E}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:12px;color:#A8A29E;cursor:pointer;transition:all 0.15s;position:relative;user-select:none}
+.sidebar-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.sidebar-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.sidebar-item.active::before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.sidebar-item i{font-size:14px;width:16px;text-align:center;flex-shrink:0}
+.sidebar-item .tag{margin-left:auto;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:500}
+.tag-correct{background:rgba(22,101,52,0.25);color:#4ADE80}
+.tag-wrong{background:rgba(193,55,42,0.25);color:#FCA5A5}
+.tag-skipped{background:rgba(255,255,255,0.08);color:#78716C}
+.tag-active{background:rgba(193,55,42,0.3);color:#FCA5A5}
+.unit-divider{margin:8px 20px;height:0.5px;background:rgba(255,255,255,0.06)}
+.sidebar-footer{margin-top:auto;padding:16px 20px;border-top:0.5px solid rgba(255,255,255,0.06)}
+.score-ring-wrap{display:flex;align-items:center;gap:12px}
+.score-ring{width:52px;height:52px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--pct,0)*1%),rgba(255,255,255,0.08) 0%);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.score-ring::before{content:'';position:absolute;inset:6px;background:var(--ink);border-radius:50%}
+.score-ring-num{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:#fff}
+.score-ring-label{font-size:11px;color:#78716C}
+.score-ring-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+
+/* ── HEADER ── */
+.test-header{background:var(--ink);border-radius:14px;padding:28px 32px;margin-bottom:28px;position:relative;overflow:hidden}
+.test-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 50%,rgba(193,55,42,0.18) 0%,transparent 60%)}
+.test-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#78716C;margin-bottom:8px;position:relative}
+.test-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px;position:relative}
+.test-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;position:relative}
+.test-meta-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#A8A29E}
+.test-meta-item i{font-size:14px}
+
+/* ── PROGRESS BAR ── */
+.progress-strip{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+.progress-bar-outer{flex:1;height:6px;background:var(--ink-faint);border-radius:3px;overflow:hidden}
+.progress-bar-inner{height:100%;background:var(--red);border-radius:3px;transition:width 0.4s}
+.progress-label{font-size:12px;color:var(--ink-muted);white-space:nowrap}
+.progress-nums{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+
+/* ── QUESTION CARD ── */
+.question-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);display:none}
+.question-card.active{display:block}
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-muted);font-weight:500}
+.q-unit-tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
+.q-unit-1{background:var(--blue-light);color:var(--blue)}
+.q-unit-2{background:var(--purple-light);color:var(--purple)}
+.q-unit-3{background:#CCFBF1;color:#0F766E}
+.q-unit-4{background:var(--green-light);color:var(--green)}
+.q-grammar-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--gold-light);color:var(--gold);font-weight:500}
+.q-type-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--ink-faint);color:var(--ink-muted)}
+.question-text{font-size:16px;font-weight:500;line-height:1.5;color:var(--ink);margin-bottom:18px}
+.question-context{font-size:14px;color:var(--ink-muted);font-style:italic;margin-bottom:14px;padding:10px 14px;background:var(--cream);border-radius:6px;border-left:3px solid var(--ink-faint)}
+
+/* ── OPTIONS ── */
+.options{display:flex;flex-direction:column;gap:9px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:9px;cursor:pointer;transition:all 0.15s;font-size:14px;line-height:1.5;user-select:none}
+.option:hover:not(.locked){border-color:var(--red);background:var(--red-light)}
+.option.selected:not(.revealed){border-color:var(--red);background:var(--red-light);color:var(--red)}
+.option.revealed-correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.option.revealed-wrong{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.65;cursor:default}
+.option.revealed-missed{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default;opacity:0.8}
+.option.locked{cursor:default}
+.opt-letter{width:26px;height:26px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px}
+
+/* ── GAP FILL QUESTION ── */
+.gap-sentence{font-size:15px;line-height:2.4;margin-bottom:14px}
+.test-gap{display:inline-block;border:none;border-bottom:2px solid var(--ink-faint);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:120px;width:140px;text-align:center;outline:none;transition:border-color 0.15s}
+.test-gap:focus{border-bottom-color:var(--red)}
+.test-gap.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.test-gap.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+
+/* ── FEEDBACK AFTER REVEAL ── */
+.answer-feedback{display:none;margin-top:16px;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.6}
+.answer-feedback.show{display:block}
+.answer-feedback.correct-fb{background:var(--green-light);border:0.5px solid rgba(22,101,52,0.2);color:var(--green)}
+.answer-feedback.wrong-fb{background:var(--red-light);border:0.5px solid rgba(193,55,42,0.2);color:var(--red)}
+.revision-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;background:rgba(193,55,42,0.1);color:var(--red);padding:3px 8px;border-radius:6px;margin-top:8px;font-weight:500}
+
+/* ── NAV BUTTONS ── */
+.q-nav{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:#144d29}
+.btn:disabled{opacity:0.35;cursor:not-allowed}
+.btn-sm{padding:7px 14px;font-size:13px}
+
+/* ── RESULTS SCREEN ── */
+#results-screen{display:none}
+.results-hero{background:var(--ink);border-radius:14px;padding:32px;text-align:center;margin-bottom:24px;position:relative;overflow:hidden}
+.results-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(193,55,42,0.2) 0%,transparent 60%)}
+.results-trophy{font-size:56px;margin-bottom:12px;position:relative}
+.results-grade{font-family:'DM Mono',monospace;font-size:64px;font-weight:500;color:#fff;line-height:1;position:relative}
+.results-score{font-size:16px;color:#A8A29E;margin-top:4px;position:relative}
+.results-summary{font-size:14px;color:#A8A29E;margin-top:12px;max-width:400px;margin-left:auto;margin-right:auto;position:relative;line-height:1.6}
+.results-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-correct .stat-num{color:var(--green)}
+.stat-wrong .stat-num{color:var(--red)}
+.stat-score .stat-num{color:var(--blue)}
+.stat-time .stat-num{color:var(--gold)}
+
+/* ── REVISION RECOMMENDATIONS ── */
+.revision-section{margin-bottom:24px}
+.revision-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px}
+.revision-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:14px}
+.revision-card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+.revision-card-body{flex:1}
+.revision-card-title{font-weight:500;font-size:14px;color:var(--ink);margin-bottom:3px}
+.revision-card-desc{font-size:13px;color:var(--ink-muted);line-height:1.5;margin-bottom:8px}
+.revision-card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.rev-tag{font-size:11px;padding:2px 8px;border-radius:6px;background:var(--red-light);color:var(--red);font-weight:500}
+.open-unit-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--red);background:var(--red-light);border:none;border-radius:6px;padding:5px 10px;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif}
+.open-unit-btn:hover{background:var(--red);color:#fff}
+
+/* ── UNIT BREAKDOWN ── */
+.unit-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.unit-breakdown-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+.ubc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ubc-title{font-size:13px;font-weight:500;color:var(--ink)}
+.ubc-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:500}
+.ubc-bar{height:4px;background:var(--ink-faint);border-radius:2px;overflow:hidden}
+.ubc-fill{height:100%;border-radius:2px;transition:width 0.6s}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+
+/* ── MISC ── */
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:500}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:800px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:20px 16px 80px;margin-top:0}
+  .results-stats{grid-template-columns:repeat(2,1fr)}
+  .unit-breakdown{grid-template-columns:1fr}
+  .test-meta{gap:10px}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="app">
+
+<!-- ══ SIDEBAR ══════════════════════════════════════════ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Combined Test · Units 1–4</div>
+  </div>
+
+  <div class="sidebar-section">Test progress</div>
+  <div id="sidebar-q-list"><!-- injected by JS --></div>
+
+  <div class="unit-divider"></div>
+  <div class="sidebar-section">Jump to unit</div>
+  <div class="sidebar-item" onclick="jumpToUnit(1)"><i class="ti ti-briefcase"></i> Unit 1 — Praca i Kariera</div>
+  <div class="sidebar-item" onclick="jumpToUnit(2)"><i class="ti ti-users"></i> Unit 2 — Rodzina i Relacje</div>
+  <div class="sidebar-item" onclick="jumpToUnit(3)"><i class="ti ti-home"></i> Unit 3 — Dom i Mieszkanie</div>
+  <div class="sidebar-item" onclick="jumpToUnit(4)"><i class="ti ti-heart"></i> Unit 4 — Zdrowie</div>
+
+  <div class="sidebar-footer">
+    <div class="score-ring-wrap">
+      <div class="score-ring" id="sidebar-ring" style="--pct:0"><div class="score-ring-num" id="sidebar-ring-num">0%</div></div>
+      <div>
+        <div class="score-ring-title" id="sidebar-ring-title">Not started</div>
+        <div class="score-ring-label" id="sidebar-ring-label">0 / 25 answered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══════════════════════════════════════════════ -->
+<div id="main">
+<div class="main-inner">
+
+<!-- START SCREEN -->
+<div class="page active" id="page-start">
+  <div class="test-header">
+    <div class="test-eyebrow"><i class="ti ti-clipboard-check"></i> Phase 1 Combined Test</div>
+    <div class="test-title">Units 1–4 Combined Test</div>
+    <div style="color:#A8A29E;font-size:14px;margin-top:4px;position:relative">Praca · Rodzina · Dom · Zdrowie</div>
+    <div class="test-meta">
+      <div class="test-meta-item"><i class="ti ti-help-circle"></i> 25 questions</div>
+      <div class="test-meta-item"><i class="ti ti-layers-intersect"></i> 4 units + 4 grammar units</div>
+      <div class="test-meta-item"><i class="ti ti-refresh"></i> Retakes allowed</div>
+      <div class="test-meta-item"><i class="ti ti-target"></i> Pass mark: 70%</div>
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:12px">What this test covers</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--blue);margin-bottom:4px"><i class="ti ti-briefcase"></i> Unit 1 — Praca i Kariera</div>
+        <div style="color:var(--ink-muted)">Work vocabulary · Instrumental & Locative cases (G1)</div>
+      </div>
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--purple);margin-bottom:4px"><i class="ti ti-users"></i> Unit 2 — Rodzina i Relacje</div>
+        <div style="color:var(--ink-muted)">Family vocabulary · Genitive & Dative cases (G2)</div>
+      </div>
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:#0F766E;margin-bottom:4px"><i class="ti ti-home"></i> Unit 3 — Dom i Mieszkanie</div>
+        <div style="color:var(--ink-muted)">Home vocabulary · Locative & prepositions of place (G3)</div>
+      </div>
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--green);margin-bottom:4px"><i class="ti ti-heart"></i> Unit 4 — Zdrowie i Styl Życia</div>
+        <div style="color:var(--ink-muted)">Health vocabulary · Reflexive verbs & negation (G4)</div>
+      </div>
+    </div>
+    <div style="background:var(--gold-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold);margin-bottom:20px;line-height:1.6">
+      <strong>How it works:</strong> Answer all 25 questions. After each answer you'll see instant feedback. When you finish, you'll get a full score breakdown and personalised revision recommendations linking back to the exact sections where mistakes occurred. You can retake the test as many times as you like.
+    </div>
+    <button class="btn btn-red" onclick="startTest()" style="font-size:15px;padding:12px 28px">
+      <i class="ti ti-player-play-filled"></i> Start Test
+    </button>
+  </div>
+</div>
+
+<!-- TEST SCREEN -->
+<div class="page" id="page-test">
+  <div class="progress-strip">
+    <div class="progress-nums" id="prog-nums">1 / 25</div>
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog-bar" style="width:4%"></div></div>
+    <div class="progress-label" id="prog-label">0 correct so far</div>
+  </div>
+  <div id="questions-container"><!-- injected --></div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div class="page" id="page-results">
+  <div class="results-hero">
+    <div class="results-trophy" id="results-trophy">🎯</div>
+    <div class="results-grade" id="results-grade">–</div>
+    <div class="results-score" id="results-score">– / 25 correct</div>
+    <div class="results-summary" id="results-summary"></div>
+  </div>
+
+  <div class="results-stats">
+    <div class="stat-card stat-correct"><div class="stat-num" id="stat-correct">0</div><div class="stat-label">Correct</div></div>
+    <div class="stat-card stat-wrong"><div class="stat-num" id="stat-wrong">0</div><div class="stat-label">Incorrect</div></div>
+    <div class="stat-card stat-score"><div class="stat-num" id="stat-pct">0%</div><div class="stat-label">Score</div></div>
+    <div class="stat-card stat-time"><div class="stat-num" id="stat-time">0:00</div><div class="stat-label">Time taken</div></div>
+  </div>
+
+  <div class="unit-breakdown" id="unit-breakdown"><!-- injected --></div>
+
+  <div class="revision-section" id="revision-section" style="display:none">
+    <div class="revision-title"><i class="ti ti-refresh" style="color:var(--red)"></i> Revision Recommendations</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:14px">Based on your mistakes, we recommend revisiting the following sections. Click any unit to open it.</p>
+    <div id="revision-cards"><!-- injected --></div>
+  </div>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+    <button class="btn btn-red" onclick="retakeTest()"><i class="ti ti-refresh"></i> Retake Test</button>
+    <button class="btn btn-outline" onclick="showPage('start')"><i class="ti ti-home"></i> Test Home</button>
+  </div>
+</div>
+
+</div><!-- end main-inner -->
+</div><!-- end main -->
+</div><!-- end app -->
+
+<script>
+// ══════════════════════════════════════════════════════
+// QUESTION BANK — 25 questions across Units 1–4 + G1–G4
+// ══════════════════════════════════════════════════════
+const QUESTIONS = [
+
+  // ── UNIT 1: PRACA I KARIERA ─────────────────────────
+  {
+    id: 1, unit: 1, grammar: false, type: 'mc',
+    topic: 'Work Vocabulary',
+    revisionSection: 'Unit 1 → Extended Lesson (Reading)',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Kierownik ______ dużym zespołem w firmie informatycznej.',
+    options: ['zarządza się', 'zarządza', 'kieruje się na', 'zarządzał by'],
+    correct: 1,
+    explanation: '"Zarządzać" (to manage) takes the Instrumental case. "Zarządza" is the correct 3rd person singular present form — no reflexive "się" needed here.'
+  },
+  {
+    id: 2, unit: 1, grammar: false, type: 'mc',
+    topic: 'Work Vocabulary',
+    revisionSection: 'Unit 1 → Gap Fill',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Anna marzy o tym, żeby ______ na stanowisko dyrektora.',
+    options: ['awansowała', 'awansuje', 'awansować', 'awansowałaby'],
+    correct: 2,
+    explanation: 'After "żeby" (in order to / so that) with the same subject, use the infinitive: "awansować". The conditional or past forms are wrong here.'
+  },
+  {
+    id: 3, unit: 1, grammar: true, grammarUnit: 'G1', type: 'mc',
+    topic: 'Grammar G1 — Instrumental Case',
+    revisionSection: 'Unit 1 → Grammar G1 (Instrumental)',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Piotr pracuje jako ______.',
+    options: ['kierownik', 'kierownikiem', 'kierownika', 'kierowniku'],
+    correct: 0,
+    explanation: '"Pracować jako" (to work as) takes the Nominative: "kierownik" ✓. The Instrumental ("kierownikiem") is used after "być / zostać" — e.g. "Jest kierownikiem". After "pracować jako", the role stays in the Nominative.'
+  },
+  {
+    id: 4, unit: 1, grammar: true, grammarUnit: 'G1', type: 'mc',
+    topic: 'Grammar G1 — Locative Case',
+    revisionSection: 'Unit 1 → Grammar G1 (Locative)',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Ona uczestniczy w ______ menedżerskich co miesiąc.',
+    options: ['szkolenia', 'szkolenie', 'szkoleniach', 'szkoleniu'],
+    correct: 2,
+    explanation: '"Uczestniczyć w" (to participate in) takes the Locative. The plural Locative of "szkolenie" is "szkoleniach" (-ach ending for neuter plurals).'
+  },
+  {
+    id: 5, unit: 1, grammar: false, type: 'gapfill',
+    topic: 'Work Vocabulary',
+    revisionSection: 'Unit 1 → Gap Fill',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Complete: Nie mam ______ na dodatkowe projekty w tym tygodniu.',
+    gapAnswer: 'czasu',
+    gapHint: '(czas → ? after negation)',
+    explanation: 'Under negation "nie mam", the direct object shifts from Accusative to Genitive: "czas" → "czasu" (Gen. masc.).'
+  },
+
+  // ── UNIT 2: RODZINA I RELACJE ───────────────────────
+  {
+    id: 6, unit: 2, grammar: false, type: 'mc',
+    topic: 'Family Vocabulary',
+    revisionSection: 'Unit 2 → Extended Lesson (Reading)',
+    revisionFile: 'polski-b1b2-unit2.html',
+    question: 'Bardzo ______ mi brata, który mieszka za granicą.',
+    options: ['tęskni', 'brakuje', 'podoba', 'martwi'],
+    correct: 1,
+    explanation: '"Brakuje mi" + Genitive = "I miss / I lack". The person uses Dative (mi), the thing missed uses Genitive (brata).'
+  },
+  {
+    id: 7, unit: 2, grammar: false, type: 'mc',
+    topic: 'Family Vocabulary',
+    revisionSection: 'Unit 2 → Multiple Choice',
+    revisionFile: 'polski-b1b2-unit2.html',
+    question: 'Ona pochodzi ______ dużej rodziny z południa Polski.',
+    options: ['w', 'do', 'z', 'na'],
+    correct: 2,
+    explanation: '"Pochodzić z" (to come from) always takes Genitive: "z dużej rodziny" — the preposition "z" triggers Genitive here (origin).'
+  },
+  {
+    id: 8, unit: 2, grammar: true, grammarUnit: 'G2', type: 'mc',
+    topic: 'Grammar G2 — Dative',
+    revisionSection: 'Unit 2 → Grammar G2 (Dative)',
+    revisionFile: 'polski-b1b2-unit2.html',
+    question: 'Podoba ______ jego spokój i poczucie humoru.',
+    options: ['mnie się', 'mi się', 'ja się', 'mną się'],
+    correct: 1,
+    explanation: '"Podobać się" takes Dative. The Dative short form of "ja" is "mi" (not "mnie" — that is Accusative/Genitive). So: "Podoba mi się" = I like it.'
+  },
+  {
+    id: 9, unit: 2, grammar: true, grammarUnit: 'G2', type: 'mc',
+    topic: 'Grammar G2 — Genitive after negation',
+    revisionSection: 'Unit 2 → Grammar G2 (Genitive negation)',
+    revisionFile: 'polski-b1b2-unit2.html',
+    question: 'Marta nie ma ______ w Gdańsku.',
+    options: ['rodzina', 'rodzinę', 'rodziny', 'rodzinie'],
+    correct: 2,
+    explanation: 'After "nie ma" (negation of "mieć"), the direct object shifts from Accusative to Genitive. "Rodzina" (feminine) → "rodziny" (Gen. feminine).'
+  },
+  {
+    id: 10, unit: 2, grammar: false, type: 'gapfill',
+    topic: 'Family Vocabulary — Dative',
+    revisionSection: 'Unit 2 → Gap Fill',
+    revisionFile: 'polski-b1b2-unit2.html',
+    question: 'Complete: Ufam ______ bardziej niż komukolwiek innemu.',
+    gapAnswer: 'jej',
+    gapHint: '(she — Dative pronoun)',
+    explanation: '"Ufać" (to trust) always takes the Dative case. The Dative feminine pronoun is "jej" (not "ją" — that is Accusative).'
+  },
+
+  // ── UNIT 3: DOM I MIESZKANIE ────────────────────────
+  {
+    id: 11, unit: 3, grammar: false, type: 'mc',
+    topic: 'Home Vocabulary',
+    revisionSection: 'Unit 3 → Extended Lesson (Reading)',
+    revisionFile: 'polski-b1b2-unit3.html',
+    question: 'Obraz wisi ______ ścianie naprzeciwko okna.',
+    options: ['w', 'na', 'przy', 'do'],
+    correct: 1,
+    explanation: '"Na ścianie" (on the wall) — use "na" + Locative for surfaces. "Ścianie" is the Locative form of "ściana".'
+  },
+  {
+    id: 12, unit: 3, grammar: false, type: 'mc',
+    topic: 'Home Vocabulary — Location vs Direction',
+    revisionSection: 'Unit 3 → Grammar G3 (Location vs Direction)',
+    revisionFile: 'polski-b1b2-unit3.html',
+    question: 'Idę ______ sklepu po zakupy. (direction — going to the shop)',
+    options: ['w', 'do', 'na', 'przy'],
+    correct: 1,
+    explanation: 'Direction towards a place uses "do" + Genitive: "do sklepu" ✓. "W sklepie" would mean location (I am inside the shop). "Na" + Acc. is used for surfaces or some specific destinations (na rynek, na pocztę). "Przy" + Loc. means next to / at.'
+  },
+  {
+    id: 13, unit: 3, grammar: true, grammarUnit: 'G3', type: 'mc',
+    topic: 'Grammar G3 — Prepositions of Place',
+    revisionSection: 'Unit 3 → Grammar G3 (Prepositions)',
+    revisionFile: 'polski-b1b2-unit3.html',
+    question: 'Kawiarnia jest ______ naszego bloku.',
+    options: ['obok (+ Nominative)', 'obok (+ Genitive)', 'obok (+ Locative)', 'obok (+ Instrumental)'],
+    correct: 1,
+    explanation: '"Obok" (next to / beside) always takes the Genitive case: "obok naszego bloku". Prepositions of relative position (obok, naprzeciwko, w pobliżu) all take Genitive.'
+  },
+  {
+    id: 14, unit: 3, grammar: true, grammarUnit: 'G3', type: 'mc',
+    topic: 'Grammar G3 — Locative Endings',
+    revisionSection: 'Unit 3 → Grammar G3 (Locative endings)',
+    revisionFile: 'polski-b1b2-unit3.html',
+    question: 'Mieszkamy w ______ od pięciu lat.',
+    options: ['centrum (unchanged — neuter -um)', 'centru', 'centrze', 'centrowi'],
+    correct: 0,
+    explanation: 'Neuter nouns ending in -um (centrum, muzeum, gimnazjum) are unchanged in all cases — including the Locative. So: "w centrum" (not "w centrze").'
+  },
+  {
+    id: 15, unit: 3, grammar: false, type: 'gapfill',
+    topic: 'Home Vocabulary — Instrumental',
+    revisionSection: 'Unit 3 → Grammar G3 (Instrumental for position)',
+    revisionFile: 'polski-b1b2-unit3.html',
+    question: 'Complete: Lampa wisi ______ stołem w jadalni.',
+    gapAnswer: 'nad',
+    gapHint: '(above / over + Instrumental)',
+    explanation: '"Nad" (above/over) + Instrumental describes position above something: "nad stołem". Other position prepositions also take Instrumental: pod, za, przed, między.'
+  },
+
+  // ── UNIT 4: ZDROWIE I STYL ŻYCIA ───────────────────
+  {
+    id: 16, unit: 4, grammar: false, type: 'mc',
+    topic: 'Health Vocabulary',
+    revisionSection: 'Unit 4 → Extended Lesson (Reading)',
+    revisionFile: 'polski-b1b2-unit4.html',
+    question: 'Jak ______ po tym długim weekendzie?',
+    options: ['czujesz', 'czujesz się', 'uczujesz się', 'czujesz by się'],
+    correct: 1,
+    explanation: '"Czuć się" (to feel) is an inherent reflexive verb — it always needs "się". The correct form is "czujesz się". "Czujesz" alone (without się) changes the meaning entirely — it means "do you sense/feel something" (transitive). "Uczujesz się" and "czujesz by się" do not exist in Polish.'
+  },
+  {
+    id: 17, unit: 4, grammar: false, type: 'mc',
+    topic: 'Health Vocabulary — boleć',
+    revisionSection: 'Unit 4 → Grammar G4 (boleć construction)',
+    revisionFile: 'polski-b1b2-unit4.html',
+    question: 'Boli ______ głowa od rana.',
+    options: ['mi (Dative)', 'mnie (Accusative)', 'mną (Instrumental)', 'mnie (Genitive)'],
+    correct: 1,
+    explanation: '"Boleć" takes the Accusative of the person in pain — NOT Dative. "Boli mnie głowa" = My head hurts. "Głowa" (the body part) is the subject; "mnie" is the Accusative person.'
+  },
+  {
+    id: 18, unit: 4, grammar: true, grammarUnit: 'G4', type: 'mc',
+    topic: 'Grammar G4 — Modal Verbs',
+    revisionSection: 'Unit 4 → Grammar G4 (Modal verbs)',
+    revisionFile: 'polski-b1b2-unit4.html',
+    question: '______ brać antybiotyk regularnie co dwanaście godzin. (it is necessary — obligation)',
+    options: ['Warto', 'Można', 'Trzeba', 'Nie wolno'],
+    correct: 2,
+    explanation: '"Trzeba" = it is necessary / one must (obligation). "Warto" = it is worth (recommendation). "Można" = it is allowed/possible. "Nie wolno" = it is forbidden (prohibition).'
+  },
+  {
+    id: 19, unit: 4, grammar: true, grammarUnit: 'G4', type: 'mc',
+    topic: 'Grammar G4 — Accusative Negation',
+    revisionSection: 'Unit 4 → Grammar G4 (Negation + Genitive)',
+    revisionFile: 'polski-b1b2-unit4.html',
+    question: 'Nie jem ______ przez cały miesiąc.',
+    options: ['słodycze (Accusative)', 'słodyczy (Genitive)', 'słodyczami (Instrumental)', 'słodyczach (Locative)'],
+    correct: 1,
+    explanation: 'After "nie jem" (I do not eat), the direct object shifts from Accusative to Genitive: "słodycze" → "słodyczy" (Gen. pl.). This Acc.→Gen. shift under negation is obligatory for transitive verbs.'
+  },
+  {
+    id: 20, unit: 4, grammar: false, type: 'gapfill',
+    topic: 'Health Vocabulary — Modal verbs',
+    revisionSection: 'Unit 4 → Grammar G4 (Modal verbs)',
+    revisionFile: 'polski-b1b2-unit4.html',
+    question: 'Complete: ______ palić w szpitalu. (it is strictly forbidden)',
+    gapAnswer: 'nie wolno',
+    gapHint: '(the strongest prohibition modal)',
+    explanation: '"Nie wolno" + infinitive = it is forbidden / one must not. It is the strongest prohibition. "Nie można" is softer (not possible/allowed).'
+  },
+
+  // ── CROSS-UNIT MIXED GRAMMAR ────────────────────────
+  {
+    id: 21, unit: 'mixed', grammar: true, grammarUnit: 'G1+G3', type: 'mc',
+    topic: 'Case System — Identifying Cases',
+    revisionSection: 'Unit 1 → Grammar G1 + Unit 3 → Grammar G3',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Which sentence uses the WRONG case?',
+    options: [
+      'Jestem kierownikiem w tej firmie.',
+      'Uczestniczę w szkoleniu co miesiąc.',
+      'Zarządzam z zespołem programistów.',
+      'Wróciłam z pracy późno wieczorem.'
+    ],
+    correct: 2,
+    explanation: '"Zarządzać" takes the Instrumental without "z": "zarządzam zespołem" (not "z zespołem"). Option C incorrectly adds "z". The other sentences are all correct: Instrumental after "być", Locative after "w", Genitive after "z" (origin).'
+  },
+  {
+    id: 22, unit: 'mixed', grammar: true, grammarUnit: 'G2+G4', type: 'mc',
+    topic: 'Negation — Genitive shift',
+    revisionSection: 'Unit 2 → Grammar G2 + Unit 4 → Grammar G4',
+    revisionFile: 'polski-b1b2-unit2.html',
+    question: 'Which sentence is CORRECT?',
+    options: [
+      'Nie mam apetyt na nic.',
+      'Nie mam apetytu na nic.',
+      'Nie mam apetycie na nic.',
+      'Nie mam apetytem na nic.'
+    ],
+    correct: 1,
+    explanation: '"Nie mam" (I don\'t have) triggers Genitive: "apetyt" → "apetytu" (Gen. masculine). "Apetyt" (Acc.) → "apetytu" (Gen.) under negation. This rule applies across all transitive "nie mam/nie widzę/nie lubię" constructions.'
+  },
+  {
+    id: 23, unit: 'mixed', grammar: false, type: 'mc',
+    topic: 'Vocabulary — Cross-unit',
+    revisionSection: 'Units 1–4 → Extended Lessons',
+    revisionFile: 'polski-b1b2-course-v2.html',
+    question: 'Which sentence uses "się" INCORRECTLY?',
+    options: [
+      'Ona martwi się o swoją pracę.',
+      'Czuję się dobrze dzisiaj.',
+      'On zarządza się dużym projektem.',
+      'Marta dogaduje się z córką Karola.'
+    ],
+    correct: 2,
+    explanation: '"Zarządzać" is NOT a reflexive verb — it never takes "się". It takes the Instrumental: "zarządza projektem". The other verbs are correct reflexives: "martwić się", "czuć się", "dogadywać się".'
+  },
+  {
+    id: 24, unit: 'mixed', grammar: true, grammarUnit: 'G3+G2', type: 'mc',
+    topic: 'Prepositions — Location and Possession',
+    revisionSection: 'Unit 3 → Grammar G3 + Unit 2 → Grammar G2',
+    revisionFile: 'polski-b1b2-unit3.html',
+    question: 'Choose the sentence where ALL prepositions and cases are correct.',
+    options: [
+      'Mieszkam w centrum i pracuję do biura obok parku.',
+      'Mieszkam w centrum i pracuję w biurze obok parku.',
+      'Mieszkam do centrum i pracuję w biuro obok parku.',
+      'Mieszkam w centrum i pracuję w biurze naprzeciwko park.'
+    ],
+    correct: 1,
+    explanation: 'Option B: "w centrum" (Loc.) ✓, "w biurze" (w + Loc.) ✓, "obok parku" (obok + Gen.) ✓. Option A: "pracuję do biura" is wrong — direction not location. Option D: "naprzeciwko park" — "park" should be Genitive "parku".'
+  },
+  {
+    id: 25, unit: 'mixed', grammar: true, grammarUnit: 'G4+G1', type: 'mc',
+    topic: 'Grammar Synthesis',
+    revisionSection: 'Unit 4 → Grammar G4 + Unit 1 → Grammar G1',
+    revisionFile: 'polski-b1b2-unit4.html',
+    question: 'Which sentence is grammatically CORRECT? (The subject is female.)',
+    options: [
+      'Powinna ćwiczyć więcej i nie jeść słodycze.',
+      'Powinna ćwiczyć więcej i nie jeść słodyczy.',
+      'Powinna ćwicząc więcej i nie jeść słodyczy.',
+      'Powinna ćwiczyć więcej i nie jeść słodyczami.'
+    ],
+    correct: 1,
+    explanation: 'Option B ✓: "Powinna" (fem.) + "ćwiczyć" (infinitive after modal) + "nie jeść słodyczy" (Gen. pl. after negation). Option A: "słodycze" should be Genitive "słodyczy". Option C: "ćwicząc" is a gerund — wrong after a modal verb (needs infinitive). Option D: "słodyczami" is Instrumental — wrong after negation, which requires Genitive.'
+  }
+];
+
+// ══════════════════════════════════════════════════════
+// UNIT META
+// ══════════════════════════════════════════════════════
+const UNIT_META = {
+  1: { label:'Unit 1 — Praca i Kariera', color:'var(--blue)', bg:'var(--blue-light)', file:'polski-b1b2-course-v2.html' },
+  2: { label:'Unit 2 — Rodzina i Relacje', color:'var(--purple)', bg:'var(--purple-light)', file:'polski-b1b2-unit2.html' },
+  3: { label:'Unit 3 — Dom i Mieszkanie', color:'#0F766E', bg:'#CCFBF1', file:'polski-b1b2-unit3.html' },
+  4: { label:'Unit 4 — Zdrowie i Styl Życia', color:'var(--green)', bg:'var(--green-light)', file:'polski-b1b2-unit4.html' },
+  mixed: { label:'Mixed / Cross-unit', color:'var(--gold)', bg:'var(--gold-light)', file:'polski-b1b2-course-v2.html' },
+};
+
+// ══════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════
+let answers = {};       // { qId: { selected, correct } }
+let revealed = {};      // { qId: true }
+let currentQ = 0;
+let startTime = null;
+let timerInterval = null;
+
+// ══════════════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// ══════════════════════════════════════════════════════
+// BUILD SIDEBAR Q LIST
+// ══════════════════════════════════════════════════════
+function buildSidebar() {
+  const list = document.getElementById('sidebar-q-list');
+  let html = '';
+  QUESTIONS.forEach((q, i) => {
+    const ans = answers[q.id];
+    const isRevealed = revealed[q.id];
+    let tagClass = 'tag-skipped', tagText = '–';
+    if (isRevealed && ans !== undefined) {
+      tagClass = ans.correct ? 'tag-correct' : 'tag-wrong';
+      tagText = ans.correct ? '✓' : '✗';
+    } else if (i === currentQ) {
+      tagClass = 'tag-active'; tagText = '▶';
+    }
+    const uMeta = UNIT_META[q.unit] || UNIT_META.mixed;
+    html += `<div class="sidebar-item ${i === currentQ ? 'active' : ''}" onclick="goToQuestion(${i})">
+      <i class="ti ti-${q.grammar ? 'math-function' : 'help-circle'}"></i>
+      <span style="flex:1">Q${q.id} · <span style="color:${uMeta.color};font-size:11px">${q.unit === 'mixed' ? 'Mixed' : 'U'+q.unit}</span></span>
+      <span class="tag ${tagClass}">${tagText}</span>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+// ══════════════════════════════════════════════════════
+// BUILD QUESTIONS
+// ══════════════════════════════════════════════════════
+function buildQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  QUESTIONS.forEach((q, i) => {
+    const uMeta = UNIT_META[q.unit] || UNIT_META.mixed;
+    let inner = '';
+
+    if (q.type === 'mc') {
+      inner = `<div class="options" id="opts-${q.id}">
+        ${q.options.map((opt, oi) => `
+          <div class="option" id="opt-${q.id}-${oi}" onclick="selectOption(${q.id}, ${oi})">
+            <div class="opt-letter">${String.fromCharCode(65+oi)}</div>
+            <div>${opt}</div>
+          </div>`).join('')}
+      </div>`;
+    } else if (q.type === 'gapfill') {
+      inner = `
+        <div class="gap-sentence">${q.question.replace('Complete: ', '')
+          .replace(/______/, `<input class="test-gap" id="gap-${q.id}" placeholder="${q.gapHint}" oninput="this.value=this.value">`)}</div>
+        <button class="btn btn-outline btn-sm" id="gap-check-${q.id}" onclick="checkGap(${q.id})"><i class="ti ti-check"></i> Check Answer</button>`;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'question-card' + (i === 0 ? ' active' : '');
+    card.id = 'qcard-' + q.id;
+    card.innerHTML = `
+      <div class="q-meta">
+        <span class="q-num">Q${q.id} of ${QUESTIONS.length}</span>
+        <span class="q-unit-tag q-unit-${q.unit === 'mixed' ? '1' : q.unit}" style="background:${uMeta.bg};color:${uMeta.color}">${uMeta.label.split('—')[0].trim()}</span>
+        ${q.grammar ? `<span class="q-grammar-tag"><i class="ti ti-math-function" style="font-size:10px"></i> ${q.grammarUnit}</span>` : ''}
+        <span class="q-type-tag">${q.topic}</span>
+      </div>
+      <div class="question-text">${q.type === 'gapfill' ? (q.question.startsWith('Complete:') ? q.question : 'Complete: ' + q.question) : q.question}</div>
+      ${inner}
+      <div class="answer-feedback" id="fb-${q.id}"></div>
+      <div class="q-nav" id="nav-${q.id}">
+        ${i > 0 ? `<button class="btn btn-outline btn-sm" onclick="goToQuestion(${i-1})"><i class="ti ti-arrow-left"></i> Back</button>` : ''}
+        <div style="flex:1"></div>
+        ${i < QUESTIONS.length - 1
+          ? `<button class="btn btn-primary btn-sm" id="next-${q.id}" onclick="goToQuestion(${i+1})">Next <i class="ti ti-arrow-right"></i></button>`
+          : `<button class="btn btn-red btn-sm" id="finish-btn" onclick="finishTest()"><i class="ti ti-flag-filled"></i> Finish Test</button>`}
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// MC SELECTION
+// ══════════════════════════════════════════════════════
+function selectOption(qId, optIdx) {
+  if (revealed[qId]) return;
+  const q = QUESTIONS.find(q => q.id === qId);
+
+  // Deselect others
+  q.options.forEach((_, oi) => {
+    document.getElementById(`opt-${qId}-${oi}`)?.classList.remove('selected');
+  });
+  document.getElementById(`opt-${qId}-${optIdx}`)?.classList.add('selected');
+
+  // Record answer
+  const isCorrect = optIdx === q.correct;
+  answers[qId] = { selected: optIdx, correct: isCorrect };
+
+  // Reveal
+  revealMC(qId, q, optIdx, isCorrect);
+}
+
+function revealMC(qId, q, selectedIdx, isCorrect) {
+  revealed[qId] = true;
+  q.options.forEach((_, oi) => {
+    const el = document.getElementById(`opt-${qId}-${oi}`);
+    if (!el) return;
+    el.classList.add('locked');
+    el.classList.remove('selected');
+    if (oi === q.correct) el.classList.add('revealed-correct');
+    else if (oi === selectedIdx && !isCorrect) el.classList.add('revealed-wrong');
+  });
+  showFeedback(qId, isCorrect, q.explanation, q.revisionSection, q.revisionFile);
+  updateProgress();
+  buildSidebar();
+}
+
+// ══════════════════════════════════════════════════════
+// GAP FILL CHECK
+// ══════════════════════════════════════════════════════
+function checkGap(qId) {
+  if (revealed[qId]) return;
+  const q = QUESTIONS.find(q => q.id === qId);
+  const inp = document.getElementById(`gap-${qId}`);
+  const val = inp.value.trim().toLowerCase();
+  const ans = q.gapAnswer.toLowerCase();
+  const isCorrect = val === ans;
+
+  inp.classList.add(isCorrect ? 'correct' : 'incorrect');
+  if (!isCorrect) {
+    setTimeout(() => {
+      inp.value = q.gapAnswer;
+      inp.classList.remove('incorrect');
+      inp.classList.add('correct');
+    }, 1200);
+  }
+
+  document.getElementById(`gap-check-${qId}`).disabled = true;
+  revealed[qId] = true;
+  answers[qId] = { selected: val, correct: isCorrect };
+  showFeedback(qId, isCorrect, q.explanation, q.revisionSection, q.revisionFile);
+  updateProgress();
+  buildSidebar();
+}
+
+// ══════════════════════════════════════════════════════
+// FEEDBACK
+// ══════════════════════════════════════════════════════
+function showFeedback(qId, isCorrect, explanation, revSection, revFile) {
+  const fb = document.getElementById(`fb-${qId}`);
+  fb.className = `answer-feedback show ${isCorrect ? 'correct-fb' : 'wrong-fb'}`;
+  fb.innerHTML = `
+    <strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong> — ${explanation}
+    ${!isCorrect ? `<div style="margin-top:8px"><span class="revision-link"><i class="ti ti-refresh"></i> Revise: ${revSection}</span></div>` : ''}`;
+}
+
+// ══════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════
+function goToQuestion(idx) {
+  document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('qcard-' + QUESTIONS[idx].id)?.classList.add('active');
+  currentQ = idx;
+  buildSidebar();
+  updateProgress();
+  document.getElementById('main').scrollTo(0, 0);
+  closeSidebar();
+}
+
+function jumpToUnit(unit) {
+  const idx = QUESTIONS.findIndex(q => q.unit === unit);
+  if (idx >= 0) goToQuestion(idx);
+}
+
+// ══════════════════════════════════════════════════════
+// PROGRESS UPDATE
+// ══════════════════════════════════════════════════════
+function updateProgress() {
+  const answered = Object.keys(revealed).length;
+  const correct = Object.values(answers).filter(a => a.correct).length;
+  const pct = Math.round((answered / QUESTIONS.length) * 100);
+  const qNum = currentQ + 1;
+
+  document.getElementById('prog-nums').textContent = qNum + ' / ' + QUESTIONS.length;
+  document.getElementById('prog-bar').style.width = Math.max(pct, 4) + '%';
+  document.getElementById('prog-label').textContent = correct + ' correct so far';
+
+  // Sidebar ring
+  const scorePct = answered > 0 ? Math.round((correct / QUESTIONS.length) * 100) : 0;
+  document.getElementById('sidebar-ring').style.setProperty('--pct', scorePct);
+  document.getElementById('sidebar-ring-num').textContent = scorePct + '%';
+  document.getElementById('sidebar-ring-title').textContent = answered + ' answered';
+  document.getElementById('sidebar-ring-label').textContent = correct + ' / ' + QUESTIONS.length + ' correct';
+}
+
+// ══════════════════════════════════════════════════════
+// START & FINISH
+// ══════════════════════════════════════════════════════
+function startTest() {
+  answers = {}; revealed = {}; currentQ = 0;
+  startTime = Date.now();
+  buildQuestions();
+  buildSidebar();
+  updateProgress();
+  showPage('test');
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    if (!startTime) return;
+    const secs = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(secs / 60), s = secs % 60;
+    document.getElementById('stat-time').textContent = m + ':' + (s < 10 ? '0' + s : s);
+  }, 1000);
+}
+
+function finishTest() {
+  // Auto-reveal any unanswered
+  QUESTIONS.forEach(q => {
+    if (!revealed[q.id]) {
+      answers[q.id] = { selected: null, correct: false };
+      revealed[q.id] = true;
+    }
+  });
+  clearInterval(timerInterval);
+  buildResults();
+  showPage('results');
+}
+
+function retakeTest() {
+  startTest();
+}
+
+// ══════════════════════════════════════════════════════
+// BUILD RESULTS
+// ══════════════════════════════════════════════════════
+function buildResults() {
+  const total = QUESTIONS.length;
+  const correct = Object.values(answers).filter(a => a.correct).length;
+  const wrong = total - correct;
+  const pct = Math.round((correct / total) * 100);
+  const secs = startTime ? Math.floor((Date.now() - startTime) / 1000) : 0;
+  const m = Math.floor(secs / 60), s = secs % 60;
+
+  // Grade
+  let grade, trophy, summary;
+  if (pct >= 90) { grade='A'; trophy='🏆'; summary='Excellent! You have a strong command of all four units. Your understanding of Polish grammar and vocabulary at B1 level is solid.'; }
+  else if (pct >= 80) { grade='B'; trophy='🎯'; summary='Very good! A few areas to polish, but overall you are well on track. Review the recommended sections and retake when ready.'; }
+  else if (pct >= 70) { grade='C'; trophy='📚'; summary='Good effort — you passed! Some grammatical patterns need more practice. Work through the revision recommendations below.'; }
+  else if (pct >= 55) { grade='D'; trophy='💪'; summary='Keep going — you are making progress, but the foundations need strengthening. Revisit the recommended sections before the next unit.'; }
+  else { grade='F'; trophy='🔄'; summary='Don\'t worry — Polish grammar takes time! Retake the test after working through the recommended sections. Every attempt makes a difference.'; }
+
+  document.getElementById('results-trophy').textContent = trophy;
+  document.getElementById('results-grade').textContent = grade;
+  document.getElementById('results-score').textContent = correct + ' / ' + total + ' correct';
+  document.getElementById('results-summary').textContent = summary;
+  document.getElementById('stat-correct').textContent = correct;
+  document.getElementById('stat-wrong').textContent = wrong;
+  document.getElementById('stat-pct').textContent = pct + '%';
+  document.getElementById('stat-time').textContent = m + ':' + (s < 10 ? '0' + s : s);
+
+  // Unit breakdown
+  const units = [1, 2, 3, 4, 'mixed'];
+  let breakdownHtml = '';
+  units.forEach(u => {
+    const uQs = QUESTIONS.filter(q => q.unit === u);
+    if (!uQs.length) return;
+    const uCorrect = uQs.filter(q => answers[q.id]?.correct).length;
+    const uPct = Math.round((uCorrect / uQs.length) * 100);
+    const uMeta = UNIT_META[u] || UNIT_META.mixed;
+    const fillColor = uPct >= 70 ? 'var(--green)' : uPct >= 50 ? 'var(--gold)' : 'var(--red)';
+    breakdownHtml += `<div class="unit-breakdown-card">
+      <div class="ubc-header">
+        <div class="ubc-title">${uMeta.label.split('—').pop().trim()}</div>
+        <div class="ubc-score" style="color:${fillColor}">${uCorrect}/${uQs.length}</div>
+      </div>
+      <div class="ubc-bar"><div class="ubc-fill" style="width:${uPct}%;background:${fillColor}"></div></div>
+    </div>`;
+  });
+  document.getElementById('unit-breakdown').innerHTML = breakdownHtml;
+
+  // Revision recommendations
+  const wrongQs = QUESTIONS.filter(q => answers[q.id] && !answers[q.id].correct);
+  if (wrongQs.length === 0) {
+    document.getElementById('revision-section').style.display = 'none';
+    return;
+  }
+  document.getElementById('revision-section').style.display = 'block';
+
+  // Group by revision section
+  const revMap = {};
+  wrongQs.forEach(q => {
+    const key = q.revisionSection;
+    if (!revMap[key]) revMap[key] = { section: q.revisionSection, file: q.revisionFile, unit: q.unit, topics: new Set() };
+    revMap[key].topics.add(q.topic);
+  });
+
+  const iconMap = { 1:'briefcase', 2:'users', 3:'home', 4:'heart', mixed:'layers-intersect' };
+  const colMap = { 1:'#DBEAFE,#1E40AF', 2:'#EDE9FE,#6D28D9', 3:'#CCFBF1,#0F766E', 4:'#DCFCE7,#166534', mixed:'#FEF3C7,#B45309' };
+
+  let revHtml = '';
+  Object.values(revMap).forEach(r => {
+    const [bg, col] = (colMap[r.unit] || colMap.mixed).split(',');
+    const icon = iconMap[r.unit] || 'layers-intersect';
+    revHtml += `<div class="revision-card">
+      <div class="revision-card-icon" style="background:${bg};color:${col}"><i class="ti ti-${icon}"></i></div>
+      <div class="revision-card-body">
+        <div class="revision-card-title">${r.section}</div>
+        <div class="revision-card-desc">Topics to review: ${[...r.topics].join(' · ')}</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <button class="open-unit-btn" onclick="window.open('${r.file}','_blank')">
+            <i class="ti ti-external-link"></i> Open unit
+          </button>
+        </div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('revision-cards').innerHTML = revHtml;
+}
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  buildSidebar();
+});
+</script>
+</body>
+</html>

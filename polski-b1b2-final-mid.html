@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Mid-Course Final Assessment: Units 1–6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+  --shadow:0 2px 8px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+  --u1:#7C3AED;--u1l:#EDE9FE;
+  --u2:#B45309;--u2l:#FEF3C7;
+  --u3:#0F766E;--u3l:#CCFBF1;
+  --u4:#9F1239;--u4l:#FFE4E6;
+  --u5:#0F4C81;--u5l:#E0F0FF;
+  --u6:#166534;--u6l:#DCFCE7;
+}
+html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;min-height:100vh}
+#sidebar{width:280px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;transition:transform 0.3s}
+#main{flex:1}
+.main-inner{max-width:720px;margin:0 auto;padding:36px 32px 100px}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:3px;text-transform:uppercase;letter-spacing:0.8px}
+.sidebar-section{padding:14px 20px 6px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#57534E}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:12px;color:#A8A29E;cursor:pointer;transition:all 0.15s;position:relative;user-select:none}
+.sidebar-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.sidebar-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.sidebar-item.active::before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.sidebar-item i{font-size:14px;width:16px;text-align:center;flex-shrink:0}
+.sidebar-item .tag{margin-left:auto;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:500}
+.tag-correct{background:rgba(22,101,52,0.25);color:#4ADE80}
+.tag-wrong{background:rgba(193,55,42,0.25);color:#FCA5A5}
+.tag-skipped{background:rgba(255,255,255,0.08);color:#78716C}
+.tag-active{background:rgba(193,55,42,0.3);color:#FCA5A5}
+.unit-divider{margin:8px 20px;height:0.5px;background:rgba(255,255,255,0.06)}
+.sidebar-footer{margin-top:auto;padding:16px 20px;border-top:0.5px solid rgba(255,255,255,0.06)}
+.score-ring-wrap{display:flex;align-items:center;gap:12px}
+.score-ring{width:52px;height:52px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--pct,0)*1%),rgba(255,255,255,0.08) 0%);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.score-ring::before{content:'';position:absolute;inset:6px;background:var(--ink);border-radius:50%}
+.score-ring-num{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:#fff}
+.score-ring-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+.score-ring-label{font-size:11px;color:#78716C}
+.test-header{background:var(--ink);border-radius:14px;padding:28px 32px;margin-bottom:28px;position:relative;overflow:hidden}
+.test-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 50%,rgba(193,55,42,0.18) 0%,transparent 60%)}
+.test-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#78716C;margin-bottom:8px;position:relative}
+.test-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px;position:relative}
+.test-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;position:relative}
+.test-meta-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#A8A29E}
+.progress-strip{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+.progress-bar-outer{flex:1;height:6px;background:var(--ink-faint);border-radius:3px;overflow:hidden}
+.progress-bar-inner{height:100%;background:var(--red);border-radius:3px;transition:width 0.4s}
+.progress-label{font-size:12px;color:var(--ink-muted);white-space:nowrap}
+.progress-nums{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+.question-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);display:none}
+.question-card.active{display:block}
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-muted);font-weight:500}
+.q-unit-tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
+.q-grammar-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--gold-light);color:var(--gold);font-weight:500}
+.q-type-tag{font-size:11px;color:var(--ink-muted);padding:2px 0}
+.question-text{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:18px;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;line-height:1.5;user-select:none}
+.option:hover:not(.locked){border-color:var(--red);background:var(--red-light)}
+.opt-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px;color:var(--ink-faint)}
+.option:hover:not(.locked) .opt-letter{color:var(--red)}
+.option.selected{border-color:var(--red);background:var(--red-light)}
+.option.locked{cursor:default}
+.option.revealed-correct{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.option.revealed-correct .opt-letter{border-color:var(--green);color:var(--green)}
+.option.revealed-wrong{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.75}
+.option.revealed-wrong .opt-letter{border-color:var(--red);color:var(--red)}
+.gap-sentence{font-size:15px;line-height:3;margin-bottom:8px}
+.test-gap{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 8px;min-width:160px;outline:none;transition:border-color 0.15s;text-align:center}
+.test-gap:focus{border-bottom-color:var(--red)}
+.test-gap.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.test-gap.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.answer-feedback{display:none;margin-top:16px;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.6}
+.answer-feedback.show{display:block}
+.answer-feedback.correct-fb{background:var(--green-light);border:0.5px solid rgba(22,101,52,0.2);color:var(--green)}
+.answer-feedback.wrong-fb{background:var(--red-light);border:0.5px solid rgba(193,55,42,0.2);color:var(--red)}
+.revision-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;background:rgba(193,55,42,0.1);color:var(--red);padding:3px 8px;border-radius:6px;margin-top:8px;font-weight:500}
+.q-nav{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.35;cursor:not-allowed}
+.btn-sm{padding:7px 14px;font-size:13px}
+.results-hero{background:var(--ink);border-radius:14px;padding:32px;text-align:center;margin-bottom:24px;position:relative;overflow:hidden}
+.results-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(193,55,42,0.2) 0%,transparent 60%)}
+.results-trophy{font-size:56px;margin-bottom:12px;position:relative}
+.results-grade{font-family:'DM Mono',monospace;font-size:64px;font-weight:500;color:#fff;line-height:1;position:relative}
+.results-score{font-size:16px;color:#A8A29E;margin-top:4px;position:relative}
+.results-summary{font-size:14px;color:#A8A29E;margin-top:12px;max-width:420px;margin-left:auto;margin-right:auto;position:relative;line-height:1.6}
+.results-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-correct .stat-num{color:var(--green)}.stat-wrong .stat-num{color:var(--red)}.stat-score .stat-num{color:var(--blue)}.stat-time .stat-num{color:var(--gold)}
+.unit-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.unit-breakdown-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+.ubc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ubc-title{font-size:12px;font-weight:500;color:var(--ink)}
+.ubc-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:500}
+.ubc-bar{height:4px;background:var(--ink-faint);border-radius:2px;overflow:hidden}
+.ubc-fill{height:100%;border-radius:2px;transition:width 0.6s}
+.revision-section{margin-bottom:24px}
+.revision-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px}
+.revision-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:14px}
+.revision-card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+.revision-card-body{flex:1}
+.revision-card-title{font-weight:500;font-size:14px;margin-bottom:3px}
+.revision-card-desc{font-size:13px;color:var(--ink-muted);line-height:1.5;margin-bottom:8px}
+.open-unit-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--red);background:var(--red-light);border:none;border-radius:6px;padding:5px 10px;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif}
+.open-unit-btn:hover{background:var(--red);color:#fff}
+.page{display:none}.page.active{display:block}
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:800px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:20px 16px 80px}
+  .results-stats{grid-template-columns:repeat(2,1fr)}
+  .unit-breakdown{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Mid-Course Final · Units 1–6</div>
+  </div>
+  <div class="sidebar-section">Test progress</div>
+  <div id="sidebar-q-list"></div>
+  <div class="unit-divider"></div>
+  <div class="sidebar-section">Jump to unit</div>
+  <div class="sidebar-item" onclick="jumpToUnit(1)"><i class="ti ti-briefcase"></i> Unit 1 — Praca i Kariera</div>
+  <div class="sidebar-item" onclick="jumpToUnit(2)"><i class="ti ti-heart"></i> Unit 2 — Rodzina i Relacje</div>
+  <div class="sidebar-item" onclick="jumpToUnit(3)"><i class="ti ti-home"></i> Unit 3 — Dom i Mieszkanie</div>
+  <div class="sidebar-item" onclick="jumpToUnit(4)"><i class="ti ti-activity"></i> Unit 4 — Zdrowie i Styl Życia</div>
+  <div class="sidebar-item" onclick="jumpToUnit(5)"><i class="ti ti-flame"></i> Unit 5 — Polska Kultura</div>
+  <div class="sidebar-item" onclick="jumpToUnit(6)"><i class="ti ti-device-tv"></i> Unit 6 — Media i Technologia</div>
+  <div class="sidebar-footer">
+    <div class="score-ring-wrap">
+      <div class="score-ring" id="sidebar-ring" style="--pct:0"><div class="score-ring-num" id="sidebar-ring-num">0%</div></div>
+      <div>
+        <div class="score-ring-title" id="sidebar-ring-title">Not started</div>
+        <div class="score-ring-label" id="sidebar-ring-label">0 / 40 answered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main"><div class="main-inner">
+
+<div class="page active" id="page-start">
+  <div class="test-header">
+    <div class="test-eyebrow"><i class="ti ti-award"></i> Mid-Course Final Assessment</div>
+    <div class="test-title">Final Assessment: Units 1–6</div>
+    <div style="color:#A8A29E;font-size:14px;margin-top:4px;position:relative">Praca · Rodzina · Dom · Zdrowie · Kultura · Media</div>
+    <div class="test-meta">
+      <div class="test-meta-item"><i class="ti ti-help-circle"></i> 40 questions</div>
+      <div class="test-meta-item"><i class="ti ti-layers-intersect"></i> Units 1–6 · Grammar G1–G6</div>
+      <div class="test-meta-item"><i class="ti ti-refresh"></i> Retakes allowed</div>
+      <div class="test-meta-item"><i class="ti ti-target"></i> Pass mark: 70%</div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:12px">What this assessment covers</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+      <div style="padding:11px 13px;border:0.5px solid var(--border);border-radius:8px;font-size:13px"><div style="font-weight:500;color:var(--u1);margin-bottom:3px"><i class="ti ti-briefcase"></i> Unit 1 + G1 Cases</div><div style="color:var(--ink-muted)">Work vocab · All 7 cases, Instrumental &amp; Locative</div></div>
+      <div style="padding:11px 13px;border:0.5px solid var(--border);border-radius:8px;font-size:13px"><div style="font-weight:500;color:var(--u2);margin-bottom:3px"><i class="ti ti-heart"></i> Unit 2 + G2 Genitive &amp; Dative</div><div style="color:var(--ink-muted)">Family vocab · Possession, negation, brakować</div></div>
+      <div style="padding:11px 13px;border:0.5px solid var(--border);border-radius:8px;font-size:13px"><div style="font-weight:500;color:var(--u3);margin-bottom:3px"><i class="ti ti-home"></i> Unit 3 + G3 Locative &amp; Prepositions</div><div style="color:var(--ink-muted)">Home vocab · w/na/przy/o, obok/naprzeciwko</div></div>
+      <div style="padding:11px 13px;border:0.5px solid var(--border);border-radius:8px;font-size:13px"><div style="font-weight:500;color:var(--u4);margin-bottom:3px"><i class="ti ti-activity"></i> Unit 4 + G4 Reflexive &amp; Modals</div><div style="color:var(--ink-muted)">Health vocab · się-verbs, boleć, modal verbs</div></div>
+      <div style="padding:11px 13px;border:0.5px solid var(--border);border-radius:8px;font-size:13px"><div style="font-weight:500;color:var(--u5);margin-bottom:3px"><i class="ti ti-flame"></i> Unit 5 + G5 Verbal Aspect</div><div style="color:var(--ink-muted)">Culture vocab · Impf. vs pf., aspect pairs</div></div>
+      <div style="padding:11px 13px;border:0.5px solid var(--border);border-radius:8px;font-size:13px"><div style="font-weight:500;color:var(--u6);margin-bottom:3px"><i class="ti ti-device-tv"></i> Unit 6 + G6 Reported Speech</div><div style="color:var(--ink-muted)">Media vocab · że/czy/żeby, time clauses</div></div>
+    </div>
+    <div style="background:var(--gold-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold);margin-bottom:20px;line-height:1.6">
+      <strong>How it works:</strong> 40 questions spanning all six units and grammar sections G1–G6. Questions progress from B1 to B2 difficulty within each unit. Instant grammatical feedback after every answer, with revision links. Full score breakdown and personalised recommendations on completion.
+    </div>
+    <button class="btn btn-red" onclick="startTest()" style="font-size:15px;padding:12px 28px"><i class="ti ti-player-play-filled"></i> Start Final Assessment</button>
+  </div>
+</div>
+
+<div class="page" id="page-test">
+  <div class="progress-strip">
+    <div class="progress-nums" id="prog-nums">1 / 40</div>
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog-bar" style="width:2.5%"></div></div>
+    <div class="progress-label" id="prog-label">0 correct so far</div>
+  </div>
+  <div id="questions-container"></div>
+</div>
+
+<div class="page" id="page-results">
+  <div class="results-hero">
+    <div class="results-trophy" id="results-trophy">🎯</div>
+    <div class="results-grade" id="results-grade">–</div>
+    <div class="results-score" id="results-score">– / 40 correct</div>
+    <div class="results-summary" id="results-summary"></div>
+  </div>
+  <div class="results-stats">
+    <div class="stat-card stat-correct"><div class="stat-num" id="stat-correct">0</div><div class="stat-label">Correct</div></div>
+    <div class="stat-card stat-wrong"><div class="stat-num" id="stat-wrong">0</div><div class="stat-label">Incorrect</div></div>
+    <div class="stat-card stat-score"><div class="stat-num" id="stat-pct">0%</div><div class="stat-label">Score</div></div>
+    <div class="stat-card stat-time"><div class="stat-num" id="stat-time">0:00</div><div class="stat-label">Time taken</div></div>
+  </div>
+  <div class="unit-breakdown" id="unit-breakdown"></div>
+  <div class="revision-section" id="revision-section" style="display:none">
+    <div class="revision-title"><i class="ti ti-refresh" style="color:var(--red)"></i> Revision Recommendations</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:14px">Based on your mistakes, revisit these sections before attempting the Full-Course Final.</p>
+    <div id="revision-cards"></div>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+    <button class="btn btn-red" onclick="retakeTest()"><i class="ti ti-refresh"></i> Retake Assessment</button>
+    <button class="btn btn-outline" onclick="showPage('start')"><i class="ti ti-home"></i> Start Screen</button>
+  </div>
+</div>
+
+</div></div></div>
+
+<script>
+const QUESTIONS = [
+
+  // ── UNIT 1: PRACA I KARIERA + G1 CASES ─────────────────────────────────────
+
+  { id:1, unit:1, grammar:false, type:'mc',
+    topic:'Work Vocabulary',
+    revisionSection:'Unit 1 → Extended Lesson',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Marta właśnie dostała ______ na stanowisko kierownika projektu w dużej firmie.',
+    options:['ofertę pracy','umowę zlecenie','staż zawodowy','urlop macierzyński'],
+    correct:0,
+    explanation:'"Ofertę pracy" (job offer) — Accusative after "dostała" (received). A job offer is what precedes being hired. "Umowa zlecenie" is a type of contract (civil law contract). "Staż zawodowy" is an internship. "Urlop macierzyński" is maternity leave — not something you receive before starting a job.'
+  },
+  { id:2, unit:1, grammar:false, type:'mc',
+    topic:'Work Vocabulary',
+    revisionSection:'Unit 1 → Extended Lesson',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Pracuje jako ______ — zajmuje się tworzeniem aplikacji mobilnych.',
+    options:['programistą','programista','programiście','programistę'],
+    correct:1,
+    explanation:'"Pracuje jako programista" — after "jako" (as), the predicate nominative is used: Nominative case. This is the key exception: "pracować jako" takes Nominative (not Instrumental). Compare: "być programistą" (Instrumental after "być") vs "pracować jako programista" (Nominative after "jako").'
+  },
+  { id:3, unit:1, grammar:false, type:'mc',
+    topic:'Work Vocabulary',
+    revisionSection:'Unit 1 → Extended Lesson',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Po rozmowie kwalifikacyjnej pracodawca powiedział, że skontaktuje się z kandydatami w ______ tygodnia.',
+    options:['ciągu','czasie','terminie','porządku'],
+    correct:0,
+    explanation:'"W ciągu tygodnia" = within a week — a fixed time expression: "w ciągu" + Genitive. "W czasie" = during (a longer period, less specific). "W terminie" = by the deadline (used for deadlines, not duration). "W porządku" = OK / alright (entirely different meaning).'
+  },
+  { id:4, unit:1, grammar:true, grammarUnit:'G1', type:'mc',
+    topic:'Grammar G1 — Instrumental after "być"',
+    revisionSection:'Unit 1 → Grammar G1 (Case System)',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Ona jest ______ w tej firmie od pięciu lat. (she is the manager)',
+    options:['kierownik','kierownika','kierownikiem','kierowniku'],
+    correct:2,
+    explanation:'"Kierownikiem" — Instrumental case after "być" (to be) in predicate position. When "być" assigns a permanent or semi-permanent identity/role, the complement takes Instrumental. Pattern: być + [Instrumental]. Note the contrast with "pracować jako kierownik" (Nominative after "jako").'
+  },
+  { id:5, unit:1, grammar:true, grammarUnit:'G1', type:'mc',
+    topic:'Grammar G1 — Locative with "o"',
+    revisionSection:'Unit 1 → Grammar G1 (Case System)',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Na rozmowie kwalifikacyjnej musiałam opowiedzieć o ______ (moje doświadczenie zawodowe).',
+    options:['moje doświadczenie zawodowe','moim doświadczeniu zawodowym','mojego doświadczenia zawodowego','moją doświadczeniem zawodowym'],
+    correct:1,
+    explanation:'"O moim doświadczeniu zawodowym" — the preposition "o" (about) always triggers Locative case. "Doświadczenie" (neuter) → Locative: "doświadczeniu". Possessive "moje" → Locative neuter: "moim". "Zawodowe" → "zawodowym". Locative is always used with a preposition: w, na, przy, o, po.'
+  },
+  { id:6, unit:1, grammar:true, grammarUnit:'G1', type:'gapfill',
+    topic:'Grammar G1 — Instrumental (means of transport)',
+    revisionSection:'Unit 1 → Grammar G1 (Case System)',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Complete: Dojeżdżam do pracy ______ (pociąg) każdego dnia.',
+    gapAnswer:'pociągiem',
+    gapHint:'Instrumental — means of transport',
+    explanation:'"Pociągiem" — Instrumental case for means of transport ("by train"). Pattern: jeździć/lecieć/płynąć + [Instrumental]. "Pociąg" (masc. inanimate) → Instrumental: "pociągiem" (-em ending). Compare: autobusem, samolotem, samochodem, rowerem.'
+  },
+  { id:7, unit:1, grammar:true, grammarUnit:'G1', type:'mc',
+    topic:'Grammar G1 — All cases: identify the correct sentence',
+    revisionSection:'Unit 1 → Grammar G1 (Case System)',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Which sentence is grammatically CORRECT?',
+    options:[
+      'Dałam szefowi nowego raportu wczoraj.',
+      'Szef poprosił mnie o przygotowanie raportu.',
+      'Napisałam raport dla szef.',
+      'Szef jest zadowolony z raportu moja.'
+    ],
+    correct:1,
+    explanation:'"Szef poprosił mnie o przygotowanie raportu." ✓ — "prosić o" + Accusative: "przygotowanie" (verbal noun, Acc.); "raportu" is Gen. after "przygotowanie" (verbal noun governs Gen.). Option A: "nowego raportu" should be Accusative "nowy raport". Option C: "dla szef" needs Genitive "dla szefa". Option D: "raportu moja" needs "mojego" (Gen. masc.).'
+  },
+
+  // ── UNIT 2: RODZINA I RELACJE + G2 GENITIVE & DATIVE ─────────────────────
+
+  { id:8, unit:2, grammar:false, type:'mc',
+    topic:'Family & Relationships Vocabulary',
+    revisionSection:'Unit 2 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Marta i Tomek są po ślubie od trzech lat — są ______.',
+    options:['narzeczonymi','małżeństwem','partnerami','rodzeństwem'],
+    correct:1,
+    explanation:'"Małżeństwem" — after marriage, they are a married couple: "małżeństwo" (Instrumental after "są"). "Narzeczeni" = engaged couple (before marriage). "Partnerzy" = partners (not necessarily married). "Rodzeństwo" = siblings — entirely different.'
+  },
+  { id:9, unit:2, grammar:false, type:'mc',
+    topic:'Family Vocabulary',
+    revisionSection:'Unit 2 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Mój brat ma pięcioro ______. (five children)',
+    options:['dzieci','dziecko','dzieciom','dzieckiem'],
+    correct:0,
+    explanation:'"Pięcioro dzieci" — collective numeral "pięcioro" is used for groups of children (and mixed-gender groups). After collective numerals, the noun takes Genitive plural: "dzieci" (Gen. pl. of "dziecko"). Standard numbers 5+ also take Gen. pl.: "pięć dzieci".'
+  },
+  { id:10, unit:2, grammar:false, type:'mc',
+    topic:'Relationship Vocabulary',
+    revisionSection:'Unit 2 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Ona bardzo ______ swojej starszej siostry — zawsze pyta ją o radę.',
+    options:['szanuje','podziwia','zazdrości','zależy jej na'],
+    correct:1,
+    explanation:'"Podziwia" (admires) — admiring someone and asking for their advice fits the context best. "Szanuje" = respects (closer, but asking for advice specifically signals admiration). "Zazdrości" = envies (negative connotation — doesn\'t fit asking for advice). "Zależy jej na" = she cares about (takes Locative, different construction).'
+  },
+  { id:11, unit:2, grammar:true, grammarUnit:'G2', type:'mc',
+    topic:'Grammar G2 — Genitive of negation',
+    revisionSection:'Unit 2 → Grammar G2 (Genitive & Dative)',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Nie mam ______ z rodziną w tym tygodniu. (kontakt)',
+    options:['kontakt','kontaktu','kontaktem','kontakcie'],
+    correct:1,
+    explanation:'"Kontaktu" — Genitive of negation. Under negation, the direct object shifts from Accusative to Genitive: "mam kontakt" (Acc.) → "nie mam kontaktu" (Gen.). "Kontakt" (masc. inanimate) → Gen. sg.: "kontaktu" (-u ending for masc. inanimate nouns ending in a consonant).'
+  },
+  { id:12, unit:2, grammar:true, grammarUnit:'G2', type:'mc',
+    topic:'Grammar G2 — Dative of interest',
+    revisionSection:'Unit 2 → Grammar G2 (Genitive & Dative)',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'______ brakuje cierpliwości, kiedy mówię o swoich problemach. (my mother lacks)',
+    options:['Mojej mamie','Moja mama','Moją mamę','Mojej mamy'],
+    correct:0,
+    explanation:'"Mojej mamie brakuje" — "brakować" (to lack, to be missing) takes Dative for the person who lacks something: "brakuje komuś" + Genitive (of what is lacking). "Mamie" = Dative of "mama". The thing that is lacking ("cierpliwości" = patience) is in Genitive. Pattern: Dative person + brakuje + Genitive thing.'
+  },
+  { id:13, unit:2, grammar:true, grammarUnit:'G2', type:'mc',
+    topic:'Grammar G2 — Genitive of possession',
+    revisionSection:'Unit 2 → Grammar G2 (Genitive & Dative)',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'To jest zdjęcie ______ (my grandparents) z ich ślubu w 1965 roku.',
+    options:['moich dziadków','moi dziadkowie','moich dziadkom','moim dziadkom'],
+    correct:0,
+    explanation:'"Moich dziadków" — Genitive of possession: "zdjęcie kogoś" (photo of someone). "Dziadkowie" (pl. masc. pers.) → Genitive plural: "dziadków". Possessive "moje" → Genitive plural (masc. pers.): "moich". Pattern: noun + Genitive = possession/relationship.'
+  },
+  { id:14, unit:2, grammar:true, grammarUnit:'G2', type:'gapfill',
+    topic:'Grammar G2 — Dative: podobać się',
+    revisionSection:'Unit 2 → Grammar G2 (Genitive & Dative)',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Complete: ______ (my sister — Dative) bardzo podoba się ten nowy serial na Netflixie.',
+    gapAnswer:'mojej siostrze',
+    gapHint:'Dative of "moja siostra"',
+    explanation:'"Mojej siostrze" — "podobać się" (to appeal to, to like) takes Dative for the person who likes something: "podobać się komuś". "Siostra" (fem.) → Dative: "siostrze". Possessive "moja" → Dative fem.: "mojej". The subject of the sentence is "serial" (masc.) — the thing being liked. The person is always Dative.'
+  },
+
+  // ── UNIT 3: DOM I MIESZKANIE + G3 LOCATIVE & PREPOSITIONS ──────────────────
+
+  { id:15, unit:3, grammar:false, type:'mc',
+    topic:'Home & Housing Vocabulary',
+    revisionSection:'Unit 3 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Szukamy mieszkania do wynajęcia — najważniejsze jest dla nas ______ od centrum.',
+    options:['położenie','umeblowanie','czynsz','ogrzewanie'],
+    correct:0,
+    explanation:'"Położenie" (location/position) — "od centrum" (from the centre) directly modifies location. "Umeblowanie" = furnishings. "Czynsz" = rent. "Ogrzewanie" = heating. Only "położenie od centrum" makes sense as a phrase describing proximity to the centre.'
+  },
+  { id:16, unit:3, grammar:false, type:'mc',
+    topic:'Home Vocabulary',
+    revisionSection:'Unit 3 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Nasze mieszkanie ma trzy ______ — salon, sypialnię i gabinet.',
+    options:['pokoje','pomieszczenia','kondygnacje','piętra'],
+    correct:0,
+    explanation:'"Pokoje" (rooms) — the sentence names three specific rooms (salon, sypialnia, gabinet). "Pokój" = room. "Pomieszczenie" is more formal/technical for room/space, but "pokoje" is the natural word here. "Kondygnacje" = floors/storeys. "Piętra" = upper floors.'
+  },
+  { id:17, unit:3, grammar:false, type:'mc',
+    topic:'Home Vocabulary',
+    revisionSection:'Unit 3 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Agencja nieruchomości zaproponowała nam mieszkanie ______ z widokiem na park.',
+    options:['na parterze','na poddaszu','na pierwszym piętrze','przy ulicy'],
+    correct:1,
+    explanation:'Context clue: "widok na park" from a high vantage point best fits "na poddaszu" (in the attic/top floor apartment). While any floor can have a park view, "poddasze" (attic apartment) is specifically associated with desirable elevated views in Polish housing. "Na parterze" = ground floor (park views less elevated). "Przy ulicy" = by the street (opposite of park).'
+  },
+  { id:18, unit:3, grammar:true, grammarUnit:'G3', type:'mc',
+    topic:'Grammar G3 — w vs na',
+    revisionSection:'Unit 3 → Grammar G3 (Locative & Prepositions)',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Klucze leżą ______ stole, a torba jest ______ szafie.',
+    options:['na … w','w … w','na … na','w … na'],
+    correct:0,
+    explanation:'"Na stole … w szafie" — surfaces use "na" + Locative (keys are on the table surface); enclosed spaces use "w" + Locative (bag is inside the wardrobe). This is the core w/na distinction: enclosed container → "w"; open surface/platform → "na". Exceptions to memorise: "na poczcie" (at the post office), "na stacji" (at the station).'
+  },
+  { id:19, unit:3, grammar:true, grammarUnit:'G3', type:'mc',
+    topic:'Grammar G3 — Locative endings',
+    revisionSection:'Unit 3 → Grammar G3 (Locative & Prepositions)',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Mieszkamy w ______ (duże, nowoczesne miasto) od dwóch lat.',
+    options:['duże nowoczesne miasto','dużym nowoczesnym mieście','dużego nowoczesnego miasta','dużą nowoczesną miastem'],
+    correct:1,
+    explanation:'"W dużym nowoczesnym mieście" — Locative case after "w" for location. "Miasto" (neuter) → Locative: "mieście" (-ie ending). Adjectives in neuter Locative: -ym (duż-ym, nowoczesn-ym). The -e → -ie consonant softening in "mieście" is a regular Locative pattern.'
+  },
+  { id:20, unit:3, grammar:true, grammarUnit:'G3', type:'gapfill',
+    topic:'Grammar G3 — naprzeciwko + Genitive',
+    revisionSection:'Unit 3 → Grammar G3 (Locative & Prepositions)',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Complete: Sklep spożywczy jest naprzeciwko ______ (nasz budynek — Gen.).',
+    gapAnswer:'naszego budynku',
+    gapHint:'naprzeciwko + Genitive',
+    explanation:'"Naprzeciwko naszego budynku" — "naprzeciwko" (opposite) always takes Genitive. "Budynek" (masc. inanimate) → Gen. sg.: "budynku". Possessive "nasz" → Gen. masc.: "naszego". Other Genitive prepositions of location: obok (next to), w pobliżu (near), z dala od (far from).'
+  },
+
+  // ── UNIT 4: ZDROWIE I STYL ŻYCIA + G4 REFLEXIVE & MODALS ──────────────────
+
+  { id:21, unit:4, grammar:false, type:'mc',
+    topic:'Health & Lifestyle Vocabulary',
+    revisionSection:'Unit 4 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'Lekarz zalecił jej ______  i więcej odpoczynku po operacji.',
+    options:['rekonwalescencję','profilaktykę','rehabilitację','prewencję'],
+    correct:2,
+    explanation:'"Rehabilitację" — rehabilitation is the process of recovering physical function after surgery or injury, typically involving therapy and exercises. "Rekonwalescencja" = recovery/convalescence (more general rest-based). "Profilaktyka" = preventive care (before illness). "Prewencja" = prevention (more general/policy level).'
+  },
+  { id:22, unit:4, grammar:false, type:'mc',
+    topic:'Health Vocabulary',
+    revisionSection:'Unit 4 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'Od tygodnia ______ — mam katar, kaszel i gorączkę.',
+    options:['czuję się źle','choruję','jestem przeziębiona','wszyscy trzy'],
+    correct:2,
+    explanation:'"Jestem przeziębiona" (I have a cold) — the specific symptoms listed (katar = runny nose, kaszel = cough, gorączka = fever) are the classic triad of a cold/flu. "Czuję się źle" is too vague. "Choruję" means I am ill (general). Options A and B are possible but "przeziębiona" is the most specific match for the symptoms given.'
+  },
+  { id:23, unit:4, grammar:false, type:'mc',
+    topic:'Health Vocabulary',
+    revisionSection:'Unit 4 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'Lekarz ______, że muszę ograniczyć spożycie soli i cukru.',
+    options:['zalecił','zakazał','przepisał','zdiagnozował'],
+    correct:0,
+    explanation:'"Zalecił" (recommended) — a doctor recommending dietary changes: "zalecać" = to advise/recommend. "Zakazał" = forbade (stronger — would take "zabronił mi jeść sól"). "Przepisał" = prescribed (medication, not dietary advice). "Zdiagnozował" = diagnosed (an illness, not advice).'
+  },
+  { id:24, unit:4, grammar:true, grammarUnit:'G4', type:'mc',
+    topic:'Grammar G4 — boleć construction',
+    revisionSection:'Unit 4 → Grammar G4 (Reflexive Verbs & Modals)',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'______ bardzo boli od wczoraj. (my back)',
+    options:['Mnie plecy','Moje plecy mnie','Mnie plecami','Moje plecy'],
+    correct:3,
+    explanation:'"Moje plecy bardzo bolą" — with "boleć" (to hurt), the body part is the grammatical subject and takes Nominative. "Plecy" (back, plural) → subject in Nominative → verb agrees: "bolą" (3rd pl.). The person whose back hurts takes Accusative: "mnie bolą plecy" or "bolą mnie plecy". But "Moje plecy" alone as the subject with "boli" is wrong — "plecy" is plural, so "bolą".'
+  },
+  { id:25, unit:4, grammar:true, grammarUnit:'G4', type:'mc',
+    topic:'Grammar G4 — Modal verbs',
+    revisionSection:'Unit 4 → Grammar G4 (Reflexive Verbs & Modals)',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'______ palić w tym budynku — to jest strefa niepalenia.',
+    options:['Nie warto','Nie można','Nie trzeba','Nie ma potrzeby'],
+    correct:1,
+    explanation:'"Nie można palić" — "nie można" = it is not allowed / one must not (prohibition). This is the correct modal for a non-smoking zone (a rule/prohibition). "Nie warto" = it is not worth (subjective value judgement). "Nie trzeba" = it is not necessary (suggests optional, not forbidden). "Nie ma potrzeby" = there is no need (suggests it is unnecessary, not prohibited).'
+  },
+  { id:26, unit:4, grammar:true, grammarUnit:'G4', type:'gapfill',
+    topic:'Grammar G4 — Reflexive verb: martwić się',
+    revisionSection:'Unit 4 → Grammar G4 (Reflexive Verbs & Modals)',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'Complete: Nie ______ (martwić się — 2nd person sg. imperative, negative) tak bardzo — wszystko będzie dobrze.',
+    gapAnswer:'martw się',
+    gapHint:'negative imperative of martwić się',
+    explanation:'"Nie martw się" — negative imperative of "martwić się": drop the infinitive ending and add imperative marker. "Martwić" → stem "martw-" + imperative 2nd sg. → "martw się". The negative imperative uses "nie" + imperative form. "Nie martwisz się" would be a statement (you are not worrying), not a command.'
+  },
+
+  // ── UNIT 5: POLSKA KULTURA I TRADYCJE + G5 VERBAL ASPECT ──────────────────
+
+  { id:27, unit:5, grammar:false, type:'mc',
+    topic:'Polish Culture Vocabulary',
+    revisionSection:'Unit 5 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Wigilia to wieczerza ______, obchodzona 24 grudnia, z dwunastoma tradycyjnymi potrawami.',
+    options:['wielkanocna','bożonarodzeniowa','adwentowa','karnawałowa'],
+    correct:1,
+    explanation:'"Bożonarodzeniowa" (Christmas Eve) — "Wigilia" is the Christmas Eve supper, specifically tied to Christmas (Boże Narodzenie). "Wielkanocna" = Easter. "Adwentowa" = Advent (the period before Christmas, not the supper itself). "Karnawałowa" = Carnival (February, before Lent).'
+  },
+  { id:28, unit:5, grammar:false, type:'mc',
+    topic:'Culture Vocabulary',
+    revisionSection:'Unit 5 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'W Polsce ______ się tradycje wielkanocne, takie jak śmigus-dyngus i malowanie pisanek.',
+    options:['celebruje','pielęgnuje','kultywuje','świętuje'],
+    correct:2,
+    explanation:'"Kultywuje się" (one cultivates) — "kultywować tradycje" = to cultivate / maintain traditions actively over time. This is the most precise word for keeping alive cultural customs. "Celebruje" = celebrates (events, moments). "Pielęgnuje" = nurtures (closer to care, used for relationships or plants). "Świętuje" = celebrates (festive occasions).'
+  },
+  { id:29, unit:5, grammar:false, type:'mc',
+    topic:'Culture Vocabulary',
+    revisionSection:'Unit 5 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Muzeum Narodowe w Warszawie ______ bogatą kolekcję polskiego malarstwa od średniowiecza do współczesności.',
+    options:['posiada','prezentuje','wystawia','gromadzi'],
+    correct:0,
+    explanation:'"Posiada" (possesses/holds) — a museum possessing a collection is the most natural phrasing for describing permanent holdings. "Prezentuje" = presents (active display, implies temporary). "Wystawia" = exhibits (temporary or current exhibition). "Gromadzi" = gathers/accumulates (the process of collection-building, not the state of having it).'
+  },
+  { id:30, unit:5, grammar:true, grammarUnit:'G5', type:'mc',
+    topic:'Grammar G5 — Aspect: result vs process',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Przez całe dzieciństwo ______ na wakacje do babci na wsi. (habitual repeated trips)',
+    options:['jeździliśmy','pojechaliśmy','będziemy jeździć','wyjechaliśmy'],
+    correct:0,
+    explanation:'"Jeździliśmy" — imperfective past for repeated habitual action. "Przez całe dzieciństwo" (throughout our entire childhood) is a duration signal requiring the imperfective. "Pojechaliśmy" (pf.) would imply one single completed trip. "Wyjechaliśmy" (pf.) = we departed (one-off). Rule: duration + repetition → imperfective.'
+  },
+  { id:31, unit:5, grammar:true, grammarUnit:'G5', type:'mc',
+    topic:'Grammar G5 — Aspect pair choice',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Właśnie ______ cały ten artykuł — mogę teraz z tobą porozmawiać.',
+    options:['czytałam','przeczytałam','czytam','będę czytać'],
+    correct:1,
+    explanation:'"Przeczytałam" — perfective past, confirmed by "właśnie" (just) + result: "mogę teraz…" (now I can, because it is done). The perfective implies the article is finished and a result is now available. "Czytałam" (impf.) would mean "I was reading" — process, no implied completion. "Właśnie" + completed result = perfective.'
+  },
+  { id:32, unit:5, grammar:true, grammarUnit:'G5', type:'mc',
+    topic:'Grammar G5 — Impersonal imperfective',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'W Polsce ______ (impersonal) opłatki przy wigilijnym stole każdego roku.',
+    options:['dzieli się','podzieliło się','będzie dzielić','dzielono by się'],
+    correct:0,
+    explanation:'"Dzieli się" — impersonal imperfective present (verb + się, 3rd sg.) for recurring cultural customs. The custom of sharing opłatki (Christmas wafers) happens every year → imperfective for the habitual present. "Podzieliło się" (pf. past) would imply it happened once. Cultural customs described as ongoing use imperfective impersonal.'
+  },
+  { id:33, unit:5, grammar:true, grammarUnit:'G5', type:'gapfill',
+    topic:'Grammar G5 — Aspect in future',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Complete: Jutro ______ (napisać — pf. future, 1st sg. fem.) ten esej i wyślę go przed południem.',
+    gapAnswer:'napiszę',
+    gapHint:'pf. future 1st sg.',
+    explanation:'"Napiszę" — perfective future: a single completed future act (write the essay, then send it). Perfective verbs form the future with present-tense endings: "napisać" → "napiszę" (1st sg.). Imperfective future would be "będę pisać" (I will be writing — process). The context ("wyślę go") confirms completion is intended.'
+  },
+
+  // ── UNIT 6: MEDIA I TECHNOLOGIA + G6 REPORTED SPEECH & TIME CLAUSES ────────
+
+  { id:34, unit:6, grammar:false, type:'mc',
+    topic:'Media & Technology Vocabulary',
+    revisionSection:'Unit 6 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Dziennikarz ______ sprawę przez kilka miesięcy, zanim opublikował artykuł.',
+    options:['śledził','transmitował','nagłaśniał','relacjonował'],
+    correct:0,
+    explanation:'"Śledził" (investigated/followed) — investigating a story over months before publishing is the work of investigative journalism: "śledzić sprawę" = to follow/investigate a case. "Transmitował" = broadcast (live). "Nagłaśniał" = publicised, amplified (bringing public attention). "Relacjonował" = reported on (covering events as they happen, not long-term investigation).'
+  },
+  { id:35, unit:6, grammar:false, type:'mc',
+    topic:'Media Vocabulary',
+    revisionSection:'Unit 6 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Coraz więcej ludzi czerpie informacje z ______ zamiast z tradycyjnych mediów.',
+    options:['mediów społecznościowych','programów informacyjnych','gazet drukowanych','wydań specjalnych'],
+    correct:0,
+    explanation:'"Mediów społecznościowych" (social media — Gen. pl.) — the contrast "zamiast z tradycyjnych mediów" (instead of traditional media) and the "coraz więcej ludzi" trend points directly to social media as the modern alternative to traditional outlets. "Programy informacyjne" and "gazety drukowane" are traditional media.'
+  },
+  { id:36, unit:6, grammar:false, type:'mc',
+    topic:'Media Vocabulary',
+    revisionSection:'Unit 6 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Eksperci ostrzegają przed ______ — celowym rozpowszechnianiem fałszywych informacji.',
+    options:['dezinformacją','cenzurą','propagandą','manipulacją'],
+    correct:0,
+    explanation:'"Dezinformacją" (disinformation) — the phrase "celowe rozpowszechnianie fałszywych informacji" (deliberate spreading of false information) is the definition of disinformation. "Cenzura" = censorship (suppression of information). "Propaganda" = propaganda (biased messaging, often by a state). "Manipulacja" = manipulation (broader term — can be true or false information used deceptively).'
+  },
+  { id:37, unit:6, grammar:true, grammarUnit:'G6', type:'mc',
+    topic:'Grammar G6 — Reported speech: że vs czy vs żeby',
+    revisionSection:'Unit 6 → Grammar G6 (Reported Speech)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Zapytała mnie, ______ mam czas na spotkanie jutro.',
+    options:['że','żeby','czy','kiedy'],
+    correct:2,
+    explanation:'"Czy" — indirect yes/no questions use "czy": "Masz czas?" → "Zapytała, czy mam czas." "Że" introduces reported statements (not questions). "Żeby" introduces wishes/purpose clauses. "Kiedy" introduces indirect "when" questions — grammatically possible but the original question was about availability (yes/no), not time.'
+  },
+  { id:38, unit:6, grammar:true, grammarUnit:'G6', type:'mc',
+    topic:'Grammar G6 — Time clauses: verb tense after conjunction',
+    revisionSection:'Unit 6 → Grammar G6 (Time Clauses)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Zadzwonię do ciebie, zanim ______ na lotnisko. (I leave)',
+    options:['pojadę','będę jechać','jechałam','jadę'],
+    correct:0,
+    explanation:'"Pojadę" — after time conjunctions (zanim, gdy tylko, odkąd, po tym jak), Polish uses the present-tense form of the verb, even when the meaning is future. For "zanim" (before), the action is future and perfective "pojadę" (I will go / I leave) is correct. NEVER use "będę + infinitive" after time conjunctions in Polish.'
+  },
+  { id:39, unit:6, grammar:true, grammarUnit:'G6', type:'mc',
+    topic:'Grammar G6 — Reported speech: pronoun shift',
+    revisionSection:'Unit 6 → Grammar G6 (Reported Speech)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'She said: "Mój artykuł jest gotowy." → Reported speech (3rd person):',
+    options:[
+      'Powiedziała, że jej artykuł jest gotowy.',
+      'Powiedziała, że mój artykuł jest gotowy.',
+      'Powiedziała, że swój artykuł jest gotowy.',
+      'Powiedziała, żeby jej artykuł był gotowy.'
+    ],
+    correct:0,
+    explanation:'"Powiedziała, że jej artykuł jest gotowy." — In third-person reported speech, "mój" (my) shifts to "jej" (her): the possessive matches the reported speaker\'s gender from the reporter\'s viewpoint. "Mój" in option B was not shifted — error. "Swój" in option C refers back to the subject of the reporting clause (the reporter), not the original speaker. "Żeby" in option D introduces a purpose clause, not a statement.'
+  },
+  { id:40, unit:6, grammar:true, grammarUnit:'G6', type:'gapfill',
+    topic:'Grammar G6 — odkąd',
+    revisionSection:'Unit 6 → Grammar G6 (Time Clauses)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Complete: ______ (since) zaczęłam korzystać z aplikacji do nauki, mój polski znacznie się poprawił.',
+    gapAnswer:'odkąd',
+    gapHint:'time conjunction: since (ongoing from past)',
+    explanation:'"Odkąd" = since (marking the start of an ongoing situation). "Odkąd zaczęłam…" = Since I started… — the app use started in the past and continues to affect the present. Contrast: "zanim" (before), "gdy tylko" (as soon as), "po tym jak" (after — one-off past event). "Odkąd" implies continuation from the past into the present.'
+  }
+];
+
+const UNIT_META = {
+  1:{ label:'Unit 1 — Praca i Kariera', color:'var(--u1)', bg:'var(--u1l)', file:'polski-b1b2-course-v2.html' },
+  2:{ label:'Unit 2 — Rodzina i Relacje', color:'var(--u2)', bg:'var(--u2l)', file:'polski-b1b2-unit2.html' },
+  3:{ label:'Unit 3 — Dom i Mieszkanie', color:'var(--u3)', bg:'var(--u3l)', file:'polski-b1b2-unit3.html' },
+  4:{ label:'Unit 4 — Zdrowie i Styl Życia', color:'var(--u4)', bg:'var(--u4l)', file:'polski-b1b2-unit4.html' },
+  5:{ label:'Unit 5 — Polska Kultura', color:'var(--u5)', bg:'var(--u5l)', file:'polski-b1b2-unit5.html' },
+  6:{ label:'Unit 6 — Media i Technologia', color:'var(--u6)', bg:'var(--u6l)', file:'polski-b1b2-unit6.html' },
+};
+
+let answers={}, revealed={}, currentQ=0, startTime=null, timerInterval=null;
+
+function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('page-'+id).classList.add('active'); window.scrollTo(0,0); }
+function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+function buildSidebar(){
+  const list=document.getElementById('sidebar-q-list'); let html='';
+  QUESTIONS.forEach((q,i)=>{
+    const isRevealed=revealed[q.id], ans=answers[q.id];
+    let tagClass='tag-skipped', tagText='–';
+    if(isRevealed&&ans!==undefined){tagClass=ans.correct?'tag-correct':'tag-wrong';tagText=ans.correct?'✓':'✗';}
+    else if(i===currentQ){tagClass='tag-active';tagText='▶';}
+    const uMeta=UNIT_META[q.unit];
+    html+=`<div class="sidebar-item ${i===currentQ?'active':''}" onclick="goToQuestion(${i})">
+      <i class="ti ti-${q.grammar?'math-function':'help-circle'}"></i>
+      <span style="flex:1">Q${q.id} · <span style="color:${uMeta.color};font-size:11px">U${q.unit}</span></span>
+      <span class="tag ${tagClass}">${tagText}</span></div>`;
+  });
+  list.innerHTML=html;
+}
+
+function buildQuestions(){
+  const container=document.getElementById('questions-container'); container.innerHTML='';
+  QUESTIONS.forEach((q,i)=>{
+    const uMeta=UNIT_META[q.unit];
+    let inner='';
+    if(q.type==='mc'){
+      inner=`<div class="options" id="opts-${q.id}">${q.options.map((opt,oi)=>`
+        <div class="option" id="opt-${q.id}-${oi}" onclick="selectOption(${q.id},${oi})">
+          <div class="opt-letter">${String.fromCharCode(65+oi)}</div><div>${opt}</div></div>`).join('')}</div>`;
+    } else {
+      const questionDisplay=q.question.replace(/Complete: /,'').replace(/______/,`<input class="test-gap" id="gap-${q.id}" placeholder="${q.gapHint}">`);
+      inner=`<div class="gap-sentence">${questionDisplay}</div>
+        <button class="btn btn-outline btn-sm" id="gap-check-${q.id}" onclick="checkGap(${q.id})"><i class="ti ti-check"></i> Check Answer</button>`;
+    }
+    const card=document.createElement('div');
+    card.className='question-card'+(i===0?' active':''); card.id='qcard-'+q.id;
+    card.innerHTML=`<div class="q-meta">
+      <span class="q-num">Q${q.id} of ${QUESTIONS.length}</span>
+      <span class="q-unit-tag" style="background:${uMeta.bg};color:${uMeta.color}">${uMeta.label.split('—')[0].trim()}</span>
+      ${q.grammar?`<span class="q-grammar-tag"><i class="ti ti-math-function" style="font-size:10px"></i> ${q.grammarUnit}</span>`:''}
+      <span class="q-type-tag">${q.topic}</span></div>
+      <div class="question-text">${q.type==='gapfill'?'Complete: '+q.question.replace(/Complete: /,''):q.question}</div>
+      ${inner}
+      <div class="answer-feedback" id="fb-${q.id}"></div>
+      <div class="q-nav">
+        ${i>0?`<button class="btn btn-outline btn-sm" onclick="goToQuestion(${i-1})"><i class="ti ti-arrow-left"></i> Back</button>`:''}
+        <div style="flex:1"></div>
+        ${i<QUESTIONS.length-1
+          ?`<button class="btn btn-primary btn-sm" onclick="goToQuestion(${i+1})">Next <i class="ti ti-arrow-right"></i></button>`
+          :`<button class="btn btn-red btn-sm" onclick="finishTest()"><i class="ti ti-flag-filled"></i> Finish Assessment</button>`}
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+function selectOption(qId,optIdx){
+  if(revealed[qId]) return;
+  const q=QUESTIONS.find(q=>q.id===qId);
+  q.options.forEach((_,oi)=>document.getElementById(`opt-${qId}-${oi}`)?.classList.remove('selected'));
+  document.getElementById(`opt-${qId}-${optIdx}`)?.classList.add('selected');
+  const isCorrect=optIdx===q.correct;
+  answers[qId]={selected:optIdx,correct:isCorrect}; revealed[qId]=true;
+  q.options.forEach((_,oi)=>{
+    const el=document.getElementById(`opt-${qId}-${oi}`); if(!el) return;
+    el.classList.add('locked'); el.classList.remove('selected');
+    if(oi===q.correct) el.classList.add('revealed-correct');
+    else if(oi===optIdx&&!isCorrect) el.classList.add('revealed-wrong');
+  });
+  showFeedback(qId,isCorrect,q.explanation,q.revisionSection,q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+function checkGap(qId){
+  if(revealed[qId]) return;
+  const q=QUESTIONS.find(q=>q.id===qId);
+  const inp=document.getElementById(`gap-${qId}`);
+  const val=inp.value.trim().toLowerCase();
+  const ans=q.gapAnswer.toLowerCase();
+  const isCorrect=val===ans||val.replace(/,/g,'')===ans.replace(/,/g,'');
+  inp.classList.add(isCorrect?'correct':'incorrect');
+  if(!isCorrect) setTimeout(()=>{inp.value=q.gapAnswer;inp.classList.remove('incorrect');inp.classList.add('correct');},1200);
+  document.getElementById(`gap-check-${qId}`).disabled=true;
+  revealed[qId]=true; answers[qId]={selected:val,correct:isCorrect};
+  showFeedback(qId,isCorrect,q.explanation,q.revisionSection,q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+function showFeedback(qId,isCorrect,explanation,revSection,revFile){
+  const fb=document.getElementById(`fb-${qId}`);
+  fb.className=`answer-feedback show ${isCorrect?'correct-fb':'wrong-fb'}`;
+  fb.innerHTML=`<strong>${isCorrect?'✓ Correct!':'✗ Incorrect'}</strong> — ${explanation}
+    ${!isCorrect?`<div style="margin-top:8px"><span class="revision-link"><i class="ti ti-refresh"></i> Revise: ${revSection}</span></div>`:''}`;
+}
+
+function goToQuestion(idx){
+  document.querySelectorAll('.question-card').forEach(c=>c.classList.remove('active'));
+  document.getElementById('qcard-'+QUESTIONS[idx].id)?.classList.add('active');
+  currentQ=idx; buildSidebar(); updateProgress();
+  document.getElementById('main').scrollTo(0,0); closeSidebar();
+}
+function jumpToUnit(unit){ const idx=QUESTIONS.findIndex(q=>q.unit===unit); if(idx>=0) goToQuestion(idx); }
+
+function updateProgress(){
+  const answered=Object.keys(revealed).length;
+  const correct=Object.values(answers).filter(a=>a.correct).length;
+  const pct=Math.round((answered/QUESTIONS.length)*100);
+  document.getElementById('prog-nums').textContent=(currentQ+1)+' / '+QUESTIONS.length;
+  document.getElementById('prog-bar').style.width=Math.max(pct,2.5)+'%';
+  document.getElementById('prog-label').textContent=correct+' correct so far';
+  const scorePct=answered>0?Math.round((correct/QUESTIONS.length)*100):0;
+  document.getElementById('sidebar-ring').style.setProperty('--pct',scorePct);
+  document.getElementById('sidebar-ring-num').textContent=scorePct+'%';
+  document.getElementById('sidebar-ring-title').textContent=answered+' answered';
+  document.getElementById('sidebar-ring-label').textContent=correct+' / '+QUESTIONS.length+' correct';
+}
+
+function startTest(){
+  answers={}; revealed={}; currentQ=0; startTime=Date.now();
+  buildQuestions(); buildSidebar(); updateProgress(); showPage('test');
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    const secs=Math.floor((Date.now()-startTime)/1000);
+    document.getElementById('stat-time').textContent=Math.floor(secs/60)+':'+(secs%60<10?'0':'')+secs%60;
+  },1000);
+}
+function finishTest(){
+  QUESTIONS.forEach(q=>{if(!revealed[q.id]){answers[q.id]={selected:null,correct:false};revealed[q.id]=true;}});
+  clearInterval(timerInterval); buildResults(); showPage('results');
+}
+function retakeTest(){ startTest(); }
+
+function buildResults(){
+  const total=QUESTIONS.length;
+  const correct=Object.values(answers).filter(a=>a.correct).length;
+  const wrong=total-correct;
+  const pct=Math.round((correct/total)*100);
+  const secs=startTime?Math.floor((Date.now()-startTime)/1000):0;
+  let grade,trophy,summary;
+  if(pct>=90){grade='A';trophy='🏆';summary='Excellent! You have a strong command of Polish grammar through B1–B2: the case system, Genitive/Dative in depth, locative prepositions, reflexive verbs, verbal aspect, and reported speech. You are ready for the Full-Course Final.';}
+  else if(pct>=80){grade='B';trophy='🎯';summary='Very good result. A few structures need polish — check the revision recommendations and revisit any grammar sections flagged below before the Full-Course Final.';}
+  else if(pct>=70){grade='C';trophy='📚';summary='You passed. Some B2 structures — verbal aspect, reported speech, or Genitive/Dative constructions — need more practice. Work through the recommendations before the Full-Course Final.';}
+  else if(pct>=55){grade='D';trophy='💪';summary='Keep going. Revisit the grammar sections flagged below carefully. The case system and verbal aspect are the core challenges here. Retake when ready.';}
+  else{grade='F';trophy='🔄';summary='Don\'t be discouraged — G1–G6 cover a lot of complex ground. Revisit each unit\'s grammar section and retake the test. Progress takes time.';}
+  document.getElementById('results-trophy').textContent=trophy;
+  document.getElementById('results-grade').textContent=grade;
+  document.getElementById('results-score').textContent=correct+' / '+total+' correct';
+  document.getElementById('results-summary').textContent=summary;
+  document.getElementById('stat-correct').textContent=correct;
+  document.getElementById('stat-wrong').textContent=wrong;
+  document.getElementById('stat-pct').textContent=pct+'%';
+  document.getElementById('stat-time').textContent=Math.floor(secs/60)+':'+(secs%60<10?'0':'')+secs%60;
+
+  let bdHtml='';
+  [1,2,3,4,5,6].forEach(u=>{
+    const uQs=QUESTIONS.filter(q=>q.unit===u);
+    const uCorrect=uQs.filter(q=>answers[q.id]?.correct).length;
+    const uPct=Math.round((uCorrect/uQs.length)*100);
+    const uMeta=UNIT_META[u];
+    const fillColor=uPct>=70?'var(--green)':uPct>=50?'var(--gold)':'var(--red)';
+    bdHtml+=`<div class="unit-breakdown-card">
+      <div class="ubc-header"><div class="ubc-title">${uMeta.label.split('—').pop().trim()}</div>
+      <div class="ubc-score" style="color:${fillColor}">${uCorrect}/${uQs.length}</div></div>
+      <div class="ubc-bar"><div class="ubc-fill" style="width:${uPct}%;background:${fillColor}"></div></div>
+    </div>`;
+  });
+  document.getElementById('unit-breakdown').innerHTML=bdHtml;
+
+  const wrongQs=QUESTIONS.filter(q=>answers[q.id]&&!answers[q.id].correct);
+  if(!wrongQs.length){document.getElementById('revision-section').style.display='none';return;}
+  document.getElementById('revision-section').style.display='block';
+  const revMap={};
+  wrongQs.forEach(q=>{
+    const key=q.revisionSection;
+    if(!revMap[key]) revMap[key]={section:q.revisionSection,file:q.revisionFile,unit:q.unit,topics:new Set()};
+    revMap[key].topics.add(q.topic);
+  });
+  const iconMap={1:'briefcase',2:'heart',3:'home',4:'activity',5:'flame',6:'device-tv'};
+  const colMap={1:'#EDE9FE,#7C3AED',2:'#FEF3C7,#B45309',3:'#CCFBF1,#0F766E',4:'#FFE4E6,#9F1239',5:'#E0F0FF,#0F4C81',6:'#DCFCE7,#166534'};
+  let revHtml='';
+  Object.values(revMap).forEach(r=>{
+    const [bg,col]=(colMap[r.unit]||'#F5F5F4,#78716C').split(',');
+    revHtml+=`<div class="revision-card">
+      <div class="revision-card-icon" style="background:${bg};color:${col}"><i class="ti ti-${iconMap[r.unit]||'book'}"></i></div>
+      <div class="revision-card-body">
+        <div class="revision-card-title">${r.section}</div>
+        <div class="revision-card-desc">Topics: ${[...r.topics].join(' · ')}</div>
+        <button class="open-unit-btn" onclick="window.open('${r.file}','_blank')"><i class="ti ti-external-link"></i> Open unit</button>
+      </div></div>`;
+  });
+  document.getElementById('revision-cards').innerHTML=revHtml;
+}
+
+document.addEventListener('DOMContentLoaded',()=>buildSidebar());
+</script>
+</body>
+</html>

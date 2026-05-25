@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 11: Gospodarka i Pieniądze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --copper:#92400E;--copper-light:#FEF3C7;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(146,64,14,0.2);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#FCD34D;line-height:1.5}
+.scaffolding-note strong{color:#fff}
+
+/* ── GRAMMAR (copper/amber for G8 Pt3) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--copper-light);color:var(--copper);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--copper-light);border:0.5px solid rgba(146,64,14,0.2);border-left:3px solid var(--copper);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--copper)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--copper);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.btn-copper{background:var(--copper);color:#fff}
+.btn-copper:hover{background:#78350F}
+.copper-note{background:var(--copper-light);border:0.5px solid rgba(146,64,14,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--copper);margin-bottom:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.95;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:22px 26px;margin-bottom:16px}
+.reading-text p{margin-bottom:16px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--copper-light);color:var(--copper);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:210px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:140px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:130px;width:180px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-sentence{line-height:3.2;font-size:15px;margin-bottom:6px}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:16px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:200px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── GRAMMAR TABLES ── */
+.gram-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.gram-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.gram-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.gram-table tr:nth-child(even) td{background:#FAF7F2}
+.gram-table td:first-child{font-weight:500;color:var(--copper)}
+
+/* ── CONNECTOR GRID ── */
+.connector-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.connector-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px}
+.connector-word{font-size:14px;font-weight:700;color:var(--copper);font-family:'Playfair Display',serif;margin-bottom:3px}
+.connector-meaning{font-size:12px;color:var(--ink-muted);margin-bottom:5px}
+.connector-ex{font-size:12px;color:var(--ink);font-style:italic}
+
+/* ── TRANSFORM ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── UNIT NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── COND TYPE CARDS ── */
+.cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cond-card{border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.6}
+.cond-card-2{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.2)}
+.cond-card-3{background:var(--red-light);border:0.5px solid rgba(193,55,42,0.2)}
+.cond-label{font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.cond-card-2 .cond-label{color:var(--blue)}
+.cond-card-3 .cond-label{color:var(--red)}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .cond-grid{grid-template-columns:1fr}
+  .connector-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<!-- ══ SIDEBAR ══ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 11 — B2+:</strong> No scaffolding. Complex economic register. Conditionals for hypothetical reasoning. Probability expressions throughout.
+  </div>
+  <div class="unit-label">Unit 11 — Gospodarka i Pieniądze</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G8 (Part 3)<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 10 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 10 — Społeczeństwo</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 12 — Przyszłość i Marzenia</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 11 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 11 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Gospodarka i Pieniądze<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Economy &amp; Money</span></div>
+  <div class="section-desc">Engage with the language of the Polish and global economy — growth, inequality, fiscal policy, and financial decision-making. Grammar focus: Type 2 conditionals (hypothetical present/future), Type 3 conditionals (counterfactual past), and probability expressions.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Analiza ekonomiczna</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary. Hover <span style="background:var(--copper-light);color:var(--copper);padding:1px 6px;border-radius:3px;font-weight:500">amber</span> for grammar notes on conditionals and probability. Click <i class="ti ti-volume"></i> to hear vocabulary.</span>
+      </div>
+      <div class="reading-text">
+        <p>Polska gospodarka <span class="vocab-highlight">przeżywa<span class="vocab-tip">przeżywać (impf.) = to experience / go through<br>3rd pers. sg. present — ongoing state</span></span> w ostatnich dekadach <span class="vocab-highlight">dynamiczny wzrost<span class="vocab-tip">dynamiczny wzrost = dynamic growth<br>(Acc. — object of "przeżywa")</span></span>, <span class="vocab-highlight">plasując się<span class="vocab-tip">plasować się = to rank / be placed<br>Present participle — simultaneous action<br>"ranking itself among..."</span></span> wśród <span class="vocab-highlight">najszybciej rozwijających się<span class="vocab-tip">najszybciej rozwijający się = fastest-growing<br>Superlative pres. participle<br>(Gen. pl. — after "wśród")</span></span> gospodarek <span class="vocab-highlight">Unii Europejskiej<span class="vocab-tip">Unia Europejska = European Union<br>(Gen. — possession / membership)</span></span>. <span class="grammar-highlight">Gdyby tempo wzrostu utrzymało się<span class="vocab-tip">gdyby + past = Type 2 conditional clause<br>= if the growth rate were to be maintained<br>Hypothetical — about the present/near future<br>utrzymało się (pf. past form in conditional)</span></span> na poziomie <span class="vocab-highlight">ubiegłych lat<span class="vocab-tip">ubiegły = past / preceding<br>Gen. pl. — of past years</span></span>, Polska <span class="grammar-highlight">dogoniłaby<span class="vocab-tip">dogonić → dogoniłaby (conditional fem.)<br>= would catch up<br>Main clause of Type 2 conditional<br>-łaby ending — fem. 3rd pers. sg.</span></span> gospodarczo Niemcy w <span class="vocab-highlight">perspektywie<span class="vocab-tip">perspektywa = perspective / timeframe<br>(Loc. — after "w" = in the timeframe of)</span></span> kilku dekad. Jednakże <span class="vocab-highlight">analitycy<span class="vocab-tip">analityk → analitycy (Nom. pl.)<br>= analysts</span></span> <span class="grammar-highlight">wskazują na<span class="vocab-tip">wskazywać na + Acc. = to point to / indicate<br>(impf. 3rd pl. present)</span></span> szereg <span class="vocab-highlight">strukturalnych wyzwań<span class="vocab-tip">strukturalne wyzwanie = structural challenge<br>(Gen. pl. after "szereg")</span></span>, które <span class="grammar-highlight">mogą zahamować<span class="vocab-tip">może + infinitive = might / may<br>Probability: móc = can / might<br>zahamować (pf.) = to halt / slow down</span></span> ten <span class="vocab-highlight">impet<span class="vocab-tip">impet = momentum / impetus<br>(Acc. — object of "zahamować")</span></span>.</p>
+
+        <p>Jednym z kluczowych wyzwań jest <span class="vocab-highlight">nierówność dochodowa<span class="vocab-tip">nierówność dochodowa = income inequality<br>(Nom. — subject after "jest")</span></span>. <span class="grammar-highlight">Gdyby rząd zainwestował więcej<span class="vocab-tip">gdyby + past = Type 2 conditional<br>= if the government were to invest more<br>Hypothetical — policy that hasn't happened yet</span></span> w <span class="vocab-highlight">edukację i infrastrukturę<span class="vocab-tip">edukacja i infrastruktura<br>(Acc. pl. — objects of "zainwestował")</span></span>, <span class="vocab-highlight">dysproporcje regionalne<span class="vocab-tip">dysproporcja regionalna = regional disparity<br>(Nom. pl. — subject of main clause)</span></span> <span class="grammar-highlight">zmalałyby<span class="vocab-tip">zmaleć → zmalałyby (conditional pl.)<br>= would decrease / would diminish<br>Non-masc. pl. conditional: -łyby ending</span></span> znacznie szybciej. Tymczasem <span class="vocab-highlight">wschód kraju<span class="vocab-tip">wschód kraju = the east of the country<br>(Nom. — subject)</span></span> <span class="vocab-highlight">pozostaje<span class="vocab-tip">pozostawać (impf.) = to remain<br>3rd pers. sg. — ongoing state</span></span> wyraźnie <span class="vocab-highlight">słabiej rozwinięty<span class="vocab-tip">słabiej rozwinięty = less well-developed<br>(comparative participial phrase)</span></span> niż <span class="vocab-highlight">dynamiczne metropolie<span class="vocab-tip">dynamiczna metropolia = dynamic metropolis<br>(Nom. pl. — comparison point)</span></span> zachodu.</p>
+
+        <p><span class="grammar-highlight">Gdyby Polska nie przystąpiła do Unii Europejskiej<span class="vocab-tip">gdyby + nie + past = Type 3 conditional<br>= if Poland had not joined the EU<br>Counterfactual PAST — it DID join<br>so this is hypothesising the opposite<br>przystąpić do + Gen. (pf.) = to join</span></span> w roku dwa tysiące czwartym, jej <span class="vocab-highlight">PKB per capita<span class="vocab-tip">PKB = Produkt Krajowy Brutto = GDP<br>per capita = per person<br>(Nom. — subject)</span></span> <span class="grammar-highlight">byłoby prawdopodobnie niższe<span class="vocab-tip">być + conditional = would have been<br>byłoby = neuter conditional of "być"<br>prawdopodobnie = probably<br>Type 3 main clause = would have been</span></span> o kilkadziesiąt procent. Fundusze unijne <span class="grammar-highlight">umożliwiły<span class="vocab-tip">umożliwić (pf.) = to enable / make possible<br>Perfective past — completed enabling</span></span> <span class="vocab-highlight">modernizację infrastruktury<span class="vocab-tip">modernizacja infrastruktury = infrastructure modernisation<br>(Acc. — object of "umożliwiły")</span></span>, <span class="vocab-highlight">restrukturyzację<span class="vocab-tip">restrukturyzacja = restructuring<br>(Acc. — parallel object)</span></span> <span class="vocab-highlight">przemysłu<span class="vocab-tip">przemysł = industry<br>(Gen. — after "restrukturyzację")</span></span> i <span class="vocab-highlight">rozbudowę<span class="vocab-tip">rozbudowa = expansion / development<br>(Acc. — parallel object)</span></span> <span class="vocab-highlight">sieci autostrad<span class="vocab-tip">sieć autostrad = motorway network<br>(Gen. — possession)</span></span>. <span class="grammar-highlight">Gdyby te środki nie zostały zainwestowane<span class="vocab-tip">gdyby + passive conditional = Type 3 passive<br>= if those funds had not been invested<br>Counterfactual past passive conditional<br>zostały zainwestowane = were invested (pf.)</span></span>, <span class="vocab-highlight">infrastruktura<span class="vocab-tip">infrastruktura = infrastructure<br>(Nom. — subject)</span></span> <span class="grammar-highlight">pozostałaby na poziomie<span class="vocab-tip">pozostać + conditional = would have remained<br>pozostałaby (fem. conditional pf.)<br>= would have stayed at the level</span></span> <span class="vocab-highlight">epoki komunizmu<span class="vocab-tip">epoka komunizmu = the communist era<br>(Gen. — after "na poziomie")</span></span>.</p>
+
+        <p>Kwestia <span class="vocab-highlight">fiskalnej odpowiedzialności<span class="vocab-tip">odpowiedzialność fiskalna = fiscal responsibility<br>(Gen. — after "kwestia")</span></span> <span class="grammar-highlight">prawdopodobnie zdominuje<span class="vocab-tip">prawdopodobnie = probably<br>Probability adverb — moderately certain<br>zdominuje (pf. future) = will dominate</span></span> debatę ekonomiczną w nadchodzącej dekadzie. <span class="vocab-highlight">Inflacja<span class="vocab-tip">inflacja = inflation<br>(Nom. — subject)</span></span>, która w szczytowym momencie <span class="vocab-highlight">przekroczyła<span class="vocab-tip">przekroczyć (pf.) = to exceed / surpass<br>Perfective past — completed exceeding</span></span> <span class="vocab-highlight">piętnaście procent<span class="vocab-tip">piętnaście procent = fifteen percent<br>Gen. pl. after 5+</span></span>, <span class="grammar-highlight">wydaje się<span class="vocab-tip">wydawać się (impf. refl.) = to seem / appear<br>Probability expression — moderate uncertainty<br>"it seems / it appears"</span></span> stopniowo <span class="vocab-highlight">opadać<span class="vocab-tip">opadać (impf.) = to fall / subside<br>Infinitive after "wydaje się"</span></span>. Eksperci <span class="grammar-highlight">są zgodni co do tego, że<span class="vocab-tip">być zgodnym co do tego, że = to agree that<br>= experts are in agreement that<br>Formal expression for consensus</span></span> <span class="vocab-highlight">stopy procentowe<span class="vocab-tip">stopa procentowa = interest rate<br>(Nom. pl. — subject)</span></span> <span class="grammar-highlight">najprawdopodobniej zaczną maleć<span class="vocab-tip">najprawdopodobniej = most probably / in all likelihood<br>Strongest probability adverb<br>zaczną maleć (impf. future) = will start falling</span></span> w drugiej połowie roku, <span class="grammar-highlight">choć nie ma gwarancji<span class="vocab-tip">choć nie ma gwarancji = though there is no guarantee<br>Concessive (Unit 10 revision) + negation<br>nie ma gwarancji = there is no guarantee</span></span>, że nastąpi to szybko.</p>
+
+        <p><span class="vocab-highlight">Rynek pracy<span class="vocab-tip">rynek pracy = labour market<br>(Nom. — subject)</span></span> <span class="grammar-highlight">może okazać się<span class="vocab-tip">może okazać się = might turn out to be<br>Probability: może + infinitive<br>okazać się (pf.) = to turn out</span></span> kolejnym <span class="vocab-highlight">polem napięć<span class="vocab-tip">pole napięć = area of tension<br>(Instr. — after "okazać się")</span></span>. <span class="vocab-highlight">Automatyzacja<span class="vocab-tip">automatyzacja = automation<br>(Nom. — subject)</span></span> i <span class="vocab-highlight">robotyzacja<span class="vocab-tip">robotyzacja = robotisation<br>(Nom. — parallel subject)</span></span> <span class="grammar-highlight">mogą doprowadzić do<span class="vocab-tip">móc doprowadzić do + Gen. = might lead to<br>Probability + direction: doprowadzić do<br>= to lead to / bring about</span></span> <span class="vocab-highlight">likwidacji<span class="vocab-tip">likwidacja = elimination / liquidation<br>(Gen. after "doprowadzić do")</span></span> <span class="grammar-highlight">nawet trzydziestu procent<span class="vocab-tip">nawet = even<br>Intensifier for probability estimate<br>trzydziestu procent (Gen. pl.) = thirty percent</span></span> obecnych <span class="vocab-highlight">stanowisk pracy<span class="vocab-tip">stanowisko pracy = job / position<br>(Gen. pl. — after "trzydziestu procent")</span></span> w <span class="vocab-highlight">perspektywie<span class="vocab-tip">perspektywa = timeframe / outlook<br>(Loc. — in a timeframe of)</span></span> dwóch dekad. <span class="grammar-highlight">Gdyby systemy reedukacji zawodowej nie zostały wdrożone<span class="vocab-tip">gdyby + passive conditional = Type 3 passive<br>= if vocational retraining systems had not been implemented<br>Counterfactual — warning about the future<br>if action is not taken NOW</span></span> na czas, <span class="grammar-highlight">bezrobocie strukturalne mogłoby osiągnąć<span class="vocab-tip">móc → mogłoby (neuter conditional)<br>= could / would be able to reach<br>Main clause of Type 3 (or mixed conditional)<br>mogłoby = could (conditional of "móc")</span></span> <span class="vocab-highlight">niepokojące rozmiary<span class="vocab-tip">niepokojący rozmiar = alarming scale<br>(Acc. pl. — object of "osiągnąć")</span></span>.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Amber highlights show Type 2 conditionals (hypothetical), Type 3 conditionals (counterfactual past), and probability expressions — the grammar focus of this unit.</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>wzrost gospodarczy<button class="vocab-audio-btn" onclick="speak('wzrost gospodarczy')"><i class="ti ti-volume"></i></button></td><td>(masc.)</td><td>economic growth</td></tr>
+        <tr><td>nierówność dochodowa<button class="vocab-audio-btn" onclick="speak('nierówność dochodowa')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>income inequality</td></tr>
+        <tr><td>dysproporcje regionalne<button class="vocab-audio-btn" onclick="speak('dysproporcje regionalne')"><i class="ti ti-volume"></i></button></td><td>(pl. fem.)</td><td>regional disparities</td></tr>
+        <tr><td>inflacja<button class="vocab-audio-btn" onclick="speak('inflacja')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>inflation</td></tr>
+        <tr><td>stopy procentowe<button class="vocab-audio-btn" onclick="speak('stopy procentowe')"><i class="ti ti-volume"></i></button></td><td>(pl. fem.)</td><td>interest rates</td></tr>
+        <tr><td>automatyzacja<button class="vocab-audio-btn" onclick="speak('automatyzacja')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>automation</td></tr>
+        <tr><td>rynek pracy<button class="vocab-audio-btn" onclick="speak('rynek pracy')"><i class="ti ti-volume"></i></button></td><td>(masc.)</td><td>labour market</td></tr>
+        <tr><td>reedukacja zawodowa<button class="vocab-audio-btn" onclick="speak('reedukacja zawodowa')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>vocational retraining</td></tr>
+        <tr><td>bezrobocie strukturalne<button class="vocab-audio-btn" onclick="speak('bezrobocie strukturalne')"><i class="ti ti-volume"></i></button></td><td>(neuter)</td><td>structural unemployment</td></tr>
+        <tr><td>odpowiedzialność fiskalna<button class="vocab-audio-btn" onclick="speak('odpowiedzialność fiskalna')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>fiscal responsibility</td></tr>
+        <tr><td>modernizacja<button class="vocab-audio-btn" onclick="speak('modernizacja')"><i class="ti ti-volume"></i></button></td><td>modernizacji (Gen.)</td><td>modernisation</td></tr>
+        <tr><td>przystąpić do<button class="vocab-audio-btn" onclick="speak('przystąpić')"><i class="ti ti-volume"></i></button></td><td>(pf.) + Genitive</td><td>to join / accede to</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">All questions require inference, evaluation of economic argument, or understanding of the grammatical meaning of conditional and probability structures in context.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Co zdanie „Gdyby tempo wzrostu utrzymało się… Polska dogoniłaby gospodarczo Niemcy" oznacza gramatycznie?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Polska na pewno dogoni Niemcy — to stwierdzenie faktyczne</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>To tryb warunkowy typ 2 — hipotetyczna sytuacja w teraźniejszości/przyszłości, która może, ale nie musi się spełnić</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>To tryb warunkowy typ 3 — Polska nie dogoniła Niemiec w przeszłości</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>To zdanie wyrażające życzenie autora, a nie hipotezę ekonomiczną</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Jakie wyzwanie strukturalne jest szczególnie podkreślone w drugim akapicie?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Zbyt szybki wzrost PKB, który destabilizuje gospodarkę</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Nierówność dochodowa i dysproporcje regionalne — wschód kraju pozostaje słabiej rozwinięty niż zachodnie metropolie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Nadmierny eksport, który osłabia rynek wewnętrzny</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Zbyt wysokie wynagrodzenia w sektorze publicznym</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Co zdanie „Gdyby Polska nie przystąpiła do UE… PKB byłoby niższe" sugeruje?</div>
+        <div class="question-note">This requires understanding Type 3 conditionals — counterfactual past.</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Że Polska nie przystąpiła do UE i to był błąd</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">B</div>Że Polska PRZYSTĄPIŁA do UE (to fakt), ale autor spekuluje, co by było gdyby tego nie zrobiła — tryb warunkowy typ 3 (kontrfaktyczny)</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">C</div>Że autor jest przeciwny członkostwu Polski w UE</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Że PKB Polski jest teraz niższe niż przed akcesją</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co wyrażenia „prawdopodobnie", „wydaje się", „najprawdopodobniej" i „choć nie ma gwarancji" mają wspólnego?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Wszystkie wyrażają pewność — autor jest przekonany o słuszności swoich prognoz</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Wszystkie wyrażają różne stopnie prawdopodobieństwa — autor celowo unika kategorycznych stwierdzeń w analizie ekonomicznej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Są to formalne połączniki łączące zdania w akapicie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Wyrażają pesymizm autora wobec perspektyw polskiej gospodarki</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Jaki jest główny argument autora w ostatnim akapicie dotyczącym automatyzacji?</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Że automatyzacja jest korzystna i nie należy się jej obawiać</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">B</div>Że Polska powinna zakazać robotyzacji w przemyśle</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">C</div>Że automatyzacja zagraża nawet 30% miejsc pracy i jeśli nie wdroży się systemów reedukacji na czas, bezrobocie strukturalne może osiągnąć niepokojące rozmiary</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Że bezrobocie strukturalne jest już teraz poważnym problemem w Polsce</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jakie trzy obszary modernizacji umożliwiły fundusze unijne po 2004 roku?</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Edukacja, opieka zdrowotna i rolnictwo</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">B</div>Modernizacja infrastruktury, restrukturyzacja przemysłu i rozbudowa sieci autostrad</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">C</div>Szkolnictwo wyższe, badania naukowe i sektor energetyczny</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Sektor usług, handel detaliczny i cyfryzacja administracji</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Który wniosek jest NAJBARDZIEJ zgodny z ogólnym tonem i argumentacją tekstu?</div>
+        <div class="mc-options" id="cq7">
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">A</div>Polska gospodarka jest w doskonałej kondycji i nie wymaga żadnych reform</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">B</div>Polska powinna opuścić Unię Europejską, by odzyskać suwerenność ekonomiczną</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','correct')"><div class="mc-letter">C</div>Polska osiągnęła znaczący wzrost, ale stoi przed poważnymi wyzwaniami strukturalnymi wymagającymi aktywnej polityki gospodarczej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">D</div>Automatyzacja jest głównym i jedynym zagrożeniem dla polskiej gospodarki</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Gdybyś mogła zdecydować o polskiej polityce gospodarczej, co byś zmieniła jako pierwsze? Dlaczego?<br><em style="font-size:13px;opacity:0.8">If you could decide on Polish economic policy, what would you change first? Why?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jak automatyzacja wpłynęła lub może wpłynąć na Twój zawód lub branżę? Jakie masz obawy lub nadzieje?<br><em style="font-size:13px;opacity:0.8">How has automation affected or might affect your profession or industry? What concerns or hopes do you have?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Gdybyś nie mieszkała w Australii, w którym kraju chciałabyś mieszkać z ekonomicznego punktu widzenia? Co by zdecydowało?<br><em style="font-size:13px;opacity:0.8">If you didn't live in Australia, which country would you choose to live in from an economic perspective? What would decide it?</em></span></div>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Podcast ekonomiczny</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to an economics podcast discussing Poland's economic challenges and opportunities. No transcript available. You may listen as many times as needed.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Podcast: „Polska gospodarka — co nas czeka?"</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 5:30 · Polish B2+</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <div style="font-size:11px;color:#57534E;display:flex;align-items:center;gap:5px"><i class="ti ti-lock" style="font-size:13px"></i> No transcript</div>
+      </div>
+
+      <div style="background:var(--copper-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--copper);margin-bottom:20px;display:flex;gap:8px">
+        <i class="ti ti-info-circle"></i>
+        <span>Listen for: <strong>Type 2 conditionals</strong> (gdyby + past → conditional), <strong>Type 3 conditionals</strong> (counterfactual past), <strong>probability expressions</strong> (prawdopodobnie, wydaje się, najprawdopodobniej, mogłoby), and the speakers' <strong>contrasting forecasts</strong> for the Polish economy.</span>
+      </div>
+
+      <!-- TRANSCRIPT (course creator reference — not shown to learner):
+        Prowadzący: Witajcie w podcaście „Polska gospodarka — co nas czeka?". Dziś rozmawiam z dr Ewą Nowicką, ekonomistką, i Marcinem Kowalskim, przedsiębiorcą. Zacznijmy od pytania: jak oceniacie perspektywy polskiej gospodarki na najbliższe dziesięć lat?
+        Dr Nowicka: Jestem umiarkowanie optymistyczna. Gdybyśmy utrzymali obecne tempo inwestycji w nowoczesne technologie, Polska mogłaby stać się jednym z liderów innowacji w regionie. Mamy dobrze wykształcone kadry, relatywnie niskie koszty pracy i dostęp do funduszy unijnych. Niemniej jednak inflacja i wysokie stopy procentowe stanowią realne zagrożenie dla małych i średnich przedsiębiorstw.
+        Kowalski: Zgadzam się, że potencjał jest ogromny, ale martwię się o nierówności. Gdyby rząd nie zainwestował w infrastrukturę wschodnich regionów, dysproporcje między wschodem a zachodem pogłębiłyby się jeszcze bardziej. Na szczęście fundusze unijne pozwoliły złagodzić ten problem — choć gdyby środki zostały zainwestowane mądrzej, efekty byłyby widoczne szybciej.
+        Dr Nowicka: To ważny punkt. Gdyby Polska przystąpiła do strefy euro dwadzieścia lat temu, sytuacja wyglądałaby prawdopodobnie inaczej — być może inflacja byłaby niższa, ale stracilibyśmy też elastyczność polityki monetarnej. Trudno powiedzieć, czy to byłoby korzystne.
+        Kowalski: Co do automatyzacji — to temat, który budzi moje największe obawy. Gdyby systemy reedukacji nie zostały wdrożone w ciągu najbliższych pięciu lat, moglibyśmy stanąć przed poważnym kryzysem bezrobocia strukturalnego. Szacuje się, że automatyzacja mogłaby wyeliminować nawet trzydzieści procent obecnych stanowisk pracy.
+        Dr Nowicka: Jednak jest też pozytywna strona — automatyzacja najprawdopodobniej stworzy nowe miejsca pracy w sektorach, których dziś jeszcze nie ma. Problem polega na tym, żeby pracownicy byli na to przygotowani. Gdyby edukacja zawodowa była bardziej elastyczna i odpowiadała na realne potrzeby rynku, adaptacja byłaby znacznie łatwiejsza.
+        Prowadzący: Dziękuję za tę inspirującą rozmowę. Jedno jest pewne — polska gospodarka stoi przed niepowtarzalną szansą i poważnymi wyzwaniami jednocześnie.
+      -->
+
+      <div class="question-block" style="margin-top:4px">
+        <div class="question-text">1. Jak dr Nowicka opisuje swój ogólny stosunek do perspektyw polskiej gospodarki?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Głęboko pesymistyczna — uważa, że Polska zmierza ku kryzysowi</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Umiarkowanie optymistyczna — widzi potencjał, ale też realne zagrożenia (inflacja, stopy procentowe)</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>W pełni optymistyczna — nie widzi żadnych zagrożeń</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Neutralna — odmawia oceny sytuacji</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Co Kowalski mówi o funduszach unijnych i inwestycjach we wschodnie regiony?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Że były całkowicie zmarnowane i nie przyniosły żadnych efektów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Że pozwoliły złagodzić dysproporcje, choć gdyby środki zostały zainwestowane mądrzej, efekty byłyby widoczniejsze szybciej</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Że Polska powinna zrezygnować z funduszy unijnych i polegać na własnych zasobach</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Że dysproporcje między wschodem a zachodem całkowicie zniknęły dzięki funduszom</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. O czym spekuluje dr Nowicka w kontekście wejścia do strefy euro?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Że Polska powinna jak najszybciej przyjąć euro</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Że gdyby Polska przystąpiła do strefy euro 20 lat temu, inflacja byłaby prawdopodobnie niższa — ale straciłaby elastyczność polityki monetarnej; trudno ocenić, czy byłoby to korzystne</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Że wejście do strefy euro było wielkim błędem, którego skutki odczuwamy do dziś</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Że strefa euro jest przeżytkiem i Polska dobrze zrobiła, nie przyjmując euro</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Jakie zagrożenie związane z automatyzacją podkreśla Kowalski i w jakim czasie?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Kryzys bezrobocia do roku 2030 — jeśli automatyzacja postępuje</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Poważny kryzys bezrobocia strukturalnego — gdyby systemy reedukacji nie zostały wdrożone w ciągu 5 lat; automatyzacja może wyeliminować nawet 30% miejsc pracy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Natychmiastowe masowe zwolnienia — automatyzacja już teraz niszczy rynek pracy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Wzrost nierówności między robotnikami a kadrą zarządzającą</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Jaki pozytywny aspekt automatyzacji podkreśla dr Nowicka?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Że nie wyeliminuje żadnych miejsc pracy, tylko zmieni ich charakter</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Że najprawdopodobniej stworzy nowe miejsca pracy w sektorach, których dziś jeszcze nie ma — pod warunkiem, że edukacja zawodowa będzie elastyczna</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Że jest darmowa i nie wymaga żadnych inwestycji ze strony państwa</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Że zmniejszy nierówności dochodowe między pracownikami</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jakie trzy atuty polskiej gospodarki wymienia dr Nowicka?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Silna waluta, niskie długi publiczne i rozwinięty sektor bankowy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">B</div>Dobrze wykształcone kadry, relatywnie niskie koszty pracy i dostęp do funduszy unijnych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">C</div>Duże zasoby naturalne, rozwinięty przemysł ciężki i korzystne położenie geograficzne</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Niska inflacja, stabilne stopy procentowe i silny eksport</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Jak prowadzący podsumowuje sytuację polskiej gospodarki w ostatnim zdaniu?</div>
+        <div class="mc-options" id="lq7">
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">A</div>Że sytuacja jest jednoznacznie pozytywna i nie ma się czym martwić</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">B</div>Że sytuacja jest dramatyczna i wymaga natychmiastowych działań</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','correct')"><div class="mc-letter">C</div>Że polska gospodarka stoi jednocześnie przed niepowtarzalną szansą i poważnymi wyzwaniami</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">D</div>Że nie wiadomo nic o przyszłości polskiej gospodarki</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>180–220 words</strong> in Polish in a formal register on one of: (a) the most important economic challenge facing Poland, or (b) whether automation is ultimately positive or negative for society. Use at least <strong>6 vocabulary items</strong>: <em>wzrost gospodarczy, nierówność dochodowa, dysproporcje regionalne, inflacja, stopy procentowe, automatyzacja, rynek pracy, reedukacja zawodowa, bezrobocie strukturalne, odpowiedzialność fiskalna, modernizacja, przystąpić do</em>.<br><br>
+        Your answer must include: at least <strong>one Type 2 conditional</strong> (gdyby + past → -łby/łaby + infinitive, about a hypothetical present/future situation), at least <strong>one Type 3 conditional</strong> (gdyby + past → byłoby/byłaby + participial, about a counterfactual past), and at least <strong>two probability expressions</strong> (<em>prawdopodobnie, najprawdopodobniej, wydaje się że, może, mogłoby, jest możliwe że</em>).
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G8 Part 3 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GRAMMAR G8 PART 3
+═══════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 11 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G8 · Part 3</div>
+  <div class="section-title">Conditionals &amp; Probability<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Tryb Warunkowy i Wyrażanie Prawdopodobieństwa</span></div>
+  <div class="section-desc">The two advanced conditional types — hypothetical and counterfactual — plus the vocabulary of probability and uncertainty. These are the tools of economic forecasting, policy analysis, and nuanced argumentation at the highest register.</div>
+
+  <!-- TYPE 2 CONDITIONAL -->
+  <div class="card">
+    <div class="card-title" style="color:var(--copper)"><i class="ti ti-git-branch"></i> Type 2 Conditional — Hypothetical Present/Future</div>
+    <div class="grammar-callout">
+      The Type 2 conditional says: <strong>"if X were the case (it isn't), then Y would happen."</strong> The condition is hypothetical or unlikely — it refers to the present or future. In Polish: <strong>gdyby + past form → conditional (-łby/-łaby)</strong>.
+    </div>
+    <div class="cond-grid">
+      <div class="cond-card cond-card-2">
+        <div class="cond-label">If-clause (gdyby)</div>
+        <p style="font-size:13px">gdyby + past tense form (looks like past, acts like conditional subordinate clause)</p>
+        <p class="example-pl" style="margin-top:6px">Gdyby rząd <strong>zainwestował</strong> więcej…</p>
+        <p class="example-en">If the government were to invest more…</p>
+        <p class="example-pl">Gdyby tempo wzrostu <strong>utrzymało się</strong>…</p>
+        <p class="example-en">If the growth rate were maintained…</p>
+      </div>
+      <div class="cond-card cond-card-2">
+        <div class="cond-label">Main clause (-łby / -łaby)</div>
+        <p style="font-size:13px">conditional form: past stem + -by + person/gender ending</p>
+        <p class="example-pl" style="margin-top:6px">…dysproporcje <strong>zmalałyby</strong> szybciej.</p>
+        <p class="example-en">…disparities would decrease faster.</p>
+        <p class="example-pl">…Polska <strong>dogoniłaby</strong> Niemcy.</p>
+        <p class="example-en">…Poland would catch up with Germany.</p>
+      </div>
+    </div>
+    <div class="grammar-rule" style="margin-top:10px">
+      <div class="grammar-rule-title">Full examples — Type 2</div>
+      <p class="example-pl"><strong>Gdyby inflacja spadła</strong>, stopy procentowe <strong>mogłyby</strong> zostać obniżone.</p>
+      <p class="example-en">If inflation were to fall, interest rates could be lowered.</p>
+      <p class="example-pl"><strong>Gdybyśmy zainwestowali</strong> w reedukację, rynek pracy <strong>byłby</strong> bardziej elastyczny.</p>
+      <p class="example-en">If we were to invest in retraining, the labour market would be more flexible.</p>
+      <p class="example-en" style="margin-top:6px">Key signal: the situation described does NOT currently exist — it's a hypothesis about what would happen IF things were different now or in the future.</p>
+    </div>
+  </div>
+
+  <!-- TYPE 3 CONDITIONAL -->
+  <div class="card">
+    <div class="card-title" style="color:var(--copper)"><i class="ti ti-history"></i> Type 3 Conditional — Counterfactual Past</div>
+    <div class="grammar-callout">
+      The Type 3 conditional says: <strong>"if X had happened (it didn't), then Y would have happened."</strong> The condition refers to the past — it is definitively counterfactual. In Polish: <strong>gdyby + past form → byłby/byłoby + past participle OR past conditional</strong>.
+    </div>
+    <div class="cond-grid">
+      <div class="cond-card cond-card-3">
+        <div class="cond-label">If-clause (gdyby + past)</div>
+        <p style="font-size:13px">Same form as Type 2! Context and logic tell you it's past.</p>
+        <p class="example-pl" style="margin-top:6px">Gdyby Polska <strong>nie przystąpiła</strong> do UE…</p>
+        <p class="example-en">If Poland had not joined the EU… (but she DID)</p>
+        <p class="example-pl">Gdyby środki <strong>nie zostały zainwestowane</strong>…</p>
+        <p class="example-en">If the funds had not been invested… (but they were)</p>
+      </div>
+      <div class="cond-card cond-card-3">
+        <div class="cond-label">Main clause (byłoby / conditional)</div>
+        <p style="font-size:13px">byłby/byłaby/byłoby + adjective/participle OR past conditional</p>
+        <p class="example-pl" style="margin-top:6px">…PKB <strong>byłoby</strong> niższe.</p>
+        <p class="example-en">…GDP would have been lower.</p>
+        <p class="example-pl">…infrastruktura <strong>pozostałaby</strong> na poziomie komunizmu.</p>
+        <p class="example-en">…infrastructure would have remained at communist levels.</p>
+      </div>
+    </div>
+    <div class="grammar-rule" style="margin-top:10px">
+      <div class="grammar-rule-title">Full examples — Type 3</div>
+      <p class="example-pl"><strong>Gdybyśmy nie weszli</strong> do UE, nie <strong>otrzymalibyśmy</strong> funduszy strukturalnych.</p>
+      <p class="example-en">If we had not joined the EU, we would not have received structural funds.</p>
+      <p class="example-pl"><strong>Gdyby reforma nie została przeprowadzona</strong>, gospodarka <strong>byłaby</strong> znacznie słabsza.</p>
+      <p class="example-en">If the reform had not been carried out, the economy would have been considerably weaker.</p>
+      <p class="example-en" style="margin-top:6px">Key signal: we know the real past — the conditional imagines an alternative history that did NOT happen.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Type 2 vs Type 3 — how to tell the difference</div>
+      <table class="gram-table">
+        <tr><th>Feature</th><th>Type 2 (hypothetical)</th><th>Type 3 (counterfactual)</th></tr>
+        <tr><td>Time</td><td>Present or future</td><td>Past (definitely didn't happen)</td></tr>
+        <tr><td>Reality</td><td>Possible but unlikely / not yet true</td><td>Impossible — the past cannot be changed</td></tr>
+        <tr><td>If-clause form</td><td>gdyby + past</td><td>gdyby + past (same!)</td></tr>
+        <tr><td>Main clause</td><td>-łby/-łaby/-łoby form</td><td>byłby + adj./ptcp. OR past conditional</td></tr>
+        <tr><td>Context signal</td><td>future time marker / general hypothesis</td><td>past time marker / known real-world fact contradicted</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- PROBABILITY EXPRESSIONS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--copper)"><i class="ti ti-percentage"></i> Probability Expressions — Wyrażanie Prawdopodobieństwa</div>
+    <div class="grammar-callout">
+      Economic and political analysis requires precise gradation of certainty. Polish has a rich spectrum of probability expressions — choosing the right one signals both linguistic competence and intellectual precision.
+    </div>
+    <div class="connector-grid">
+      <div class="connector-card">
+        <div class="connector-word">na pewno / z pewnością</div>
+        <div class="connector-meaning">certainly / definitely (100%)</div>
+        <div class="connector-ex">To na pewno wpłynie na rynek pracy.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">najprawdopodobniej</div>
+        <div class="connector-meaning">most probably / in all likelihood (~90%)</div>
+        <div class="connector-ex">Stopy najprawdopodobniej spadną w tym roku.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">prawdopodobnie</div>
+        <div class="connector-meaning">probably (~70–80%)</div>
+        <div class="connector-ex">Inflacja prawdopodobnie opadnie w drugiej połowie roku.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">wydaje się, że</div>
+        <div class="connector-meaning">it seems that (~60%)</div>
+        <div class="connector-ex">Wydaje się, że gospodarka stabilizuje się.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">możliwe, że / jest możliwe, że</div>
+        <div class="connector-meaning">it is possible that (~50%)</div>
+        <div class="connector-ex">Możliwe, że recesja zostanie uniknięta.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">może / mogłoby</div>
+        <div class="connector-meaning">might / could (~40–50%)</div>
+        <div class="connector-ex">Automatyzacja może wyeliminować 30% stanowisk.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">nie jest wykluczone, że</div>
+        <div class="connector-meaning">it cannot be ruled out that (~30%)</div>
+        <div class="connector-ex">Nie jest wykluczone, że stopy wzrosną.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">mało prawdopodobne, że</div>
+        <div class="connector-meaning">unlikely that (~15–20%)</div>
+        <div class="connector-ex">Mało prawdopodobne, że inflacja wróci do 15%.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Grammar Exercise — Conditionals &amp; Probability</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Complete or transform as instructed. No hints provided.</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Type 2: If the government were to invest more in retraining [gdyby + invest], unemployment would decrease [zmalałoby].</div>
+      <div class="transform-task">Write the full Polish sentence:</div>
+      <input class="transform-input" id="ti1" data-answer="gdyby rząd zainwestował więcej w reedukację bezrobocie zmalałoby" placeholder="Gdyby rząd… bezrobocie…" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Type 3: If Poland had not joined the EU [gdyby + not join], GDP would have been lower [byłoby niższe].</div>
+      <div class="transform-task">Write the full Polish sentence:</div>
+      <input class="transform-input" id="ti2" data-answer="gdyby polska nie przystąpiła do ue pkb byłoby niższe" placeholder="Gdyby Polska nie przystąpiła…, PKB…" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Is this Type 2 or Type 3? "Gdyby inflacja spadła w ubiegłym roku, stopy procentowe byłyby już niższe."</div>
+      <div class="transform-task">Type 2 or Type 3? (Write one word: "dwa" or "trzy")</div>
+      <input class="transform-input" id="ti3" data-answer="trzy" placeholder="dwa / trzy?" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Choose the probability expression: "______ stopy procentowe spadną w tym roku." (most probably — ~90%)</div>
+      <div class="transform-task">One adverb:</div>
+      <input class="transform-input" id="ti4" data-answer="najprawdopodobniej" placeholder="prawdopodobnie / najprawdopodobniej / może?" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Mixed conditional: "If retraining systems were implemented now [gdyby + implement], structural unemployment might be avoided [mogłoby być uniknięte]."</div>
+      <div class="transform-task">Write the Polish sentence:</div>
+      <input class="transform-input" id="ti5" data-answer="gdyby systemy reedukacji zostały wdrożone bezrobocie strukturalne mogłoby być uniknięte" placeholder="Gdyby systemy reedukacji… bezrobocie…" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-copper" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GAP FILL
+═══════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 11 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence. No word bank, no hints. Draw on conditionals, probability expressions, and economic vocabulary from this unit.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="font-size:15px">
+      <p class="gap-sentence">1. <input class="gap-input" id="g1" data-answer="gdyby" style="width:110px"> tempo wzrostu utrzymało się, Polska dogoniłaby gospodarczo Niemcy.</p>
+      <p class="gap-sentence">2. Gdyby rząd więcej zainwestował w infrastrukturę, dysproporcje regionalne <input class="gap-input" id="g2" data-answer="zmalałyby" style="width:170px"> szybciej.</p>
+      <p class="gap-sentence">3. Gdyby Polska nie przystąpiła do UE, PKB <input class="gap-input" id="g3" data-answer="byłoby" style="width:130px"> prawdopodobnie niższe o kilkadziesiąt procent.</p>
+      <p class="gap-sentence">4. Inflacja <input class="gap-input" id="g4" data-answer="prawdopodobnie" style="width:200px"> opadnie w drugiej połowie roku.</p>
+      <p class="gap-sentence">5. Automatyzacja <input class="gap-input" id="g5" data-answer="może doprowadzić do" style="width:250px"> likwidacji nawet trzydziestu procent stanowisk.</p>
+      <p class="gap-sentence">6. Gdyby systemy reedukacji nie <input class="gap-input" id="g6" data-answer="zostały wdrożone" style="width:220px"> na czas, bezrobocie <input class="gap-input" id="g7" data-answer="mogłoby osiągnąć" style="width:220px"> niepokojące rozmiary.</p>
+      <p class="gap-sentence">7. <input class="gap-input" id="g8" data-answer="wydaje się że" style="width:200px"> gospodarka stopniowo stabilizuje się po okresie wysokiej inflacji.</p>
+      <p class="gap-sentence">8. <input class="gap-input" id="g9" data-answer="najprawdopodobniej" style="width:230px"> stopy procentowe zaczną maleć w drugiej połowie roku.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 11 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the correct answer. Questions focus on Type 2 vs Type 3 conditionals, probability expressions, conditional verb forms, and economic vocabulary.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Gdyby inflacja ______ szybciej, stopy procentowe mogłyby zostać obniżone. (Type 2 — hypothetical)</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>spada</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>spadła</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>spadnie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>spada by</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. Gdyby Polska nie przystąpiła do UE w 2004 roku, jej gospodarka ______ znacznie słabsza. (Type 3 — counterfactual)</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>byłoby</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>byłaby</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>będzie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>była</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. Which sentence is a Type 3 (counterfactual PAST) conditional?</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>Gdyby rząd zainwestował w edukację, dysproporcje zmalałyby.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">B</div>Gdyby fundusze nie zostały zainwestowane, infrastruktura pozostałaby na poziomie komunizmu.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">C</div>Gdybyśmy teraz zmienili politykę, rezultaty byłyby widoczne za rok.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>Gdyby jutro stopy spadły, rynek odetchnąłby z ulgą.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. Stopy procentowe ______ zaczną maleć — eksperci są prawie pewni. (highest probability)</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>prawdopodobnie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">B</div>najprawdopodobniej</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>możliwe że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>nie jest wykluczone że</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. Automatyzacja ______ doprowadzić do likwidacji trzydziestu procent stanowisk. (might — moderate probability)</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>najprawdopodobniej</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">B</div>może</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">C</div>na pewno</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>z pewnością</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Gdyby reformy ______ wdrożone na czas, kryzys zostałby uniknięty. (passive conditional — Type 3)</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>są</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">B</div>będą</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">C</div>zostały</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>zostaną</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Which sentence contains a grammatical ERROR in the conditional?</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>Gdyby inflacja spadła, rynek byłby spokojniejszy.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">B</div>Gdyby Polska weszła do UE, PKB będzie wyższe.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>Gdybyśmy zainwestowali wcześniej, sytuacja byłaby lepsza.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>Gdyby te środki zostały zainwestowane, efekty byłyby widoczne.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. ______ gospodarka zareaguje pozytywnie na obniżkę stóp — ale nikt nie może tego zagwarantować. (it seems that)</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>Na pewno</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">B</div>Najprawdopodobniej</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">C</div>Wydaje się, że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>Mało prawdopodobne, że</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 11 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each Polish probability expression or conditional structure to its English equivalent or description. All 8 pairs must be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--copper);margin-bottom:8px">Polish expression</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">najprawdopodobniej</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">prawdopodobnie</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">wydaje się, że</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">nie jest wykluczone, że</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">gdyby X + past → -łby (present/future)</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">gdyby X + past → byłoby (past)</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">mogłoby</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">mało prawdopodobne, że</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English equivalent</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">Type 3 conditional — counterfactual past</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">it seems that (~60% certainty)</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">unlikely that (~15–20%)</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">most probably / in all likelihood (~90%)</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">could / might (conditional of móc)</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">Type 2 conditional — hypothetical present/future</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">it cannot be ruled out that (~30%)</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">probably (~70–80%)</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 11 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 11 Test</div>
+  <div class="section-desc">Complete all five sections to unlock the test.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 11 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">All sections complete. One unit remains — Unit 12 will bring everything together. The test covers economic vocabulary, Type 2 and Type 3 conditionals, conditional verb forms, probability expressions, and B2+ comprehension. Retakes allowed.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 11 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div></div></div>
+
+<script>
+// ══ STATE ════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 330;
+
+// ══ NAV ══════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ═════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ TTS ══════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ AUDIO ════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 5:30 · Polish B2+`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying=false; document.getElementById('play-icon').className='ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+
+// ══ MC ═══════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8
+        ? '<strong>Doskonale! 8/8</strong> — Perfect. You correctly identified: Type 2 gdyby uses past form in subordinate clause (spadła not spada); Type 3 counterfactual needs byłaby (fem. agree with "gospodarka"); "fundusze" is fem. pl. → "zostały zainwestowane" (pf. passive pl.); "najprawdopodobniej" = highest probability (~90%); "może" = moderate probability for uncertain futures; passive conditional uses "zostały" (past pf.); "gdyby... PKB będzie" is wrong (must be byłoby/conditional not future); "wydaje się że" = it seems that (~60%).'
+        : '<strong>' + correct + '/8 correct.</strong> Key reminders: Type 2 gdyby-clause uses past form (not present/future); Type 3 main clause uses byłaby/byłoby + adjective or past conditional; passive conditional = gdyby + zostały/zostało; probability scale: na pewno > najprawdopodobniej > prawdopodobnie > wydaje się > możliwe > może > nie jest wykluczone > mało prawdopodobne; "gdyby X → PKB będzie" is always wrong — conditional clause requires conditional main clause, never future.';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR ══════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/[,\.!?]/g,'').replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  const items = [
+    { id:'ti1', key:['gdyby','zainwestował','zmalałoby'],
+      ans:'gdyby rząd zainwestował więcej w reedukację bezrobocie zmalałoby',
+      exp:'Type 2: gdyby + past form (zainwestował) in subordinate clause; conditional form (zmalałoby — neuter, agrees with "bezrobocie") in main clause. The situation is hypothetical about the present/future.' },
+    { id:'ti2', key:['gdyby','nie przystąpiła','byłoby niższe'],
+      ans:'gdyby polska nie przystąpiła do ue pkb byłoby niższe',
+      exp:'Type 3: gdyby + past (nie przystąpiła — Poland DID join, this is counterfactual); main clause: byłoby (neuter conditional of "być") + comparative adjective. The past cannot be changed.' },
+    { id:'ti3', key:['trzy'],
+      ans:'trzy',
+      exp:'Type 3 — the signal is "w ubiegłym roku" (last year) — this refers to the past. The condition (inflacja spadła = inflation fell) did NOT happen last year — it is counterfactual. Therefore Type 3.' },
+    { id:'ti4', key:['najprawdopodobniej'],
+      ans:'najprawdopodobniej',
+      exp:'"Najprawdopodobniej" = most probably / in all likelihood (~90%). This is the highest probability short of certainty ("na pewno"). "Prawdopodobnie" (~70–80%) would be slightly weaker.' },
+    { id:'ti5', key:['gdyby','zostały wdrożone','mogłoby być uniknięte'],
+      ans:'gdyby systemy reedukacji zostały wdrożone bezrobocie strukturalne mogłoby być uniknięte',
+      exp:'Mixed/Type 2 passive conditional: gdyby + passive past (zostały wdrożone — pf. passive pl.) in subordinate clause; mogłoby (conditional of "móc", neuter) + być uniknięte (passive infinitive) in main clause.' },
+  ];
+  let correct = 0;
+  items.forEach((item, n) => {
+    const inp = document.getElementById(item.id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    const matched = item.key.every(k => val.includes(norm(k)));
+    if (matched) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ ' + item.exp; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Świetnie! 5/5</strong> — Excellent. You correctly formed a Type 2 conditional (gdyby + past → conditional), a Type 3 conditional (gdyby + past → byłoby + adj.), identified a Type 3 from context ("w ubiegłym roku"), chose "najprawdopodobniej" for ~90% certainty, and constructed a passive conditional with "mogłoby być uniknięte".';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 3 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/5 correct.</strong> Core reminders: both Type 2 and Type 3 use gdyby + past in the subordinate clause — distinguish by context (present/future hypothesis vs known past fact contradicted). Main clause: Type 2 uses -łby/-łaby/-łoby; Type 3 uses byłby/byłaby/byłoby + past participle OR -łby form. "Najprawdopodobniej" = highest probability (~90%); "prawdopodobnie" = ~75%.';
+  }
+}
+
+// ══ GAP FILL ═════════════════════════
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8','g9'];
+  const alts = {
+    g2: ['zmalałyby','zmniejszyłyby się'],
+    g3: ['byłoby','było'],
+    g4: ['prawdopodobnie','najprawdopodobniej'],
+    g5: ['może doprowadzić do','może prowadzić do'],
+    g6: ['zostały wdrożone','zostały wprowadzone'],
+    g7: ['mogłoby osiągnąć','mogłoby osiągnąć'],
+    g8: ['wydaje się że','wydaje się, że'],
+    g9: ['najprawdopodobniej','prawdopodobnie'],
+  };
+  let correct = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct','incorrect');
+    const val = norm(inp.value);
+    const main = norm(inp.dataset.answer);
+    const altList = (alts[id] || []).map(a => norm(a));
+    if (val === main || altList.includes(val)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const total = fields.filter(id => document.getElementById(id)).length;
+  const fb = document.getElementById('gf-feedback');
+  if (correct === total) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! ' + total + '/' + total + '</strong> — All correct! You used: "gdyby" (Type 2 subordinator), "zmalałyby" (non-masc. pl. conditional — agrees with "dysproporcje"), "byłoby" (neuter conditional of być — agrees with PKB), "prawdopodobnie/najprawdopodobniej" (probability adverbs), "może doprowadzić do" (modal probability), passive conditional "zostały wdrożone" + "mogłoby osiągnąć", "wydaje się że", and "najprawdopodobniej".';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/' + total + ' correct.</strong> Check: "gdyby" introduces conditional subordinate clause; conditional endings agree in gender/number: -łby (masc.), -łaby (fem.), -łoby (neuter), -łyby (non-masc. pl.), -liby (masc. pers. pl.); "byłoby" for neuter nouns; passive conditional: zostały (pf. pl.) + past participle; probability adverbs: prawdopodobnie (~75%), najprawdopodobniej (~90%); "wydaje się, że" = it seems that.';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (inp) { inp.value = ''; inp.classList.remove('correct','incorrect'); }
+  });
+  document.getElementById('gf-feedback').classList.remove('show');
+}
+
+// ══ MATCHING ══════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All matched. Key insight: "najprawdopodobniej" (~90%) > "prawdopodobnie" (~75%) > "wydaje się że" (~60%) > "możliwe że" (~50%) > "może" (~40–50%) > "nie jest wykluczone że" (~30%) > "mało prawdopodobne że" (~15%). Conditionals: both Type 2 and Type 3 use gdyby + past in the if-clause; they differ in whether the condition is about the present/future (Type 2) or is counterfactual past (Type 3).';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ══════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ═══════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 20) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B2+ level English-speaking learner's formal economic writing. Unit 11 focuses on economic vocabulary, Type 2 conditionals (hypothetical present/future), Type 3 conditionals (counterfactual past), and probability expressions.
+
+Task: Write 180-220 words in Polish (formal register) on either (a) the most important economic challenge facing Poland, or (b) whether automation is ultimately positive or negative for society. Use at least 6 of: wzrost gospodarczy, nierówność dochodowa, dysproporcje regionalne, inflacja, stopy procentowe, automatyzacja, rynek pracy, reedukacja zawodowa, bezrobocie strukturalne, odpowiedzialność fiskalna, modernizacja, przystąpić do. Must include: at least 1 Type 2 conditional (gdyby + past → -łby/-łaby form, hypothetical present/future), at least 1 Type 3 conditional (gdyby + past → byłoby/byłaby + adj/participle, counterfactual past), and at least 2 probability expressions (prawdopodobnie, najprawdopodobniej, wydaje się że, może, mogłoby, jest możliwe że, nie jest wykluczone że).
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2-3 sentences — assess argumentation quality, conditional usage, probability precision, and B2+ register>",
+  "vocab_used": ["<target words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "type2_conditionals": ["<Type 2 conditionals found with comment on gdyby-clause form and main clause form>"],
+  "type3_conditionals": ["<Type 3 conditionals found with comment on counterfactual nature and byłoby/past conditional>"],
+  "conditional_errors": [{"error":"<structure>","correction":"<correction>","explanation":"<Type 2 vs 3 rule, gender agreement, passive conditional>"}],
+  "probability_expressions": ["<probability expressions found with comment on register and precision>"],
+  "register_comment": "<comment on economic register — appropriately formal? any colloquial slips?>",
+  "correct_structures": ["<2-3 specific things done well>"],
+  "other_errors": [{"error":"<phrase>","correction":"<correction>","explanation":"<rule>"}],
+  "recommendation": "<one specific B2+ economic writing tip>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1400, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">';
+  if (r.register_comment) html += `<div style="background:var(--copper-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--copper);margin-bottom:4px">Register</div>${r.register_comment}</div>`;
+  const prob = r.probability_expressions && r.probability_expressions.length ? r.probability_expressions.join('<br>') : 'None found';
+  html += `<div style="background:var(--blue-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--blue);margin-bottom:4px">Probability Expressions</div>${prob}</div>`;
+  html += '</div>';
+
+  if (r.type2_conditionals && r.type2_conditionals.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--blue);margin-bottom:6px">Type 2 Conditionals (hypothetical)</div>';
+    r.type2_conditionals.forEach(c => html += `<p style="font-size:13px;margin-bottom:4px">• ${c}</p>`);
+    html += '</div>';
+  }
+  if (r.type3_conditionals && r.type3_conditionals.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">Type 3 Conditionals (counterfactual)</div>';
+    r.type3_conditionals.forEach(c => html += `<p style="font-size:13px;margin-bottom:4px">• ${c}</p>`);
+    html += '</div>';
+  }
+  if (r.conditional_errors && r.conditional_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Conditional Errors</div>';
+    r.conditional_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+  if (r.vocab_used && r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v => html += `<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">${v}</span>`);
+    html += '</div></div>';
+  }
+  if (r.correct_structures && r.correct_structures.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s => html += `<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ ${s}</p>`);
+    html += '</div>';
+  }
+  if (r.other_errors && r.other_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Other errors</div>';
+    r.other_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+  if (r.recommendation) html += `<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 B2+ economic writing tip:</strong> ${r.recommendation}</div>`;
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

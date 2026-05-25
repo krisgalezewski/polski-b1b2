@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 12: Przyszłość i Marzenia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --violet:#5B21B6;--violet-light:#EDE9FE;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(91,33,182,0.2);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#C4B5FD;line-height:1.5}
+.scaffolding-note strong{color:#fff}
+
+/* ── GRAMMAR (violet for G8 Consolidation) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--violet-light);color:var(--violet);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--violet-light);border:0.5px solid rgba(91,33,182,0.2);border-left:3px solid var(--violet);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--violet)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--violet);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.95;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:22px 26px;margin-bottom:16px}
+.reading-text p{margin-bottom:16px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--violet-light);color:var(--violet);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:220px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:140px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-violet{background:var(--violet);color:#fff}
+.btn-violet:hover{background:#4C1D95}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:130px;width:180px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-sentence{line-height:3.2;font-size:15px;margin-bottom:6px}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:13px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.5}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:16px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:220px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── GRAMMAR TABLES ── */
+.gram-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.gram-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.gram-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.gram-table tr:nth-child(even) td{background:#FAF7F2}
+.gram-table td:first-child{font-weight:500;color:var(--violet)}
+
+/* ── CONSOLIDATION CARDS ── */
+.consol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:12px 0}
+.consol-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px}
+.consol-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--violet);margin-bottom:5px}
+.consol-ex{font-style:italic;color:var(--ink);margin-bottom:3px}
+.consol-en{font-size:12px;color:var(--ink-muted)}
+
+/* ── TRANSFORM ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── UNIT NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.completion-banner{background:linear-gradient(135deg,var(--violet),var(--blue));border-radius:12px;padding:28px 24px;text-align:center;color:#fff;margin-bottom:20px}
+.completion-banner h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:8px}
+.completion-banner p{font-size:14px;opacity:0.85;line-height:1.6}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .consol-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<!-- ══ SIDEBAR ══ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 12 — Full Consolidation:</strong> No scaffolding. All grammar from G1–G8 active. The hardest writing task in the course. This is where everything comes together.
+  </div>
+  <div class="unit-label">Unit 12 — Przyszłość i Marzenia</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G8 Consolidation<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 11 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 11 — Gospodarka</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-trophy"></i></span>Course Complete!</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 12 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 12 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Przyszłość i Marzenia<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">The Future &amp; Dreams</span></div>
+  <div class="section-desc">The final unit of the course. A reflective essay on dreams, ambition, and the future draws together every grammar structure from G1–G8. Concessive clauses, conditionals, passive voice, aspect, cases — all woven into natural, sophisticated Polish.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Esej refleksyjny</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>This text is a consolidation showcase. Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary, <span style="background:var(--violet-light);color:var(--violet);padding:1px 6px;border-radius:3px;font-weight:500">purple</span> for grammar from across the whole course. Click <i class="ti ti-volume"></i> to hear vocabulary.</span>
+      </div>
+      <div class="reading-text">
+        <p><span class="vocab-highlight">Marzenia<span class="vocab-tip">marzenie = dream / aspiration<br>(Nom. pl. — subject)</span></span> są siłą napędową ludzkiego życia. <span class="grammar-highlight">Choć nie wszystkie marzą się spełnić<span class="vocab-tip">choć = although (G10: concessive clause)<br>marzenia się spełniają = dreams come true<br>Shortened concessive: "choć nie wszystkie"</span></span>, sam akt <span class="vocab-highlight">dążenia<span class="vocab-tip">dążenie = striving / pursuit<br>(Gen. — after "akt")</span></span> do nich nadaje życiu <span class="vocab-highlight">sens i kierunek<span class="vocab-tip">sens = meaning / sense<br>kierunek = direction<br>(Acc. — objects of "nadaje")</span></span>. <span class="grammar-highlight">Gdybyśmy przestali marzyć<span class="vocab-tip">gdyby + past = conditional (G11: Type 2)<br>"if we were to stop dreaming"<br>Hypothetical — about the present/future</span></span>, <span class="grammar-highlight">stracilibyśmy<span class="vocab-tip">stracić → stracilibyśmy<br>= we would lose<br>Conditional main clause (masc. pers. pl.)</span></span> to, co czyni nas ludźmi.</p>
+
+        <p>Polska młodzież <span class="grammar-highlight">wykazuje<span class="vocab-tip">wykazywać (impf.) = to display / show<br>3rd pers. sg. present — ongoing characteristic<br>G5: imperfective = habitual/ongoing</span></span> <span class="vocab-highlight">niezwykłe ambicje<span class="vocab-tip">niezwykłe ambicje = remarkable ambitions<br>(Acc. pl. — object of "wykazuje")</span></span>. Badania pokazują, że ponad <span class="vocab-highlight">sześćdziesiąt procent<span class="vocab-tip">sześćdziesiąt procent = sixty percent<br>Gen. pl. after 5+</span></span> młodych Polaków <span class="grammar-highlight">marzy o tym, żeby<span class="vocab-tip">marzyć o tym, żeby + infinitive<br>"to dream of doing something"<br>G7: purpose clause structure</span></span> <span class="vocab-highlight">założyć własną firmę<span class="vocab-tip">założyć własną firmę = to start one's own company<br>(pf. inf. — perfective goal)</span></span> lub <span class="vocab-highlight">pracować za granicą<span class="vocab-tip">pracować za granicą = to work abroad<br>(impf. inf. — ongoing activity)</span></span>. <span class="grammar-highlight">Niezależnie od tego, skąd pochodzi<span class="vocab-tip">niezależnie od + Gen. = regardless of (G10)<br>"regardless of where they come from"</span></span>, każdy nosi w sobie <span class="grammar-highlight">jakiś cel<span class="vocab-tip">jakiś = some kind of<br>Indefinite pronoun — universal human quality</span></span>, który <span class="grammar-highlight">chciałby osiągnąć<span class="vocab-tip">chciałby (masc. conditional) = would like<br>G8: conditional — personal hypothetical wish</span></span>.</p>
+
+        <p>Realizacja marzeń <span class="grammar-highlight">wymaga<span class="vocab-tip">wymagać + Gen. = to require<br>wymagać odwagi / pracy / czasu</span></span> <span class="vocab-highlight">odwagi, cierpliwości i wytrwałości<span class="vocab-tip">odwaga = courage<br>cierpliwość = patience<br>wytrwałość = perseverance<br>(Gen. — after "wymaga")</span></span>. <span class="grammar-highlight">Trudno zaprzeczyć, że<span class="vocab-tip">trudno zaprzeczyć, że = it is hard to deny that<br>G10: formal argumentative device</span></span> wiele <span class="vocab-highlight">przeszkód<span class="vocab-tip">przeszkoda = obstacle<br>(Gen. pl. — after "wiele")</span></span> <span class="grammar-highlight">zostaje pokonanych<span class="vocab-tip">zostać pokonanym (pf. passive)<br>= to be overcome<br>G9: zostać-passive — completed event</span></span> dopiero po wielokrotnych <span class="vocab-highlight">próbach i porażkach<span class="vocab-tip">próba = attempt / trial<br>porażka = failure / defeat<br>(Loc. — after "po")</span></span>. <span class="grammar-highlight">Gdyby Edison nie próbował tysiąc razy<span class="vocab-tip">gdyby + past = Type 3 conditional (G11)<br>Counterfactual past — Edison DID try<br>"if Edison had not tried a thousand times"</span></span>, żarówka <span class="grammar-highlight">nigdy nie zostałaby wynaleziona<span class="vocab-tip">zostać wynalezionym (pf. passive conditional)<br>= would never have been invented<br>Type 3 passive conditional</span></span>.</p>
+
+        <p><span class="grammar-highlight">O ile marzenia o sukcesie zawodowym<span class="vocab-tip">o ile = insofar as / to the extent that<br>G10: conditional-concessive<br>Paired with "o tyle" in next clause</span></span> są <span class="vocab-highlight">powszechne<span class="vocab-tip">powszechny = common / widespread<br>(Nom. pl. masc.)</span></span>, <span class="grammar-highlight">o tyle<span class="vocab-tip">o tyle = to that extent<br>Completing the "o ile…o tyle" pair</span></span> marzenia o <span class="vocab-highlight">szczęściu osobistym<span class="vocab-tip">szczęście osobiste = personal happiness<br>(Loc. — after "o")</span></span> są dla większości ludzi <span class="vocab-highlight">ważniejsze<span class="vocab-tip">ważniejszy = more important<br>(comparative — G7: comparatives)</span></span>. <span class="grammar-highlight">Im więcej czasu poświęcamy<span class="vocab-tip">im więcej…tym + comparative<br>= the more…the more<br>G7: proportional comparative construction</span></span> na <span class="vocab-highlight">budowanie relacji<span class="vocab-tip">budowanie relacji = building relationships<br>(Gen. verbal noun — after na)</span></span>, <span class="grammar-highlight">tym głębsze<span class="vocab-tip">głęboki → głębszy → tym głębszy<br>= the deeper<br>Completing the im…tym construction</span></span> stają się <span class="vocab-highlight">więzi<span class="vocab-tip">więź = bond / tie<br>(Nom. pl. — subject of "stają się")</span></span>, które nas <span class="vocab-highlight">trzymają<span class="vocab-tip">trzymać = to hold / keep<br>(3rd pers. pl. present)</span></span>.</p>
+
+        <p><span class="grammar-highlight">Bądź co bądź<span class="vocab-tip">bądź co bądź = after all (G10: bridging concessive)<br>Acknowledges and moves on</span></span>, każde pokolenie <span class="grammar-highlight">marzyło<span class="vocab-tip">marzyć (impf.) = to dream<br>Imperfective past — habitual across time<br>G5: aspect — repeated historical action</span></span> o lepszym świecie — i każde <span class="grammar-highlight">zostawiło po sobie<span class="vocab-tip">zostawić po sobie = to leave behind<br>(pf. — completed historical legacy)</span></span> coś, co <span class="grammar-highlight">okazało się<span class="vocab-tip">okazać się (pf. refl.) = to turn out to be<br>Perfective — completed transformation</span></span> <span class="vocab-highlight">trwałe<span class="vocab-tip">trwały = lasting / enduring<br>(neuter predicate adj.)</span></span>. <span class="grammar-highlight">Nie sposób<span class="vocab-tip">nie sposób + infinitive = it is impossible to<br>G10: formal argumentative device</span></span> przewidzieć, które z naszych dzisiejszych marzeń <span class="grammar-highlight">staną się<span class="vocab-tip">stać się (pf.) = to become<br>Perfective future — completed change</span></span> <span class="vocab-highlight">rzeczywistością<span class="vocab-tip">rzeczywistość = reality<br>(Instr. after "stać się")</span></span>. Ale właśnie ta niepewność — <span class="grammar-highlight">choć czasem niepokojąca<span class="vocab-tip">choć = although (G10: concessive)<br>"although sometimes unsettling"<br>Shortened concessive + participial adj.</span></span> — <span class="grammar-highlight">prawdopodobnie<span class="vocab-tip">prawdopodobnie = probably<br>G11: probability adverb (~75%)</span></span> jest tym, co <span class="grammar-highlight">sprawia, że życie<span class="vocab-tip">sprawiać, że = to make it so that<br>Causative construction</span></span> jest <span class="vocab-highlight">warte przeżycia<span class="vocab-tip">wart + Gen. = worth<br>warte przeżycia = worth living<br>przeżycie = living / experience</span></span>.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Purple highlights reference specific grammar units: concessive clauses (G10), conditionals (G11), aspect (G5), passive (G9), comparatives (G7), argumentative devices (G10), and probability (G11).</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>marzenie<button class="vocab-audio-btn" onclick="speak('marzenie')"><i class="ti ti-volume"></i></button></td><td>(neuter)</td><td>dream / aspiration</td></tr>
+        <tr><td>dążenie<button class="vocab-audio-btn" onclick="speak('dążenie')"><i class="ti ti-volume"></i></button></td><td>dążenia (Gen.)</td><td>striving / pursuit</td></tr>
+        <tr><td>odwaga<button class="vocab-audio-btn" onclick="speak('odwaga')"><i class="ti ti-volume"></i></button></td><td>odwagi (Gen.)</td><td>courage</td></tr>
+        <tr><td>wytrwałość<button class="vocab-audio-btn" onclick="speak('wytrwałość')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>perseverance</td></tr>
+        <tr><td>przeszkoda<button class="vocab-audio-btn" onclick="speak('przeszkoda')"><i class="ti ti-volume"></i></button></td><td>przeszkód (Gen. pl.)</td><td>obstacle</td></tr>
+        <tr><td>porażka<button class="vocab-audio-btn" onclick="speak('porażka')"><i class="ti ti-volume"></i></button></td><td>porażek (Gen. pl.)</td><td>failure / defeat</td></tr>
+        <tr><td>rzeczywistość<button class="vocab-audio-btn" onclick="speak('rzeczywistość')"><i class="ti ti-volume"></i></button></td><td>rzeczywistością (Instr.)</td><td>reality</td></tr>
+        <tr><td>więź<button class="vocab-audio-btn" onclick="speak('więź')"><i class="ti ti-volume"></i></button></td><td>więzi (pl.)</td><td>bond / tie</td></tr>
+        <tr><td>pokolenie<button class="vocab-audio-btn" onclick="speak('pokolenie')"><i class="ti ti-volume"></i></button></td><td>(neuter)</td><td>generation</td></tr>
+        <tr><td>założyć firmę<button class="vocab-audio-btn" onclick="speak('założyć firmę')"><i class="ti ti-volume"></i></button></td><td>(pf.)</td><td>to start a company</td></tr>
+        <tr><td>powszechny<button class="vocab-audio-btn" onclick="speak('powszechny')"><i class="ti ti-volume"></i></button></td><td>(adj.)</td><td>common / widespread</td></tr>
+        <tr><td>trwały<button class="vocab-audio-btn" onclick="speak('trwały')"><i class="ti ti-volume"></i></button></td><td>(adj.)</td><td>lasting / enduring</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">All questions at B2+ level — philosophical inference, grammatical awareness, rhetorical analysis.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Jaki główny argument stawia autor w pierwszym akapicie?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Tylko spełnione marzenia mają wartość</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Sam akt dążenia do marzeń — niezależnie od ich spełnienia — nadaje życiu sens i kierunek</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Marzenia są niebezpieczne, bo prowadzą do rozczarowania</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Ludzie bez marzeń są szczęśliwsi, bo unikają porażek</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Co zdanie „Gdybyśmy przestali marzyć, stracilibyśmy to, co czyni nas ludźmi" wyraża gramatycznie?</div>
+        <div class="question-note">Identify the conditional type and what it implies about reality.</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Typ 3 — ludzie już przestali marzyć i jest to faktem historycznym</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Typ 2 — hipoteza o teraźniejszości: rzeczywiście marzymy, a autor spekuluje, co by się stało gdybyśmy przestali</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Zwykłe zdanie przyszłe — przewidywanie, że w przyszłości przestaniemy marzyć</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Zdanie warunkowe bez konkretnego typu — po prostu wyraża życzenie</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jakie trzy cechy wymienia autor jako niezbędne do realizacji marzeń?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Pieniądze, wykształcenie i szczęście</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">B</div>Odwaga, cierpliwość i wytrwałość</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">C</div>Talent, ambicja i odpowiednie środowisko</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Mądrość, determinacja i szczęście</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co konstrukcja „o ile…o tyle" wyraża w czwartym akapicie?</div>
+        <div class="question-note">This tests awareness of the G10 paired concessive-conditional construction.</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Silną sprzeczność — marzenia zawodowe są lepsze od osobistych</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Proporcjonalne zestawienie — przyznaje, że marzenia zawodowe są powszechne, ale podkreśla, że szczęście osobiste jest ważniejsze</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Przyczynę i skutek — sukces zawodowy prowadzi do szczęścia osobistego</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Tautologię — oba zdania mówią to samo innymi słowami</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Jak autor interpretuje niepewność co do przyszłości w ostatnim akapicie?</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Jako główne źródło lęku i niepokoju — należy jej unikać</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">B</div>Paradoksalnie pozytywnie — ta właśnie niepewność prawdopodobnie sprawia, że życie jest warte przeżycia</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">C</div>Negatywnie — autor uważa, że powinniśmy planować, żeby wyeliminować niepewność</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Jako argument za pesymizmem — skoro nie wiemy co przyniesie przyszłość, nie ma sensu marzyć</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jaki aspekt czasownika i dlaczego jest użyty w zdaniu „każde pokolenie marzyło o lepszym świecie"?</div>
+        <div class="question-note">This is a grammar awareness question referencing G5.</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Dokonany — bo marzenia każdego pokolenia były jednorazowym zdarzeniem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">B</div>Niedokonany — bo "marzyć" opisuje czynność trwającą i powtarzającą się w przeszłości każdego pokolenia, nie jednorazowe zdarzenie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">C</div>Dokonany — bo autor mówi o przeszłości, a nie teraźniejszości</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Aspekt nie ma znaczenia tutaj — to zdanie ogólne o historii</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Które stwierdzenie najlepiej oddaje ogólny ton i przesłanie całego tekstu?</div>
+        <div class="mc-options" id="cq7">
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">A</div>Pesymistyczny realizm — tekst ostrzega przed złudzeniami</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">B</div>Naiwny optymizm — tekst twierdzi, że każde marzenie się spełni</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','correct')"><div class="mc-letter">C</div>Wyważony humanizm — marzenia mają wartość niezależnie od wyniku; niepewność i wysiłek są wpisane w ludzkie doświadczenie i czynią je sensownym</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">D</div>Pragmatyzm ekonomiczny — tylko marzenia zawodowe i finansowe są warte wysiłku</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jakie jest Twoje największe marzenie na najbliższe pięć lat — i co już zrobiłaś, żeby je zrealizować?<br><em style="font-size:13px;opacity:0.8">What is your biggest dream for the next five years — and what have you already done to pursue it?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Gdybyś mogła zacząć karierę od nowa, co byś zmieniła? Użyj trybu warunkowego typ 2 lub 3.<br><em style="font-size:13px;opacity:0.8">If you could start your career over, what would you change? Use a Type 2 or Type 3 conditional.</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy marzenia zawodowe i osobiste mogą być ze sobą w konflikcie? Jak to pogodzić?<br><em style="font-size:13px;opacity:0.8">Can professional and personal dreams be in conflict? How can they be reconciled?</em></span></div>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Wywiad: Marzenia i rzeczywistość</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to an interview with two young Poles about their dreams and the gap between aspiration and reality. No transcript available.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Wywiad: „Marzenia a rzeczywistość"</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 5:50 · Polish B2+</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <div style="font-size:11px;color:#57534E;display:flex;align-items:center;gap:5px"><i class="ti ti-lock" style="font-size:13px"></i> No transcript</div>
+      </div>
+
+      <div style="background:var(--violet-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--violet);margin-bottom:20px;display:flex;gap:8px">
+        <i class="ti ti-info-circle"></i>
+        <span>Listen for the full range of structures from the course: <strong>conditionals</strong> (gdyby), <strong>concessive clauses</strong> (choć, mimo że), <strong>passive voice</strong> (zostać + participle), <strong>aspect choices</strong> (impf. vs pf.), <strong>probability expressions</strong>, and <strong>formal argumentative devices</strong>. Notice how naturally they all interweave.</span>
+      </div>
+
+      <!-- TRANSCRIPT (course creator reference):
+        Prowadząca: Witamy. Rozmawiamy dziś z dwójką młodych Polaków o ich marzeniach. Karolina, zacznijmy od ciebie — czego pragniesz w życiu?
+        Karolina: Marzyłam od dziecka o tym, żeby zostać reżyserem filmowym. Choć wiele osób mówiło mi, że to nierealne, nie rezygnowałam. Gdybym posłuchała tych głosów, prawdopodobnie nigdy nie rozpoczęłabym studiów filmowych.
+        Prowadząca: I jak to wyszło?
+        Karolina: Póki co trudno powiedzieć. Mój pierwszy krótkometrażowy film został pokazany na małym festiwalu — co dla mnie było ogromnym sukcesem. Nie sposób jednak zaprzeczyć, że droga do prawdziwego sukcesu jest długa i niepewna. Im więcej filmów oglądamy, tym lepiej rozumiemy, ile wysiłku się za nimi kryje.
+        Prowadząca: A ty, Michał?
+        Michał: Moje marzenie jest bardziej przyziemne. Chciałbym założyć własną firmę technologiczną. Niezależnie od tego, ile przeszkód stoi na drodze, uważam, że nie wolno rezygnować. Gdyby systemy edukacyjne bardziej wspierały przedsiębiorczość, o tyle łatwiej byłoby młodym ludziom realizować takie marzenia.
+        Prowadząca: Jak radzisz sobie z porażkami?
+        Michał: Bądź co bądź, każda porażka czegoś uczy. Mój pierwszy startup nie wypalił — zostałem zmuszony do zamknięcia go po roku. Ale gdyby nie ta porażka, nie dowiedziałbym się, co trzeba poprawić. Najważniejsze to nie przestać próbować.
+        Prowadząca: Co powiedziałybyście młodszym pokoleniom o marzeniach?
+        Karolina: Że marzenia są warte przeżycia — nawet jeśli się nie spełniają tak, jak sobie wyobrażaliśmy. Ważniejszy jest sam proces dążenia.
+        Michał: Zgadzam się. Trudno zaprzeczyć, że niepewność jest nieodłączną częścią życia. Choć bywa niepokojąca, właśnie ona sprawia, że każdy dzień ma sens.
+      -->
+
+      <div class="question-block" style="margin-top:4px">
+        <div class="question-text">1. Jakie marzenie ma Karolina i jak zareagowało na nie jej otoczenie?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Chce być aktorką — rodzina ją wspierała od początku</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Marzy o reżyserii filmowej — wiele osób mówiło, że to nierealne, ale ona nie rezygnowała</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Chce być fotografką — środowisko było neutralne wobec jej planów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Marzy o karierze muzycznej — otrzymała stypendium na studia</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Jaki sukces osiągnęła Karolina do tej pory?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Wygrała nagrodę na dużym festiwalu filmowym</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Jej pierwszy krótkometrażowy film został pokazany na małym festiwalu</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Podpisała kontrakt z dużą wytwórnią filmową</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Zakończyła studia filmowe z wyróżnieniem</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jakie jest marzenie Michała i co o nim mówi?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Chce być politykiem — uważa, że system polityczny trzeba zmienić od wewnątrz</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Chce założyć własną firmę technologiczną — uważa, że nie wolno rezygnować mimo przeszkód</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Chce pracować za granicą w korporacji — widzi w tym najlepszą ścieżkę kariery</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Chce zostać nauczycielem — marzenia materialne go nie interesują</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co przydarzyło się pierwszemu startupowi Michała i czego się z tego nauczył?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Startup odniósł umiarkowany sukces, ale Michał zdecydował się go sprzedać</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Startup nie wypalił — został zamknięty po roku; ale dzięki tej porażce Michał dowiedział się, co trzeba poprawić</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Startup działa, ale z trudnościami finansowymi — Michał szuka inwestora</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Startup jeszcze nie wystartował — Michał jest wciąż na etapie planowania</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Na czym Karolina i Michał są zgodni w kwestii marzeń?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Że marzenia zawodowe są ważniejsze od osobistych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Że marzenia mają wartość nawet jeśli się nie spełniają po drodze; niepewność i dążenie nadają życiu sens</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Że system edukacji w Polsce wystarczająco wspiera marzenia młodych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Że tylko marzenia poparte konkretnym planem finansowym są realistyczne</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jaką funkcję pełni zdanie warunkowe Karoliny: „Gdybym posłuchała tych głosów, nigdy nie rozpoczęłabym studiów filmowych"?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Wyraża żal — Karolina żałuje, że nie posłuchała tych głosów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">B</div>Tryb warunkowy typ 2 lub 3 podkreślający, że słusznie zignorowała krytykę — bo rzeczywiście poszła na studia filmowe</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">C</div>Wyraża plan na przyszłość — zamierza posłuchać tych głosów i zmienić kierunek</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Jest figurą retoryczną bez gramatycznego znaczenia — tylko dla dramatyzmu</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Co Michał mówi o systemach edukacyjnych i przedsiębiorczości?</div>
+        <div class="mc-options" id="lq7">
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">A</div>Że polskie szkoły doskonale przygotowują do zakładania firm</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','correct')"><div class="mc-letter">B</div>Że gdyby systemy edukacyjne bardziej wspierały przedsiębiorczość, łatwiej byłoby młodym realizować takie marzenia — sugeruje, że obecne wsparcie jest niewystarczające</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">C</div>Że edukacja nie ma żadnego wpływu na zdolność do zakładania firm</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">D</div>Że wykształcenie techniczne jest jedyną drogą do sukcesu w biznesie</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Final Writing Task — Full Course Consolidation</div>
+      <div style="background:var(--violet-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--violet);line-height:1.7">
+        <strong>Task:</strong> Write <strong>220–260 words</strong> in Polish — a personal reflective essay on your own dreams and the future. Use at least <strong>8 vocabulary items</strong> from this unit: <em>marzenie, dążenie, odwaga, wytrwałość, przeszkoda, porażka, rzeczywistość, więź, pokolenie, założyć firmę, powszechny, trwały</em>.<br><br>
+        Your essay must demonstrate mastery of the full course by including all of:<br>
+        · At least <strong>one concessive clause</strong> (choć, mimo że, jakkolwiek, bądź co bądź — G10)<br>
+        · At least <strong>one conditional</strong> — Type 2 or Type 3 (gdyby… — G11)<br>
+        · At least <strong>one passive construction</strong> (być/zostać + past participle — G9)<br>
+        · At least <strong>one formal argumentative device</strong> (trudno zaprzeczyć że, nie sposób, nie ulega wątpliwości — G10)<br>
+        · At least <strong>one probability expression</strong> (prawdopodobnie, najprawdopodobniej, wydaje się że — G11)<br>
+        · Evidence of <strong>correct aspect choice</strong> (impf. vs pf. — G5)
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment — Full Course<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar Consolidation <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GRAMMAR CONSOLIDATION
+═══════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 12 <span>›</span> Grammar Consolidation</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> G8 Consolidation — All Units G1–G8</div>
+  <div class="section-title">Full Grammar Revision<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Podsumowanie Gramatyki</span></div>
+  <div class="section-desc">A complete reference map of everything covered across the course. Not new grammar — a structured review to cement what you know before the final test.</div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--violet)"><i class="ti ti-layout-grid"></i> Grammar Map — Units G1–G8</div>
+    <div class="grammar-callout">Every structure below has been practised across the course. The colours link back to each unit's grammar section. Use this as a final revision reference.</div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G1 — Case System (Unit 1): The 7 cases</div>
+      <table class="gram-table">
+        <tr><th>Case</th><th>Core use</th><th>Example</th></tr>
+        <tr><td>Nominative</td><td>Subject of sentence</td><td>Dom jest duży.</td></tr>
+        <tr><td>Genitive</td><td>Possession, negation, after numbers 5+</td><td>Nie mam czasu. Dom ojca.</td></tr>
+        <tr><td>Dative</td><td>Indirect object (giving to, benefitting)</td><td>Daję mamie kwiaty.</td></tr>
+        <tr><td>Accusative</td><td>Direct object (positive sentences)</td><td>Widzę dom. Lubię kawę.</td></tr>
+        <tr><td>Instrumental</td><td>Means, accompaniment, after "być" in predicate</td><td>Jestem nauczycielką. Jadę pociągiem.</td></tr>
+        <tr><td>Locative</td><td>Location (always with preposition)</td><td>Jestem w domu. Myślę o pracy.</td></tr>
+        <tr><td>Vocative</td><td>Direct address</td><td>Mamo! Panie profesorze!</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G2 — Genitive & Dative (Unit 2)</div>
+      <p class="example-pl">Genitive of possession: <strong>dom sąsiada, książka Anny, brak czasu</strong></p>
+      <p class="example-pl">Genitive under negation: <strong>mam czas → nie mam czasu; jem słodycze → nie jem słodyczy</strong></p>
+      <p class="example-pl">Dative of interest: <strong>brakuje mi czasu, podoba mi się, smakuje jej kawa</strong></p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G3 — Locative & Prepositions (Unit 3)</div>
+      <p class="example-pl">Location (Locative): <strong>w salonie, na stole, przy oknie, o pracy</strong></p>
+      <p class="example-pl">Direction (Genitive/Accusative): <strong>idę do domu, kładę na stół</strong></p>
+      <p class="example-pl">Relative position (Genitive): <strong>obok parku, naprzeciwko szkoły, w pobliżu centrum</strong></p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G4 — Reflexive Verbs & Modal Verbs (Unit 4)</div>
+      <p class="example-pl">Reflexive: <strong>czuję się, martwię się, myję się, spotykamy się</strong></p>
+      <p class="example-pl">Modals: <strong>trzeba odpocząć · nalezy ćwiczyć · można zadzwonić · warto spróbować · nie wolno palić</strong></p>
+      <p class="example-pl">Pain: <strong>boli mnie głowa · bolą mnie nogi</strong> (body part = subject; person = Accusative)</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G5 — Verbal Aspect (Unit 5)</div>
+      <p class="example-pl">Imperfective (ongoing/habitual): <strong>czytam, pisała, będę czytać</strong></p>
+      <p class="example-pl">Perfective (completed/single): <strong>przeczytałam, napisała, przeczytam</strong></p>
+      <p class="example-pl">Aspect pairs: <strong>pisać / napisać · czytać / przeczytać · robić / zrobić · mówić / powiedzieć</strong></p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G6 — Reported Speech & Time Clauses (Unit 6)</div>
+      <p class="example-pl">Reported speech: <strong>Powiedziała, że jest zmęczona. Zapytał, gdzie mieszkam.</strong></p>
+      <p class="example-pl">Time clauses: <strong>zanim wyjdę · gdy tylko dotrę · odkąd tu mieszkam · po tym jak skończyłam</strong></p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G7 — Complex Sentences & Comparatives (Units 7–8)</div>
+      <p class="example-pl">Purpose: <strong>uczę się, żeby zdać egzamin · poszła po to, żeby porozmawiać</strong></p>
+      <p class="example-pl">Comparatives: <strong>im więcej pracujesz, tym lepsze wyniki · bardziej wolę kawę niż herbatę</strong></p>
+      <p class="example-pl">Connectors: <strong>niemniej jednak · ponadto · w związku z tym · co więcej</strong></p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">G8 Parts 1–3 — Advanced Register (Units 9–12)</div>
+      <p class="example-pl"><strong>Passive (G8 Pt1):</strong> Ustawa została uchwalona. Projekt był realizowany przez rok.</p>
+      <p class="example-pl"><strong>Concessive (G8 Pt2):</strong> choć · mimo że · jakkolwiek · choćby · o ile…o tyle · niezależnie od · bądź co bądź</p>
+      <p class="example-pl"><strong>Conditionals (G8 Pt3):</strong> Gdyby deszcz padał, zostalibyśmy w domu. (Type 2) Gdyby Edison nie próbował, żarówka nie zostałaby wynaleziona. (Type 3)</p>
+      <p class="example-pl"><strong>Probability:</strong> na pewno · najprawdopodobniej · prawdopodobnie · wydaje się że · może · nie jest wykluczone że</p>
+      <p class="example-pl"><strong>Argumentative devices:</strong> trudno zaprzeczyć że · nie sposób · nie ulega wątpliwości że · można zasadnie twierdzić że</p>
+    </div>
+  </div>
+
+  <!-- CONSOLIDATION EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Consolidation Exercise — All Grammar</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Transform or complete each sentence using the grammar structure indicated. No hints.</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Mam czas. [Negate — what happens to the object?]</div>
+      <div class="transform-task">G2: Accusative → Genitive under negation:</div>
+      <input class="transform-input" id="ti1" data-answer="nie mam czasu" placeholder="Nie mam…" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Czytam tę książkę. [Make this habitual but then describe it as a completed single act — write two sentences]</div>
+      <div class="transform-task">G5: imperfective ongoing → perfective completed (just the perfective past):</div>
+      <input class="transform-input" id="ti2" data-answer="przeczytałam tę książkę" placeholder="Przeczytałam / przeczytałem…" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Ten projekt zrealizowała firma zewnętrzna. [Make passive using "zostać"]</div>
+      <div class="transform-task">G9: Active → zostać-passive:</div>
+      <input class="transform-input" id="ti3" data-answer="ten projekt został zrealizowany przez firmę zewnętrzną" placeholder="Ten projekt został…" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Możliwe, że jutro będzie padać. [Restate using a stronger probability: "probably"]]</div>
+      <div class="transform-task">G11: Probability — use "prawdopodobnie":</div>
+      <input class="transform-input" id="ti4" data-answer="jutro prawdopodobnie będzie padać" placeholder="Jutro prawdopodobnie…" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Suppose Poland had not joined the EU. [Write a Type 3 conditional: "Gdyby Polska nie przystąpiła do UE, PKB byłoby niższe."]</div>
+      <div class="transform-task">G11: Type 3 counterfactual — write the full Polish sentence:</div>
+      <input class="transform-input" id="ti5" data-answer="gdyby polska nie przystąpiła do ue pkb byłoby niższe" placeholder="Gdyby Polska nie przystąpiła…, PKB byłoby…" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">6. Combine: "Obawy są zrozumiałe. [grant this] Wymiaru humanitarnego nie można ignorować. [main point]"</div>
+      <div class="transform-task">G10: Use "o ile…o tyle" (paired conditional-concessive):</div>
+      <input class="transform-input" id="ti6" data-answer="o ile obawy są zrozumiałe o tyle wymiaru humanitarnego nie można ignorować" placeholder="O ile obawy…, o tyle…" oninput="autoCheck('ti6','tf6')">
+      <div id="tf6" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-violet" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GAP FILL
+═══════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 12 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill — Full Course</div>
+  <div class="section-desc">Complete each sentence. Each gap tests a different grammar unit from the course. No word bank, no hints.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="font-size:15px">
+      <p class="gap-sentence">1. <input class="gap-input" id="g1" data-answer="nie mam" style="width:140px"> czasu na marzenia — ale to jest właśnie problem. <em style="font-size:12px;color:var(--ink-muted)">(G2: negate "mam")</em></p>
+      <p class="gap-sentence">2. Marzenia <input class="gap-input" id="g2" data-answer="są realizowane" style="width:210px"> przez tych, którzy nie poddają się przy pierwszej porażce. <em style="font-size:12px;color:var(--ink-muted)">(G9: passive present)</em></p>
+      <p class="gap-sentence">3. <input class="gap-input" id="g3" data-answer="choć" style="width:110px"> droga była trudna, nie żałuję żadnej decyzji. <em style="font-size:12px;color:var(--ink-muted)">(G10: concessive)</em></p>
+      <p class="gap-sentence">4. <input class="gap-input" id="g4" data-answer="gdybym wiedziała" style="width:210px"> wtedy to, co wiem teraz, postąpiłabym inaczej. <em style="font-size:12px;color:var(--ink-muted)">(G11: Type 3 conditional — 1st pers. fem.)</em></p>
+      <p class="gap-sentence">5. Odwaga <input class="gap-input" id="g5" data-answer="wymaga" style="width:150px"> ćwiczeń — tak jak mięsień. <em style="font-size:12px;color:var(--ink-muted)">(G2: wymagać + Gen.)</em></p>
+      <p class="gap-sentence">6. <input class="gap-input" id="g6" data-answer="trudno zaprzeczyć że" style="width:260px"> porażki uczą więcej niż sukcesy. <em style="font-size:12px;color:var(--ink-muted)">(G10: formal argumentative device)</em></p>
+      <p class="gap-sentence">7. <input class="gap-input" id="g7" data-answer="im więcej" style="width:170px"> próbujesz, <input class="gap-input" id="g8" data-answer="tym lepiej" style="width:150px"> rozumiesz własne możliwości. <em style="font-size:12px;color:var(--ink-muted)">(G7: im…tym)</em></p>
+      <p class="gap-sentence">8. Ten plan <input class="gap-input" id="g9" data-answer="został opracowany" style="width:230px"> przez cały zespół przez kilka miesięcy. <em style="font-size:12px;color:var(--ink-muted)">(G9: zostać-passive pf.)</em></p>
+      <p class="gap-sentence">9. <input class="gap-input" id="g10" data-answer="prawdopodobnie" style="width:200px"> nie osiągnę wszystkich marzeń — ale spróbuję. <em style="font-size:12px;color:var(--ink-muted)">(G11: probability ~75%)</em></p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 12 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice — Full Course</div>
+  <div class="section-desc">Each question tests a different grammar unit from G1–G8. Choose the correct form.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Nie lubię ______ w tłumie. (G2: negation — "tłum")</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>tłum (Accusative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>tłumu (Genitive)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>tłumem (Instrumental)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>tłumie (Locative)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. Marzymy o tym, ______ zmienić świat na lepsze. (G7: purpose clause)</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>żeby</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>który</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>jeśli</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. Ten cel ______ osiągnięty po wielu latach pracy. (G9: passive — completed single event)</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>był osiągnięty</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">B</div>został osiągnięty</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">C</div>jest osiągany</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>osiągał</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. Ona ______ całą noc, zanim zdała egzamin. (G5: completed action → single event)</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>uczyła się (impf.)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">B</div>Both are possible — but "uczyła się" (impf.) emphasises the duration/process, which fits "całą noc" best</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>nauczyła się (pf.) — duration "całą noc" makes this wrong</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>uczyłaby się (conditional)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. ______ wyniki były słabe, nie straciliśmy nadziei. (G10: concessive)</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>Ponieważ</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">B</div>Mimo że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">C</div>Jeśli</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>Dlatego że</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Gdybyśmy wcześniej zaczęli, projekt ______ na czas. (G11: Type 2 conditional — neuter "projekt")</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>będzie skończony</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">B</div>byłby skończony</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">C</div>jest skończony</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>skończyłby się</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Stopy procentowe ______ zaczną spadać w tym roku. (G11: highest probability adverb)</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>możliwe że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">B</div>najprawdopodobniej</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>nie jest wykluczone że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>mało prawdopodobne że</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. Which sentence uses the MOST appropriate formal argumentative device for an academic essay?</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>Wszyscy wiemy, że marzenia są ważne.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">B</div>Trudno zaprzeczyć, że wytrwałość jest kluczowym czynnikiem sukcesu.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">C</div>Moim zdaniem marzenia są super ważne.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>Chyba każdy wie, że bez marzeń jest ciężko.</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 12 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching — Full Course</div>
+  <div class="section-desc">Match each Polish grammar structure or expression to its description. All 8 pairs must be matched — drawn from across the course.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--violet);margin-bottom:8px">Polish structure / expression</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">Nie mam czasu.</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">Projekt został ukończony.</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">Choć było trudno, nie poddałam się.</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">Gdybyśmy zaczęli wcześniej, byłoby lepiej.</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">Im więcej ćwiczysz, tym lepiej grasz.</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">Trudno zaprzeczyć, że marzenia mają wartość.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">Napisałam raport. (pf.)</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">Trzeba próbować.</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">What it demonstrates</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">G10 formal argumentative device</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">G11 Type 2 hypothetical conditional</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">G5 perfective aspect — completed action</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">G2 Accusative → Genitive under negation</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">G4 impersonal modal verb + infinitive</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">G7 im…tym proportional comparative</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">G10 concessive clause with "choć"</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">G9 zostać-passive (completed event)</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Final Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 12 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 12 — Final Test</div>
+
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div id="test-unlocked" style="display:none">
+    <div class="completion-banner">
+      <div style="font-size:48px;margin-bottom:12px">🎉</div>
+      <h2>Kurs ukończony! — Course Complete!</h2>
+      <p>You have completed all 12 units of Polski B1–B2. From the 7 cases and reflexive verbs to Type 3 conditionals, concessive clauses, and formal academic Polish — you have worked through the full range of intermediate and upper-intermediate grammar in meaningful, thematic context.</p>
+    </div>
+
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 12 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">The final unit test covers the full course — all grammar from G1–G8, all vocabulary themes, and the complete spectrum of B1–B2+ structures. It is the hardest test in the course. Retakes allowed.</p>
+      <div style="background:var(--violet-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--violet);margin-bottom:24px;text-align:left">
+        <strong>What comes next:</strong> The Combined Test for Units 9–12 and the two Final Assessments (Mid-Course and Full Course) are also now available. These draw on everything across all 12 units. You can find them in the course home shell.
+      </div>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 12 Final Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div></div></div>
+
+<script>
+// ══ STATE ════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 350;
+
+// ══ NAV ══════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ═════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ TTS ══════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ AUDIO ════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 5:50 · Polish B2+`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying=false; document.getElementById('play-icon').className='ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+
+// ══ MC ═══════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8
+        ? '<strong>Doskonale! 8/8 — Kurs opanowany!</strong> Perfect score across the full course grammar. You correctly identified: Genitive under negation (G2); "żeby" for purpose clauses (G3/G7); "został osiągnięty" (zostać-passive, pf., G9); imperfective "uczyła się" for duration "całą noc" (G5); "Mimo że" for concessive (G10); "byłby skończony" for Type 2 conditional (G11); "najprawdopodobniej" for highest probability (G11); and "Trudno zaprzeczyć, że" as the formal academic device (G10).'
+        : '<strong>' + correct + '/8 correct.</strong> Full-course revision: Negation → Gen. (G2); żeby = purpose (G7); zostać + participle = pf. passive (G9); impf. for duration, pf. for single completed act (G5); mimo że / choć = concessive (G10); gdyby + past → -łby = conditional (G11); najprawdopodobniej = ~90% probability (G11); trudno zaprzeczyć że = formal argumentation (G10).';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR ══════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/[,\.!?]/g,'').replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  const items = [
+    { id:'ti1', key:['nie mam czasu'], ans:'nie mam czasu',
+      exp:'G2: mam + czas (Acc.) → nie mam + czasu (Gen.) — the direct object shifts to Genitive under negation. "Czas" (masc. inanimate) → "czasu" (Gen. sg.).' },
+    { id:'ti2', key:['przeczytałam','przeczytałem'], ans:'przeczytałam tę książkę',
+      exp:'G5: "Przeczytać" is perfective — it describes a single completed reading event. Contrast: "czytałam" (impf.) = was reading / read (process). Use perfective for "I have read / I finished reading".' },
+    { id:'ti3', key:['projekt został zrealizowany','przez firmę zewnętrzną'], ans:'ten projekt został zrealizowany przez firmę zewnętrzną',
+      exp:'G9: zostać-passive for completed single events. Active: firma zewnętrzna zrealizowała projekt → Passive: projekt został zrealizowany (przez firmę zewnętrzną). "Zrealizowany" agrees with "projekt" (masc. sg.).' },
+    { id:'ti4', key:['prawdopodobnie'], ans:'jutro prawdopodobnie będzie padać',
+      exp:'G11: "Prawdopodobnie" = probably (~75%). It upgrades "możliwe że" (~50%) to a moderate-high probability. "Najprawdopodobniej" (~90%) would be even stronger.' },
+    { id:'ti5', key:['gdyby','nie przystąpiła','byłoby niższe'], ans:'gdyby polska nie przystąpiła do ue pkb byłoby niższe',
+      exp:'G11: Type 3 counterfactual past. Poland DID join the EU (2004) — this imagines the alternative history. gdyby + past (nie przystąpiła) → byłoby + predicate (niższe). "Byłoby" = neuter conditional of "być" (agrees with PKB).' },
+    { id:'ti6', key:['o ile','o tyle'], ans:'o ile obawy są zrozumiałe o tyle wymiaru humanitarnego nie można ignorować',
+      exp:'G10: "O ile…o tyle" = insofar as…to that extent. The first clause concedes a point; the second asserts the main argument. Both halves of the pair are required.' },
+  ];
+  let correct = 0;
+  items.forEach((item, n) => {
+    const inp = document.getElementById(item.id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    const matched = item.key.some(k => val.includes(norm(k)));
+    if (matched) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ ' + item.exp; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 6) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Znakomicie! 6/6 — Full course grammar mastered!</strong> You correctly applied: G2 negation shift; G5 perfective aspect for completed action; G9 zostać-passive; G11 probability adverb; G11 Type 3 counterfactual conditional; and G10 paired o ile…o tyle construction.';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 4 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/6 correct.</strong> Key reminders: G2 negation → Genitive; G5 pf. = completed single event, impf. = process/habit; G9 "zostać" passive for completed events; G11 "prawdopodobnie" = ~75%; Type 3 uses gdyby + past → byłoby; G10 "o ile…o tyle" always paired.';
+  }
+}
+
+// ══ GAP FILL ═════════════════════════
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'];
+  const alts = {
+    g1: ['nie mam'],
+    g2: ['są realizowane','są spełniane'],
+    g3: ['choć','chociaż','mimo że'],
+    g4: ['gdybym wiedziała','gdybym wiedział'],
+    g5: ['wymaga'],
+    g6: ['trudno zaprzeczyć że','trudno zaprzeczyć, że'],
+    g7: ['im więcej'],
+    g8: ['tym lepiej'],
+    g9: ['został opracowany','został stworzony'],
+    g10: ['prawdopodobnie','najprawdopodobniej'],
+  };
+  let correct = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct','incorrect');
+    const val = norm(inp.value);
+    const main = norm(inp.dataset.answer);
+    const altList = (alts[id] || []).map(a => norm(a));
+    if (val === main || altList.includes(val)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const total = fields.filter(id => document.getElementById(id)).length;
+  const fb = document.getElementById('gf-feedback');
+  if (correct === total) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! ' + total + '/' + total + ' — Full course mastery!</strong> All correct across G2 (negation), G9 (passive), G10 (concessive, argumentative device, o ile…o tyle), G11 (conditional, probability), and G7 (im…tym).';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/' + total + ' correct.</strong> Full course review: "nie mam czasu" (G2 negation + Gen.); passive = są/zostają + participle (G9); "choć/mimo że" = concessive (G10); "gdybym wiedziała" = Type 3 conditional (G11); "wymagać + Gen." (G2); "trudno zaprzeczyć że" (G10); "im…tym" paired (G7); "został opracowany" (zostać-passive pf., G9); probability adverb (G11).';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (inp) { inp.value = ''; inp.classList.remove('correct','incorrect'); }
+  });
+  document.getElementById('gf-feedback').classList.remove('show');
+}
+
+// ══ MATCHING ══════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8 — Cały kurs opanowany!</strong> All paired correctly across the full course: G2 negation→Gen., G9 zostać-passive, G10 concessive + argumentative device, G11 Type 2 conditional, G7 im…tym comparative, G5 perfective aspect, G4 impersonal modal. Gratulacje — well done!';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ══════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ═══════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 20) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing the FINAL writing task of a B1–B2+ course for an English-speaking adult learner. This is a full-course consolidation assessment.
+
+Task: Write 220–260 words — a personal reflective essay on dreams and the future. Use at least 8 vocabulary items: marzenie, dążenie, odwaga, wytrwałość, przeszkoda, porażka, rzeczywistość, więź, pokolenie, założyć firmę, powszechny, trwały.
+
+Must include ALL of:
+- At least one concessive clause (choć, mimo że, jakkolwiek, bądź co bądź)
+- At least one conditional Type 2 or 3 (gdyby + past → conditional form)
+- At least one passive construction (być/zostać + past participle)
+- At least one formal argumentative device (trudno zaprzeczyć że, nie sposób, nie ulega wątpliwości że)
+- At least one probability expression (prawdopodobnie, najprawdopodobniej, wydaje się że)
+- Evidence of correct aspect choice (imperfective vs perfective)
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<3 sentences — overall assessment of fluency, grammar range, and B2+ register>",
+  "vocab_used": ["<target vocabulary correctly used>"],
+  "vocab_missing": ["<target vocabulary not used>"],
+  "concessive_structures": ["<each concessive found with comment>"],
+  "conditionals": ["<each conditional found: type, gdyby-clause, main clause, correctness>"],
+  "passive_constructions": ["<each passive found with comment on być vs zostać and agreement>"],
+  "argumentative_devices": ["<formal devices found>"],
+  "probability_expressions": ["<probability expressions found>"],
+  "aspect_comment": "<specific comment on aspect usage — examples of good choices and any errors>",
+  "register_comment": "<is the register appropriately formal/reflective for an essay?>",
+  "correct_structures": ["<3-4 specific things done well with Polish examples>"],
+  "errors": [{"error":"<phrase>","correction":"<correction>","explanation":"<which grammar rule from which unit>"}],
+  "course_completion_message": "<a warm, personalised message celebrating completion of the course and noting one strength to carry forward>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1600, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall Assessment</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  // Six grammar panels
+  const panels = [
+    { key:'concessive_structures', label:'Concessive Clauses', bg:'var(--violet-light)', col:'var(--violet)' },
+    { key:'conditionals', label:'Conditionals (Type 2/3)', bg:'var(--blue-light)', col:'var(--blue)' },
+    { key:'passive_constructions', label:'Passive Voice', bg:'var(--gold-light)', col:'var(--gold)' },
+    { key:'argumentative_devices', label:'Argumentative Devices', bg:'var(--red-light)', col:'var(--red)' },
+  ];
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">';
+  panels.forEach(p => {
+    if (r[p.key] && r[p.key].length) {
+      html += `<div style="background:${p.bg};border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:${p.col};margin-bottom:4px">${p.label}</div>`;
+      r[p.key].forEach(c => html += `<p style="margin-bottom:3px">• ${c}</p>`);
+      html += '</div>';
+    }
+  });
+  html += '</div>';
+
+  if (r.aspect_comment || r.register_comment || r.probability_expressions) {
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">';
+    if (r.aspect_comment) html += `<div style="background:var(--green-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--green);margin-bottom:4px">Aspect (G5)</div>${r.aspect_comment}</div>`;
+    if (r.register_comment) html += `<div style="background:#F5F5F4;border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--ink-muted);margin-bottom:4px">Register</div>${r.register_comment}</div>`;
+    if (r.probability_expressions && r.probability_expressions.length) {
+      html += `<div style="background:var(--cream);border:0.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--ink-muted);margin-bottom:4px">Probability</div>`;
+      r.probability_expressions.forEach(p => html += `<p style="margin-bottom:3px">• ${p}</p>`);
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+
+  if (r.vocab_used && r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v => html += `<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">${v}</span>`);
+    html += '</div></div>';
+  }
+  if (r.correct_structures && r.correct_structures.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s => html += `<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ ${s}</p>`);
+    html += '</div>';
+  }
+  if (r.errors && r.errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Errors to correct</div>';
+    r.errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+  if (r.course_completion_message) {
+    html += `<div style="background:linear-gradient(135deg,var(--violet-light),var(--blue-light));border-radius:10px;padding:16px 18px;font-size:14px;color:var(--ink);line-height:1.6;margin-top:8px"><div style="font-weight:600;color:var(--violet);margin-bottom:6px">🎉 Course Complete — Message from your tutor</div>${r.course_completion_message}</div>`;
+  }
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 2: Rodzina i Relacje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --purple:#6D28D9;--purple-light:#EDE9FE;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.nav-prev{padding:12px 20px;font-size:11px;color:#57534E;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all 0.15s;margin-top:auto;border-top:0.5px solid rgba(255,255,255,0.06)}
+.nav-prev:hover{color:#A8A29E}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+
+/* ── GRAMMAR BADGE ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--purple-light);color:var(--purple);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--purple-light);border:0.5px solid rgba(109,40,217,0.2);border-left:3px solid var(--purple);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--purple)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.6}
+.grammar-rule-title{font-weight:500;color:var(--purple);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic}
+.example-en{color:var(--ink-muted);font-size:13px}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+
+/* ── CARDS ── */
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.9;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:20px 24px;margin-bottom:16px}
+.reading-text p{margin-bottom:14px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--purple-light);color:var(--purple);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:150px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:170px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-purple:hover{background:#5B21B6}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:2px 6px;min-width:100px;width:120px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.word-bank-item{background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:6px;font-size:13px;cursor:pointer;color:var(--ink);font-weight:400;transition:all 0.15s;user-select:none}
+.word-bank-item:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+.word-bank-item.selected-bank{border-color:var(--blue);color:var(--blue);background:var(--blue-light);font-weight:500}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:20px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+.transcript-toggle{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;white-space:nowrap}
+.transcript-toggle:hover{background:rgba(255,255,255,0.2)}
+.transcript-box{background:var(--cream);border-radius:8px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--ink-muted);line-height:1.8;display:none}
+.transcript-box.show{display:block}
+.transcript-box p+p{margin-top:8px}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:160px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── INFO NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── TRANSFORMATION EXERCISE ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:4px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .vocab-tip{min-width:120px;left:0;transform:none}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="app">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════════════════════════════ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+
+  <div class="unit-label">Unit 2 — Rodzina i Relacje</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')">
+    <span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson
+    <span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span>
+  </div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')">
+    <span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G &amp; D Cases
+    <span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span>
+  </div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')">
+    <span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill
+    <span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span>
+  </div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')">
+    <span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice
+    <span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span>
+  </div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')">
+    <span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching
+    <span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span>
+  </div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')">
+      <span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test
+      <span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span>
+    </div>
+  </div>
+
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 1 file to return.')">
+    <span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 1 — Praca i Kariera
+  </div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px">
+    <span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 3 — Dom i Mieszkanie
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 2 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════════════════════════ -->
+<div id="main">
+<div class="main-inner">
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: LESSON
+══════════════════════════════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 2 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Rodzina i Relacje<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Family &amp; Relationships</span></div>
+  <div class="section-desc">Explore family life, relationships and emotions in Polish. This lesson focuses on vocabulary for describing people and relationships, and introduces the Genitive and Dative cases in their natural context.</div>
+
+  <!-- Steps -->
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- ── READING ── -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Artykuł</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover or tap <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold words</span> for vocabulary tips. Tap <span style="background:var(--purple-light);color:var(--purple);padding:1px 6px;border-radius:3px;font-weight:500">purple words</span> for grammar notes. Click <i class="ti ti-volume"></i> to hear pronunciation.</span>
+      </div>
+
+      <div class="reading-text">
+        <p>Marta pochodzi z <span class="vocab-highlight">dużej rodziny<span class="vocab-tip">duża rodzina = large family<br>(Gen. after "z" = from)</span></span>. Ma <span class="vocab-highlight">dwóch braci<span class="vocab-tip">dwóch braci = two brothers<br>(Gen. pl. after numbers 2–4)</span></span> i <span class="vocab-highlight">starszą siostrę<span class="vocab-tip">starsza siostra = older sister<br>(Acc. after "ma" = has)</span></span>. Jej <span class="grammar-highlight">rodzice<span class="vocab-tip">rodzice = parents (Nominative)<br>Gen.: rodziców</span></span> mieszkają na wsi, niedaleko Krakowa. Marta bardzo <span class="vocab-highlight">tęskni za nimi<span class="vocab-tip">tęsknić za + Instrumental<br>= to miss someone</span></span>, bo od trzech lat pracuje i studiuje w Warszawie.</p>
+
+        <p>Jej <span class="grammar-highlight">starszy brat<span class="vocab-tip">brat = brother (Nom.)<br>Gen.: brata | brakuje mi brata</span></span>, Tomek, jest żonaty i ma <span class="vocab-highlight">dwoje dzieci<span class="vocab-tip">dwoje dzieci = two children<br>(Gen. after numbers with mixed/neuter nouns)</span></span>. Marta <span class="vocab-highlight">uwielbia<span class="vocab-tip">uwielbiać = to adore / love<br>(imperfective, 3rd pers. sg.)</span></span> spędzać czas ze swoimi <span class="grammar-highlight">siostrzeńcami<span class="vocab-tip">siostrzeniec → siostrzeńcami<br>(Instrumental pl. = nephews)<br>after "z" + Instrumental</span></span>. Młodszy brat, Paweł, jest jeszcze <span class="vocab-highlight">kawalerem<span class="vocab-tip">kawaler = bachelor<br>(Instrumental after "jest")</span></span> i mieszka w Gdańsku.</p>
+
+        <p>Marta jest <span class="vocab-highlight">bardzo blisko<span class="vocab-tip">być blisko kogoś<br>= to be close to someone<br>(Gen. after "blisko")</span></span> ze swoją siostrą Anią. Ania <span class="grammar-highlight">brakuje jej<span class="vocab-tip">brakować + Gen. subject + Dat. person<br>= to miss / to lack<br>Brakuje mi siostry = I miss my sister</span></span> najbardziej, gdy jest zmęczona albo smutna. Dzwonią do siebie <span class="vocab-highlight">prawie codziennie<span class="vocab-tip">prawie codziennie = almost every day<br>(adverb of frequency)</span></span> i rozmawiają o wszystkim.</p>
+
+        <p>W tym roku Marta poznała <span class="vocab-highlight">swojego chłopaka<span class="vocab-tip">chłopak → chłopaka (Gen./Acc.)<br>= boyfriend (Acc. after "poznała")</span></span>, Karola. <span class="vocab-highlight">Bardzo jej się podoba<span class="vocab-tip">podobać się + Dat.<br>= to like / to be attracted to<br>Podoba mi się = I like it/him/her</span></span> jego poczucie humoru i spokój. Karol jest <span class="vocab-highlight">rozwiedziony<span class="vocab-tip">rozwiedziony = divorced<br>(adjective, masc. form)</span></span> i ma <span class="vocab-highlight">córkę<span class="vocab-tip">córka → córkę (Accusative)<br>= daughter</span></span> z poprzedniego <span class="grammar-highlight">związku<span class="vocab-tip">związek → związku (Gen.)<br>= relationship / union<br>Gen. after "z poprzedniego"</span></span>. Marta <span class="vocab-highlight">dobrze dogaduje się<span class="vocab-tip">dogadywać się z kimś = to get along with sb<br>(reflexive verb + z + Instrumental)</span></span> z jego córką i cieszy się, że tworzą razem <span class="vocab-highlight">zgraną grupę<span class="vocab-tip">zgrana grupa = a close-knit group<br>(Acc. after "tworzą")</span></span>.</p>
+
+        <p>Rodzina dla Marty oznacza przede wszystkim <span class="vocab-highlight">wzajemne wsparcie<span class="vocab-tip">wzajemne wsparcie = mutual support<br>(Acc. after "oznacza")</span></span> i <span class="vocab-highlight">zaufanie<span class="vocab-tip">zaufanie = trust<br>(Acc. — neuter noun)</span></span>. Uważa, że nie trzeba być <span class="vocab-highlight">spokrewnionym<span class="vocab-tip">spokrewniony = related by blood<br>(Instr. adj. after "być")</span></span>, żeby tworzyć prawdziwą rodzinę. Jej <span class="grammar-highlight">najbliżsi<span class="vocab-tip">najbliżsi = closest ones / those dearest<br>(Nom. pl. — substantivised adj.)</span></span> to zarówno jej krewni, jak i przyjaciele, <span class="vocab-highlight">którym ufa bezgranicznie<span class="vocab-tip">ufać + Dative<br>= to trust someone<br>Ufam ci = I trust you</span></span>.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Purple highlights show Genitive and Dative cases in action — the grammar focus of this unit.</p>
+
+      <!-- Vocab table -->
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear pronunciation</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>rodzina<button class="vocab-audio-btn" onclick="speak('rodzina')"><i class="ti ti-volume"></i></button></td><td>rodziny (Gen.)</td><td>family</td></tr>
+        <tr><td>brat<button class="vocab-audio-btn" onclick="speak('brat')"><i class="ti ti-volume"></i></button></td><td>brata (Gen.) / braci (pl.)</td><td>brother</td></tr>
+        <tr><td>siostra<button class="vocab-audio-btn" onclick="speak('siostra')"><i class="ti ti-volume"></i></button></td><td>siostry (Gen.)</td><td>sister</td></tr>
+        <tr><td>rodzice<button class="vocab-audio-btn" onclick="speak('rodzice')"><i class="ti ti-volume"></i></button></td><td>rodziców (Gen. pl.)</td><td>parents</td></tr>
+        <tr><td>tęsknić za<button class="vocab-audio-btn" onclick="speak('tęsknić')"><i class="ti ti-volume"></i></button></td><td>+ Instrumental</td><td>to miss (sb/sth)</td></tr>
+        <tr><td>brakować mi<button class="vocab-audio-btn" onclick="speak('brakować')"><i class="ti ti-volume"></i></button></td><td>+ Genitive</td><td>I miss / I lack</td></tr>
+        <tr><td>podobać się<button class="vocab-audio-btn" onclick="speak('podobać się')"><i class="ti ti-volume"></i></button></td><td>+ Dative</td><td>to like / to be attracted to</td></tr>
+        <tr><td>ufać<button class="vocab-audio-btn" onclick="speak('ufać')"><i class="ti ti-volume"></i></button></td><td>+ Dative</td><td>to trust (someone)</td></tr>
+        <tr><td>dogadywać się<button class="vocab-audio-btn" onclick="speak('dogadywać się')"><i class="ti ti-volume"></i></button></td><td>+ z + Instrumental</td><td>to get along with (sb)</td></tr>
+        <tr><td>związek<button class="vocab-audio-btn" onclick="speak('związek')"><i class="ti ti-volume"></i></button></td><td>związku (Gen.)</td><td>relationship / union</td></tr>
+        <tr><td>wsparcie<button class="vocab-audio-btn" onclick="speak('wsparcie')"><i class="ti ti-volume"></i></button></td><td>wsparcia (Gen.)</td><td>support</td></tr>
+        <tr><td>zaufanie<button class="vocab-audio-btn" onclick="speak('zaufanie')"><i class="ti ti-volume"></i></button></td><td>zaufania (Gen.)</td><td>trust</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMPREHENSION ── -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Choose the best answer based on the text.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Skąd pochodzi Marta?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Z Warszawy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Z wsi niedaleko Krakowa</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Z Gdańska</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Z dużego miasta na południu Polski</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Ile rodzeństwa ma Marta?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Jednego brata i jedną siostrę</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Dwóch braci i starszą siostrę</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Troje rodzeństwa — wszystkich braci</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Tylko jedną siostrę</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Dlaczego Marta tęskni za rodzicami?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Bo rodzice są chorzy i potrzebują pomocy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">B</div>Bo rzadko do niej dzwonią</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">C</div>Bo od trzech lat pracuje i studiuje w Warszawie, z dala od domu</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Bo przeprowadziła się za granicę</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co Marcie podoba się w Karolu?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">A</div>Jego poczucie humoru i spokój</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">B</div>Jego wygląd i inteligencja</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Jego pracowitość i ambicja</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Jego rodzina i przyjaciele</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co rodzina oznacza dla Marty?</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Tylko więzy krwi i wspólne nazwisko</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">B</div>Wspólne mieszkanie i codzienne rozmowy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">C</div>Wzajemne wsparcie i zaufanie — nie tylko więzy krwi</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Obowiązki wobec rodziców i rodzeństwa</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jak Marta dogaduje się z córką Karola?</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Trudno im się porozumieć — córka jest nieufna</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">B</div>Dobrze — cieszą się, że tworzą razem zgraną grupę</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">C</div>Nie poznały się jeszcze osobiście</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Tekst nie wspomina o córce Karola</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy masz dużą czy małą rodzinę? Opisz ją w kilku słowach.<br><em style="font-size:13px;opacity:0.8">Do you have a large or small family? Describe it briefly.</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Z kim w rodzinie jesteś najbliżej? Dlaczego?<br><em style="font-size:13px;opacity:0.8">Who in your family are you closest to? Why?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy uważasz, że przyjaźń może być tak samo ważna jak rodzina?<br><em style="font-size:13px;opacity:0.8">Do you think friendship can be just as important as family?</em></span></div>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:12px">You'll draw on these ideas in the writing task at the end of the lesson.</p>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LISTENING ── -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Rozmowa rodzinna</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the conversation between Marta and her sister Ania. Show the transcript if needed, then answer all questions below.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()" id="play-btn-el">
+          <i class="ti ti-player-play" id="play-icon"></i>
+        </button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Rozmowa sióstr — Sisters' phone call</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 3:48 · Polish B1–B2</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <button class="transcript-toggle" onclick="toggleTranscript()"><i class="ti ti-file-text"></i> Transcript</button>
+      </div>
+
+      <div class="transcript-box" id="transcript-box">
+        <strong style="color:var(--ink);display:block;margin-bottom:12px;font-size:14px">Transcript — Rozmowa sióstr (telefon)</strong>
+        <p><strong style="color:var(--ink)">Ania:</strong> Cześć, Marta! Jak się czujesz? Dawno nie dzwoniłaś.</p>
+        <p><strong style="color:var(--ink)">Marta:</strong> Cześć, Aniu! Przepraszam, wiesz, praca i studia… <em>Brakuje mi</em> czasu na wszystko. Ale dziś wieczór jestem wolna i pomyślałam o tobie.</p>
+        <p><strong style="color:var(--ink)">Ania:</strong> Miło to słyszeć. Słuchaj, mam ci coś do powiedzenia. Pamiętasz Michała, <em>mojego kolegi z pracy?</em></p>
+        <p><strong style="color:var(--ink)">Marta:</strong> Tego spokojnego? Tak, pamiętam. Co się stało?</p>
+        <p><strong style="color:var(--ink)">Ania:</strong> Zaczęliśmy się spotykać. Od miesiąca. On jest naprawdę wyjątkowy — <em>ufam mu</em> bardziej niż komukolwiek.</p>
+        <p><strong style="color:var(--ink)">Marta:</strong> Ania, to cudownie! <em>Cieszę się z twojego szczęścia</em> naprawdę. Opowiedz mi o nim więcej. Co ci się w nim <em>podoba</em>?</p>
+        <p><strong style="color:var(--ink)">Ania:</strong> Jest bardzo uważny i empatyczny. Słucha mnie, kiedy mam problem. I co ważne — <em>dobrze dogaduje się</em> z moimi dziećmi. One go lubią.</p>
+        <p><strong style="color:var(--ink)">Marta:</strong> To najważniejsze, szczególnie dla ciebie jako mamy. A rodzice wiedzą?</p>
+        <p><strong style="color:var(--ink)">Ania:</strong> Jeszcze nie. Trochę <em>boję się ich reakcji</em> — wiesz, jak mama jest… wymagająca. <em>Brakuje mi</em> odwagi, żeby powiedzieć im wprost.</p>
+        <p><strong style="color:var(--ink)">Marta:</strong> Nie martw się. Jestem pewna, że <em>ucieszy się</em> dla ciebie, jak tylko pozna Michała. Potrzeba tylko trochę czasu.</p>
+        <p><strong style="color:var(--ink)">Ania:</strong> Masz rację. Dziękuję, że zawsze możesz na ciebie liczyć. <em>Brakuje mi cię</em> bardzo, wiesz?</p>
+        <p><strong style="color:var(--ink)">Marta:</strong> Mnie też ciebie. Może przyjedziesz do Warszawy w przyszłym miesiącu? Mam wolny weekend.</p>
+        <p><strong style="color:var(--ink)">Ania:</strong> Świetny pomysł! Zarezerwuję bilet. Tęsknię za tobą!</p>
+      </div>
+
+      <!-- Listening questions -->
+      <div class="question-block" style="margin-top:8px">
+        <div class="question-text">1. Dlaczego Marta nie dzwoniła do Ani od jakiegoś czasu?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Bo pokłóciły się o coś ważnego</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Bo brakuje jej czasu — ma dużo pracy i studiów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Bo zgubiła telefon</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Bo była za granicą bez zasięgu</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Co Ania ma do powiedzenia Marcie?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Że zmieniła pracę</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Że zaczęła się spotykać z kolegą z pracy, Michałem</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Że rodzice są chorzy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Że przyjedzie do Warszawy na stałe</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Co Ania mówi o Michale? Które zdanie jest PRAWDZIWE?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Michał nie lubi dzieci Ani</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">B</div>Ania go nie zna jeszcze zbyt dobrze</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">C</div>Ania mu ufa i jej dzieci go lubią</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Michał jest kolegą Marty ze studiów</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Dlaczego Ania boi się powiedzieć rodzicom o Michale?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Bo Michał jest z innego kraju</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Bo mama jest wymagająca i Ania brakuje jej odwagi</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Bo tata nie lubi nowych znajomych córki</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Bo związek jest zbyt nowy, żeby o nim mówić</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Jak rozmowa się kończy?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Marta obiecuje odwiedzić Anię w jej mieście</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Ania planuje przyjechać do Warszawy w przyszłym miesiącu</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Siostry kłócą się o termin spotkania</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Postanawiają razem zadzwonić do rodziców</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Która z poniższych form jest użyta w dialogu dla wyrażenia "I miss you"?</div>
+        <div class="question-note">Think about what you heard in the transcript.</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Tęsknię za tobą <em>and</em> Brakuje mi cię — they mean the same thing</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">B</div>Only "Tęsknię za tobą" was used</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">C</div>Both "Brakuje mi cię" and "Tęsknię za tobą" were used — two ways to say "I miss you"</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Only "Brakuje mi cię" was used</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WRITING ── -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>100–140 words</strong> in Polish describing your family or an important relationship. Use at least <strong>5 vocabulary items</strong> from this lesson: <em>rodzina, brakować mi, tęsknić za, podobać się, ufać, dogadywać się, wsparcie, zaufanie, związek, rodzeństwo</em>.<br><br>
+        Try to use at least one <strong>Genitive</strong> construction (e.g. <em>nie mam brata, brakuje mi siostry</em>) and one <strong>Dative</strong> construction (e.g. <em>podoba mi się, ufam jej, brakuje mi cię</em>).
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: GRAMMAR — G2: Genitive & Dative in Depth
+══════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 2 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G2</div>
+  <div class="section-title">Genitive &amp; Dative Cases<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Dopełniacz i Celownik</span></div>
+  <div class="section-desc">These two cases appear constantly in Polish — especially in family and relationship language. Study each rule, then test yourself in the exercises that follow.</div>
+
+  <!-- GENITIVE -->
+  <div class="card">
+    <div class="card-title" style="color:var(--red)"><i class="ti ti-git-branch"></i> The Genitive Case — Dopełniacz</div>
+    <div class="grammar-callout">
+      The Genitive answers the questions <strong>kogo? czego?</strong> (of whom? of what?). It is the most frequently used case after Nominative and Accusative, and has several distinct functions.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. Possession — "of" / "belonging to"</div>
+      <p class="example-pl">To jest dom <strong>mojej mamy</strong>. — This is my mother's house.</p>
+      <p class="example-pl">Numer telefonu <strong>brata</strong> — my brother's phone number</p>
+      <p class="example-en">The Genitive replaces English "'s" and "of".</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. Absence & Negation — "there is no…" / "I don't have…"</div>
+      <p class="example-pl">Nie mam <strong>siostry</strong>. — I don't have a sister.</p>
+      <p class="example-pl">Nie ma <strong>ojca</strong> w domu. — Father isn't home.</p>
+      <p class="example-en">After negation, the direct object shifts from Accusative → Genitive. This is one of the most common B1 errors.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">3. After "brakować" — "to miss / to lack"</div>
+      <p class="example-pl"><strong>Brakuje mi</strong> siostry. — I miss my sister. (lit. "of-sister lacks to-me")</p>
+      <p class="example-pl"><strong>Brakuje mi</strong> czasu. — I don't have enough time.</p>
+      <p class="example-en">The thing missed/lacking takes the Genitive. The person who misses it takes the Dative.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">4. After quantities & numbers (2–4 and above)</div>
+      <p class="example-pl">Mam <strong>dwóch braci</strong>. — I have two brothers. (Gen. pl.)</p>
+      <p class="example-pl">Dużo <strong>rodziny</strong> — a lot of family</p>
+      <p class="example-en">Numbers 2–4 use Gen. singular; 5+ and quantities use Gen. plural.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">5. After specific prepositions</div>
+      <p class="example-pl"><strong>do</strong> domu (to home) · <strong>z</strong> rodziny (from the family) · <strong>od</strong> mamy (from mum) · <strong>dla</strong> siostry (for sister) · <strong>bez</strong> wsparcia (without support) · <strong>u</strong> babci (at grandma's)</p>
+    </div>
+
+    <div style="background:var(--cream);border-radius:8px;padding:16px;margin-top:16px">
+      <div class="card-title" style="margin-bottom:12px"><i class="ti ti-table"></i> Genitive endings at a glance</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <tr style="background:var(--ink);color:#fff"><td style="padding:8px;border-radius:4px 0 0 0">Gender</td><td style="padding:8px">Nominative</td><td style="padding:8px">Genitive</td><td style="padding:8px;border-radius:0 4px 0 0">Example</td></tr>
+        <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;font-weight:500;color:var(--red)">Masc. animate</td><td style="padding:8px;font-style:italic">brat, ojciec</td><td style="padding:8px;font-style:italic">brata, ojca</td><td style="padding:8px;color:var(--ink-muted)">nie mam brata</td></tr>
+        <tr style="border-bottom:0.5px solid var(--border);background:#FAF7F2"><td style="padding:8px;font-weight:500;color:var(--red)">Feminine</td><td style="padding:8px;font-style:italic">mama, siostra</td><td style="padding:8px;font-style:italic">mamy, siostry</td><td style="padding:8px;color:var(--ink-muted)">nie mam mamy</td></tr>
+        <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;font-weight:500;color:var(--red)">Neuter</td><td style="padding:8px;font-style:italic">dziecko, zaufanie</td><td style="padding:8px;font-style:italic">dziecka, zaufania</td><td style="padding:8px;color:var(--ink-muted)">nie mam zaufania</td></tr>
+        <tr><td style="padding:8px;font-weight:500;color:var(--red)">Plural</td><td style="padding:8px;font-style:italic">rodzice, dzieci</td><td style="padding:8px;font-style:italic">rodziców, dzieci</td><td style="padding:8px;color:var(--ink-muted)">nie mam rodziców</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- DATIVE -->
+  <div class="card">
+    <div class="card-title" style="color:var(--purple)"><i class="ti ti-git-merge"></i> The Dative Case — Celownik</div>
+    <div class="grammar-callout">
+      The Dative answers <strong>komu? czemu?</strong> (to whom? for what?). It marks the <strong>indirect object</strong> — the person who receives, benefits, or is affected. It is also required by a group of very common verbs.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. Indirect object — giving, showing, telling</div>
+      <p class="example-pl">Dałam <strong>siostrze</strong> prezent. — I gave my sister a gift.</p>
+      <p class="example-pl">Powiedz <strong>mamie</strong>, że zadzwonię. — Tell mum I'll call.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. "podobać się" — to like / to be attracted to</div>
+      <p class="example-pl">Podoba <strong>mi się</strong> jego spokój. — I like his calmness.</p>
+      <p class="example-pl">Podoba <strong>jej się</strong> Karol. — She likes Karol.</p>
+      <p class="example-en">The person who likes something takes Dative pronouns: mi, ci, mu, jej, nam, wam, im.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">3. "brakować" — the person who misses takes Dative</div>
+      <p class="example-pl">Brakuje <strong>mi</strong> siostry. — I miss my sister. (mi = Dative of ja)</p>
+      <p class="example-pl">Brakuje <strong>jej</strong> rodziców. — She misses her parents.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">4. "ufać" — to trust</div>
+      <p class="example-pl">Ufam <strong>ci</strong>. — I trust you.</p>
+      <p class="example-pl">Ufam <strong>mojej siostrze</strong>. — I trust my sister.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">5. "pomagać" — to help; "dziękować" — to thank</div>
+      <p class="example-pl">Pomagam <strong>mamie</strong>. — I help mum.</p>
+      <p class="example-pl">Dziękuję <strong>ci</strong>. — Thank you (to you).</p>
+    </div>
+
+    <div style="background:var(--cream);border-radius:8px;padding:16px;margin-top:16px">
+      <div class="card-title" style="margin-bottom:12px"><i class="ti ti-id-badge"></i> Dative personal pronouns</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>ja</strong> → <span style="color:var(--purple)">mi / mnie</span></span>
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>ty</strong> → <span style="color:var(--purple)">ci / tobie</span></span>
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>on</strong> → <span style="color:var(--purple)">mu / jemu</span></span>
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>ona</strong> → <span style="color:var(--purple)">jej</span></span>
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>my</strong> → <span style="color:var(--purple)">nam</span></span>
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>wy</strong> → <span style="color:var(--purple)">wam</span></span>
+        <span style="background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px"><strong>oni/one</strong> → <span style="color:var(--purple)">im</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR QUICK EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Quick Grammar Check — Negation Transformation</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Rewrite each positive sentence as a negative one. The direct object must change from Accusative to Genitive.</p>
+
+    <div class="transform-row">
+      <div class="transform-task">Example: Mam brata. → <span style="color:var(--green)">Nie mam brata.</span> ✓ (brat → brata, Gen.)</div>
+    </div>
+
+    <div class="transform-row" id="tr1">
+      <div class="transform-original">1. Mam siostrę.</div>
+      <div class="transform-task">Rewrite as negative:</div>
+      <input class="transform-input" id="ti1" data-answer="nie mam siostry" placeholder="Nie mam…" oninput="checkTransform('ti1','tr1')">
+      <div class="transform-feedback" id="tf1" style="font-size:13px;margin-top:6px;display:none"></div>
+    </div>
+
+    <div class="transform-row" id="tr2">
+      <div class="transform-original">2. Ona ma brata.</div>
+      <div class="transform-task">Rewrite as negative:</div>
+      <input class="transform-input" id="ti2" data-answer="ona nie ma brata" placeholder="Ona nie ma…" oninput="checkTransform('ti2','tr2')">
+      <div class="transform-feedback" id="tf2" style="font-size:13px;margin-top:6px;display:none"></div>
+    </div>
+
+    <div class="transform-row" id="tr3">
+      <div class="transform-original">3. Mamy rodziców w Krakowie.</div>
+      <div class="transform-task">Rewrite as negative:</div>
+      <input class="transform-input" id="ti3" data-answer="nie mamy rodziców w krakowie" placeholder="Nie mamy…" oninput="checkTransform('ti3','tr3')">
+      <div class="transform-feedback" id="tf3" style="font-size:13px;margin-top:6px;display:none"></div>
+    </div>
+
+    <div class="transform-row" id="tr4">
+      <div class="transform-original">4. Ufam mojej mamie.</div>
+      <div class="transform-task">Does the Dative change under negation? Rewrite as negative:</div>
+      <input class="transform-input" id="ti4" data-answer="nie ufam mojej mamie" placeholder="Nie ufam…" oninput="checkTransform('ti4','tr4')">
+      <div class="transform-feedback" id="tf4" style="font-size:13px;margin-top:6px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-purple" onclick="checkAllTransforms()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end page-grammar -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: GAP FILL
+══════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 2 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence with the correct Polish form. Hints in the gaps are in English. The word bank contains <strong>two forms of each word</strong> — only one is grammatically correct in each sentence.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="line-height:2.9;font-size:15px">
+      <p>1. Nie mam <input class="gap-input" id="g1" data-answer="siostry" placeholder="sister (Gen.)…">.</p>
+      <p>2. Bardzo <input class="gap-input" id="g2" data-answer="brakuje mi" placeholder="I miss (Dat.)…"> <input class="gap-input" id="g3" data-answer="rodziców" placeholder="parents (Gen.)…">.</p>
+      <p>3. Podoba <input class="gap-input" id="g4" data-answer="mi się" placeholder="I like (Dat.)…"> jego <input class="gap-input" id="g5" data-answer="poczucie humoru" placeholder="sense of humour…">.</p>
+      <p>4. Dałam <input class="gap-input" id="g6" data-answer="mamie" placeholder="to mum (Dat.)…"> piękny prezent.</p>
+      <p>5. Ufam <input class="gap-input" id="g7" data-answer="jej" placeholder="her (Dat. pron.)…"> bardziej niż komukolwiek.</p>
+      <p>6. Tomek ma <input class="gap-input" id="g8" data-answer="dwoje dzieci" placeholder="two children (Gen.)…"> i mieszka w Gdańsku.</p>
+      <p>7. Marta dobrze <input class="gap-input" id="g9" data-answer="dogaduje się" placeholder="gets along…"> z <input class="gap-input" id="g10" data-answer="córką" placeholder="daughter (Instr.)…"> Karola.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="card" style="background:var(--cream)">
+    <div class="card-title">Word Bank — click a word, then click a gap</div>
+    <p style="font-size:13px;color:var(--ink-muted);margin-bottom:12px">Each correct answer has one distractor — choose carefully!</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="word-bank">
+      <button class="word-bank-item" data-word="siostry" onclick="selectBank(this)">siostry</button>
+      <button class="word-bank-item" data-word="siostrę" onclick="selectBank(this)">siostrę</button>
+      <button class="word-bank-item" data-word="brakuje mi" onclick="selectBank(this)">brakuje mi</button>
+      <button class="word-bank-item" data-word="brakuje mnie" onclick="selectBank(this)">brakuje mnie</button>
+      <button class="word-bank-item" data-word="rodziców" onclick="selectBank(this)">rodziców</button>
+      <button class="word-bank-item" data-word="rodzice" onclick="selectBank(this)">rodzice</button>
+      <button class="word-bank-item" data-word="mi się" onclick="selectBank(this)">mi się</button>
+      <button class="word-bank-item" data-word="mnie się" onclick="selectBank(this)">mnie się</button>
+      <button class="word-bank-item" data-word="poczucie humoru" onclick="selectBank(this)">poczucie humoru</button>
+      <button class="word-bank-item" data-word="poczucia humoru" onclick="selectBank(this)">poczucia humoru</button>
+      <button class="word-bank-item" data-word="mamie" onclick="selectBank(this)">mamie</button>
+      <button class="word-bank-item" data-word="mamę" onclick="selectBank(this)">mamę</button>
+      <button class="word-bank-item" data-word="jej" onclick="selectBank(this)">jej</button>
+      <button class="word-bank-item" data-word="ją" onclick="selectBank(this)">ją</button>
+      <button class="word-bank-item" data-word="dwoje dzieci" onclick="selectBank(this)">dwoje dzieci</button>
+      <button class="word-bank-item" data-word="dwa dzieci" onclick="selectBank(this)">dwa dzieci</button>
+      <button class="word-bank-item" data-word="dogaduje się" onclick="selectBank(this)">dogaduje się</button>
+      <button class="word-bank-item" data-word="dogaduje" onclick="selectBank(this)">dogaduje</button>
+      <button class="word-bank-item" data-word="córką" onclick="selectBank(this)">córką</button>
+      <button class="word-bank-item" data-word="córki" onclick="selectBank(this)">córki</button>
+    </div>
+    <p style="font-size:12px;color:var(--ink-muted);margin-top:10px" id="bank-status">No word selected. Click a word above, then click a gap.</p>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end gap fill -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+══════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 2 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the grammatically correct option. Questions focus on Genitive, Dative, and the verbs that govern them.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Nie mam ______ w Warszawie.</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>rodzina</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>rodziny</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>rodzinę</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>rodzinie</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. Brakuje ______ mojego brata.</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>mnie (Accusative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>mi (Dative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>ja (Nominative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>mną (Instrumental)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. Podoba ______ jej charakter.</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>mnie się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">B</div>mi się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">C</div>ja się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>mną się</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. To jest zdjęcie ______ .</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>moja rodzina</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">B</div>mojej rodziny</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>moją rodzinę</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>mojej rodzinie</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. Ufam ______ całkowicie.</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>ją</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">B</div>ona</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">C</div>jej</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>nią</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Marta ma ______ .</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>dwa bracia</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">B</div>dwóch braci</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">C</div>dwa braty</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>dwu braci</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Dziękuję ______ za pomoc.</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>cię</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">B</div>ci</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>ty</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>tobą</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. Ona pochodzi ______ dużej rodziny.</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>w</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">B</div>na</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">C</div>z</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>do</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end mc -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: MATCHING
+══════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 2 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each Polish phrase to its English meaning. Click a left item, then its right pair. All 8 pairs need to be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">Polish</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">Brakuje mi siostry.</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">Podoba mi się.</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">Ufam jej.</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">Nie mam brata.</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">Tęsknię za tobą.</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">Dziękuję ci.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">Dogaduję się z nią.</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">Pomagam mamie.</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">I miss you.</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">I trust her.</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">I help mum.</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">I miss my sister.</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">Thank you (to you).</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">I don't have a brother.</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">I like it / I'm attracted.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">I get along with her.</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end matching -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: UNIT TEST
+══════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 2 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 2 Test</div>
+  <div class="section-desc">Complete all five sections — Lesson, Grammar, Gap Fill, Multiple Choice, and Matching — to unlock the test.</div>
+
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock the test.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 2 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">You've completed all 5 sections. The full test combines 25 questions covering the reading, listening, grammar, vocabulary, and case system. Any mistakes link back to specific sections for targeted revision. You can retake as many times as needed.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 2 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div><!-- main-inner -->
+</div><!-- main -->
+</div><!-- app -->
+
+<script>
+// ══ STATE ══════════════════════════════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let bankWord = null, selectedGap = null;
+let mcAnswered = new Set();
+let mcCorrect = {};
+const AUDIO_DURATION = 228;
+
+// ══ NAVIGATION ════════════════════════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// ══ LESSON STEPS ══════════════════════════════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp: 'read', listen: 'comp', write: 'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+
+function updateStepUI(current) {
+  ['read', 'comp', 'listen', 'write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active', 'done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ AUDIO (simulated) ═════════════════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i = 1; i <= 7; i++) { const b = document.getElementById('ab' + i); if (b) b.style.height = (Math.random() * 20 + 4) + 'px'; } }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs / 60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s < 10 ? '0' + s : s} / 3:48 · Polish B1–B2`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying = false; document.getElementById('play-icon').className = 'ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8, 14, 6, 18, 10, 16, 8].forEach((h, i) => { const b = document.getElementById('ab' + (i + 1)); if (b) b.style.height = h + 'px'; }); }
+function toggleTranscript() { document.getElementById('transcript-box').classList.toggle('show'); }
+
+// ══ TTS ═══════════════════════════════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ MULTIPLE CHOICE ══════════════════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid);
+    mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8 ? '<strong>Doskonale! 8/8</strong> — Perfect score. You have mastered the Genitive and Dative cases.'
+        : '<strong>' + correct + '/8 correct.</strong> Review highlighted errors. Key rules: after negation use Genitive; after ufać/dziękować/pomagać use Dative; brakować takes Dative (person) + Genitive (thing missed).';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR TRANSFORMATION ═══════════════════════════════════
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g, ' '); }
+
+function checkTransform(inputId, rowId) {
+  const inp = document.getElementById(inputId);
+  const fbEl = document.getElementById('tf' + inputId.replace('ti', ''));
+  const val = normalise(inp.value);
+  const ans = normalise(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct', 'incorrect'); fbEl.style.display = 'none'; return; }
+  if (val === ans) {
+    inp.classList.add('correct'); inp.classList.remove('incorrect');
+    fbEl.style.display = 'block'; fbEl.style.color = 'var(--green)';
+    fbEl.textContent = '✓ Correct!';
+  } else {
+    inp.classList.remove('correct'); inp.classList.add('incorrect');
+    fbEl.style.display = 'none';
+  }
+}
+
+function checkAllTransforms() {
+  let correct = 0;
+  [1, 2, 3, 4].forEach(n => {
+    const inp = document.getElementById('ti' + n);
+    const fbEl = document.getElementById('tf' + n);
+    const val = normalise(inp.value);
+    const ans = normalise(inp.dataset.answer);
+    inp.classList.remove('correct', 'incorrect');
+    fbEl.style.display = 'block';
+    if (val === ans) {
+      inp.classList.add('correct'); fbEl.style.color = 'var(--green)'; fbEl.textContent = '✓ Correct!'; correct++;
+    } else {
+      inp.classList.add('incorrect'); fbEl.style.color = 'var(--red)';
+      const explanations = {
+        1: 'Nie mam siostry. — siostra → siostry (Gen. fem. after negation)',
+        2: 'Ona nie ma brata. — brat → brata (Gen. masc. after negation)',
+        3: 'Nie mamy rodziców w Krakowie. — rodzice → rodziców (Gen. pl. after negation)',
+        4: 'Nie ufam mojej mamie. — Dative does NOT change under negation! Ufać always takes Dative.'
+      };
+      fbEl.textContent = '✗ Answer: ' + explanations[n];
+    }
+  });
+  const fb = document.getElementById('grammar-feedback');
+  if (correct === 4) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Świetnie! 4/4</strong> — You correctly applied Genitive under negation and noted that Dative verbs (like ufać) do NOT change case under negation. Excellent!';
+    completedSections.add('grammar');
+    updateProgress();
+  } else {
+    fb.className = 'feedback-box show ' + (correct >= 2 ? 'info' : 'error');
+    fb.innerHTML = '<strong>' + correct + '/4 correct.</strong> Key rule: after nie + mieć/być, the object shifts to Genitive. But verbs like ufać, pomagać always take Dative — negation does not change that.';
+  }
+}
+
+// ══ GAP FILL ══════════════════════════════════════════════════
+function selectBank(btn) {
+  document.querySelectorAll('.word-bank-item').forEach(b => b.classList.remove('selected-bank'));
+  btn.classList.add('selected-bank');
+  bankWord = btn.dataset.word;
+  document.getElementById('bank-status').textContent = '"' + bankWord + '" selected — click a gap to fill it.';
+  if (selectedGap) {
+    selectedGap.value = bankWord;
+    selectedGap.classList.remove('correct', 'incorrect');
+    selectedGap = null; bankWord = null;
+    btn.classList.remove('selected-bank');
+    document.getElementById('bank-status').textContent = 'Inserted! Select another word.';
+  }
+}
+
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('gap-input')) {
+    selectedGap = e.target;
+    if (bankWord) {
+      e.target.value = bankWord;
+      e.target.classList.remove('correct', 'incorrect');
+      document.querySelectorAll('.word-bank-item').forEach(b => b.classList.remove('selected-bank'));
+      bankWord = null; selectedGap = null;
+      document.getElementById('bank-status').textContent = 'Inserted! Select another word.';
+    } else {
+      document.getElementById('bank-status').textContent = 'Gap selected. Now click a word from the bank above.';
+    }
+  }
+});
+
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'];
+  let correct = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct', 'incorrect');
+    if (normalise(inp.value) === normalise(inp.dataset.answer)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const total = fields.filter(id => document.getElementById(id)).length;
+  const fb = document.getElementById('gf-feedback');
+  if (correct === total) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! ' + total + '/' + total + '</strong> — All correct! You correctly used Genitive after negation and quantity, Dative pronouns with brakować/podobać się/ufać, and Instrumental with dogadywać się z.';
+    completedSections.add('gapfill');
+    updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/' + total + ' correct.</strong> Check highlighted gaps. Reminders: <em>nie mam</em> → Genitive; <em>brakuje mi</em> → "mi" is Dative of "ja"; <em>podoba mi się</em> → "mi" not "mnie"; <em>dogadywać się z</em> + Instrumental.';
+  }
+}
+
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (inp) { inp.value = ''; inp.classList.remove('correct', 'incorrect'); }
+  });
+  document.getElementById('gf-feedback').classList.remove('show');
+  document.querySelectorAll('.word-bank-item').forEach(b => b.classList.remove('selected-bank'));
+  bankWord = null; selectedGap = null;
+  document.getElementById('bank-status').textContent = 'No word selected. Click a word above, then click a gap.';
+}
+
+// ══ MATCHING ══════════════════════════════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') {
+    document.querySelectorAll('#match-left .match-item').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected'); matchLeft = el;
+  } else {
+    document.querySelectorAll('#match-right .match-item').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected'); matchRight = el;
+  }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All pairs matched. You have a strong command of Genitive and Dative expressions.';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(() => { matchLeft.classList.remove('wrong', 'selected'); matchRight.classList.remove('wrong', 'selected'); }, 600);
+    }
+    matchLeft = null; matchRight = null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el => el.classList.remove('selected', 'matched', 'wrong'));
+  matchLeft = null; matchRight = null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ══════════════════════════════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done / 5) * 100);
+  document.getElementById('sidebar-progress').style.width = pct + '%';
+  document.getElementById('sidebar-progress-label').textContent = done + ' / 5 sections complete';
+  ['lesson', 'grammar', 'gapfill', 'mc', 'matching'].forEach(s => {
+    const nd = document.getElementById('nd-' + s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ════════════════════════════════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function () {
+    const w = this.value.trim().split(/\s+/).filter(x => x).length;
+    document.getElementById('word-count').textContent = w + ' word' + (w !== 1 ? 's' : '');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x => x).length < 15) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B1-B2 learner's writing. The learner is an English-speaking adult studying Polish.
+
+Task given: Write 100-140 words in Polish describing their family or an important relationship. Use at least 5 of: rodzina, brakować mi, tęsknić za, podobać się, ufać, dogadywać się, wsparcie, zaufanie, związek, rodzeństwo. Include at least one Genitive construction (e.g. nie mam brata, brakuje mi siostry) and one Dative construction (e.g. podoba mi się, ufam jej).
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown, no extra text):
+{
+  "score": <integer 0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2 sentences of overall feedback in English>",
+  "vocab_used": ["<target vocab words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "genitive_used": "<brief comment on Genitive usage — correct? errors?">",
+  "dative_used": "<brief comment on Dative usage — correct? errors?>",
+  "correct_structures": ["<2-3 specific things done well with Polish examples from the text>"],
+  "errors": [{"error": "<exact phrase from text>", "correction": "<corrected version>", "explanation": "<brief English explanation of the grammatical rule>"}],
+  "recommendation": "<one clear actionable improvement tip>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1200, messages: [{ role: 'user', content: prompt }] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b => b.text || '').join('').replace(/```json|```/g, '').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson');
+    updateProgress();
+  } catch (e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect to AI assessment. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score + '/100 · ' + r.grade;
+  pill.style.background = r.score >= 75 ? 'var(--green-light)' : r.score >= 50 ? 'var(--gold-light)' : 'var(--red-light)';
+  pill.style.color = r.score >= 75 ? 'var(--green)' : r.score >= 50 ? 'var(--gold)' : 'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">' + r.summary + '</p></div>';
+
+  // Genitive & Dative specific feedback
+  if (r.genitive_used || r.dative_used) {
+    html += '<div style="margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px">';
+    if (r.genitive_used) html += '<div style="background:var(--cream);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--red);margin-bottom:4px">Genitive (Dopełniacz)</div>' + r.genitive_used + '</div>';
+    if (r.dative_used) html += '<div style="background:var(--cream);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--purple);margin-bottom:4px">Dative (Celownik)</div>' + r.dative_used + '</div>';
+    html += '</div>';
+  }
+
+  if (r.vocab_used && r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v => html += '<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">' + v + '</span>');
+    html += '</div></div>';
+  }
+  if (r.vocab_missing && r.vocab_missing.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Not yet used</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_missing.forEach(v => html += '<span style="background:var(--cream);border:0.5px solid var(--border);color:var(--ink-muted);padding:3px 10px;border-radius:20px;font-size:13px">' + v + '</span>');
+    html += '</div></div>';
+  }
+  if (r.correct_structures && r.correct_structures.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s => html += '<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ ' + s + '</p>');
+    html += '</div>';
+  }
+  if (r.errors && r.errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Errors to correct</div>';
+    r.errors.forEach(e => { html += '<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">' + e.error + '</span> → <strong style="color:var(--green)">' + e.correction + '</strong></div><div style="color:var(--ink-muted);margin-top:4px">' + e.explanation + '</div></div>'; });
+    html += '</div>';
+  }
+  if (r.recommendation) html += '<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 Next step:</strong> ' + r.recommendation + '</div>';
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

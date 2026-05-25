@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 6: Media i Technologia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --slate:#0F4C81;--slate-light:#E0F0FF;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(193,55,42,0.15);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#FCA5A5;line-height:1.5}
+.scaffolding-note strong{color:#fff}
+
+/* ── GRAMMAR (slate blue for G6) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--slate-light);color:var(--slate);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--slate-light);border:0.5px solid rgba(15,76,129,0.2);border-left:3px solid var(--slate);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--slate)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--slate);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.btn-slate{background:var(--slate);color:#fff}
+.btn-slate:hover{background:#0A3B66}
+.slate-note{background:var(--slate-light);border:0.5px solid rgba(15,76,129,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--slate);margin-bottom:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+
+/* ── CARDS ── */
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.95;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:22px 26px;margin-bottom:16px}
+.reading-text p{margin-bottom:16px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--slate-light);color:var(--slate);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:180px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:160px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL — B2: NO word bank, NO hints ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:130px;width:160px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-sentence{line-height:3.2;font-size:15px;margin-bottom:6px}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO — no transcript at all at this level ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:16px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:180px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── GRAMMAR TABLE ── */
+.gram-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.gram-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.gram-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.gram-table tr:nth-child(even) td{background:#FAF7F2}
+.gram-table td:first-child{font-weight:500;color:var(--slate);white-space:nowrap}
+
+/* ── TRANSFORM ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── UNIT NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── CONNECTOR GRID ── */
+.connector-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0}
+.connector-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px}
+.connector-word{font-size:16px;font-weight:700;color:var(--slate);font-family:'Playfair Display',serif;margin-bottom:3px}
+.connector-meaning{font-size:12px;color:var(--ink-muted);margin-bottom:5px}
+.connector-ex{font-size:12px;color:var(--ink);font-style:italic}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .connector-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="app">
+
+<!-- ══ SIDEBAR ══ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 6 — B2:</strong> No word bank. No hints in gaps. No transcript available. Longer and more complex texts.
+  </div>
+  <div class="unit-label">Unit 6 — Media i Technologia</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G6<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 5 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 5 — Polska Kultura</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 7 — Edukacja i Nauka</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 6 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 6 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Media i Technologia<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Media &amp; Technology</span></div>
+  <div class="section-desc">Explore the world of Polish and global media, digital life, and technology. This unit features longer, more complex texts with richer vocabulary. Grammar focus: reported speech and time clauses — essential tools for discussing news, events and sequences.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Artykuł prasowy</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary. Hover <span style="background:var(--slate-light);color:var(--slate);padding:1px 6px;border-radius:3px;font-weight:500">blue</span> for grammar notes on reported speech and time clauses. Click <i class="ti ti-volume"></i> to hear vocabulary.</span>
+      </div>
+
+      <div class="reading-text">
+        <p>Polska scena medialna przeszła w ciągu ostatnich dwóch dekad <span class="vocab-highlight">gruntowną transformację<span class="vocab-tip">gruntowna transformacja = thorough transformation<br>(Acc. — direct object of "przeszła")</span></span>. Eksperci <span class="grammar-highlight">twierdzą, że<span class="vocab-tip">twierdzić, że = to claim / assert that<br>Reported speech: twierdzić + że + clause<br>Tenses and pronouns shift in indirect speech</span></span> cyfryzacja <span class="vocab-highlight">całkowicie zmieniła<span class="vocab-tip">całkowicie zmienić (pf.) = to completely change<br>Perfective — completed transformation</span></span> sposób, w jaki Polacy <span class="vocab-highlight">konsumują<span class="vocab-tip">konsumować (impf.) = to consume<br>3rd pers. pl. present — ongoing habit</span></span> treści. <span class="grammar-highlight">Zanim internet stał się powszechny<span class="vocab-tip">zanim + past = before (something happened)<br>Time clause — action completed before<br>the main clause action</span></span>, telewizja i prasa drukowana <span class="vocab-highlight">dominowały<span class="vocab-tip">dominować (impf.) = to dominate<br>Imperfective past — ongoing past state</span></span> na rynku informacji. Dziś sytuacja wygląda zupełnie inaczej.</p>
+
+        <p>Według najnowszego raportu <span class="vocab-highlight">Krajowej Rady Radiofonii i Telewizji<span class="vocab-tip">Krajowa Rada Radiofonii i Telewizji<br>= National Broadcasting Council (KRRiT)<br>(Gen. after "według" = according to)</span></span>, ponad 70 procent Polaków <span class="vocab-highlight">regularnie korzysta<span class="vocab-tip">korzystać z + Gen. = to use / make use of<br>(impf. 3rd pers. sg.) — habitual</span></span> z <span class="vocab-highlight">mediów społecznościowych<span class="vocab-tip">media społecznościowe = social media<br>(Gen. pl. after "z korzysta")</span></span> jako głównego <span class="vocab-highlight">źródła informacji<span class="vocab-tip">źródło informacji = source of information<br>(Gen. — possession)</span></span>. Raport <span class="grammar-highlight">stwierdził, że<span class="vocab-tip">stwierdzić, że (pf.) = to state / conclude that<br>Reported speech — what the report concluded<br>Note: perfective "stwierdzić" = made a finding</span></span> ta tendencja <span class="vocab-highlight">nasila się<span class="vocab-tip">nasilać się (impf.) = to intensify / strengthen<br>Reflexive — the trend intensifies itself</span></span> szczególnie wśród osób poniżej trzydziestego piątego roku życia, które <span class="grammar-highlight">rzadko lub nigdy nie sięgają<span class="vocab-tip">sięgać po + Acc. = to reach for / turn to<br>Imperfective — habitual (rarely/never do)<br>Negation: nie sięgają</span></span> po tradycyjne gazety.</p>
+
+        <p><span class="vocab-highlight">Dziennikarze<span class="vocab-tip">dziennikarz (sg.) → dziennikarze (Nom. pl.)<br>= journalists</span></span> i eksperci mediani <span class="grammar-highlight">ostrzegali, że<span class="vocab-tip">ostrzegać, że (impf.) = to warn that<br>Reported speech + że + clause<br>Imperfective — repeated warnings over time</span></span> <span class="vocab-highlight">dezinformacja<span class="vocab-tip">dezinformacja = disinformation / misinformation<br>(feminine noun — Nom. subject)</span></span> i <span class="vocab-highlight">fake newsy<span class="vocab-tip">fake newsy = fake news (borrowed pl.)<br>Polish media register uses English borrowings</span></span> stają się coraz poważniejszym problemem. <span class="grammar-highlight">Odkąd platformy społecznościowe<span class="vocab-tip">odkąd + present/past = since (a point in time)<br>Time clause — action began then, continues now<br>odkąd ≠ od kiedy (slightly more formal)</span></span> <span class="vocab-highlight">zdominowały<span class="vocab-tip">zdominować (pf.) = to dominate (completely)<br>Perfective — completed takeover</span></span> obieg informacji, <span class="vocab-highlight">weryfikacja faktów<span class="vocab-tip">weryfikacja faktów = fact-checking<br>(Nom. subject)</span></span> stała się <span class="vocab-highlight">kluczową umiejętnością<span class="vocab-tip">kluczowy = key / crucial<br>Instr. adj. — after "stała się"</span></span> zarówno dla odbiorców, jak i dla samych redakcji.</p>
+
+        <p>Polska <span class="vocab-highlight">branża technologiczna<span class="vocab-tip">branża = industry / sector<br>branża technologiczna = tech industry</span></span> również <span class="vocab-highlight">przeżywa<span class="vocab-tip">przeżywać (impf.) = to experience / go through<br>3rd pers. sg. present — ongoing state</span></span> dynamiczny rozwój. Rzecznik prasowy jednej z warszawskich firm technologicznych <span class="grammar-highlight">poinformował, że<span class="vocab-tip">poinformować, że (pf.) = to inform that<br>Reported speech: official announcement<br>Perfective — one specific communication</span></span> ich nowa <span class="vocab-highlight">aplikacja do nauki języków<span class="vocab-tip">aplikacja do + Gen. = app for (purpose)<br>nauka języków = language learning</span></span> <span class="grammar-highlight">zostanie wprowadzona na rynek<span class="vocab-tip">zostać wprowadzona (pf. passive) = to be launched<br>Future passive — will be launched<br>na rynek = onto the market (Acc. direction)</span></span> <span class="grammar-highlight">gdy tylko zakończą testy<span class="vocab-tip">gdy tylko = as soon as<br>Time clause — condition for the future action<br>gdy tylko + present tense (in Polish) = future</span></span> bezpieczeństwa.</p>
+
+        <p>Równolegle <span class="grammar-highlight">toczy się<span class="vocab-tip">toczyć się (impf.) = to take place / unfold<br>Reflexive impersonal — the debate is ongoing</span></span> debata o <span class="vocab-highlight">prywatności danych<span class="vocab-tip">prywatność danych = data privacy<br>(Gen. — after "o" = Locative? No — after "debata o"<br>debata o + Loc.: prywatności)</span></span> i <span class="vocab-highlight">inwigilacji cyfrowej<span class="vocab-tip">inwigilacja cyfrowa = digital surveillance<br>(Gen. — parallel to prywatności)</span></span>. Wielu użytkowników <span class="grammar-highlight">przyznało, że<span class="vocab-tip">przyznać, że (pf.) = to admit that<br>Reported speech — what users admitted<br>Perfective: they made a specific admission</span></span> nie czyta <span class="vocab-highlight">regulaminów<span class="vocab-tip">regulamin → regulaminy → regulaminów (Gen. pl.)<br>= terms and conditions / regulations</span></span> przed zaakceptowaniem <span class="vocab-highlight">warunków użytkowania<span class="vocab-tip">warunki użytkowania = terms of use<br>(Gen. after "przed zaakceptowaniem")</span></span>. <span class="grammar-highlight">Po tym jak Unia Europejska<span class="vocab-tip">po tym jak = after (a specific event)<br>Time clause — sequence: EU acted first,<br>then companies responded</span></span> <span class="vocab-highlight">wprowadzi<span class="vocab-tip">wprowadzić (pf.) = to introduce / implement<br>Perfective — one completed legislative act<br>Here: past context of GDPR introduction</span></span>ła przepisy <span class="vocab-highlight">RODO<span class="vocab-tip">RODO = Rozporządzenie o Ochronie Danych Osobowych<br>= GDPR (General Data Protection Regulation)</span></span>, firmy technologiczne <span class="vocab-highlight">zobowiązały się<span class="vocab-tip">zobowiązać się (pf. refl.) = to commit / pledge<br>Perfective — they made a specific commitment</span></span> do większej <span class="vocab-highlight">transparentności<span class="vocab-tip">transparentność = transparency<br>(Gen. — after "do większej")</span></span>.</p>
+
+        <p>Przyszłość mediów <span class="grammar-highlight">pozostaje<span class="vocab-tip">pozostawać (impf.) = to remain<br>Imperfective — ongoing, open state</span></span> niepewna. Analitycy <span class="grammar-highlight">spekulują, że<span class="vocab-tip">spekulować, że (impf.) = to speculate that<br>Reported speech — ongoing speculation<br>Imperfective: the debate continues</span></span> <span class="vocab-highlight">sztuczna inteligencja<span class="vocab-tip">sztuczna inteligencja = artificial intelligence<br>(Nom. — subject)</span></span> <span class="grammar-highlight">zanim minie kolejna dekada<span class="vocab-tip">zanim + future = before (something happens)<br>Time clause with future: zanim + present<br>perfective = translates as "before X happens"</span></span>, <span class="vocab-highlight">gruntownie przekształci<span class="vocab-tip">gruntownie przekształcić (pf.) = to thoroughly transform<br>Future perfective — one complete transformation</span></span> zarówno produkcję, jak i <span class="vocab-highlight">dystrybucję treści<span class="vocab-tip">dystrybucja treści = content distribution<br>(Acc. — parallel object)</span></span>. Jedno jest pewne: <span class="grammar-highlight">odkąd pojawiły się<span class="vocab-tip">odkąd + past pf. = since (a completed past event)<br>Time clause — that event started the current state</span></span> smartfony, <span class="vocab-highlight">nikt już nie wyobraża sobie<span class="vocab-tip">wyobrażać sobie = to imagine (reflexive)<br>nikt + negation = nobody<br>już nie = no longer / anymore</span></span> życia bez internetu.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Blue highlights show reported speech structures and time clauses — the grammar focus of this unit.</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>media społecznościowe<button class="vocab-audio-btn" onclick="speak('media społecznościowe')"><i class="ti ti-volume"></i></button></td><td>(pl. neuter)</td><td>social media</td></tr>
+        <tr><td>dezinformacja<button class="vocab-audio-btn" onclick="speak('dezinformacja')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>disinformation / misinformation</td></tr>
+        <tr><td>weryfikacja faktów<button class="vocab-audio-btn" onclick="speak('weryfikacja faktów')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>fact-checking</td></tr>
+        <tr><td>prywatność danych<button class="vocab-audio-btn" onclick="speak('prywatność danych')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>data privacy</td></tr>
+        <tr><td>sztuczna inteligencja<button class="vocab-audio-btn" onclick="speak('sztuczna inteligencja')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>artificial intelligence</td></tr>
+        <tr><td>źródło informacji<button class="vocab-audio-btn" onclick="speak('źródło informacji')"><i class="ti ti-volume"></i></button></td><td>(neuter)</td><td>source of information</td></tr>
+        <tr><td>branża<button class="vocab-audio-btn" onclick="speak('branża')"><i class="ti ti-volume"></i></button></td><td>branży (Gen.)</td><td>industry / sector</td></tr>
+        <tr><td>transparentność<button class="vocab-audio-btn" onclick="speak('transparentność')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>transparency</td></tr>
+        <tr><td>nasilać się<button class="vocab-audio-btn" onclick="speak('nasilać się')"><i class="ti ti-volume"></i></button></td><td>(impf. refl.)</td><td>to intensify / to worsen</td></tr>
+        <tr><td>korzystać z<button class="vocab-audio-btn" onclick="speak('korzystać')"><i class="ti ti-volume"></i></button></td><td>+ Genitive</td><td>to use / to make use of</td></tr>
+        <tr><td>ostrzegać<button class="vocab-audio-btn" onclick="speak('ostrzegać')"><i class="ti ti-volume"></i></button></td><td>(impf.) / ostrzec (pf.)</td><td>to warn</td></tr>
+        <tr><td>zobowiązać się<button class="vocab-audio-btn" onclick="speak('zobowiązać się')"><i class="ti ti-volume"></i></button></td><td>(pf. refl.)</td><td>to commit / to pledge</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Answer all questions. At B2 level, questions require inference, interpretation of register, and understanding of nuance — not only retrieval of facts.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Co eksperci twierdzą na temat wpływu cyfryzacji na polskie media?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Że cyfryzacja nie miała znaczącego wpływu na rynek medialny</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Że cyfryzacja całkowicie zmieniła sposób, w jaki Polacy konsumują treści</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Że telewizja nadal dominuje nad mediami cyfrowymi</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Że Polacy preferują drukowane gazety nad internetem</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Według raportu KRRiT, wśród której grupy tendencja do korzystania z mediów społecznościowych jest najsilniejsza?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Wśród osób powyżej 60. roku życia</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Wśród osób poniżej 35. roku życia</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Wśród dziennikarzy i pracowników mediów</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Wśród mieszkańców dużych miast</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jakie zagrożenie związane z mediami społecznościowymi sygnalizowali dziennikarze i eksperci?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">A</div>Rosnące zagrożenie dezinformacją i fake newsami</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">B</div>Upadek tradycyjnego dziennikarstwa śledczego</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">C</div>Nadmierne uzależnienie od technologii wśród dzieci</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Monopolizację rynku przez zagraniczne korporacje</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co rzecznik prasowy warszawskiej firmy technologicznej ogłosił?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Że firma planuje fuzję z zagranicznym konkurentem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Że nowa aplikacja do nauki języków zostanie wprowadzona na rynek po zakończeniu testów bezpieczeństwa</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Że firma rezygnuje z rynku europejskiego</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Że aplikacja jest już dostępna w AppStore i Google Play</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co wielu użytkowników przyznało w kontekście prywatności danych?</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Że celowo unikają aplikacji zbierających dane</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">B</div>Że nie czytają regulaminów przed zaakceptowaniem warunków użytkowania</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">C</div>Że regularnie sprawdzają ustawienia prywatności</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Że korzystają z VPN, aby chronić swoje dane</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jakie słowo lub wyrażenie w tekście najlepiej opisuje styl artykułu?</div>
+        <div class="question-note">This question tests register awareness — a key B2 skill.</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Potoczny i nieformalny — jak rozmowa między znajomymi</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">B</div>Literacki i poetycki — skupiony na metaforach</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">C</div>Formalny i dziennikarski — obiektywny, oparty na raportach i ekspertach</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Naukowy i techniczny — pełen specjalistycznej terminologii</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Które zdanie najlepiej podsumowuje stanowisko analityków wobec przyszłości mediów?</div>
+        <div class="mc-options" id="cq7">
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">A</div>Analitycy są pewni, że telewizja przeżyje renesans</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">B</div>Analitycy uważają, że AI nie wpłynie na media w najbliższej dekadzie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','correct')"><div class="mc-letter">C</div>Analitycy spekulują, że AI gruntownie przekształci produkcję i dystrybucję treści przed upływem dekady</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">D</div>Analitycy są zgodni — internet zastąpi wszystkie inne media w ciągu pięciu lat</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Z jakich źródeł informacji korzystasz najczęściej? Czy ufasz mediom społecznościowym jako źródłu wiadomości?<br><em style="font-size:13px;opacity:0.8">What sources of information do you use most? Do you trust social media as a news source?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jak weryfikujesz prawdziwość informacji, które czytasz w internecie?<br><em style="font-size:13px;opacity:0.8">How do you verify the truthfulness of information you read online?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy uważasz, że sztuczna inteligencja jest zagrożeniem czy szansą dla dziennikarstwa? Uzasadnij swoją odpowiedź.<br><em style="font-size:13px;opacity:0.8">Do you think artificial intelligence is a threat or an opportunity for journalism? Justify your answer.</em></span></div>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Debata radiowa</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the radio debate about media and technology. No transcript is available at this level — work from listening alone.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Debata radiowa: Czy media społecznościowe niszczą dziennikarstwo?</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 5:10 · Polish B2</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <div style="font-size:11px;color:#57534E;display:flex;align-items:center;gap:5px"><i class="ti ti-lock" style="font-size:13px"></i> No transcript</div>
+      </div>
+
+      <!-- Transcript text — hidden, rendered in DOM for reference but not shown -->
+      <!-- TRANSCRIPT (for course creator reference only):
+        Prowadzący: Dzień dobry. Witamy w naszej debacie "Przyszłość mediów w Polsce". Przy stoliku siedzą: Marta Kowalska, redaktor naczelna portalu informacyjnego, i Paweł Nowak, profesor medioznawstwa. Zacznijmy od pytania — czy media społecznościowe niszczą tradycyjne dziennikarstwo?
+        Kowalska: Powiedziałabym, że to zbyt czarno-białe ujęcie. Media społecznościowe zmieniły reguły gry, ale nie zniszczyły dziennikarstwa. Zmieniły jednak to, jak musimy pracować. Zanim opublikujemy artykuł, teraz musimy myśleć, jak będzie wyglądał na telefonie, jak szybko się udostępni, czy tytuł jest wystarczająco chwytliwy.
+        Nowak: Zgadzam się, że transformacja jest nieunikniona. Ale ostrzegałem wielokrotnie, że kiedy algorytmy decydują, co ludzie widzą, prawdziwe dziennikarstwo traci na zasięgu. Profesor z Cambridge powiedział niedawno, że odkąd Facebook zmienił algorytm w 2018 roku, zasięg artykułów dziennikarskich spadł o ponad trzydzieści procent.
+        Kowalska: To prawda. I dlatego wiele redakcji — w tym nasza — zdecydowało się zainwestować w subskrypcje. Kiedy czytelnicy płacą bezpośrednio, jesteśmy mniej zależni od mediów społecznościowych. Po tym jak wprowadziliśmy model płatny, nasza niezależność redakcyjna znacznie wzrosła.
+        Nowak: To dobry model, ale mam obawy co do dezinformacji. Użytkownicy przyznają, że rzadko sprawdzają źródła. Zanim podzielą się informacją, sprawdza ją może jeden na dziesięciu.
+        Kowalska: Dlatego edukacja medialna jest kluczowa. Powinna być wprowadzona do szkół zanim kolejne pokolenie dorośnie wyłącznie na mediach społecznościowych.
+        Prowadzący: A sztuczna inteligencja? Analitycy spekulują, że zanim minie dekada, AI napisze większość treści informacyjnych.
+        Nowak: Twierdzę, że AI jest narzędziem, nie dziennikarzem. Może pisać raporty giełdowe czy prognozy pogody. Ale śledztwo dziennikarskie, rozmowa z ofiarą przemocy, wywiad z politykiem — tego AI nie zastąpi. Przynajmniej nie w przewidywalnej przyszłości.
+        Kowalska: Zgadzam się. Odkąd używamy AI do redagowania, oszczędzamy czas na rutynowych zadaniach — i możemy go poświęcić na to, co naprawdę ważne: reportaże i investigacje.
+        Prowadzący: Dziękuję Państwu za tę inspirującą rozmowę.
+      -->
+
+      <div style="background:var(--slate-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--slate);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start">
+        <i class="ti ti-info-circle"></i>
+        <span>Listen carefully for: <strong>reported speech</strong> (co powiedział X, że…), <strong>time clauses</strong> (zanim, kiedy, odkąd, po tym jak), and the speakers' <strong>positions</strong> on social media and AI. You may listen as many times as needed.</span>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">1. Co Marta Kowalska uważa o wpływie mediów społecznościowych na dziennikarstwo?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Że całkowicie zniszczyły tradycyjne dziennikarstwo</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Że zmieniły reguły gry, ale nie zniszczyły dziennikarstwa — tylko sposób pracy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Że media społecznościowe są wyłącznie pozytywne dla branży</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Że dziennikarstwo było lepsze przed erą internetu</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Co profesor Nowak powiedział o zmianie algorytmu Facebooka w 2018 roku?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Że zwiększyła zasięg artykułów dziennikarskich</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Że od tamtej pory zasięg artykułów dziennikarskich spadł o ponad 30%</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Że Facebook stał się głównym źródłem informacji dla dziennikarzy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Że zmiana algorytmu była korzystna dla małych redakcji</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jaką strategię wybrała redakcja Kowalskiej wobec zależności od mediów społecznościowych?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Całkowite odejście od publikacji w mediach społecznościowych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Wprowadzenie modelu subskrypcyjnego, który zwiększył niezależność redakcyjną</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Fuzję z większym wydawcą medialnym</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Inwestycję w reklamę telewizyjną</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co profesor Nowak twierdzi na temat roli sztucznej inteligencji w dziennikarstwie?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Że AI wkrótce całkowicie zastąpi dziennikarzy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Że AI jest narzędziem, a nie dziennikarzem — nie zastąpi śledztw ani wywiadów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Że AI jest zbyt kosztowna, żeby redakcje mogły z niej korzystać</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Że AI powinna być zakazana w dziennikarstwie</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Do czego Kowalska używa AI w swojej redakcji?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Do pisania artykułów śledczych i wywiadów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Do redagowania — co oszczędza czas i pozwala skupić się na reportażach</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Do generowania clickbaitowych tytułów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Do zarządzania kontami w mediach społecznościowych</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Co Kowalska mówi o edukacji medialnej?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Że jest już dobrze rozwinięta w polskich szkołach</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">B</div>Że powinna być realizowana przez same media, nie szkoły</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">C</div>Że powinna być wprowadzona do szkół zanim kolejne pokolenie dorośnie wyłącznie na mediach społecznościowych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Że to odpowiedzialność rodziców, nie systemu edukacji</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Które twierdzenie o dezinformacji pada w debacie?</div>
+        <div class="mc-options" id="lq7">
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">A</div>Że większość użytkowników regularnie weryfikuje źródła przed udostępnieniem</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','correct')"><div class="mc-letter">B</div>Że zanim podzielą się informacją, sprawdza ją może tylko jeden na dziesięciu użytkowników</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">C</div>Że dezinformacja dotyczy głównie starszych pokoleń</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">D</div>Że platformy społecznościowe skutecznie walczą z fake newsami</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>150–190 words</strong> in Polish giving your opinion on one of the following topics: (a) the role of social media in spreading misinformation, or (b) whether AI will replace journalists. Use at least <strong>6 vocabulary items</strong> from this unit: <em>media społecznościowe, dezinformacja, weryfikacja faktów, sztuczna inteligencja, źródło informacji, branża, transparentność, nasilać się, korzystać z, ostrzegać, zobowiązać się</em>.<br><br>
+        Your answer must include: at least <strong>one reported speech construction</strong> (e.g. <em>eksperci twierdzą, że… / badania pokazują, że…</em>) and at least <strong>two time clauses</strong> (e.g. <em>zanim, odkąd, gdy tylko, po tym jak, kiedy</em>).
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G6 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: GRAMMAR G6
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 6 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G6</div>
+  <div class="section-title">Reported Speech &amp; Time Clauses<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Mowa Zależna i Zdania Czasowe</span></div>
+  <div class="section-desc">Two of the most important tools for discussing news, events and sequences. Reported speech lets you relay what others said; time clauses let you express when and in what order things happen. Both are essential for B2-level written and spoken Polish.</div>
+
+  <!-- REPORTED SPEECH -->
+  <div class="card">
+    <div class="card-title" style="color:var(--slate)"><i class="ti ti-quote"></i> Reported Speech — Mowa Zależna</div>
+    <div class="grammar-callout">
+      Polish reported speech uses <strong>że</strong> (that) to introduce the reported clause. Unlike English, Polish does not require tense backshifting — the original tense is usually preserved. However, <strong>pronouns and possessives shift</strong> to reflect the new speaker's perspective.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. Statements — twierdzić / mówić / powiedzieć / stwierdzić + że</div>
+      <p class="example-pl">Direct: Anna powiedziała: <em>„Nie lubię fake newsów."</em></p>
+      <p class="example-pl">Reported: Anna powiedziała, <strong>że</strong> nie lubi fake newsów.</p>
+      <p class="example-en">Note: tense stays the same (nie lubi — present), but the quote marks disappear and "że" is added. No comma before "że" in Polish — use a comma before the whole że-clause.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. Reporting verbs — common in journalism</div>
+      <div class="connector-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
+        <div class="connector-card"><div class="connector-word">twierdzić</div><div class="connector-meaning">to claim / assert (impf.)</div><div class="connector-ex">Eksperci twierdzą, że…</div></div>
+        <div class="connector-card"><div class="connector-word">powiedzieć</div><div class="connector-meaning">to say (pf.)</div><div class="connector-ex">Rzecznik powiedział, że…</div></div>
+        <div class="connector-card"><div class="connector-word">stwierdzić</div><div class="connector-meaning">to state / conclude (pf.)</div><div class="connector-ex">Raport stwierdził, że…</div></div>
+        <div class="connector-card"><div class="connector-word">poinformować</div><div class="connector-meaning">to inform / announce (pf.)</div><div class="connector-ex">Firma poinformowała, że…</div></div>
+        <div class="connector-card"><div class="connector-word">ostrzegać</div><div class="connector-meaning">to warn (impf.)</div><div class="connector-ex">Eksperci ostrzegali, że…</div></div>
+        <div class="connector-card"><div class="connector-word">spekulować</div><div class="connector-meaning">to speculate (impf.)</div><div class="connector-ex">Analitycy spekulują, że…</div></div>
+        <div class="connector-card"><div class="connector-word">przyznać</div><div class="connector-meaning">to admit (pf.)</div><div class="connector-ex">Użytkownicy przyznali, że…</div></div>
+        <div class="connector-card"><div class="connector-word">zapowiadać</div><div class="connector-meaning">to announce / herald (impf.)</div><div class="connector-ex">Rząd zapowiedział, że…</div></div>
+      </div>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">3. Indirect questions — pytać, czy… / pytać, kto/co/kiedy…</div>
+      <p class="example-pl">Direct: Dziennikarz zapytał: <em>„Czy firma płaci podatki?"</em></p>
+      <p class="example-pl">Reported: Dziennikarz zapytał, <strong>czy</strong> firma płaci podatki.</p>
+      <p class="example-pl">Direct: Redaktorka chciała wiedzieć: <em>„Kiedy pojawi się raport?"</em></p>
+      <p class="example-pl">Reported: Redaktorka chciała wiedzieć, <strong>kiedy</strong> pojawi się raport.</p>
+      <p class="example-en">Yes/no questions → czy; Wh-questions → keep the question word (kiedy, kto, co, gdzie, dlaczego, jak).</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">4. Pronoun and possessive shifts</div>
+      <table class="gram-table">
+        <tr><th>Direct speech</th><th>Reported speech</th><th>What changes</th></tr>
+        <tr><td>„Moja firma jest liderem."</td><td>Powiedział, że jego firma jest liderem.</td><td>moja → jego</td></tr>
+        <tr><td>„Pracuję nad projektem."</td><td>Powiedziała, że pracuje nad projektem.</td><td>pracuję → pracuje</td></tr>
+        <tr><td>„Nasz raport jest gotowy."</td><td>Poinformowali, że ich raport jest gotowy.</td><td>nasz → ich</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- TIME CLAUSES -->
+  <div class="card">
+    <div class="card-title" style="color:var(--slate)"><i class="ti ti-clock"></i> Time Clauses — Zdania Czasowe</div>
+    <div class="grammar-callout">
+      Time clauses express <strong>when</strong> or <strong>in what sequence</strong> events happen. Polish has a rich set of time conjunctions, each with slightly different nuance. Aspect plays a crucial role — imperfective for ongoing/simultaneous actions, perfective for completed prior actions.
+    </div>
+
+    <div class="connector-grid">
+      <div class="connector-card">
+        <div class="connector-word">kiedy / gdy</div>
+        <div class="connector-meaning">when (simultaneous)</div>
+        <div class="connector-ex">Kiedy czytam artykuł, notuję ważne fakty.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">zanim</div>
+        <div class="connector-meaning">before (something happens)</div>
+        <div class="connector-ex">Zanim opublikujemy artykuł, sprawdzamy fakty.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">odkąd</div>
+        <div class="connector-meaning">since (a point in time, ongoing)</div>
+        <div class="connector-ex">Odkąd mam smartfon, rzadko kupuję gazety.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">gdy tylko</div>
+        <div class="connector-meaning">as soon as</div>
+        <div class="connector-ex">Zadzwonię, gdy tylko skończy się konferencja.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">po tym jak</div>
+        <div class="connector-meaning">after (a specific event)</div>
+        <div class="connector-ex">Po tym jak RODO weszło w życie, firmy zmieniły politykę.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">dopóki</div>
+        <div class="connector-meaning">as long as / while (condition holds)</div>
+        <div class="connector-ex">Dopóki nie zobaczymy gwiazdki, nie zaczynamy.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">podczas gdy</div>
+        <div class="connector-meaning">while / whereas (contrast)</div>
+        <div class="connector-ex">Podczas gdy prasa traci czytelników, podcasty zyskują.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">skoro tylko</div>
+        <div class="connector-meaning">as soon as / the moment that</div>
+        <div class="connector-ex">Skoro tylko artykuł wyszedł, zaczęły się komentarze.</div>
+      </div>
+    </div>
+
+    <div class="grammar-rule" style="margin-top:12px">
+      <div class="grammar-rule-title">Key distinction: zanim + aspect</div>
+      <p class="example-pl"><strong>Zanim + imperfective</strong> (ongoing simultaneous): Zanim <em>słuchałam</em> podcastów, czytałam gazety. — Before I was listening to podcasts, I read newspapers.</p>
+      <p class="example-pl"><strong>Zanim + perfective</strong> (completed action preceding): Zanim <em>opublikuje</em> artykuł, sprawdzi fakty. — Before she publishes (completes) the article, she will check facts.</p>
+      <p class="example-en">In future time clauses, Polish uses the present tense (both aspects) — never "będę" after time conjunctions.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Future time clauses — never use "będę" after time conjunctions</div>
+      <p class="example-pl">✓ Zadzwonię, <strong>kiedy</strong> skończy się program. — I'll call when the programme ends.</p>
+      <p class="example-pl">✗ Zadzwonię, kiedy <em>będzie się kończyć</em> program. ← Wrong in Polish.</p>
+      <p class="example-pl">✓ Napisz do mnie, <strong>gdy tylko</strong> dotrze raport. — Write to me as soon as the report arrives.</p>
+      <p class="example-en">This is one of the most common errors for English speakers. After kiedy/gdy/zanim/odkąd etc., always use the present tense form — aspect will carry the future meaning.</p>
+    </div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Grammar Exercise — Reported Speech &amp; Time Clauses</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Transform the sentences as instructed. No hints provided.</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Direct → Reported: Ekspert powiedział: „Media społecznościowe zmieniają politykę."</div>
+      <div class="transform-task">Write the reported speech version:</div>
+      <input class="transform-input" id="ti1" data-answer="ekspert powiedział że media społecznościowe zmieniają politykę" placeholder="Ekspert powiedział, że…" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Direct → Reported: Firma poinformowała: „Nasz produkt będzie gotowy w marcu."</div>
+      <div class="transform-task">Write the reported speech (shift "nasz" appropriately):</div>
+      <input class="transform-input" id="ti2" data-answer="firma poinformowała że ich produkt będzie gotowy w marcu" placeholder="Firma poinformowała, że…" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Choose the correct time conjunction: ______ nie przeczytasz artykułu, nie będziesz wiedział, co się dzieje. (before)</div>
+      <div class="transform-task">Which conjunction expresses "before"?</div>
+      <input class="transform-input" id="ti3" data-answer="zanim" placeholder="zanim / odkąd / gdy tylko / po tym jak?" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Correct the error: „Zadzwonię, kiedy będę skończyć pracę."</div>
+      <div class="transform-task">Rewrite correctly (future time clause rule):</div>
+      <input class="transform-input" id="ti4" data-answer="zadzwonię kiedy skończę pracę" placeholder="Zadzwonię, kiedy…" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Fill in: ______ media społecznościowe stały się popularne, sprzedaż gazet spadła. (since)</div>
+      <div class="transform-task">Which conjunction expresses "since" (ongoing from a past point)?</div>
+      <input class="transform-input" id="ti5" data-answer="odkąd" placeholder="zanim / odkąd / gdy tylko / kiedy?" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-slate" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: GAP FILL — B2: no word bank, no hints
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 6 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence. No word bank, no hints — draw on your knowledge of vocabulary, reported speech, and time clauses from this unit.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="font-size:15px">
+      <p class="gap-sentence">1. Eksperci <input class="gap-input" id="g1" data-answer="twierdzą że" style="width:180px">, cyfryzacja zmieniła rynek mediów.</p>
+      <p class="gap-sentence">2. Raport <input class="gap-input" id="g2" data-answer="stwierdził że" style="width:180px">, liczba czytelników prasy spada od dekady.</p>
+      <p class="gap-sentence">3. <input class="gap-input" id="g3" data-answer="odkąd"> internet stał się powszechny, telewizja straciła dominującą pozycję.</p>
+      <p class="gap-sentence">4. <input class="gap-input" id="g4" data-answer="zanim"> opublikujesz artykuł, sprawdź wszystkie fakty.</p>
+      <p class="gap-sentence">5. Firma poinformowała, że aplikacja zostanie wydana, <input class="gap-input" id="g5" data-answer="gdy tylko"> zakończą się testy.</p>
+      <p class="gap-sentence">6. Dziennikarz zapytał, <input class="gap-input" id="g6" data-answer="czy"> platforma przestrzega przepisów RODO.</p>
+      <p class="gap-sentence">7. Użytkownicy przyznali, że nie czytają <input class="gap-input" id="g7" data-answer="regulaminów"> przed kliknięciem „akceptuję".</p>
+      <p class="gap-sentence">8. <input class="gap-input" id="g8" data-answer="po tym jak"> Unia Europejska wprowadziła RODO, firmy zobowiązały się do większej transparentności.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 6 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the correct answer. Questions focus on reported speech structures, time clauses, and media vocabulary.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Ekspert powiedział: „Dezinformacja jest problemem." — Which reported speech form is correct?</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>Ekspert powiedział czy dezinformacja jest problemem.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>Ekspert powiedział, że dezinformacja jest problemem.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>Ekspert powiedział, dezinformacja jest problemem.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>Ekspert powiedział iż dezinformacja była problemem.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. The journalist asked: „Kiedy pojawi się raport?" — Which indirect question form is correct?</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>Dziennikarz zapytał że kiedy pojawi się raport.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>Dziennikarz zapytał, kiedy pojawi się raport.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>Dziennikarz zapytał, czy kiedy pojawi się raport.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>Dziennikarz zapytał czy pojawi się raport kiedy.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. ______ kupiłam smartfon, przestałam czytać drukowane gazety. (since that point)</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>Zanim</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">B</div>Gdy tylko</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">C</div>Odkąd</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>Dopóki</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. Zadzwonię do redakcji, ______ skończy się konferencja. (as soon as)</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>zanim</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">B</div>odkąd</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">C</div>gdy tylko</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>podczas gdy</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. Which sentence has a CORRECT future time clause?</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>Napiszę artykuł, kiedy będę mieć czas.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">B</div>Napiszę artykuł, kiedy będę mieć… — wait. Correct: Napiszę artykuł, kiedy skończy się deadline.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">C</div>Napiszę artykuł, kiedy będę skończyć deadline.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>Napiszę artykuł kiedy będzie skończyć się deadline.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Firma powiedziała: „Nasz nowy produkt jest gotowy." — Correct reported form?</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>Firma powiedziała, że nasz nowy produkt jest gotowy.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">B</div>Firma powiedziała, że ich nowy produkt jest gotowy.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">C</div>Firma powiedziała, że twój nowy produkt jest gotowy.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>Firma powiedziała że mój nowy produkt jest gotowy.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Która forma zdania jest POPRAWNA?</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>Zanim opublikujemy raport, będziemy sprawdzać fakty.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">B</div>Zanim opublikujemy raport, sprawdzimy fakty.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>Zanim będziemy opublikować raport, sprawdzimy fakty.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>Zanim opublikujemy raport, będziemy sprawdzić fakty.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. Analitycy spekulują, ______ sztuczna inteligencja całkowicie zmieni dziennikarstwo.</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>czy</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">B</div>że</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">C</div>kiedy</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>żeby</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 6 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each time conjunction on the left to its correct English meaning on the right. All 8 pairs must be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--slate);margin-bottom:8px">Polish conjunction</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">zanim</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">odkąd</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">gdy tylko</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">po tym jak</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">dopóki</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">podczas gdy</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">kiedy / gdy</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">skoro tylko</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English meaning</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">while / whereas</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">as soon as</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">when (simultaneous)</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">before</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">the moment that</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">after (specific event)</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">since (ongoing from past)</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">as long as / while (condition)</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 6 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 6 Test</div>
+  <div class="section-desc">Complete all five sections to unlock the test.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 6 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">All sections complete. The test combines 25 questions covering media vocabulary, reported speech, time clauses, indirect questions, and comprehension. Retakes are allowed — mistakes link back to specific sections.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 6 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div></div></div>
+
+<script>
+// ══ STATE ═══════════════════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 310;
+
+// ══ NAV ═════════════════════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ════════════════════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ TTS ═════════════════════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ AUDIO ═══════════════════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 5:10 · Polish B2`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying=false; document.getElementById('play-icon').className='ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+
+// ══ MC ══════════════════════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8
+        ? '<strong>Doskonale! 8/8</strong> — Perfect. You have mastered reported speech with że, indirect questions with czy/question words, time conjunction meanings, the future time clause rule (no "będę" after kiedy/zanim), and pronoun shifts.'
+        : '<strong>' + correct + '/8 correct.</strong> Review: reported statements use "że"; indirect questions use "czy" (yes/no) or the question word; future time clauses use present tense, NOT "będę + infinitive"; "nasz" shifts to "ich" in third-person reported speech; "odkąd" = since (ongoing); "gdy tylko" = as soon as.';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR EXERCISE ════════════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/[,]/g,'').replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  const items = [
+    { id:'ti1', ans:'ekspert powiedział że media społecznościowe zmieniają politykę',
+      exp:'Reported speech: drop the quotes, add "że", keep tense. "Powiedział, że media społecznościowe zmieniają politykę."' },
+    { id:'ti2', ans:'firma poinformowała że ich produkt będzie gotowy w marcu',
+      exp:'"Nasz" (our) shifts to "ich" (their) in third-person reported speech. "Firma poinformowała, że ich produkt będzie gotowy w marcu."' },
+    { id:'ti3', ans:'zanim',
+      exp:'"Zanim" = before. "Odkąd" = since. "Gdy tylko" = as soon as. "Po tym jak" = after.' },
+    { id:'ti4', ans:'zadzwonię kiedy skończę pracę',
+      exp:'Future time clauses in Polish use the present tense after time conjunctions — never "będę + infinitive". "Zadzwonię, kiedy skończę pracę." ✓' },
+    { id:'ti5', ans:'odkąd',
+      exp:'"Odkąd" = since (ongoing change from a past starting point). "Zanim" = before. "Gdy tylko" = as soon as.' },
+  ];
+  let correct = 0;
+  items.forEach((item, n) => {
+    const inp = document.getElementById(item.id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    const ans = norm(item.ans);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    // flexible matching — accept if val contains key words
+    const keyWords = ans.split(' ').filter(w => w.length > 3);
+    const matched = val === ans || (val.includes('że') && val.includes('media') && n===0) ||
+                    (val.includes('że') && val.includes('ich') && n===1) ||
+                    (val === 'zanim' && n===2) ||
+                    (val.includes('kiedy') && val.includes('skończę') && n===3) ||
+                    (val === 'odkąd' && n===4);
+    if (matched) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ ' + item.exp; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Świetnie! 5/5</strong> — Excellent. You correctly transformed direct to reported speech (including pronoun shift), chose the right time conjunctions, and applied the future time clause rule.';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 3 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/5 correct.</strong> Key rules: reported speech uses "że" + original tense; "nasz/mój" → "ich/jego/jej" in 3rd person; future time clauses use present tense NOT będę; "zanim" = before; "odkąd" = since.';
+  }
+}
+
+// ══ GAP FILL ════════════════════════════════════════
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+  const alternatives = {
+    g1: ['twierdzą że','twierdzą, że'],
+    g2: ['stwierdził że','stwierdził, że'],
+    g8: ['po tym jak','po tym, jak'],
+  };
+  let correct = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct','incorrect');
+    const val = norm(inp.value);
+    const main = norm(inp.dataset.answer);
+    const alts = (alternatives[id] || []).map(a => norm(a));
+    if (val === main || alts.includes(val)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const fb = document.getElementById('gf-feedback');
+  if (correct === fields.length) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! 8/8</strong> — All correct. You used: reported speech with "twierdzą że / stwierdził że / poinformowała że / przyznali że"; indirect questions with "czy"; time clauses with "odkąd, zanim, gdy tylko, po tym jak"; and correct Genitive "regulaminów" after negation.';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/8 correct.</strong> Check gaps: reporting verbs need "że" after them; indirect yes/no questions use "czy"; "odkąd" = since (ongoing); "zanim" = before; "gdy tylko" = as soon as; "po tym jak" = after (specific event); "regulaminów" = Gen. pl. after negation.';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(id=>{const inp=document.getElementById(id);if(inp){inp.value='';inp.classList.remove('correct','incorrect');}});
+  document.getElementById('gf-feedback').classList.remove('show');
+}
+
+// ══ MATCHING ════════════════════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All time conjunctions matched correctly. Pay special attention to the nuance between "gdy tylko" (as soon as — instant) and "skoro tylko" (the moment that — slightly more formal/literary), and between "odkąd" (since — ongoing) and "po tym jak" (after — specific completed event).';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ════════════════════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ═════════════════════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 20) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B2-level English-speaking learner's writing. Unit 6 focuses on media and technology, reported speech, and time clauses.
+
+Task: Write 150-190 words in Polish giving their opinion on (a) social media and misinformation, or (b) AI replacing journalists. Use at least 6 of: media społecznościowe, dezinformacja, weryfikacja faktów, sztuczna inteligencja, źródło informacji, branża, transparentność, nasilać się, korzystać z, ostrzegać, zobowiązać się. Include at least one reported speech construction (eksperci twierdzą, że… / badania pokazują, że…) and at least two time clauses (zanim, odkąd, gdy tylko, po tym jak, kiedy).
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <integer 0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2-3 sentences overall assessment — comment on B2 register and argumentation quality>",
+  "vocab_used": ["<target words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "reported_speech": "<comment on reported speech usage — present? correct verb? correct że? pronoun shifts?>",
+  "time_clauses": ["<each time clause found with brief comment on correctness>"],
+  "time_clause_errors": [{"error":"<clause>","correction":"<correction>","explanation":"<rule>"}],
+  "correct_structures": ["<2-3 specific things done well>"],
+  "other_errors": [{"error":"<phrase>","correction":"<correction>","explanation":"<rule>"}],
+  "register_comment": "<comment on whether the register is appropriately formal/journalistic>",
+  "recommendation": "<one specific B2-level improvement tip>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1400, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  // Three grammar panels
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">';
+  if (r.reported_speech) html += '<div style="background:var(--slate-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--slate);margin-bottom:4px">Reported Speech</div>'+r.reported_speech+'</div>';
+  if (r.register_comment) html += '<div style="background:var(--gold-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--gold);margin-bottom:4px">Register</div>'+r.register_comment+'</div>';
+  html += '</div>';
+
+  if (r.time_clauses&&r.time_clauses.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Time Clauses Found</div>';
+    r.time_clauses.forEach(t=>html+='<p style="font-size:13px;line-height:1.5;margin-bottom:4px">• '+t+'</p>');
+    html+='</div>';
+  }
+  if (r.time_clause_errors&&r.time_clause_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Time Clause Errors</div>';
+    r.time_clause_errors.forEach(e=>{ html+='<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">'+e.error+'</span> → <strong style="color:var(--green)">'+e.correction+'</strong></div><div style="color:var(--ink-muted);margin-top:4px">'+e.explanation+'</div></div>'; });
+    html+='</div>';
+  }
+  if (r.vocab_used&&r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v=>html+='<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">'+v+'</span>');
+    html+='</div></div>';
+  }
+  if (r.correct_structures&&r.correct_structures.length) {
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s=>html+='<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ '+s+'</p>');
+    html+='</div>';
+  }
+  if (r.other_errors&&r.other_errors.length) {
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Other errors</div>';
+    r.other_errors.forEach(e=>{ html+='<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">'+e.error+'</span> → <strong style="color:var(--green)">'+e.correction+'</strong></div><div style="color:var(--ink-muted);margin-top:4px">'+e.explanation+'</div></div>'; });
+    html+='</div>';
+  }
+  if (r.recommendation) html+='<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 B2 tip:</strong> '+r.recommendation+'</div>';
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

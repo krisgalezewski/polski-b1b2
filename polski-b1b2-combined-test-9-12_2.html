@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Combined Test: Units 9–12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --violet:#5B21B6;--violet-light:#EDE9FE;
+  --emerald:#065F46;--emerald-light:#D1FAE5;
+  --amber:#92400E;--amber-light:#FEF3C7;
+  --cyan:#164E63;--cyan-light:#CFFAFE;
+  --fuchsia:#701A75;--fuchsia-light:#FAE8FF;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+  --shadow:0 2px 8px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+}
+html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;min-height:100vh}
+#sidebar{width:280px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;transition:transform 0.3s}
+#main{flex:1;overflow-y:auto}
+.main-inner{max-width:720px;margin:0 auto;padding:36px 32px 100px}
+
+/* ── SIDEBAR ── */
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:3px;text-transform:uppercase;letter-spacing:0.8px}
+.sidebar-section{padding:14px 20px 6px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#57534E}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:12px;color:#A8A29E;cursor:pointer;transition:all 0.15s;position:relative;user-select:none}
+.sidebar-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.sidebar-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.sidebar-item.active::before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.sidebar-item i{font-size:14px;width:16px;text-align:center;flex-shrink:0}
+.sidebar-item .tag{margin-left:auto;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:500}
+.tag-correct{background:rgba(22,101,52,0.25);color:#4ADE80}
+.tag-wrong{background:rgba(193,55,42,0.25);color:#FCA5A5}
+.tag-skipped{background:rgba(255,255,255,0.08);color:#78716C}
+.tag-active{background:rgba(193,55,42,0.3);color:#FCA5A5}
+.unit-divider{margin:8px 20px;height:0.5px;background:rgba(255,255,255,0.06)}
+.sidebar-footer{margin-top:auto;padding:16px 20px;border-top:0.5px solid rgba(255,255,255,0.06)}
+.score-ring-wrap{display:flex;align-items:center;gap:12px}
+.score-ring{width:52px;height:52px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--pct,0)*1%),rgba(255,255,255,0.08) 0%);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.score-ring::before{content:'';position:absolute;inset:6px;background:var(--ink);border-radius:50%}
+.score-ring-num{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:#fff}
+.score-ring-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+.score-ring-label{font-size:11px;color:#78716C}
+
+/* ── HEADER ── */
+.test-header{background:var(--ink);border-radius:14px;padding:28px 32px;margin-bottom:28px;position:relative;overflow:hidden}
+.test-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 50%,rgba(91,33,182,0.22) 0%,transparent 60%)}
+.test-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#78716C;margin-bottom:8px;position:relative}
+.test-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px;position:relative}
+.test-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;position:relative}
+.test-meta-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#A8A29E}
+
+/* ── PROGRESS BAR ── */
+.progress-strip{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+.progress-bar-outer{flex:1;height:6px;background:var(--ink-faint);border-radius:3px;overflow:hidden}
+.progress-bar-inner{height:100%;background:var(--violet);border-radius:3px;transition:width 0.4s}
+.progress-label{font-size:12px;color:var(--ink-muted);white-space:nowrap}
+.progress-nums{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+
+/* ── QUESTION CARD ── */
+.question-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);display:none}
+.question-card.active{display:block}
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-muted);font-weight:500}
+.q-unit-tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
+.q-grammar-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--violet-light);color:var(--violet);font-weight:500}
+.q-type-tag{font-size:11px;color:var(--ink-muted);padding:2px 0}
+.question-text{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:18px;line-height:1.5}
+
+/* ── OPTIONS ── */
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;line-height:1.5;user-select:none}
+.option:hover:not(.locked){border-color:var(--violet);background:var(--violet-light)}
+.opt-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px;color:var(--ink-faint)}
+.option:hover:not(.locked) .opt-letter{color:var(--violet)}
+.option.selected{border-color:var(--violet);background:var(--violet-light)}
+.option.selected .opt-letter{color:var(--violet)}
+.option.locked{cursor:default}
+.option.revealed-correct{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.option.revealed-correct .opt-letter{border-color:var(--green);color:var(--green)}
+.option.revealed-wrong{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.75}
+.option.revealed-wrong .opt-letter{border-color:var(--red);color:var(--red)}
+
+/* ── GAP FILL ── */
+.gap-sentence{font-size:15px;line-height:3;margin-bottom:8px}
+.test-gap{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 8px;min-width:160px;outline:none;transition:border-color 0.15s;text-align:center}
+.test-gap:focus{border-bottom-color:var(--violet)}
+.test-gap.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.test-gap.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+
+/* ── FEEDBACK ── */
+.answer-feedback{display:none;margin-top:16px;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.6}
+.answer-feedback.show{display:block}
+.answer-feedback.correct-fb{background:var(--green-light);border:0.5px solid rgba(22,101,52,0.2);color:var(--green)}
+.answer-feedback.wrong-fb{background:var(--red-light);border:0.5px solid rgba(193,55,42,0.2);color:var(--red)}
+.revision-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;background:rgba(193,55,42,0.1);color:var(--red);padding:3px 8px;border-radius:6px;margin-top:8px;font-weight:500}
+
+/* ── NAV BUTTONS ── */
+.q-nav{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-violet{background:var(--violet);color:#fff}
+.btn-violet:hover{background:#4C1D95}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn-green{background:var(--green);color:#fff}
+.btn:disabled{opacity:0.35;cursor:not-allowed}
+.btn-sm{padding:7px 14px;font-size:13px}
+
+/* ── RESULTS ── */
+#results-screen{display:none}
+.results-hero{background:var(--ink);border-radius:14px;padding:32px;text-align:center;margin-bottom:24px;position:relative;overflow:hidden}
+.results-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(91,33,182,0.25) 0%,transparent 60%)}
+.results-trophy{font-size:56px;margin-bottom:12px;position:relative}
+.results-grade{font-family:'DM Mono',monospace;font-size:64px;font-weight:500;color:#fff;line-height:1;position:relative}
+.results-score{font-size:16px;color:#A8A29E;margin-top:4px;position:relative}
+.results-summary{font-size:14px;color:#A8A29E;margin-top:12px;max-width:420px;margin-left:auto;margin-right:auto;position:relative;line-height:1.6}
+.results-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-correct .stat-num{color:var(--green)}
+.stat-wrong .stat-num{color:var(--red)}
+.stat-score .stat-num{color:var(--violet)}
+.stat-time .stat-num{color:var(--gold)}
+.unit-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.unit-breakdown-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+.ubc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ubc-title{font-size:13px;font-weight:500;color:var(--ink)}
+.ubc-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:500}
+.ubc-bar{height:4px;background:var(--ink-faint);border-radius:2px;overflow:hidden}
+.ubc-fill{height:100%;border-radius:2px;transition:width 0.6s}
+.revision-section{margin-bottom:24px}
+.revision-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px}
+.revision-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:14px}
+.revision-card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+.revision-card-body{flex:1}
+.revision-card-title{font-weight:500;font-size:14px;color:var(--ink);margin-bottom:3px}
+.revision-card-desc{font-size:13px;color:var(--ink-muted);line-height:1.5;margin-bottom:8px}
+.open-unit-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--violet);background:var(--violet-light);border:none;border-radius:6px;padding:5px 10px;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif}
+.open-unit-btn:hover{background:var(--violet);color:#fff}
+.page{display:none}
+.page.active{display:block}
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:800px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:20px 16px 80px}
+  .results-stats{grid-template-columns:repeat(2,1fr)}
+  .unit-breakdown{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<!-- ══ SIDEBAR ══ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Combined Test · Units 9–12</div>
+  </div>
+  <div class="sidebar-section">Test progress</div>
+  <div id="sidebar-q-list"></div>
+  <div class="unit-divider"></div>
+  <div class="sidebar-section">Jump to unit</div>
+  <div class="sidebar-item" onclick="jumpToUnit(9)"><i class="ti ti-leaf"></i> Unit 9 — Środowisko</div>
+  <div class="sidebar-item" onclick="jumpToUnit(10)"><i class="ti ti-building-community"></i> Unit 10 — Społeczeństwo</div>
+  <div class="sidebar-item" onclick="jumpToUnit(11)"><i class="ti ti-chart-bar"></i> Unit 11 — Gospodarka</div>
+  <div class="sidebar-item" onclick="jumpToUnit(12)"><i class="ti ti-star"></i> Unit 12 — Przyszłość</div>
+  <div class="sidebar-footer">
+    <div class="score-ring-wrap">
+      <div class="score-ring" id="sidebar-ring" style="--pct:0"><div class="score-ring-num" id="sidebar-ring-num">0%</div></div>
+      <div>
+        <div class="score-ring-title" id="sidebar-ring-title">Not started</div>
+        <div class="score-ring-label" id="sidebar-ring-label">0 / 25 answered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main"><div class="main-inner">
+
+<!-- START SCREEN -->
+<div class="page active" id="page-start">
+  <div class="test-header">
+    <div class="test-eyebrow"><i class="ti ti-clipboard-check"></i> Phase 3 Combined Test</div>
+    <div class="test-title">Units 9–12 Combined Test</div>
+    <div style="color:#A8A29E;font-size:14px;margin-top:4px;position:relative">Środowisko · Społeczeństwo · Gospodarka · Przyszłość</div>
+    <div class="test-meta">
+      <div class="test-meta-item"><i class="ti ti-help-circle"></i> 25 questions</div>
+      <div class="test-meta-item"><i class="ti ti-layers-intersect"></i> 4 units + Grammar G8 Parts 1–3</div>
+      <div class="test-meta-item"><i class="ti ti-refresh"></i> Retakes allowed</div>
+      <div class="test-meta-item"><i class="ti ti-target"></i> Pass mark: 70%</div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:12px">What this test covers</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--emerald);margin-bottom:4px"><i class="ti ti-leaf"></i> Unit 9 — Środowisko i Przyroda</div>
+        <div style="color:var(--ink-muted)">Environment vocabulary · Passive voice, cause &amp; effect, numerals (G8 Pt1)</div>
+      </div>
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--fuchsia);margin-bottom:4px"><i class="ti ti-building-community"></i> Unit 10 — Społeczeństwo i Polityka</div>
+        <div style="color:var(--ink-muted)">Society vocabulary · Concessive clauses &amp; formal argumentation (G8 Pt2)</div>
+      </div>
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--amber);margin-bottom:4px"><i class="ti ti-chart-bar"></i> Unit 11 — Gospodarka i Pieniądze</div>
+        <div style="color:var(--ink-muted)">Economics vocabulary · Type 2 &amp; 3 conditionals, probability (G8 Pt3)</div>
+      </div>
+      <div style="padding:12px 14px;border:0.5px solid var(--border);border-radius:8px;font-size:13px">
+        <div style="font-weight:500;color:var(--violet);margin-bottom:4px"><i class="ti ti-star"></i> Unit 12 — Przyszłość i Marzenia</div>
+        <div style="color:var(--ink-muted)">Future &amp; dreams vocabulary · Full G8 consolidation across all structures</div>
+      </div>
+    </div>
+    <div style="background:var(--violet-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--violet);margin-bottom:20px;line-height:1.6">
+      <strong>B2+ level — no scaffolding:</strong> This is the hardest combined test in the course. All questions involve complex grammar: passive voice (być vs zostać), concessive and argumentative structures, Type 2 and Type 3 conditionals, probability spectrum, and full G8 consolidation. Instant grammatical feedback after every answer. Retakes allowed.
+    </div>
+    <button class="btn btn-violet" onclick="startTest()" style="font-size:15px;padding:12px 28px"><i class="ti ti-player-play-filled"></i> Start Test</button>
+  </div>
+</div>
+
+<!-- TEST SCREEN -->
+<div class="page" id="page-test">
+  <div class="progress-strip">
+    <div class="progress-nums" id="prog-nums">1 / 25</div>
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog-bar" style="width:4%"></div></div>
+    <div class="progress-label" id="prog-label">0 correct so far</div>
+  </div>
+  <div id="questions-container"></div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div class="page" id="page-results">
+  <div class="results-hero">
+    <div class="results-trophy" id="results-trophy">🎯</div>
+    <div class="results-grade" id="results-grade">–</div>
+    <div class="results-score" id="results-score">– / 25 correct</div>
+    <div class="results-summary" id="results-summary"></div>
+  </div>
+  <div class="results-stats">
+    <div class="stat-card stat-correct"><div class="stat-num" id="stat-correct">0</div><div class="stat-label">Correct</div></div>
+    <div class="stat-card stat-wrong"><div class="stat-num" id="stat-wrong">0</div><div class="stat-label">Incorrect</div></div>
+    <div class="stat-card stat-score"><div class="stat-num" id="stat-pct">0%</div><div class="stat-label">Score</div></div>
+    <div class="stat-card stat-time"><div class="stat-num" id="stat-time">0:00</div><div class="stat-label">Time taken</div></div>
+  </div>
+  <div class="unit-breakdown" id="unit-breakdown"></div>
+  <div class="revision-section" id="revision-section" style="display:none">
+    <div class="revision-title"><i class="ti ti-refresh" style="color:var(--violet)"></i> Revision Recommendations</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:14px">Based on your mistakes, revisit these sections. Click any button to open the relevant unit.</p>
+    <div id="revision-cards"></div>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+    <button class="btn btn-violet" onclick="retakeTest()"><i class="ti ti-refresh"></i> Retake Test</button>
+    <button class="btn btn-outline" onclick="showPage('start')"><i class="ti ti-home"></i> Test Home</button>
+  </div>
+</div>
+
+</div></div></div>
+
+<script>
+// ═══════════════════════════════════════════
+// QUESTION BANK — 25 questions, Units 9–12
+// ═══════════════════════════════════════════
+const QUESTIONS = [
+
+  // ── UNIT 9: ŚRODOWISKO I PRZYRODA (G8 Pt1: passive, cause & effect, numerals) ──
+
+  {
+    id:1, unit:9, grammar:false, type:'mc',
+    topic:'Environment Vocabulary',
+    revisionSection:'Unit 9 → Extended Lesson (Reading)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Które słowo oznacza DOKŁADNIE to samo co „zrównoważony rozwój"?',
+    options:['ekologia','zanieczyszczenie','sustainability','bioróżnorodność'],
+    correct:2,
+    explanation:'"Sustainability" / „zrównoważony rozwój" — development that meets present needs without compromising future generations. „Ekologia" = ecology (the science). „Zanieczyszczenie" = pollution. „Bioróżnorodność" = biodiversity — a related but distinct concept.'
+  },
+  {
+    id:2, unit:9, grammar:true, grammarUnit:'G8 Pt1', type:'mc',
+    topic:'Grammar G8 Pt1 — Passive: być vs zostać',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Passive Voice)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Ustawa o ochronie środowiska ______ w ubiegłym roku. (single completed legislative event)',
+    options:['była uchwalona','została uchwalona','jest uchwalana','uchwalała się'],
+    correct:1,
+    explanation:'"Została uchwalona" — zostać-passive for a single completed event (the law was passed — done, result achieved). "Była uchwalona" (być-passive) describes an ongoing state or process, not a completed single act. "Jest uchwalana" = is being passed (impf. present process). "Uchwalała się" is not a standard passive form.'
+  },
+  {
+    id:3, unit:9, grammar:true, grammarUnit:'G8 Pt1', type:'mc',
+    topic:'Grammar G8 Pt1 — Passive: agreement',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Passive Voice)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Nowe przepisy dotyczące emisji CO₂ ______ przez Komisję Europejską. (completed event, plural neuter "przepisy")',
+    options:['zostało wprowadzone','zostały wprowadzone','został wprowadzony','były wprowadzane'],
+    correct:1,
+    explanation:'"Zostały wprowadzone" — "przepisy" (regulations) is masculine personal plural → "zostały" (pl.) + "wprowadzone" (pl. masc. non-pers. participial form). The participle must agree in gender, number and case with the subject. "Zostało" is neuter singular. "Został" is masc. singular. "Były wprowadzane" uses być + impf. participle — ongoing process, not a completed event.'
+  },
+  {
+    id:4, unit:9, grammar:false, type:'mc',
+    topic:'Cause & Effect Connectors',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Cause & Effect)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Emisje gazów cieplarnianych wzrosły o 12%, ______ temperatura globalna podniosła się o kolejne 0,2°C.',
+    options:['natomiast','w wyniku czego','chociaż','mimo że'],
+    correct:1,
+    explanation:'"W wyniku czego" = as a result of which — a cause-and-effect connector linking a cause (emissions rising) directly to its consequence (temperature rising). "Natomiast" = whereas (contrast). "Chociaż" and "mimo że" are concessive connectors (although) — they introduce something unexpected, not a natural consequence.'
+  },
+  {
+    id:5, unit:9, grammar:false, type:'gapfill',
+    topic:'Numerals — after 5+',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Numerals)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Complete: Polska ma ponad trzydzieści ______ (park narodowy — Gen. pl.) na swoim terytorium.',
+    gapAnswer:'parków narodowych',
+    gapHint:'Gen. pl.',
+    explanation:'"Parków narodowych" — after numbers 5 and above (and all higher numbers), the noun takes Genitive plural. "Park narodowy" → Gen. pl. "parków narodowych". Compare: dwa parki narodowe (2 = Nom. pl.), pięć parków narodowych (5+ = Gen. pl.).'
+  },
+
+  // ── UNIT 10: SPOŁECZEŃSTWO I POLITYKA (G8 Pt2: concessives, argumentation) ──
+
+  {
+    id:6, unit:10, grammar:false, type:'mc',
+    topic:'Society Vocabulary',
+    revisionSection:'Unit 10 → Extended Lesson (Reading)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'Które zdanie najlepiej opisuje pojęcie „społeczeństwo obywatelskie"?',
+    options:[
+      'System, w którym tylko obywatele z pełnymi prawami mogą głosować.',
+      'Sfera życia publicznego poza rządem i rynkiem, tworzona przez organizacje i inicjatywy obywateli.',
+      'Forma rządu, w której wszyscy obywatele bezpośrednio uczestniczą w tworzeniu prawa.',
+      'Polityka imigracyjna przyznająca obywatelstwo osobom spełniającym określone warunki.'
+    ],
+    correct:1,
+    explanation:'"Społeczeństwo obywatelskie" (civil society) = the sphere of organised social activity between the state and the individual: NGOs, associations, voluntary organisations, civic initiatives — not government and not market. Option A describes suffrage restrictions. Option C is direct democracy. Option D is naturalisation policy.'
+  },
+  {
+    id:7, unit:10, grammar:true, grammarUnit:'G8 Pt2', type:'mc',
+    topic:'Grammar G8 Pt2 — Concessive: choć vs mimo że',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Concessive Clauses)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'______ reformy spotkały się z krytyką, rząd zdecydował się kontynuować ich wdrożenie.',
+    options:['Ponieważ','W wyniku czego','Mimo że','Dlatego że'],
+    correct:2,
+    explanation:'"Mimo że" = even though / despite the fact that — a concessive connector. The sentence admits the criticism (concessive clause) but states the government continued regardless (main clause). "Ponieważ" and "Dlatego że" are causal (because / that is why). "W wyniku czego" = as a result of which (cause-effect).'
+  },
+  {
+    id:8, unit:10, grammar:true, grammarUnit:'G8 Pt2', type:'mc',
+    topic:'Grammar G8 Pt2 — o ile…o tyle',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Concessive Clauses)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'______ wzrost PKB jest pozytywnym sygnałem, ______ nierówności dochodowe pozostają poważnym problemem.',
+    options:['Chociaż…to','O ile…o tyle','Jakkolwiek…to','Bądź co bądź…lecz'],
+    correct:1,
+    explanation:'"O ile…o tyle" — the paired concessive-conditional construction. The first clause (o ile) grants or concedes a point; the second (o tyle) asserts the main, contrasting argument. Translates roughly as "insofar as… to that extent". It requires both halves. "Chociaż…to" works for simple concession but lacks the proportional nuance. "Jakkolwiek" also works but takes a different structure.'
+  },
+  {
+    id:9, unit:10, grammar:true, grammarUnit:'G8 Pt2', type:'mc',
+    topic:'Grammar G8 Pt2 — Formal Argumentation',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Formal Argumentation)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'Which sentence uses a FORMAL argumentative device appropriate for an academic or journalistic text?',
+    options:[
+      'Wszyscy wiemy, że polityka migracyjna jest trudna.',
+      'Moim zdaniem imigracja to dobra rzecz.',
+      'Trudno zaprzeczyć, że migracja zarobkowa wpływa na strukturę demograficzną kraju.',
+      'Chyba każdy zgodzi się, że politycy kłamią w tej kwestii.'
+    ],
+    correct:2,
+    explanation:'"Trudno zaprzeczyć, że…" = it is hard to deny that — a formal argumentative device (G8 Pt2) that presents a claim as difficult to refute, giving it rhetorical authority. Option A ("wszyscy wiemy") is an informal appeal to consensus. Option B ("moim zdaniem") is personal opinion — informal. Option D is informal and makes a loaded claim.'
+  },
+  {
+    id:10, unit:10, grammar:false, type:'gapfill',
+    topic:'Concessive in context',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Concessive Clauses)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'Complete: Niezależnie ______ (od czego?) tego, jakie są różnice polityczne, prawa człowieka muszą być respektowane.',
+    gapAnswer:'od',
+    gapHint:'niezależnie + preposition',
+    explanation:'"Niezależnie od" + Genitive = regardless of. This is a fixed concessive phrase: "niezależnie od tego, czy…" (regardless of whether), "niezależnie od różnic" (regardless of differences). The preposition "od" is inseparable from this construction, always followed by Genitive.'
+  },
+
+  // ── UNIT 11: GOSPODARKA I PIENIĄDZE (G8 Pt3: conditionals, probability) ──
+
+  {
+    id:11, unit:11, grammar:false, type:'mc',
+    topic:'Economics Vocabulary',
+    revisionSection:'Unit 11 → Extended Lesson (Reading)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Co oznacza termin „inflacja"?',
+    options:[
+      'Wzrost wartości waluty krajowej w stosunku do innych walut.',
+      'Ogólny wzrost poziomu cen w gospodarce, prowadzący do spadku siły nabywczej pieniądza.',
+      'Polityka rządu mająca na celu zmniejszenie długu publicznego.',
+      'Zwiększenie produkcji przemysłowej w sektorze prywatnym.'
+    ],
+    correct:1,
+    explanation:'"Inflacja" = a general rise in the price level of goods and services in an economy over time, which reduces the purchasing power of money. Option A describes currency appreciation. Option C describes austerity / debt reduction policy. Option D describes industrial output growth.'
+  },
+  {
+    id:12, unit:11, grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'Grammar G8 Pt3 — Type 2 Conditional',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Conditionals)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Gdyby stopy procentowe ______ niższe, więcej firm ______ nowe inwestycje. (Type 2 — hypothetical present)',
+    options:[
+      'są…podejmie','były…podjęłoby','będą…podejmuje','byłyby…będzie podejmować'
+    ],
+    correct:1,
+    explanation:'"Gdyby były…podjęłoby" — Type 2 (hypothetical present/future): gdyby + past tense form (były) in the condition clause; conditional form (-łby/-łoby) in the main clause. The rates are NOT currently low — this is a hypothetical. "Są" = factual present (wrong for hypothetical). "Będą" = factual future. "Byłyby" would be a double conditional — not standard.'
+  },
+  {
+    id:13, unit:11, grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'Grammar G8 Pt3 — Type 3 Conditional (counterfactual)',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Conditionals)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Gdyby Polska nie wstąpiła do Unii Europejskiej w 2004 roku, PKB per capita ______ znacznie niższe. (Type 3 — counterfactual past)',
+    options:[
+      'byłoby','jest','będzie','jest niższe'],
+    correct:0,
+    explanation:'"Byłoby" — Type 3 counterfactual past conditional: Poland DID join the EU in 2004 — this imagines the alternative history. The main clause uses "byłoby" (conditional of "być", neuter — agreeing with PKB). Type 3 structure: gdyby + past (nie wstąpiła) → conditional (byłoby + predicate). Compare Type 2: about the present/future; Type 3: about the past (what would have been).'
+  },
+  {
+    id:14, unit:11, grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'Grammar G8 Pt3 — Probability spectrum',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Probability)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Which sequence correctly orders these probability expressions from HIGHEST to LOWEST certainty?',
+    options:[
+      'prawdopodobnie → najprawdopodobniej → na pewno → może',
+      'na pewno → najprawdopodobniej → prawdopodobnie → nie jest wykluczone że',
+      'może → prawdopodobnie → na pewno → nie jest wykluczone że',
+      'nie jest wykluczone że → na pewno → może → prawdopodobnie'
+    ],
+    correct:1,
+    explanation:'"Na pewno" (~100%) → "najprawdopodobniej" (~90%) → "prawdopodobnie" (~75%) → "nie jest wykluczone że" (~30–50%, meaning it cannot be ruled out). This is the standard probability spectrum from G8 Pt3. "Może" sits around 50% (possibility). "Mało prawdopodobne" is around 20%.'
+  },
+  {
+    id:15, unit:11, grammar:false, type:'gapfill2',
+    topic:'Type 2 conditional in context',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Conditionals)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Gdyby rząd ____GAP1____ podatki, konsumpcja ____GAP2____ gwałtownie.',
+    gapAnswer1:'obniżył',
+    gapHint1:'obniżyć — past form (masc. sg.)',
+    gapAnswer2:'wzrosłaby',
+    gapHint2:'wzrosnąć — conditional (fem.)',
+    explanation:'"Obniżył … wzrosłaby" — Type 2 conditional: gdyby + past (obniżył — masc. sg. past of obniżyć) in the condition; main clause uses conditional (-łaby — fem., agreeing with "konsumpcja"). Note: "wzrosnąć" is perfective → "wzrosłaby" (not "wzrastałaby").'
+  },
+
+  // ── UNIT 12: PRZYSZŁOŚĆ I MARZENIA (G8 Full Consolidation) ──
+
+  {
+    id:16, unit:12, grammar:false, type:'mc',
+    topic:'Dreams & Future Vocabulary',
+    revisionSection:'Unit 12 → Extended Lesson (Reading)',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Które zdanie najlepiej oddaje znaczenie słowa „wytrwałość"?',
+    options:[
+      'Umiejętność szybkiego uczenia się nowych rzeczy.',
+      'Zdolność do kontynuowania działania mimo trudności i niepowodzeń.',
+      'Gotowość do rezygnacji z celu, gdy jest on zbyt trudny do osiągnięcia.',
+      'Talent do przewidywania przyszłych problemów zanim się pojawią.'
+    ],
+    correct:1,
+    explanation:'"Wytrwałość" = perseverance — the ability to keep going despite difficulties and setbacks. Option A describes quick learning ability. Option C is the opposite — willingness to give up. Option D describes foresight / anticipation.'
+  },
+  {
+    id:17, unit:12, grammar:true, grammarUnit:'G8 Consolidation', type:'mc',
+    topic:'Grammar G8 — Identify the structure',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Co wyraża zdanie: „Choć droga była długa, nie straciliśmy nadziei"?',
+    options:[
+      'Zdanie przyczynowe — wyjaśnia, dlaczego nie stracili nadziei.',
+      'Zdanie warunkowe typ 2 — hipoteza o przyszłości.',
+      'Zdanie koncesywne — przyznaje trudność, ale stwierdza, że nadzieja przetrwała.',
+      'Zdanie skutkowe — opisuje rezultat długiej drogi.'
+    ],
+    correct:2,
+    explanation:'This is a concessive clause (G8 Pt2): "Choć" = although — the speaker admits the road was long (the concessive), then asserts the main point that hope survived. A causal clause would explain WHY they kept hope. A Type 2 conditional would use "gdyby". A result clause would explain what happened AS A RESULT of something.'
+  },
+  {
+    id:18, unit:12, grammar:true, grammarUnit:'G8 Consolidation', type:'mc',
+    topic:'Grammar G8 — Passive vs Active choice',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which sentence uses the passive voice MOST appropriately given the context (the agent is unknown or irrelevant)?',
+    options:[
+      'Ktoś zbudował ten most w 1987 roku.',
+      'Rząd wybudował ten most w 1987 roku.',
+      'Ten most został zbudowany w 1987 roku.',
+      'Budowali ten most przez dwa lata.'
+    ],
+    correct:2,
+    explanation:'"Ten most został zbudowany w 1987 roku." — Passive is most appropriate when the agent (who built it) is unknown or irrelevant; the focus is the bridge and the date. Option A names a vague agent ("ktoś") — possible but the passive is more natural. Option B names a specific agent (the government) — active is fine here. Option D is imperfective past active — emphasises duration, not the completion.'
+  },
+  {
+    id:19, unit:12, grammar:true, grammarUnit:'G8 Consolidation', type:'mc',
+    topic:'Grammar G8 — Type 2 vs Type 3 distinction',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which sentence is a Type 3 COUNTERFACTUAL PAST conditional (about something that did NOT happen)?',
+    options:[
+      'Gdybym miała więcej czasu, poszłabym na siłownię dziś wieczorem.',
+      'Gdyby Edison nie próbował tysiąc razy, żarówka nigdy nie zostałaby wynaleziona.',
+      'Gdybyśmy mieli lepszy budżet, zorganizowalibyśmy większą konferencję.',
+      'Gdyby ceny spadły, więcej ludzi kupiłoby mieszkania.'
+    ],
+    correct:1,
+    explanation:'"Gdyby Edison nie próbował tysiąc razy, żarówka nigdy nie zostałaby wynaleziona." — This is Type 3: Edison DID try thousands of times (historical fact); the sentence imagines the alternative past. Key signal: it contradicts known history. Options A, C, D are all Type 2 (hypothetical present/future) — they imagine alternative present or future scenarios that have not yet happened (or haven\'t been decided).'
+  },
+  {
+    id:20, unit:12, grammar:false, type:'gapfill',
+    topic:'Formal argumentative device',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Complete: ______ zaprzeczyć, że marzenia odgrywają kluczową rolę w życiu człowieka.',
+    gapAnswer:'trudno',
+    gapHint:'formal device: trudno / nie sposób…',
+    explanation:'"Trudno zaprzeczyć, że…" = it is hard to deny that — a fixed formal argumentative device from G8 Pt2. "Trudno" (it is difficult to) + infinitive introduces the claim. Other devices in this family: "nie sposób" (it is impossible to), "nie ulega wątpliwości że" (there is no doubt that), "można zasadnie twierdzić że" (one can reasonably argue that).'
+  },
+
+  // ── MIXED: Cross-unit synthesis (G8 all parts) ──
+
+  {
+    id:21, unit:'mixed', grammar:true, grammarUnit:'G8 Pt1+Pt2', type:'mc',
+    topic:'Passive + Concessive synthesis',
+    revisionSection:'Units 9–10 → Grammar G8 Pt1 & Pt2',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Which sentence CORRECTLY combines a passive construction with a concessive clause?',
+    options:[
+      'Choć ustawa była uchwalona, rząd chciał ją zmienić.',
+      'Mimo że nowe regulacje zostały przyjęte, wiele firm nadal ignoruje przepisy.',
+      'Nowe regulacje zostały przyjęte, ponieważ wiele firm ignoruje przepisy.',
+      'Choć regulacje przyjmowałyby firmy, ustawa nie była uchwalona.'
+    ],
+    correct:1,
+    explanation:'"Mimo że nowe regulacje zostały przyjęte, wiele firm nadal ignoruje przepisy." ✓ — Zostać-passive (completed single event: the regulations were adopted) combined with "mimo że" (concessive: even though this happened, firms still ignore the rules). Option A uses "była uchwalona" (być-passive — ongoing state, less precise for a completed act) and "choć" — grammatically possible but weaker. Option C uses "ponieważ" (cause, not concession). Option D has confused verb agreement and structure.'
+  },
+  {
+    id:22, unit:'mixed', grammar:true, grammarUnit:'G8 Pt2+Pt3', type:'mc',
+    topic:'Concessive + Conditional synthesis',
+    revisionSection:'Units 10–11 → Grammar G8 Pt2 & Pt3',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'Which sentence CORRECTLY combines a concessive clause with a Type 2 conditional?',
+    options:[
+      'Bądź co bądź, gdybyśmy mieli lepsze dane, wyciągnęlibyśmy inne wnioski.',
+      'Bądź co bądź gdybyśmy będziemy mieć dane, wnioski byłyby inne.',
+      'Choć gdyby mamy dane, wnioski byłyby inne.',
+      'Mimo że gdybym mała dane, wyciągnęłabym wnioski.'
+    ],
+    correct:0,
+    explanation:'"Bądź co bądź, gdybyśmy mieli lepsze dane, wyciągnęlibyśmy inne wnioski." ✓ — "Bądź co bądź" (after all — concessive bridge) followed by a correctly formed Type 2 conditional: "gdybyśmy mieli" (if we had — 1st pl. past after gdyby) → "wyciągnęlibyśmy" (we would draw — 1st pl. masc. conditional). Option B wrongly uses "będziemy" inside the conditional. Options C and D incorrectly embed "gdyby" directly inside a concessive clause.'
+  },
+  {
+    id:23, unit:'mixed', grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'Type 2 vs Type 3 — choose correctly',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Conditionals)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Select the sentence that uses BOTH a Type 2 and a Type 3 conditional correctly in the same response:',
+    options:[
+      'Gdyby Polska nie wstąpiła do UE, byłaby biedniejsza. Gdyby teraz to było możliwe, zrobiłabym to samo.',
+      'Gdyby Polska wstępowała do UE, byłaby bogatsza. Gdyby jutro padało, zostałabym w domu.',
+      'Gdyby Polska nie wstąpiła do UE, była biedna. Gdyby jutro padało, zostaje w domu.',
+      'Gdyby Polska nie wstąpiła do UE, jest biedna. Gdyby jutro padało, zostałabym w domu.'
+    ],
+    correct:0,
+    explanation:'"Gdyby Polska nie wstąpiła do UE, byłaby biedniejsza." — Type 3 ✓ (Poland DID join; counterfactual past). "Gdyby teraz to było możliwe, zrobiłabym to samo." — Type 2 ✓ (hypothetical present — it is not currently possible). Option B: "wstępowała" (impf.) is wrong for Type 3 — you need the perfective past. Option C: "była biedna" is missing the conditional marker (-łby). Option D: "jest biedna" is factual present, not conditional.'
+  },
+  {
+    id:24, unit:'mixed', grammar:true, grammarUnit:'G8 All', type:'mc',
+    topic:'Error identification — full G8',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Three of these sentences are grammatically correct. Which one contains an ERROR?',
+    options:[
+      'Trudno zaprzeczyć, że zmiany klimatyczne stanowią globalne zagrożenie.',
+      'O ile obawy ekonomiczne są zrozumiałe, o tyle aspektu humanitarnego nie można pominąć.',
+      'Gdyby rząd nie podjął tej decyzji, kryzys byłby większy.',
+      'Nowe prawo zostało uchwalone, ponieważ mimo że potrzebujemy reform.'
+    ],
+    correct:3,
+    explanation:'"Nowe prawo zostało uchwalone, ponieważ mimo że potrzebujemy reform." ✗ — This sentence incorrectly combines two different connectors: "ponieważ" (because — causal) and "mimo że" (although — concessive) cannot both follow each other like this; it creates an ungrammatical and semantically contradictory structure. Choose one or the other. Option A is correct (formal argumentative device). Option B is correct (o ile…o tyle paired construction). Option C is correct (Type 3 counterfactual — the decision WAS taken).'
+  },
+  {
+    id:25, unit:'mixed', grammar:true, grammarUnit:'G8 All', type:'mc',
+    topic:'Full G8 synthesis — choose the most sophisticated',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which sentence demonstrates the HIGHEST level of B2+ grammatical sophistication?',
+    options:[
+      'Marzenia są ważne i wszyscy powinniśmy mieć marzenia.',
+      'Choć marzenia nie zawsze się spełniają, są ważne dla życia ludzkiego.',
+      'Nie sposób zaprzeczyć, że marzenia, choć często zostają niezrealizowane, nadają życiu kierunek i sens — i prawdopodobnie właśnie ta niepewność sprawia, że dążenie do nich jest warte wysiłku.',
+      'Gdybym miała marzenia, byłabym szczęśliwsza, bo marzenia są ważne.'
+    ],
+    correct:2,
+    explanation:'"Nie sposób zaprzeczyć, że marzenia, choć często zostają niezrealizowane, nadają życiu kierunek i sens — i prawdopodobnie właśnie ta niepewność sprawia, że dążenie do nich jest warte wysiłku." — This sentence integrates: a formal argumentative device ("nie sposób zaprzeczyć że"), an embedded concessive ("choć często zostają niezrealizowane" using zostać-passive), a probability expression ("prawdopodobnie"), and a causal clause with verbal noun ("dążenie do nich"). Option A is simple B1. Option B uses a basic concessive — correct but not sophisticated. Option D has a Type 2 conditional but the logic is awkward ("gdybym miała marzenia" implies the speaker does not have them, which undermines the conclusion).'
+  }
+];
+
+// ═══════════════════════════════════════
+// UNIT META
+// ═══════════════════════════════════════
+const UNIT_META = {
+  9:  { label:'Unit 9 — Środowisko',    color:'var(--emerald)', bg:'var(--emerald-light)', file:'polski-b1b2-unit9.html' },
+  10: { label:'Unit 10 — Społeczeństwo',color:'var(--fuchsia)', bg:'var(--fuchsia-light)', file:'polski-b1b2-unit10.html' },
+  11: { label:'Unit 11 — Gospodarka',   color:'var(--amber)',   bg:'var(--amber-light)',   file:'polski-b1b2-unit11.html' },
+  12: { label:'Unit 12 — Przyszłość',   color:'var(--violet)',  bg:'var(--violet-light)',  file:'polski-b1b2-unit12.html' },
+  mixed:{ label:'Mixed / Cross-unit',   color:'var(--gold)',    bg:'var(--gold-light)',    file:'polski-b1b2-unit12.html' },
+};
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let answers = {}, revealed = {}, currentQ = 0, startTime = null, timerInterval = null;
+
+// ═══════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar()  { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ═══════════════════════════════════════
+// SIDEBAR Q LIST
+// ═══════════════════════════════════════
+function buildSidebar() {
+  const list = document.getElementById('sidebar-q-list');
+  let html = '';
+  QUESTIONS.forEach((q, i) => {
+    const isRevealed = revealed[q.id];
+    const ans = answers[q.id];
+    let tagClass = 'tag-skipped', tagText = '–';
+    if (isRevealed && ans !== undefined) { tagClass = ans.correct ? 'tag-correct' : 'tag-wrong'; tagText = ans.correct ? '✓' : '✗'; }
+    else if (i === currentQ) { tagClass = 'tag-active'; tagText = '▶'; }
+    const uMeta = UNIT_META[q.unit] || UNIT_META.mixed;
+    html += `<div class="sidebar-item ${i===currentQ?'active':''}" onclick="goToQuestion(${i})">
+      <i class="ti ti-${q.grammar?'math-function':'help-circle'}"></i>
+      <span style="flex:1">Q${q.id} · <span style="color:${uMeta.color};font-size:11px">${q.unit==='mixed'?'Mixed':'U'+q.unit}</span></span>
+      <span class="tag ${tagClass}">${tagText}</span>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+// ═══════════════════════════════════════
+// BUILD QUESTIONS
+// ═══════════════════════════════════════
+function buildQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  QUESTIONS.forEach((q, i) => {
+    const uMeta = UNIT_META[q.unit] || UNIT_META.mixed;
+    let inner = '';
+    if (q.type === 'mc') {
+      inner = `<div class="options" id="opts-${q.id}">${q.options.map((opt,oi)=>`
+        <div class="option" id="opt-${q.id}-${oi}" onclick="selectOption(${q.id},${oi})">
+          <div class="opt-letter">${String.fromCharCode(65+oi)}</div><div>${opt}</div>
+        </div>`).join('')}</div>`;
+    } else if (q.type === 'gapfill2') {
+      const s = q.question
+        .replace(/____GAP1____/, `<input class="test-gap" id="gap-${q.id}-1" placeholder="${q.gapHint1}" style="min-width:170px">`)
+        .replace(/____GAP2____/, `<input class="test-gap" id="gap-${q.id}-2" placeholder="${q.gapHint2}" style="min-width:170px">`);
+      inner = `<div class="gap-sentence">${s}</div>
+        <button class="btn btn-outline btn-sm" id="gap-check-${q.id}" onclick="checkGap2(${q.id})"><i class="ti ti-check"></i> Check Answer</button>`;
+    } else {
+      const questionDisplay = q.question.replace(/Complete: /,'');
+      const withGap = questionDisplay.replace(/______/,`<input class="test-gap" id="gap-${q.id}" placeholder="${q.gapHint}" oninput="this.value=this.value" style="min-width:220px">`);
+      inner = `<div class="gap-sentence">${withGap}</div>
+        <button class="btn btn-outline btn-sm" id="gap-check-${q.id}" onclick="checkGap(${q.id})"><i class="ti ti-check"></i> Check Answer</button>`;
+    }
+    const card = document.createElement('div');
+    card.className = 'question-card' + (i===0?' active':'');
+    card.id = 'qcard-' + q.id;
+    card.innerHTML = `
+      <div class="q-meta">
+        <span class="q-num">Q${q.id} of ${QUESTIONS.length}</span>
+        <span class="q-unit-tag" style="background:${uMeta.bg};color:${uMeta.color}">${uMeta.label.split('—')[0].trim()}</span>
+        ${q.grammar?`<span class="q-grammar-tag"><i class="ti ti-math-function" style="font-size:10px"></i> ${q.grammarUnit}</span>`:''}
+        <span class="q-type-tag">${q.topic}</span>
+      </div>
+      <div class="question-text">${(q.type==='gapfill')?'Complete: '+q.question.replace(/Complete: /,''):(q.type==='gapfill2')?'Complete:':q.question}</div>
+      ${inner}
+      <div class="answer-feedback" id="fb-${q.id}"></div>
+      <div class="q-nav" id="nav-${q.id}">
+        ${i>0?`<button class="btn btn-outline btn-sm" onclick="goToQuestion(${i-1})"><i class="ti ti-arrow-left"></i> Back</button>`:''}
+        <div style="flex:1"></div>
+        ${i<QUESTIONS.length-1
+          ?`<button class="btn btn-primary btn-sm" onclick="goToQuestion(${i+1})">Next <i class="ti ti-arrow-right"></i></button>`
+          :`<button class="btn btn-violet btn-sm" onclick="finishTest()"><i class="ti ti-flag-filled"></i> Finish Test</button>`}
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════════
+// MC SELECTION
+// ═══════════════════════════════════════
+function selectOption(qId, optIdx) {
+  if (revealed[qId]) return;
+  const q = QUESTIONS.find(q=>q.id===qId);
+  q.options.forEach((_,oi)=>document.getElementById(`opt-${qId}-${oi}`)?.classList.remove('selected'));
+  document.getElementById(`opt-${qId}-${optIdx}`)?.classList.add('selected');
+  const isCorrect = optIdx === q.correct;
+  answers[qId] = { selected: optIdx, correct: isCorrect };
+  revealed[qId] = true;
+  q.options.forEach((_,oi)=>{
+    const el = document.getElementById(`opt-${qId}-${oi}`);
+    if (!el) return;
+    el.classList.add('locked'); el.classList.remove('selected');
+    if (oi===q.correct) el.classList.add('revealed-correct');
+    else if (oi===optIdx && !isCorrect) el.classList.add('revealed-wrong');
+  });
+  showFeedback(qId, isCorrect, q.explanation, q.revisionSection, q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+// ═══════════════════════════════════════
+// GAP CHECK
+// ═══════════════════════════════════════
+function checkGap(qId) {
+  if (revealed[qId]) return;
+  const q = QUESTIONS.find(q=>q.id===qId);
+  const inp = document.getElementById(`gap-${qId}`);
+  const val = inp.value.trim().toLowerCase();
+  const ans = q.gapAnswer.toLowerCase();
+  const isCorrect = val === ans || val.replace(/,/g,'') === ans.replace(/,/g,'');
+  inp.classList.add(isCorrect?'correct':'incorrect');
+  if (!isCorrect) setTimeout(()=>{ inp.value=q.gapAnswer; inp.classList.remove('incorrect'); inp.classList.add('correct'); },1200);
+  document.getElementById(`gap-check-${qId}`).disabled = true;
+  revealed[qId] = true;
+  answers[qId] = { selected: val, correct: isCorrect };
+  showFeedback(qId, isCorrect, q.explanation, q.revisionSection, q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+// ═══════════════════════════════════════
+// GAP CHECK — DUAL FIELD
+// ═══════════════════════════════════════
+function checkGap2(qId) {
+  if (revealed[qId]) return;
+  const q = QUESTIONS.find(q=>q.id===qId);
+  const inp1 = document.getElementById(`gap-${qId}-1`);
+  const inp2 = document.getElementById(`gap-${qId}-2`);
+  const val1 = inp1.value.trim().toLowerCase();
+  const val2 = inp2.value.trim().toLowerCase();
+  const ans1 = q.gapAnswer1.toLowerCase();
+  const ans2 = q.gapAnswer2.toLowerCase();
+  const ok1 = val1 === ans1;
+  const ok2 = val2 === ans2;
+  const isCorrect = ok1 && ok2;
+  inp1.classList.add(ok1 ? 'correct' : 'incorrect');
+  inp2.classList.add(ok2 ? 'correct' : 'incorrect');
+  if (!ok1) setTimeout(()=>{ inp1.value=q.gapAnswer1; inp1.classList.remove('incorrect'); inp1.classList.add('correct'); }, 1200);
+  if (!ok2) setTimeout(()=>{ inp2.value=q.gapAnswer2; inp2.classList.remove('incorrect'); inp2.classList.add('correct'); }, 1200);
+  document.getElementById(`gap-check-${qId}`).disabled = true;
+  revealed[qId] = true;
+  answers[qId] = { selected: val1+' '+val2, correct: isCorrect };
+  showFeedback(qId, isCorrect, q.explanation, q.revisionSection, q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+// ═══════════════════════════════════════
+// FEEDBACK
+// ═══════════════════════════════════════
+function showFeedback(qId, isCorrect, explanation, revSection, revFile) {
+  const fb = document.getElementById(`fb-${qId}`);
+  fb.className = `answer-feedback show ${isCorrect?'correct-fb':'wrong-fb'}`;
+  fb.innerHTML = `<strong>${isCorrect?'✓ Correct!':'✗ Incorrect'}</strong> — ${explanation}
+    ${!isCorrect?`<div style="margin-top:8px"><span class="revision-link"><i class="ti ti-refresh"></i> Revise: ${revSection}</span></div>`:''}`;
+}
+
+// ═══════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════
+function goToQuestion(idx) {
+  document.querySelectorAll('.question-card').forEach(c=>c.classList.remove('active'));
+  document.getElementById('qcard-'+QUESTIONS[idx].id)?.classList.add('active');
+  currentQ = idx;
+  buildSidebar(); updateProgress();
+  document.getElementById('main').scrollTo(0,0);
+  closeSidebar();
+}
+function jumpToUnit(unit) {
+  const idx = QUESTIONS.findIndex(q=>q.unit===unit);
+  if (idx>=0) goToQuestion(idx);
+}
+
+// ═══════════════════════════════════════
+// PROGRESS
+// ═══════════════════════════════════════
+function updateProgress() {
+  const answered = Object.keys(revealed).length;
+  const correct = Object.values(answers).filter(a=>a.correct).length;
+  const pct = Math.round((answered/QUESTIONS.length)*100);
+  document.getElementById('prog-nums').textContent = (currentQ+1)+' / '+QUESTIONS.length;
+  document.getElementById('prog-bar').style.width = Math.max(pct,4)+'%';
+  document.getElementById('prog-label').textContent = correct+' correct so far';
+  const scorePct = answered>0?Math.round((correct/QUESTIONS.length)*100):0;
+  document.getElementById('sidebar-ring').style.setProperty('--pct',scorePct);
+  document.getElementById('sidebar-ring-num').textContent = scorePct+'%';
+  document.getElementById('sidebar-ring-title').textContent = answered+' answered';
+  document.getElementById('sidebar-ring-label').textContent = correct+' / '+QUESTIONS.length+' correct';
+}
+
+// ═══════════════════════════════════════
+// START / FINISH
+// ═══════════════════════════════════════
+function startTest() {
+  answers={}; revealed={}; currentQ=0;
+  startTime=Date.now();
+  buildQuestions(); buildSidebar(); updateProgress();
+  showPage('test');
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    if (!startTime) return;
+    const secs=Math.floor((Date.now()-startTime)/1000);
+    const m=Math.floor(secs/60), s=secs%60;
+    document.getElementById('stat-time').textContent=m+':'+(s<10?'0'+s:s);
+  },1000);
+}
+function finishTest() {
+  QUESTIONS.forEach(q=>{ if(!revealed[q.id]){answers[q.id]={selected:null,correct:false};revealed[q.id]=true;} });
+  clearInterval(timerInterval);
+  buildResults();
+  showPage('results');
+}
+function retakeTest() { startTest(); }
+
+// ═══════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════
+function buildResults() {
+  const total = QUESTIONS.length;
+  const correct = Object.values(answers).filter(a=>a.correct).length;
+  const wrong = total - correct;
+  const pct = Math.round((correct/total)*100);
+  const secs = startTime?Math.floor((Date.now()-startTime)/1000):0;
+  const m=Math.floor(secs/60), s=secs%60;
+
+  let grade, trophy, summary;
+  if      (pct>=90){grade='A';trophy='🏆';summary='Exceptional! You have mastered the full B2+ range: passive voice (być vs zostać), concessive and argumentative structures, Type 2 and Type 3 conditionals, the probability spectrum, and the full G8 consolidation. The course is complete — Gratulacje!'}
+  else if (pct>=80){grade='B';trophy='🎯';summary='Very strong result. A few of the more complex G8 structures — Type 3 conditionals, o ile…o tyle, or been/zostać passive distinction — need a little more practice. Review the recommendations and retake when ready.'}
+  else if (pct>=70){grade='C';trophy='📚';summary='You passed — well done! The B2+ grammar in this phase is the most demanding in the course. Focus on the areas flagged below, especially the conditional types and formal argumentative devices.'}
+  else if (pct>=55){grade='D';trophy='💪';summary='Keep going. Type 2 vs Type 3 conditionals and the passive voice distinction are the most common stumbling blocks here. Revisit the grammar sections carefully and retake the test.'}
+  else             {grade='F';trophy='🔄';summary='Don\'t be discouraged — G8 is the most complex grammar in the entire course. Revisit Units 9–12 grammar sections in detail, work through the gap fills again, then retake the test. Retakes are unlimited.'}
+
+  document.getElementById('results-trophy').textContent=trophy;
+  document.getElementById('results-grade').textContent=grade;
+  document.getElementById('results-score').textContent=correct+' / '+total+' correct';
+  document.getElementById('results-summary').textContent=summary;
+  document.getElementById('stat-correct').textContent=correct;
+  document.getElementById('stat-wrong').textContent=wrong;
+  document.getElementById('stat-pct').textContent=pct+'%';
+  document.getElementById('stat-time').textContent=m+':'+(s<10?'0'+s:s);
+
+  // Unit breakdown
+  const units=[9,10,11,12,'mixed'];
+  let bdHtml='';
+  units.forEach(u=>{
+    const uQs=QUESTIONS.filter(q=>q.unit===u);
+    if (!uQs.length) return;
+    const uCorrect=uQs.filter(q=>answers[q.id]?.correct).length;
+    const uPct=Math.round((uCorrect/uQs.length)*100);
+    const uMeta=UNIT_META[u]||UNIT_META.mixed;
+    const fillColor=uPct>=70?'var(--green)':uPct>=50?'var(--gold)':'var(--red)';
+    bdHtml+=`<div class="unit-breakdown-card">
+      <div class="ubc-header"><div class="ubc-title">${uMeta.label.split('—').pop().trim()}</div>
+      <div class="ubc-score" style="color:${fillColor}">${uCorrect}/${uQs.length}</div></div>
+      <div class="ubc-bar"><div class="ubc-fill" style="width:${uPct}%;background:${fillColor}"></div></div>
+    </div>`;
+  });
+  document.getElementById('unit-breakdown').innerHTML=bdHtml;
+
+  // Revision recommendations
+  const wrongQs=QUESTIONS.filter(q=>answers[q.id]&&!answers[q.id].correct);
+  if (!wrongQs.length){document.getElementById('revision-section').style.display='none';return;}
+  document.getElementById('revision-section').style.display='block';
+
+  const revMap={};
+  wrongQs.forEach(q=>{
+    const key=q.revisionSection;
+    if (!revMap[key]) revMap[key]={section:q.revisionSection,file:q.revisionFile,unit:q.unit,topics:new Set()};
+    revMap[key].topics.add(q.topic);
+  });
+
+  const iconMap={9:'leaf',10:'building-community',11:'chart-bar',12:'star',mixed:'layers-intersect'};
+  const colMap={
+    9:'#D1FAE5,#065F46',
+    10:'#FAE8FF,#701A75',
+    11:'#FEF3C7,#92400E',
+    12:'#EDE9FE,#5B21B6',
+    mixed:'#FEF3C7,#B45309'
+  };
+
+  let revHtml='';
+  Object.values(revMap).forEach(r=>{
+    const [bg,col]=(colMap[r.unit]||colMap.mixed).split(',');
+    const icon=iconMap[r.unit]||'layers-intersect';
+    revHtml+=`<div class="revision-card">
+      <div class="revision-card-icon" style="background:${bg};color:${col}"><i class="ti ti-${icon}"></i></div>
+      <div class="revision-card-body">
+        <div class="revision-card-title">${r.section}</div>
+        <div class="revision-card-desc">Topics to review: ${[...r.topics].join(' · ')}</div>
+        <button class="open-unit-btn" onclick="window.open('${r.file}','_blank')"><i class="ti ti-external-link"></i> Open unit</button>
+      </div></div>`;
+  });
+  document.getElementById('revision-cards').innerHTML=revHtml;
+}
+
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>buildSidebar());
+</script>
+</body>
+</html>

@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 9: Środowisko i Przyroda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --forest:#14532D;--forest-light:#DCFCE7;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(20,83,45,0.25);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#86EFAC;line-height:1.5}
+.scaffolding-note strong{color:#fff}
+
+/* ── GRAMMAR (forest green for G8) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--forest-light);color:var(--forest);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--forest-light);border:0.5px solid rgba(20,83,45,0.2);border-left:3px solid var(--forest);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--forest)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--forest);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.btn-forest{background:var(--forest);color:#fff}
+.btn-forest:hover{background:#0F3D20}
+.forest-note{background:var(--forest-light);border:0.5px solid rgba(20,83,45,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--forest);margin-bottom:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.95;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:22px 26px;margin-bottom:16px}
+.reading-text p{margin-bottom:16px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--forest-light);color:var(--forest);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:200px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:150px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL — B2+: no bank, no hints ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:130px;width:170px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-sentence{line-height:3.2;font-size:15px;margin-bottom:6px}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:16px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:190px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── GRAMMAR TABLES ── */
+.gram-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.gram-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.gram-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.gram-table tr:nth-child(even) td{background:#FAF7F2}
+.gram-table td:first-child{font-weight:500;color:var(--forest)}
+
+/* ── CONNECTOR GRID ── */
+.connector-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.connector-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px}
+.connector-word{font-size:15px;font-weight:700;color:var(--forest);font-family:'Playfair Display',serif;margin-bottom:3px}
+.connector-meaning{font-size:12px;color:var(--ink-muted);margin-bottom:5px}
+.connector-ex{font-size:12px;color:var(--ink);font-style:italic}
+
+/* ── TRANSFORM ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── UNIT NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .connector-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<!-- ══ SIDEBAR ══ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 9 — B2+:</strong> No scaffolding. Longer and more complex texts. Inference-based comprehension throughout. Formal register expected in writing.
+  </div>
+  <div class="unit-label">Unit 9 — Środowisko i Przyroda</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G8 (Part 1)<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 8 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 8 — Podróże i Transport</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 10 — Społeczeństwo i Polityka</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 9 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 9 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Środowisko i Przyroda<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Environment &amp; Nature</span></div>
+  <div class="section-desc">Explore environmental challenges, Polish natural landscapes, and the language of ecological debate. Grammar focus: passive voice constructions, cause-and-effect connectors, and large numerals in context.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Raport środowiskowy</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary. Hover <span style="background:var(--forest-light);color:var(--forest);padding:1px 6px;border-radius:3px;font-weight:500">green</span> for grammar notes on passive voice and cause-effect. Click <i class="ti ti-volume"></i> to hear vocabulary.</span>
+      </div>
+      <div class="reading-text">
+        <p>Polska przyroda <span class="vocab-highlight">charakteryzuje się<span class="vocab-tip">charakteryzować się (impf. refl.) = to be characterised by<br>+ Instr.: czym się charakteryzuje?</span></span> wyjątkową <span class="vocab-highlight">różnorodnością biologiczną<span class="vocab-tip">różnorodność biologiczna = biodiversity<br>(Instr. after "charakteryzuje się")</span></span>. Na terenie kraju <span class="grammar-highlight">można znaleźć<span class="vocab-tip">można + inf. = one can (impersonal)<br>Passive-like impersonal construction<br>— nobody named, general possibility</span></span> zarówno <span class="vocab-highlight">rozległe puszcze<span class="vocab-tip">rozległy = vast / extensive<br>puszcza = primeval forest (Acc. pl.)</span></span>, jak i <span class="vocab-highlight">alpejskie szczyty<span class="vocab-tip">alpejski = alpine<br>szczyt = peak / summit (Acc. pl.)</span></span>, bagna, jeziora polodowcowe i <span class="vocab-highlight">nadmorskie wydmy<span class="vocab-tip">nadmorski = coastal / seaside (adj.)<br>wydma = dune (Acc. pl.)</span></span>. Polska <span class="grammar-highlight">jest uznawana za<span class="vocab-tip">być uznawanym za = to be considered as<br>Passive: być + past passive participle<br>"uznawana" agrees with Polska (fem. sg.)<br>za + Accusative = as</span></span> jeden z <span class="vocab-highlight">najcenniejszych<span class="vocab-tip">najcenniejszy = most precious/valuable<br>Superlative Gen. pl. — after "jeden z"</span></span> rezerwuarów <span class="vocab-highlight">dzikiej przyrody<span class="vocab-tip">dzika przyroda = wild nature<br>(Gen. — possession)</span></span> w Europie Środkowej, przede wszystkim ze względu na <span class="vocab-highlight">Puszczę Białowieską<span class="vocab-tip">Puszcza Białowieska = Białowieża Forest<br>Last primeval forest in the European lowlands<br>(Acc. — after "ze względu na")</span></span> — ostatni <span class="vocab-highlight">nizinny las pierwotny<span class="vocab-tip">nizinny = lowland (adj.)<br>las pierwotny = primeval forest<br>(Acc. masc. — apposition)</span></span> na kontynencie.</p>
+
+        <p>Niemniej jednak środowisko naturalne Polski <span class="grammar-highlight">jest zagrożone<span class="vocab-tip">być zagrożonym = to be threatened<br>Passive: być + past passive participle<br>"zagrożone" agrees with "środowisko" (neuter)<br>State passive — describes current condition</span></span> przez szereg czynników antropogenicznych. <span class="vocab-highlight">Emisja dwutlenku węgla<span class="vocab-tip">emisja = emission<br>dwutlenek węgla = carbon dioxide (CO₂)<br>(Nom. — subject)</span></span> <span class="grammar-highlight">wzrosła o<span class="vocab-tip">wzrosnąć o + Acc. = to increase by<br>Perfective past — completed increase<br>o dwadzieścia procent = by twenty percent</span></span> dwadzieścia procent w ciągu ostatniej dekady, <span class="grammar-highlight">co skutkuje<span class="vocab-tip">co skutkuje = which results in<br>skutkować + Instr. = to result in<br>Cause-effect connector: co + verb</span></span> <span class="vocab-highlight">nasilającymi się<span class="vocab-tip">nasilający się = intensifying (pres. part.)<br>Instr. pl. — agrees with "zmianami"</span></span> <span class="vocab-highlight">zmianami klimatycznymi<span class="vocab-tip">zmiany klimatyczne = climate change (pl.)<br>(Instr. after "skutkuje")</span></span>. Polska <span class="grammar-highlight">jest silnie uzależniona od<span class="vocab-tip">być uzależnionym od = to be dependent on<br>Passive participial: uzależniona (fem. sg.)<br>od + Gen. = from</span></span> <span class="vocab-highlight">węgla kamiennego<span class="vocab-tip">węgiel kamienny = hard coal<br>(Gen. after "od" — dependence)</span></span>, który <span class="grammar-highlight">stanowi<span class="vocab-tip">stanowić = to constitute / account for<br>(impf. 3rd pers. sg. present)</span></span> ponad siedemdziesiąt procent <span class="vocab-highlight">krajowego miksu energetycznego<span class="vocab-tip">miks energetyczny = energy mix<br>(Gen. — possession)</span></span>.</p>
+
+        <p><span class="grammar-highlight">W wyniku<span class="vocab-tip">w wyniku + Gen. = as a result of<br>Cause-effect preposition phrase<br>Most formal cause-effect connector</span></span> <span class="vocab-highlight">intensywnej działalności przemysłowej<span class="vocab-tip">intensywna działalność przemysłowa<br>= intensive industrial activity<br>(Gen. after "w wyniku")</span></span> <span class="grammar-highlight">zanieczyszczonych zostało<span class="vocab-tip">zostać zanieczyszczonym (pf. passive)<br>= to be polluted / to become polluted<br>"zostać" passive — emphasises the event<br>"zanieczyszczonych" (Gen. pl.) — inverted</span></span> kilkadziesiąt rzek i jezior w regionach <span class="vocab-highlight">górniczych<span class="vocab-tip">górniczy = mining (adj.)<br>Gen. pl. — agrees with "regionach"</span></span>. Rząd <span class="grammar-highlight">zobowiązał się do<span class="vocab-tip">zobowiązać się do + Gen. = to commit to<br>Perfective refl. — completed commitment<br>ograniczenia = reduction (Gen.)</span></span> <span class="vocab-highlight">ograniczenia emisji<span class="vocab-tip">ograniczenie emisji = reduction of emissions<br>(Gen. — object of "do")</span></span> o <span class="grammar-highlight">czterdzieści pięć procent<span class="vocab-tip">czterdzieści pięć procent = forty-five percent<br>Large numeral — Gen. pl. of "procent"<br>after 5+: Gen. pl.</span></span> do roku <span class="vocab-highlight">dwutysięcznego trzydziestego<span class="vocab-tip">dwutysięczny trzydziesty = two-thousand-and-thirtieth<br>Ordinal numeral in Gen. (after "do roku")</span></span>, jednak eksperci <span class="grammar-highlight">są sceptyczni<span class="vocab-tip">być sceptycznym = to be sceptical<br>Predicate adjective — Instr. would also work<br>in more formal style</span></span> co do realności tych zobowiązań.</p>
+
+        <p>Na szczęście <span class="grammar-highlight">podejmowane są<span class="vocab-tip">być podejmowanym = to be undertaken<br>Passive: być + impf. passive participle<br>"podejmowane" (pl. neuter/fem.) — impf.<br>ongoing repeated actions</span></span> liczne <span class="vocab-highlight">inicjatywy proekologiczne<span class="vocab-tip">inicjatywa proekologiczna = pro-ecological initiative<br>(Nom. pl. — subject of passive)</span></span>. W ostatnich latach <span class="grammar-highlight">zostały posadzone<span class="vocab-tip">zostać posadzonym (pf. passive) = to be planted<br>"zostały posadzone" (pl. neuter/non-masc.)<br>Pf. passive — completed one-off planting</span></span> <span class="vocab-highlight">trzy miliony drzew<span class="vocab-tip">trzy miliony drzew = three million trees<br>milion = million → miliony (2–4)<br>drzewo → drzew (Gen. pl. after miliony)</span></span> w ramach <span class="vocab-highlight">krajowego programu<span class="vocab-tip">program = programme<br>(Gen. — after "w ramach" = within)</span></span> <span class="vocab-highlight">zalesiania<span class="vocab-tip">zalesianie = afforestation (verbal noun)<br>(Gen. — after "programu")</span></span>. Energia odnawialna <span class="grammar-highlight">produkowana jest<span class="vocab-tip">być produkowanym = to be produced<br>Impf. passive — ongoing production<br>"produkowana" agrees with "energia" (fem.)</span></span> przez coraz większą liczbę farm <span class="vocab-highlight">wiatrowych i fotowoltaicznych<span class="vocab-tip">wiatrowy = wind (adj.)<br>fotowoltaiczny = photovoltaic (adj.)<br>Gen. pl. — after "liczbę"</span></span>, a <span class="vocab-highlight">udział<span class="vocab-tip">udział = share / proportion<br>(Nom. — subject)</span></span> <span class="vocab-highlight">odnawialnych źródeł energii<span class="vocab-tip">odnawialne źródła energii = renewable energy sources<br>(Gen. pl. — possession)</span></span> w produkcji elektryczności <span class="grammar-highlight">wzrósł z ośmiu do dwudziestu dwóch procent<span class="vocab-tip">wzrosnąć z ... do ... = to grow from ... to ...<br>z + Gen. / do + Gen.<br>ośmiu (Gen.) / dwudziestu dwóch (Gen.)</span></span> w ciągu ostatnich piętnastu lat.</p>
+
+        <p><span class="vocab-highlight">Ochrona środowiska<span class="vocab-tip">ochrona środowiska = environmental protection<br>(Nom. — subject)</span></span> <span class="grammar-highlight">wymaga<span class="vocab-tip">wymagać + Gen. = to require<br>(impf. 3rd sg.) — always takes Genitive</span></span> <span class="vocab-highlight">skoordynowanych działań<span class="vocab-tip">skoordynowany = coordinated (adj.)<br>działania = actions (Gen. pl. after "wymaga")</span></span> na poziomie <span class="vocab-highlight">lokalnym, krajowym i europejskim<span class="vocab-tip">Three adjective levels in Loc. pl.<br>after "na poziomie" (at the level of)</span></span>. <span class="grammar-highlight">Skutkiem tego jest<span class="vocab-tip">skutkiem tego jest = the consequence of this is<br>= as a result of this<br>Formal cause-effect connector</span></span> rosnące <span class="vocab-highlight">znaczenie<span class="vocab-tip">znaczenie = importance / significance<br>(Nom. — subject after "jest")</span></span> polityki klimatycznej w debacie publicznej. <span class="grammar-highlight">Ponieważ<span class="vocab-tip">ponieważ = because / since<br>Subordinating cause conjunction<br>More formal than "bo"</span></span> zmiany klimatyczne <span class="grammar-highlight">nie mogą być odwrócone<span class="vocab-tip">nie móc być odwróconym<br>Passive + modal negation<br>"odwrócone" (pl.) = reversed<br>Highlights irreversibility</span></span> bez <span class="vocab-highlight">radykalnych przekształceń<span class="vocab-tip">radykalne przekształcenie = radical transformation<br>(Gen. pl. after "bez")</span></span> w sektorze energetycznym, <span class="grammar-highlight">konieczne staje się<span class="vocab-tip">stawać się koniecznym = to become necessary<br>Impersonal + reflexive — it is becoming<br>necessary (general truth)</span></span> przyspieszenie <span class="vocab-highlight">transformacji energetycznej<span class="vocab-tip">transformacja energetyczna = energy transition<br>(Gen. — after "przyspieszenie")</span></span> bez względu na <span class="vocab-highlight">krótkoterminowe koszty ekonomiczne<span class="vocab-tip">krótkoterminowy = short-term (adj.)<br>koszty ekonomiczne = economic costs<br>(Acc. — after "na")</span></span>.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Green highlights show passive voice constructions and cause-effect connectors — the grammar focus of this unit.</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>różnorodność biologiczna<button class="vocab-audio-btn" onclick="speak('różnorodność biologiczna')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>biodiversity</td></tr>
+        <tr><td>emisja dwutlenku węgla<button class="vocab-audio-btn" onclick="speak('emisja dwutlenku węgla')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>carbon dioxide emission</td></tr>
+        <tr><td>zmiany klimatyczne<button class="vocab-audio-btn" onclick="speak('zmiany klimatyczne')"><i class="ti ti-volume"></i></button></td><td>(pl. fem.)</td><td>climate change</td></tr>
+        <tr><td>odnawialne źródła energii<button class="vocab-audio-btn" onclick="speak('odnawialne źródła energii')"><i class="ti ti-volume"></i></button></td><td>(pl. neuter)</td><td>renewable energy sources</td></tr>
+        <tr><td>ochrona środowiska<button class="vocab-audio-btn" onclick="speak('ochrona środowiska')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>environmental protection</td></tr>
+        <tr><td>zalesianie<button class="vocab-audio-btn" onclick="speak('zalesianie')"><i class="ti ti-volume"></i></button></td><td>(neuter)</td><td>afforestation</td></tr>
+        <tr><td>zanieczyszczenie<button class="vocab-audio-btn" onclick="speak('zanieczyszczenie')"><i class="ti ti-volume"></i></button></td><td>(neuter)</td><td>pollution / contamination</td></tr>
+        <tr><td>transformacja energetyczna<button class="vocab-audio-btn" onclick="speak('transformacja energetyczna')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>energy transition</td></tr>
+        <tr><td>puszcza<button class="vocab-audio-btn" onclick="speak('puszcza')"><i class="ti ti-volume"></i></button></td><td>puszczy (Gen.)</td><td>primeval forest</td></tr>
+        <tr><td>węgiel kamienny<button class="vocab-audio-btn" onclick="speak('węgiel kamienny')"><i class="ti ti-volume"></i></button></td><td>(masc.)</td><td>hard coal</td></tr>
+        <tr><td>skutkować<button class="vocab-audio-btn" onclick="speak('skutkować')"><i class="ti ti-volume"></i></button></td><td>+ Instrumental</td><td>to result in</td></tr>
+        <tr><td>zobowiązać się do<button class="vocab-audio-btn" onclick="speak('zobowiązać się')"><i class="ti ti-volume"></i></button></td><td>+ Genitive</td><td>to commit to</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Answer all questions. At B2+ level, all questions require inference, evaluation of evidence, or understanding of implicit argument — not retrieval alone.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Dlaczego Polska jest uznawana za jeden z najcenniejszych rezerwuarów dzikiej przyrody w Europie?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Ze względu na rozbudowaną sieć parków narodowych i rezerwatów</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Przede wszystkim ze względu na Puszczę Białowieską — ostatni nizinny las pierwotny w Europie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Ze względu na alpejskie szczyty i jeziora polodowcowe</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Ze względu na największy udział lasów w powierzchni kraju w Europie</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. O ile wzrosła emisja dwutlenku węgla w ciągu ostatniej dekady i jakie są tego skutki?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>O dziesięć procent — skutkuje zakwaszeniem gleby</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>O dwadzieścia procent — skutkuje nasilającymi się zmianami klimatycznymi</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>O trzydzieści procent — skutkuje wzrostem poziomu mórz</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>O pięć procent — skutkuje zanieczyszczeniem rzek</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jaki jest stosunek rządu do ograniczenia emisji i jak eksperci oceniają te zobowiązania?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Rząd nie podjął żadnych zobowiązań — eksperci są zadowoleni z braku nacisków</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">B</div>Rząd zobowiązał się do ograniczenia emisji o 45% do 2030 roku, ale eksperci są sceptyczni co do realności tych zobowiązań</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">C</div>Rząd zobowiązał się do pełnej dekarbonizacji do 2030 — eksperci są pod wrażeniem ambitnych celów</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Rząd odrzuca zobowiązania klimatyczne — eksperci krytykują tę postawę</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Jakie pozytywne inicjatywy są wymieniane w tekście?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Zamknięcie wszystkich kopalni węgla i przejście na energię jądrową</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Posadzenie trzech milionów drzew w ramach programu zalesiania i wzrost udziału OZE z 8% do 22%</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Zakaz importu węgla i dotacje dla rolników ekologicznych</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Budowa nowych elektrowni wodnych na głównych rzekach</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co autor sugeruje w ostatnim akapicie jako konieczne działanie?</div>
+        <div class="question-note">This question requires inference about the author's implicit conclusion.</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Że Polska powinna wyjść z Unii Europejskiej, żeby samodzielnie decydować o polityce energetycznej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">B</div>Że debata publiczna jest ważniejsza niż konkretne działania</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">C</div>Że przyspieszenie transformacji energetycznej jest konieczne, nawet kosztem krótkoterminowych kosztów ekonomicznych</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Że zmiany klimatyczne można jeszcze odwrócić, jeśli działania będą szybkie</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jaki jest główny problem strukturalny polskiej energetyki według tekstu?</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Zbyt mała produkcja energii elektrycznej w stosunku do potrzeb</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">B</div>Silne uzależnienie od węgla kamiennego, który stanowi ponad 70% krajowego miksu energetycznego</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">C</div>Brak inwestycji w elektrownie wodne i geotermalne</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Eksport nadwyżki energii do krajów sąsiednich po zbyt niskich cenach</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Które z poniższych zdań NIE jest poparte treścią tekstu?</div>
+        <div class="question-note">One of these contradicts or goes beyond the text. Identify it.</div>
+        <div class="mc-options" id="cq7">
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">A</div>Polska ma wyjątkową różnorodność biologiczną, w tym lasy, bagna i jeziora</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">B</div>Kilkadziesiąt rzek i jezior zostało zanieczyszczonych w regionach górniczych</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','correct')"><div class="mc-letter">C</div>Polska planuje całkowite odejście od węgla do roku 2035</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">D</div>Udział OZE w produkcji elektryczności wzrósł z 8% do 22% w ciągu 15 lat</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jakie działania na rzecz ochrony środowiska są Twoim zdaniem najważniejsze? Dlaczego?<br><em style="font-size:13px;opacity:0.8">What environmental protection actions do you consider most important? Why?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy Polska powinna szybciej odchodzić od węgla, nawet jeśli wiąże się to z wyższymi kosztami energii? Uzasadnij.<br><em style="font-size:13px;opacity:0.8">Should Poland move away from coal faster, even if it means higher energy costs? Justify your view.</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jak Australia radzi sobie z wyzwaniami środowiskowymi? Porównaj z sytuacją opisaną w tekście.<br><em style="font-size:13px;opacity:0.8">How does Australia deal with environmental challenges? Compare with the situation described in the text.</em></span></div>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Panel dyskusyjny</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to a panel discussion on Poland's environmental challenges. No transcript available. You may listen as many times as needed.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Panel: „Polska a wyzwania klimatyczne — co nas czeka?"</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 5:30 · Polish B2+</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <div style="font-size:11px;color:#57534E;display:flex;align-items:center;gap:5px"><i class="ti ti-lock" style="font-size:13px"></i> No transcript</div>
+      </div>
+
+      <div style="background:var(--forest-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--forest);margin-bottom:20px;display:flex;gap:8px">
+        <i class="ti ti-info-circle"></i>
+        <span>Listen for: <strong>passive voice constructions</strong> (jest produkowana, zostało wybudowane), <strong>cause-effect language</strong> (w wyniku, ponieważ, skutkuje), <strong>large numbers and statistics</strong>, and the panellists' <strong>contrasting positions</strong> on Poland's energy transition.</span>
+      </div>
+
+      <!-- TRANSCRIPT (course creator reference — not shown):
+        Moderator: Dzień dobry. Witamy na panelu „Polska a wyzwania klimatyczne". Przy stoliku siedzą: dr Agnieszka Wiśniewska, ekspertka ds. energetyki odnawialnej, i Marek Kowalczyk, reprezentujący sektor górniczy. Zacznijmy od pytania: jak oceniają Państwo obecny stan polityki klimatycznej w Polsce?
+        Dr Wiśniewska: Polska jest w bardzo trudnej sytuacji. Jesteśmy jedynym krajem w Unii Europejskiej, który nie zobowiązał się do osiągnięcia neutralności węglowej do 2050 roku. W wyniku tej postawy jesteśmy regularnie krytykowani przez partnerów europejskich. Niemniej jednak trzeba przyznać, że pewien postęp został poczyniony — udział energii odnawialnej wzrósł z ośmiu do ponad dwudziestu procent w ciągu dekady.
+        Kowalczyk: Zgadza się, ale należy pamiętać, że transformacja energetyczna jest procesem, który musi być przeprowadzony w sposób odpowiedzialny. Sektor górniczy zatrudnia ponad sto tysięcy pracowników. Ponieważ ich miejsca pracy są zagrożone przez politykę dekarbonizacji, konieczne jest stworzenie programów rekonwersji zawodowej. Nie można po prostu zamknąć kopalni z dnia na dzień.
+        Dr Wiśniewska: Oczywiście, zgadzam się, że transformacja musi być sprawiedliwa. Ale fakty są nieubłagane — Polska jest odpowiedzialna za emisję prawie trzystu milionów ton CO₂ rocznie, co stanowi jeden z najwyższych wskaźników na mieszkańca w Unii Europejskiej. Skutkiem tego jest nie tylko problem klimatyczny, ale też zdrowotny — badania wskazują, że ponad pięćdziesiąt tysięcy przedwczesnych zgonów rocznie jest powiązanych z zanieczyszczeniem powietrza.
+        Kowalczyk: Te liczby są niepokojące, nie kwestionuję tego. Ale transformacja musi być finansowana — a to wymaga ogromnych nakładów. Szacuje się, że do roku 2040 będzie musiało zostać zainwestowanych ponad sto pięćdziesiąt miliardów złotych w nową infrastrukturę energetyczną.
+        Dr Wiśniewska: I właśnie dlatego fundusze unijne są tak ważne. Polska mogła pozyskać znacznie więcej środków z Funduszu Sprawiedliwej Transformacji, gdyby szybciej zaakceptowała cele klimatyczne UE. Czas jest kluczowy — im szybciej zostanie wdrożona transformacja, tym mniejsze będą długoterminowe koszty.
+        Moderator: Dziękuję Państwu za tę inspirującą, choć trudną rozmowę.
+      -->
+
+      <div class="question-block" style="margin-top:4px">
+        <div class="question-text">1. Jaki jest główny zarzut wobec Polski w europejskiej polityce klimatycznej?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Polska importuje zbyt dużo węgla z Rosji</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Polska jest jedynym krajem UE, który nie zobowiązał się do neutralności węglowej do 2050 roku</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Polska blokuje unijne fundusze klimatyczne dla innych krajów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Polska nie realizuje żadnych programów odnawialnych</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Ilu pracowników zatrudnia sektor górniczy według Kowalczyka?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Ponad pięćdziesiąt tysięcy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Ponad sto tysięcy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Ponad dwieście tysięcy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Około trzydziestu tysięcy</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Z jakim problemem zdrowotnym łączy dr Wiśniewska zanieczyszczenie powietrza?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Ze wzrostem zachorowań na choroby skóry</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Z ponad pięćdziesięcioma tysiącami przedwczesnych zgonów rocznie</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Z epidemią astmy wśród dzieci szkolnych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Ze wzrostem chorób serca u osób starszych</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Ile miliardów złotych będzie musiało zostać zainwestowanych do 2040 roku?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Ponad sto miliardów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Ponad sto pięćdziesiąt miliardów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Ponad dwieście miliardów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Około pięćdziesięciu miliardów</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co dr Wiśniewska mówi o funduszach unijnych?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Że Polska już w pełni wykorzystała dostępne fundusze klimatyczne</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Że Polska mogła pozyskać więcej środków z Funduszu Sprawiedliwej Transformacji, gdyby szybciej zaakceptowała cele klimatyczne UE</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Że fundusze unijne nie są wystarczające i potrzebne są krajowe dotacje</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Że UE powinna zwiększyć kary finansowe dla krajów opóźniających transformację</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jakie stanowisko zajmuje Kowalczyk wobec transformacji energetycznej?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Jest całkowicie przeciwny — uważa, że węgiel powinien pozostać podstawą energetyki</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">B</div>Uznaje konieczność transformacji, ale podkreśla, że musi być ona odpowiedzialna i uwzględniać pracowników sektora górniczego</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">C</div>Popiera szybką transformację — uważa, że koszty ekonomiczne są do zaakceptowania</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Twierdzi, że transformacja jest niemożliwa bez pomocy zagranicznej</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Jaką strukturę porównawczą stosuje dr Wiśniewska w ostatniej wypowiedzi?</div>
+        <div class="question-note">Listen for the comparative structure she uses to argue for urgency.</div>
+        <div class="mc-options" id="lq7">
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">A</div>Coraz bardziej… coraz trudniej…</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','correct')"><div class="mc-letter">B</div>Im szybciej zostanie wdrożona transformacja, tym mniejsze będą długoterminowe koszty</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">C</div>Niemniej jednak… z drugiej strony…</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">D</div>Bardziej efektywna transformacja niż dotychczas…</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>170–210 words</strong> in Polish in a formal register discussing either (a) the most urgent environmental challenge facing Poland, or (b) whether economic development and environmental protection can be reconciled. Use at least <strong>6 vocabulary items</strong>: <em>różnorodność biologiczna, emisja dwutlenku węgla, zmiany klimatyczne, odnawialne źródła energii, ochrona środowiska, zalesianie, zanieczyszczenie, transformacja energetyczna, puszcza, węgiel kamienny, skutkować, zobowiązać się do</em>.<br><br>
+        Your answer must include: at least <strong>one passive voice construction</strong> (jest + past participle OR zostać + past participle), at least <strong>two cause-effect connectors</strong> (<em>w wyniku, ponieważ, skutkuje, co prowadzi do, w konsekwencji</em>), and at least <strong>one large numeral</strong> (a statistic, percentage or year).
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G8 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GRAMMAR G8 PART 1
+═══════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 9 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G8 · Part 1</div>
+  <div class="section-title">Passive Voice, Cause &amp; Effect, Numerals<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Strona Bierna, Przyczynowość, Liczebniki</span></div>
+  <div class="section-desc">Three tools that are indispensable for formal Polish — especially in writing about science, society and current affairs. The passive removes the agent; cause-effect connectors build argument; numerals express precision.</div>
+
+  <!-- PASSIVE VOICE -->
+  <div class="card">
+    <div class="card-title" style="color:var(--forest)"><i class="ti ti-refresh"></i> Passive Voice — Strona Bierna</div>
+    <div class="grammar-callout">
+      Polish has two passive constructions. The choice between them mirrors the aspect distinction: the <strong>być-passive</strong> describes a state or ongoing process; the <strong>zostać-passive</strong> describes a completed event.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. State / ongoing passive — być + past passive participle (imperfective)</div>
+      <p class="example-pl">Polska <strong>jest uznawana</strong> za jeden z najcenniejszych rezerwuarów przyrody.</p>
+      <p class="example-en">Poland is considered one of the most precious nature reserves. (ongoing state)</p>
+      <p class="example-pl">Lasy <strong>są chronione</strong> przez prawo unijne.</p>
+      <p class="example-en">Forests are protected by EU law. (ongoing process)</p>
+      <p class="example-pl">Energia <strong>jest produkowana</strong> przez farmy wiatrowe.</p>
+      <p class="example-en">Energy is produced by wind farms. (continuous production)</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. Event passive — zostać + past passive participle (perfective)</div>
+      <p class="example-pl">Trzy miliony drzew <strong>zostały posadzone</strong> w ramach programu zalesiania.</p>
+      <p class="example-en">Three million trees were planted as part of the afforestation programme. (completed event)</p>
+      <p class="example-pl">Kilkadziesiąt rzek <strong>zostało zanieczyszczonych</strong>.</p>
+      <p class="example-en">Dozens of rivers were polluted / became polluted. (completed past event)</p>
+      <p class="example-pl">Ustawa <strong>zostanie przyjęta</strong> w przyszłym roku.</p>
+      <p class="example-en">The law will be adopted next year. (future completed event)</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">3. Past passive participle formation</div>
+      <table class="gram-table">
+        <tr><th>Verb</th><th>Masc. sg.</th><th>Fem. sg.</th><th>Neuter sg.</th><th>Pl. non-masc.</th><th>Pl. masc.-pers.</th></tr>
+        <tr><td>uznać</td><td>uznany</td><td>uznana</td><td>uznane</td><td>uznane</td><td>uznani</td></tr>
+        <tr><td>chronić</td><td>chroniony</td><td>chroniona</td><td>chronione</td><td>chronione</td><td>chronieni</td></tr>
+        <tr><td>posadzić</td><td>posadzony</td><td>posadzona</td><td>posadzone</td><td>posadzone</td><td>posadzeni</td></tr>
+        <tr><td>zanieczyszcić</td><td>zanieczyszczony</td><td>zanieczyszczona</td><td>zanieczyszczone</td><td>zanieczyszczone</td><td>zanieczyszczeni</td></tr>
+        <tr><td>produkować</td><td>produkowany</td><td>produkowana</td><td>produkowane</td><td>produkowane</td><td>produkowani</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:8px">The participle agrees in gender, number and case with the grammatical subject.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">4. Expressing the agent — przez + Accusative</div>
+      <p class="example-pl">Raport <strong>został opublikowany przez</strong> Ministerstwo Środowiska.</p>
+      <p class="example-en">The report was published by the Ministry of the Environment.</p>
+      <p class="example-en">Note: in Polish, the agent in passive sentences is often omitted entirely — this is much more common than in English.</p>
+    </div>
+  </div>
+
+  <!-- CAUSE AND EFFECT -->
+  <div class="card">
+    <div class="card-title" style="color:var(--forest)"><i class="ti ti-git-branch-2"></i> Cause &amp; Effect Connectors — Przyczynowość</div>
+    <div class="grammar-callout">
+      Formal Polish uses a rich set of cause-effect connectors. Choosing the right one signals register — casual <em>bo</em> sounds weak in academic or journalistic writing; the connectors below are expected at B2+ level.
+    </div>
+    <div class="connector-grid">
+      <div class="connector-card">
+        <div class="connector-word">ponieważ / gdyż</div>
+        <div class="connector-meaning">because / since (formal)</div>
+        <div class="connector-ex">Ponieważ węgiel dominuje, emisje są wysokie.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">w wyniku + Gen.</div>
+        <div class="connector-meaning">as a result of</div>
+        <div class="connector-ex">W wyniku działalności przemysłowej rzeki zostały zanieczyszczone.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">skutkuje + Instr.</div>
+        <div class="connector-meaning">results in</div>
+        <div class="connector-ex">Emisja CO₂ skutkuje zmianami klimatycznymi.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">co prowadzi do + Gen.</div>
+        <div class="connector-meaning">which leads to</div>
+        <div class="connector-ex">Wylesianie, co prowadzi do erozji gleby.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">skutkiem tego jest</div>
+        <div class="connector-meaning">the consequence of this is</div>
+        <div class="connector-ex">Skutkiem tego jest rosnące znaczenie OZE.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">w konsekwencji</div>
+        <div class="connector-meaning">as a consequence</div>
+        <div class="connector-ex">W konsekwencji rząd musiał zmienić politykę.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">z tego powodu</div>
+        <div class="connector-meaning">for this reason / therefore</div>
+        <div class="connector-ex">Z tego powodu inwestycje w OZE są konieczne.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">przyczynia się do + Gen.</div>
+        <div class="connector-meaning">contributes to</div>
+        <div class="connector-ex">Spalanie węgla przyczynia się do smogu.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMERALS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--forest)"><i class="ti ti-123"></i> Large Numerals — Liczebniki wielkie</div>
+    <div class="grammar-callout">
+      Large numerals in Polish require careful case agreement. The numeral governs the case of the noun that follows it — this differs from English and is one of the trickiest areas of Polish grammar.
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Numeral case rules — noun after the numeral</div>
+      <table class="gram-table">
+        <tr><th>Numeral</th><th>Noun case</th><th>Example</th></tr>
+        <tr><td>1 (jeden/jedna/jedno)</td><td>Nominative sg.</td><td>jeden park, jedna ustawa</td></tr>
+        <tr><td>2, 3, 4</td><td>Nominative pl.</td><td>dwa parki, trzy lasy, cztery rzeki</td></tr>
+        <tr><td>5–20 and beyond*</td><td>Genitive pl.</td><td>pięć parków, dwadzieścia lasów, sto rzek</td></tr>
+        <tr><td>milion / miliard</td><td>Genitive pl.</td><td>milion drzew, trzy miliony ton CO₂</td></tr>
+        <tr><td>procent</td><td>Genitive pl. (always)</td><td>dwadzieścia procent, siedemdziesiąt procent</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:8px">*21, 22, 23, 24 take Nominative pl. (dwadzieścia dwa parki); 25+ take Genitive pl. again.</p>
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Key environmental numerals — practise these</div>
+      <p class="example-pl"><strong>trzy miliony drzew</strong> — three million trees (Gen. pl.)</p>
+      <p class="example-pl"><strong>siedemdziesiąt procent</strong> miksu energetycznego — seventy percent (Gen. pl.)</p>
+      <p class="example-pl"><strong>sto tysięcy</strong> pracowników — one hundred thousand workers (Gen. pl.)</p>
+      <p class="example-pl"><strong>dwadzieścia dwa</strong> procent OZE — twenty-two percent renewables (Gen. pl. — "procent" always Gen.)</p>
+      <p class="example-pl"><strong>do roku dwutysięcznego trzydziestego</strong> — by the year 2030 (ordinal Gen. after "do")</p>
+    </div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Grammar Exercise — Passive, Cause-Effect &amp; Numerals</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Complete or transform as instructed. No hints provided.</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Active → Passive (state): Prawo chroni lasy przed wycinką.</div>
+      <div class="transform-task">Rewrite using "być + participle" (state passive, present):</div>
+      <input class="transform-input" id="ti1" data-answer="lasy są chronione przez prawo przed wycinką" placeholder="Lasy są…" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Active → Passive (event): Rząd przyjął ustawę klimatyczną.</div>
+      <div class="transform-task">Rewrite using "zostać + participle" (event passive, past):</div>
+      <input class="transform-input" id="ti2" data-answer="ustawa klimatyczna została przyjęta przez rząd" placeholder="Ustawa klimatyczna została…" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Join with cause-effect: Emisja CO₂ wzrosła. [result:] Temperatury rosną.</div>
+      <div class="transform-task">Use "skutkuje" + Instrumental:</div>
+      <input class="transform-input" id="ti3" data-answer="emisja co₂ wzrosła co skutkuje wzrostem temperatur" placeholder="Emisja CO₂ wzrosła, co skutkuje…" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Choose the correct numeral form: Posadzono ______ (3 000 000 / drzewa).</div>
+      <div class="transform-task">Write the numeral phrase with the correct noun case:</div>
+      <input class="transform-input" id="ti4" data-answer="trzy miliony drzew" placeholder="trzy miliony…" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. W wyniku OR ponieważ? "______ zanieczyszczenie powietrza jest wysokie, rząd wprowadził nowe normy."</div>
+      <div class="transform-task">Which cause connector fits here — and why?</div>
+      <input class="transform-input" id="ti5" data-answer="ponieważ" placeholder="w wyniku / ponieważ?" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-forest" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GAP FILL
+═══════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 9 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence. No word bank, no hints. Draw on passive constructions, cause-effect connectors, numerals and environmental vocabulary from this unit.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="font-size:15px">
+      <p class="gap-sentence">1. Polska <input class="gap-input" id="g1" data-answer="jest uznawana za"> jeden z najcenniejszych rezerwuarów dzikiej przyrody w Europie.</p>
+      <p class="gap-sentence">2. W ostatnich latach <input class="gap-input" id="g2" data-answer="zostały posadzone" style="width:220px"> trzy miliony drzew w ramach programu zalesiania.</p>
+      <p class="gap-sentence">3. Emisja CO₂ wzrosła, <input class="gap-input" id="g3" data-answer="co skutkuje" style="width:180px"> nasilającymi się zmianami klimatycznymi.</p>
+      <p class="gap-sentence">4. <input class="gap-input" id="g4" data-answer="w wyniku" style="width:160px"> intensywnej działalności przemysłowej kilkadziesiąt rzek zostało zanieczyszczonych.</p>
+      <p class="gap-sentence">5. Udział OZE wzrósł <input class="gap-input" id="g5" data-answer="z ośmiu do dwudziestu dwóch procent" style="width:320px"> w ciągu piętnastu lat.</p>
+      <p class="gap-sentence">6. Energia odnawialna <input class="gap-input" id="g6" data-answer="produkowana jest" style="width:210px"> przez coraz więcej farm wiatrowych.</p>
+      <p class="gap-sentence">7. <input class="gap-input" id="g7" data-answer="ponieważ"> zmiany klimatyczne są nieodwracalne, transformacja energetyczna jest pilnie potrzebna.</p>
+      <p class="gap-sentence">8. Rząd zobowiązał się do ograniczenia emisji o <input class="gap-input" id="g8" data-answer="czterdzieści pięć procent" style="width:250px"> do roku 2030.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 9 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the correct answer. Questions focus on passive voice, cause-effect connectors, numeral case agreement, and environmental vocabulary.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Puszcza Białowieska ______ za ostatni nizinny las pierwotny w Europie. (ongoing state)</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>została uznana</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>jest uznawana</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>będzie uznana</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>uznała się</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. W zeszłym roku nowe przepisy ochrony środowiska ______. (completed legislative event)</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>są przyjęte</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>zostały przyjęte</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>były przyjmowane</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>przyjęły się</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. ______ intensywnego wycinania lasów, różnorodność biologiczna gwałtownie spada.</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">A</div>W wyniku</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">B</div>Skutkiem</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">C</div>Ponieważ</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>Co prowadzi</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. Przemysł ciężki emituje ogromne ilości CO₂, ______ katastrofalnymi skutkami dla klimatu.</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>co prowadzi do</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">B</div>co skutkuje</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>w wyniku</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>ponieważ</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. W programie zalesiania wzięło udział ponad ______ wolontariuszy.</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>pięć tysiące</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">B</div>pięć tysięcy</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">C</div>pięć tysiąc</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>pięciu tysięcy</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Nowa elektrownia wiatrowa ______ w ciągu najbliższych dwóch lat. (future completed event)</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>jest wybudowana</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">B</div>zostanie wybudowana</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">C</div>była wybudowana</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>wybuduje się</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Which sentence INCORRECTLY uses a passive construction?</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>Raport został opublikowany przez ministerstwo.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">B</div>Lasy są chronione przez prawo europejskie.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">C</div>Nowe przepisy zostały wprowadzone przez rządu.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>Trzy miliony drzew zostały posadzone w ubiegłym roku.</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. ______ Polska jest uzależniona od węgla, transformacja energetyczna będzie kosztowna.</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>W wyniku</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">B</div>Ponieważ</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">C</div>Skutkuje</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>Co prowadzi do</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 9 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each Polish cause-effect connector or passive construction on the left to its English equivalent on the right. All 8 pairs must be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--forest);margin-bottom:8px">Polish expression</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">jest chroniony</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">zostało zniszczone</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">w wyniku + Gen.</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">skutkuje + Instr.</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">ponieważ</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">co prowadzi do + Gen.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">przyczynia się do + Gen.</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">zostanie wybudowana</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English equivalent</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">because / since (formal)</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">as a result of</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">will be built (future event)</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">is protected (ongoing state)</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">which leads to</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">was destroyed (completed event)</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">results in</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">contributes to</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 9 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 9 Test</div>
+  <div class="section-desc">Complete all five sections to unlock the test.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 9 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">All sections complete. The test covers environmental vocabulary, passive voice (być vs zostać passive), cause-effect connectors, numeral case agreement, and B2+ comprehension. Retakes allowed — mistakes link back to specific sections.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 9 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div></div></div>
+
+<script>
+// ══ STATE ════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 330;
+
+// ══ NAV ══════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ═════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ TTS ══════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ AUDIO ════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 5:30 · Polish B2+`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying=false; document.getElementById('play-icon').className='ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+
+// ══ MC ═══════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8
+        ? '<strong>Doskonale! 8/8</strong> — Perfect. You correctly distinguished the być-passive (ongoing state) from the zostać-passive (completed event), chose appropriate cause-effect connectors for each context, applied numeral case agreement (pięć tysięcy = Gen. pl.), and identified the error "przez rządu" (should be "przez rząd" — Accusative, not Genitive, after "przez").'
+        : '<strong>' + correct + '/8 correct.</strong> Key reminders: jest + participle = state (ongoing); zostało/zostały + participle = event (completed); zostanie + participle = future event. "W wyniku" introduces a noun phrase (Gen.); "ponieważ" introduces a clause. After "przez" in passive sentences: Accusative (przez rząd, NOT przez rządu). Numerals 5+: Genitive plural (pięć tysięcy).';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR ══════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/[,\.!?]/g,'').replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  const items = [
+    { id:'ti1', key:['lasy','są chronione'], ans:'lasy są chronione przez prawo przed wycinką',
+      exp:'State passive: być (są) + past passive participle "chronione" (neuter/non-pers. pl., agrees with "lasy" fem. pl. → chronione). Agent: przez + Accusative (prawo stays prawo).' },
+    { id:'ti2', key:['ustawa','została przyjęta'], ans:'ustawa klimatyczna została przyjęta przez rząd',
+      exp:'Event passive: zostać (została) + past passive participle "przyjęta" (fem. sg., agrees with "ustawa"). Agent: przez + Accusative (rząd, not rządu).' },
+    { id:'ti3', key:['co skutkuje'], ans:'emisja co₂ wzrosła co skutkuje wzrostem temperatur',
+      exp:'"Co skutkuje" + Instrumental: the relative pronoun "co" refers back to the previous clause, "skutkuje" (impf. 3rd sg.) + Instrumental of the result ("wzrostem temperatur").' },
+    { id:'ti4', key:['trzy miliony drzew'], ans:'trzy miliony drzew',
+      exp:'"Trzy miliony drzew" — milion (2–4 → miliony, Nom. pl.) + Gen. pl. noun (drzew). 3,000,000 = trzy miliony drzew.' },
+    { id:'ti5', key:['ponieważ'], ans:'ponieważ',
+      exp:'"Ponieważ" introduces a full clause (subject + verb). "W wyniku" introduces a noun phrase (Gen.): "W wyniku wysokiego zanieczyszczenia…" vs "Ponieważ zanieczyszczenie jest wysokie…".' },
+  ];
+  let correct = 0;
+  items.forEach((item, n) => {
+    const inp = document.getElementById(item.id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    const matched = item.key.every(k => val.includes(norm(k)));
+    if (matched) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ ' + item.exp; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Świetnie! 5/5</strong> — Excellent. You correctly formed both passive types (być for state, zostać for event), used "co skutkuje" + Instrumental, formed "trzy miliony drzew" with correct numeral agreement, and chose "ponieważ" (for clause) over "w wyniku" (for noun phrase).';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 3 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/5 correct.</strong> Key reminders: być = state passive; zostać = event passive; participle must agree in gender/number with the subject; "przez" in passive takes Accusative (never Genitive); "co skutkuje" + Instr.; numeral 3 = trzy → miliony (2–4 pl.) → drzew (Gen. pl.); "ponieważ" + clause vs "w wyniku" + Gen. noun.';
+  }
+}
+
+// ══ GAP FILL ═════════════════════════
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+  const alts = {
+    g1: ['jest uznawana za','jest uznana za'],
+    g3: ['co skutkuje','skutkując'],
+    g6: ['produkowana jest','jest produkowana'],
+    g8: ['czterdzieści pięć procent','45 procent','czterdzieści pięć procent'],
+  };
+  let correct = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct','incorrect');
+    const val = norm(inp.value);
+    const main = norm(inp.dataset.answer);
+    const altList = (alts[id] || []).map(a => norm(a));
+    if (val === main || altList.includes(val)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const total = fields.length;
+  const fb = document.getElementById('gf-feedback');
+  if (correct === total) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! ' + total + '/' + total + '</strong> — All correct! You used: być-passive (jest uznawana za — ongoing state), zostać-passive (zostały posadzone — completed event), cause-effect connectors (co skutkuje, w wyniku, ponieważ), numeral phrases (z ośmiu do dwudziestu dwóch procent, czterdzieści pięć procent), and impersonal passive (produkowana jest).';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/' + total + ' correct.</strong> Check: state passive (jest + participle, impf.); event passive (zostały + participle, pf.); "co skutkuje" + Instrumental; "w wyniku" + Genitive noun phrase; "ponieważ" + full clause; OZE percentage = z ośmiu do dwudziestu dwóch procent; reduction figure = czterdzieści pięć procent.';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (inp) { inp.value = ''; inp.classList.remove('correct','incorrect'); }
+  });
+  document.getElementById('gf-feedback').classList.remove('show');
+}
+
+// ══ MATCHING ══════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All matched. The key distinction to remember: "jest chroniony" (być-passive = ongoing state, someone/something is still being protected) vs "zostało zniszczone" (zostać-passive = completed event, it was destroyed and that is done). For cause-effect: "ponieważ" + clause; "w wyniku" + Gen. noun; "skutkuje" + Instr.; "co prowadzi do" + Gen.; "przyczynia się do" + Gen.';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ══════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ═══════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 20) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B2+ level English-speaking learner's formal writing. Unit 9 focuses on environmental vocabulary, passive voice, cause-effect connectors, and numerals.
+
+Task: Write 170-210 words in Polish (formal register) on either (a) Poland's most urgent environmental challenge or (b) reconciling economic development and environmental protection. Use at least 6 of: różnorodność biologiczna, emisja dwutlenku węgla, zmiany klimatyczne, odnawialne źródła energii, ochrona środowiska, zalesianie, zanieczyszczenie, transformacja energetyczna, puszcza, węgiel kamienny, skutkować, zobowiązać się do. Must include: at least 1 passive construction (jest/są + participle OR zostać + participle), at least 2 cause-effect connectors (w wyniku, ponieważ, skutkuje, co prowadzi do, w konsekwencji), and at least 1 large numeral (statistic, %, or year).
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2-3 sentences — assess argumentation, register, and B2+ expectations>",
+  "vocab_used": ["<target words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "passive_constructions": ["<each passive found with type (być/zostać) and comment on correctness>"],
+  "passive_errors": [{"error":"<form>","correction":"<correction>","explanation":"<rule — być vs zostać, participle agreement, przez + Acc>"}],
+  "cause_effect_connectors": ["<each connector found with brief comment>"],
+  "numerals_used": ["<numerals/statistics used — correct case agreement?>"],
+  "register_comment": "<comment on formality level — is it appropriately academic?>",
+  "correct_structures": ["<2-3 specific things done well>"],
+  "other_errors": [{"error":"<phrase>","correction":"<correction>","explanation":"<rule>"}],
+  "recommendation": "<one specific B2+ formal writing tip for environmental topics>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1400, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">';
+  if (r.register_comment) html += `<div style="background:var(--forest-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--forest);margin-bottom:4px">Register</div>${r.register_comment}</div>`;
+  if (r.numerals_used && r.numerals_used.length) html += `<div style="background:var(--gold-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--gold);margin-bottom:4px">Numerals Used</div>${r.numerals_used.join('<br>')}</div>`;
+  html += '</div>';
+
+  if (r.passive_constructions && r.passive_constructions.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Passive Constructions</div>';
+    r.passive_constructions.forEach(p => html += `<p style="font-size:13px;margin-bottom:4px">• ${p}</p>`);
+    html += '</div>';
+  }
+  if (r.passive_errors && r.passive_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Passive Errors</div>';
+    r.passive_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+  if (r.cause_effect_connectors && r.cause_effect_connectors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Cause-Effect Connectors</div>';
+    r.cause_effect_connectors.forEach(c => html += `<p style="font-size:13px;margin-bottom:4px">• ${c}</p>`);
+    html += '</div>';
+  }
+  if (r.vocab_used && r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v => html += `<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">${v}</span>`);
+    html += '</div></div>';
+  }
+  if (r.correct_structures && r.correct_structures.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s => html += `<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ ${s}</p>`);
+    html += '</div>';
+  }
+  if (r.other_errors && r.other_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Other errors</div>';
+    r.other_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+  if (r.recommendation) html += `<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 B2+ tip:</strong> ${r.recommendation}</div>`;
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

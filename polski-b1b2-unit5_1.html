@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 5: Polska Kultura i Tradycje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --rose:#9F1239;--rose-light:#FFE4E6;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(193,55,42,0.15);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#FCA5A5;line-height:1.5}
+.scaffolding-note strong{color:#fff}
+
+/* ── GRAMMAR (rose/crimson for G5) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--rose-light);color:var(--rose);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--rose-light);border:0.5px solid rgba(159,18,57,0.2);border-left:3px solid var(--rose);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--rose)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--rose);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.btn-rose{background:var(--rose);color:#fff}
+.btn-rose:hover{background:#881337}
+.rose-note{background:var(--rose-light);border:0.5px solid rgba(159,18,57,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--rose);margin-bottom:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+
+/* ── CARDS ── */
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.95;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:22px 26px;margin-bottom:16px}
+.reading-text p{margin-bottom:16px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--rose-light);color:var(--rose);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:180px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:170px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL — B2 level: NO word bank, NO hints ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:130px;width:150px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-sentence{line-height:3;font-size:15px;margin-bottom:6px}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO — transcript locked until after first full play ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:10px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+.transcript-locked-note{font-size:12px;color:#78716C;padding:8px 14px;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.transcript-toggle{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;white-space:nowrap;opacity:0.4;pointer-events:none}
+.transcript-toggle.unlocked{opacity:1;pointer-events:all}
+.transcript-toggle.unlocked:hover{background:rgba(255,255,255,0.2)}
+.transcript-box{background:var(--cream);border-radius:8px;padding:16px;margin-bottom:16px;font-size:13px;color:var(--ink-muted);line-height:1.8;display:none}
+.transcript-box.show{display:block}
+.transcript-box p+p{margin-top:8px}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:180px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── INFO NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── ASPECT TABLE ── */
+.aspect-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.aspect-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.aspect-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.5}
+.aspect-table tr:nth-child(even) td{background:#FAF7F2}
+.aspect-table td:first-child{font-weight:500;color:var(--rose)}
+.impf{color:var(--blue);font-weight:500}
+.pf{color:var(--rose);font-weight:500}
+
+/* ── PAIR CARDS ── */
+.pair-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.pair-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px}
+.pair-impf{color:var(--blue);font-weight:600;font-size:15px;margin-bottom:2px}
+.pair-pf{color:var(--rose);font-weight:600;font-size:15px;margin-bottom:6px}
+.pair-meaning{color:var(--ink-muted);font-size:12px}
+
+/* ── TRANSFORM EXERCISE ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .pair-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="app">
+
+<!-- ══ SIDEBAR ══════════════════════════════════════════ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 5 — B2 level:</strong> No word bank. No hints in gaps. Transcript locked until after first full listen. Longer texts.
+  </div>
+  <div class="unit-label">Unit 5 — Polska Kultura i Tradycje</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G5<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 4 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 4 — Zdrowie</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 6 — Media i Technologia</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 5 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══════════════════════════════════════════════ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 5 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Polska Kultura i Tradycje<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Polish Culture &amp; Traditions</span></div>
+  <div class="section-desc">Explore Polish customs, celebrations and cultural identity. This lesson features longer, more complex texts. Grammar focus: verbal aspect — the difference between imperfective and perfective verbs in Polish.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Artykuł</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary. Hover <span style="background:var(--rose-light);color:var(--rose);padding:1px 6px;border-radius:3px;font-weight:500">red</span> for aspect notes. Click <i class="ti ti-volume"></i> in the vocabulary table to hear pronunciation.</span>
+      </div>
+
+      <div class="reading-text">
+        <p>Polska kultura jest nieodłącznie <span class="vocab-highlight">związana<span class="vocab-tip">związany z = connected to / linked with<br>(past passive participle)</span></span> z tradycją katolicką, historią i silnym poczuciem narodowej tożsamości. Przez wieki Polska <span class="grammar-highlight">przechodziła<span class="vocab-tip">przechodzić (impf.) = to go through / undergo<br>Imperfective — ongoing, repeated process<br>through many centuries</span></span> przez liczne <span class="vocab-highlight">zawirowania<span class="vocab-tip">zawirowania = upheavals / turbulences (pl.)<br>zawirowanie → zawirowania</span></span> polityczne, co <span class="grammar-highlight">ukształtowało<span class="vocab-tip">ukształtować (pf.) = to shape / to form<br>Perfective — one completed result</span></span> wyjątkowy charakter jej kultury — <span class="vocab-highlight">wytrwałej<span class="vocab-tip">wytrwały = persevering / resilient<br>(Gen. fem. — agrees with "kultury")</span></span>, dumnej i jednocześnie otwartej na wpływy z zewnątrz.</p>
+
+        <p>Jednym z najważniejszych elementów polskiej kultury są <span class="vocab-highlight">tradycje świąteczne<span class="vocab-tip">tradycje świąteczne = holiday traditions<br>(Nom. pl. — subject of "są")</span></span>. Wigilia, czyli wieczerza wigilijna w <span class="vocab-highlight">Wigilię Bożego Narodzenia<span class="vocab-tip">Wigilia Bożego Narodzenia = Christmas Eve<br>(Gen. of Boże Narodzenie — possession)</span></span>, jest dla Polaków szczególnie ważna. Tradycyjnie <span class="grammar-highlight">zasiada się<span class="vocab-tip">zasiadać się (impf. impersonal) = one sits down<br>Impersonal passive — obchodzi się, zasiada się<br>= cultural habit, repeated every year</span></span> do stołu dopiero, gdy <span class="grammar-highlight">pojawi się<span class="vocab-tip">pojawić się (pf.) = to appear<br>Perfective — one specific appearance<br>of the first star signals the start</span></span> pierwsza gwiazdka na niebie. Na stole <span class="grammar-highlight">stawia się<span class="vocab-tip">stawiać (impf. impersonal) = one places / sets<br>Impersonal — cultural description<br>of what is habitually done</span></span> dwanaście potraw, z których każda <span class="vocab-highlight">symbolizuje<span class="vocab-tip">symbolizować = to symbolize<br>(3rd pers. sg. present — impf.)</span></span> inny miesiąc roku.</p>
+
+        <p>Wielkanoc to kolejne ważne <span class="vocab-highlight">święto<span class="vocab-tip">święto = holiday / feast / celebration<br>(neuter noun)</span></span>. W <span class="vocab-highlight">Wielką Sobotę<span class="vocab-tip">Wielka Sobota = Holy Saturday<br>(Acc. — after "w" + direction/time)</span></span> Polacy <span class="grammar-highlight">zanoszą<span class="vocab-tip">zanosić (impf.) = to carry / bring (habitually)<br>Imperfective — repeated annual action<br>Compare: zanieść (pf.) = to carry there (once)</span></span> koszyki z jedzeniem do kościoła na <span class="vocab-highlight">święcenie<span class="vocab-tip">święcenie = blessing (of food)<br>(Acc. after "na" = purpose)</span></span>. W <span class="vocab-highlight">Lany Poniedziałek<span class="vocab-tip">Lany Poniedziałek = Wet Monday (Śmigus-Dyngus)<br>Easter Monday tradition of splashing water</span></span> — zwany też <span class="vocab-highlight">Śmigusem-Dyngusem<span class="vocab-tip">Śmigus-Dyngus = the popular name for Wet Monday<br>(Instrumental after "zwany")</span></span> — <span class="grammar-highlight">oblewało się<span class="vocab-tip">oblewać się (impf. impersonal past) = one would splash<br>Imperfective — describes the repeated,<br>habitual custom in past cultural context</span></span> wodą niemal każdego, kto wyszedł z domu.</p>
+
+        <p>Polska muzyka i literatura <span class="vocab-highlight">odegrały<span class="vocab-tip">odegrać (pf.) = to play (a role)<br>Perfective — completed historical contribution</span></span> ogromną rolę w <span class="vocab-highlight">podtrzymywaniu<span class="vocab-tip">podtrzymywać = to sustain / maintain<br>podtrzymywanie = sustaining (verbal noun)</span></span> tożsamości narodowej w czasach zaborów. <span class="vocab-highlight">Twórczość<span class="vocab-tip">twórczość = creative work / oeuvre<br>(feminine noun)</span></span> Adama Mickiewicza, Fryderyka Chopina czy Wisławy Szymborskiej <span class="grammar-highlight">stała się<span class="vocab-tip">stać się (pf.) = to become<br>Perfective — one definitive transformation<br>into something it permanently is now</span></span> symbolem polskości na całym świecie. Chopin do dziś <span class="grammar-highlight">pozostaje<span class="vocab-tip">pozostawać (impf.) = to remain / stay<br>Imperfective — ongoing, continuous state<br>up to and including the present moment</span></span> najbardziej rozpoznawalnym polskim kompozytorem.</p>
+
+        <p>Polska <span class="vocab-highlight">kuchnia<span class="vocab-tip">kuchnia = cuisine / kitchen<br>(feminine noun)</span></span> jest kolejnym filarem kultury. <span class="vocab-highlight">Bigos<span class="vocab-tip">bigos = hunter's stew — Polish national dish<br>made of sauerkraut, cabbage and meat</span></span>, pierogi, żurek i <span class="vocab-highlight">żubrówka<span class="vocab-tip">żubrówka = bison grass vodka<br>(also called Bison Grass Vodka)</span></span> to produkty, które <span class="grammar-highlight">zyskały<span class="vocab-tip">zyskać (pf.) = to gain / to win<br>Perfective — completed acquisition of fame</span></span> międzynarodowe uznanie. Warto <span class="vocab-highlight">zaznaczyć<span class="vocab-tip">zaznaczyć (pf.) = to note / to point out<br>Perfective after "warto" — single act of noting</span></span>, że polska kuchnia <span class="grammar-highlight">ewoluowała<span class="vocab-tip">ewoluować (impf.) = to evolve<br>Imperfective — gradual, ongoing process<br>across many centuries</span></span> przez wieki pod wpływem sąsiednich kultur — <span class="vocab-highlight">żydowskiej<span class="vocab-tip">żydowski = Jewish (adj.)<br>Gen. fem. — agrees with "kultury"</span></span>, <span class="vocab-highlight">ukraińskiej<span class="vocab-tip">ukraiński = Ukrainian (adj.)<br>Gen. fem.</span></span>, <span class="vocab-highlight">niemieckiej<span class="vocab-tip">niemiecki = German (adj.)<br>Gen. fem.</span></span> i <span class="vocab-highlight">tatarskiej<span class="vocab-tip">tatarski = Tatar (adj.)<br>Gen. fem.</span></span>, tworząc coś naprawdę wyjątkowego.</p>
+
+        <p>Współcześnie Polacy <span class="grammar-highlight">pielęgnują<span class="vocab-tip">pielęgnować (impf.) = to nurture / to cultivate<br>Imperfective — ongoing, habitual activity<br>in the present</span></span> swoje tradycje, jednocześnie <span class="grammar-highlight">otwierając się<span class="vocab-tip">otwierać się (impf.) = to open up<br>Imperfective — ongoing process of opening<br>to new influences</span></span> na nowe wpływy. Polskie <span class="vocab-highlight">festiwale<span class="vocab-tip">festiwale = festivals (pl.)<br>festiwal → festiwale</span></span> muzyczne, filmowe i kulturalne <span class="grammar-highlight">przyciągają<span class="vocab-tip">przyciągać (impf.) = to attract<br>Imperfective — repeated, ongoing attraction<br>year after year</span></span> gości z całego świata, dowodząc, że polska kultura jest żywa, dynamiczna i gotowa na dialog z nowoczesnością.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Red highlights show imperfective and perfective verbs in context — pay attention to what meaning each aspect choice carries.</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear pronunciation</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>tradycja<button class="vocab-audio-btn" onclick="speak('tradycja')"><i class="ti ti-volume"></i></button></td><td>tradycje (pl.)</td><td>tradition</td></tr>
+        <tr><td>tożsamość<button class="vocab-audio-btn" onclick="speak('tożsamość')"><i class="ti ti-volume"></i></button></td><td>tożsamości (Gen.)</td><td>identity</td></tr>
+        <tr><td>święto<button class="vocab-audio-btn" onclick="speak('święto')"><i class="ti ti-volume"></i></button></td><td>święta (pl.)</td><td>holiday / feast / celebration</td></tr>
+        <tr><td>obchodzić<button class="vocab-audio-btn" onclick="speak('obchodzić')"><i class="ti ti-volume"></i></button></td><td>(impf.) / obchodzi się</td><td>to celebrate / to observe</td></tr>
+        <tr><td>pielęgnować<button class="vocab-audio-btn" onclick="speak('pielęgnować')"><i class="ti ti-volume"></i></button></td><td>(impf.)</td><td>to nurture / to keep alive</td></tr>
+        <tr><td>twórczość<button class="vocab-audio-btn" onclick="speak('twórczość')"><i class="ti ti-volume"></i></button></td><td>twórczości (Gen.)</td><td>creative output / artistic work</td></tr>
+        <tr><td>wpływ<button class="vocab-audio-btn" onclick="speak('wpływ')"><i class="ti ti-volume"></i></button></td><td>wpływy (pl.)</td><td>influence</td></tr>
+        <tr><td>uznanie<button class="vocab-audio-btn" onclick="speak('uznanie')"><i class="ti ti-volume"></i></button></td><td>uznania (Gen.)</td><td>recognition / appreciation</td></tr>
+        <tr><td>wyjątkowy<button class="vocab-audio-btn" onclick="speak('wyjątkowy')"><i class="ti ti-volume"></i></button></td><td>wyjątkowe (n.)</td><td>exceptional / unique</td></tr>
+        <tr><td>podtrzymywać<button class="vocab-audio-btn" onclick="speak('podtrzymywać')"><i class="ti ti-volume"></i></button></td><td>(impf.)</td><td>to sustain / to maintain</td></tr>
+        <tr><td>zyskać<button class="vocab-audio-btn" onclick="speak('zyskać')"><i class="ti ti-volume"></i></button></td><td>(pf.) / zyskiwać (impf.)</td><td>to gain / to win (recognition)</td></tr>
+        <tr><td>kuchnia<button class="vocab-audio-btn" onclick="speak('kuchnia')"><i class="ti ti-volume"></i></button></td><td>kuchni (Gen.)</td><td>cuisine / kitchen</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Answer all questions based on the text. Questions at this level require inference and close reading, not just retrieval.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Jak autor artykułu opisuje charakter polskiej kultury?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Zamknięta i konserwatywna, niechętna wpływom z zewnątrz</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Wytrwała, dumna i jednocześnie otwarta na zewnętrzne wpływy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Nowoczesna i kosmopolityczna, bez silnych korzeni tradycji</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Głównie religijna, zdominowana przez katolicyzm</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Kiedy tradycyjnie zasiada się do stołu wigilijnego?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>O północy, gdy zaczyna się 25 grudnia</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Gdy pojawi się pierwsza gwiazdka na niebie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Po powrocie z kościoła na mszy wieczornej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>O wyznaczonej godzinie, tradycyjnie o 18:00</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Co symbolizują dwanaście potraw wigilijnych?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Dwanaście apostołów</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">B</div>Dwanaście regionów Polski</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">C</div>Dwanaście miesięcy roku</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Dwanaście tradycyjnych wartości polskich</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Jaka jest rola muzyki i literatury w historii Polski według tekstu?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Były głównie formą rozrywki dla arystokracji</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Odegrały ogromną rolę w podtrzymywaniu tożsamości narodowej w czasach zaborów</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Służyły przede wszystkim propagandzie politycznej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Miały znaczenie wyłącznie regionalne, bez wpływu na całą Polskę</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Skąd pochodzi wyjątkowość polskiej kuchni według autora?</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Z czystości i niezmienności przepisów przekazywanych od pokoleń</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">B</div>Z izolacji Polski od sąsiednich krajów przez wieki</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">C</div>Z wielowiekowej ewolucji pod wpływem sąsiednich kultur — żydowskiej, ukraińskiej, niemieckiej i tatarskiej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Z eksportu polskich przepisów za granicę</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Które zdanie najlepiej wyraża główną myśl ostatniego akapitu?</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Polacy odrzucają nowoczesność, aby chronić tradycje</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">B</div>Polska kultura jest martwa i potrzebuje odnowy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">C</div>Polacy pielęgnują tradycje, jednocześnie otwierając się na nowe wpływy i świat</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Polska kultura jest identyczna z innymi kulturami europejskimi</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Na podstawie tekstu — które z poniższych stwierdzeń jest NIEPRAWDZIWE?</div>
+        <div class="question-note">This question requires inference — one of these statements contradicts the text.</div>
+        <div class="mc-options" id="cq7">
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">A</div>Chopin jest nadal najbardziej rozpoznawalnym polskim kompozytorem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">B</div>W Wielką Sobotę święci się koszyki z jedzeniem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','correct')"><div class="mc-letter">C</div>Bigos i pierogi zostały wynalezione w XX wieku</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">D</div>Śmigus-Dyngus to inna nazwa Lanego Poniedziałku</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Które polskie tradycje lub zwyczaje wydają ci się najbardziej interesujące lub zaskakujące?<br><em style="font-size:13px;opacity:0.8">Which Polish traditions or customs do you find most interesting or surprising?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jakie tradycje lub zwyczaje są ważne w Australii? Czy są podobne do polskich?<br><em style="font-size:13px;opacity:0.8">What traditions or customs are important in Australia? Are any similar to Polish ones?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy uważasz, że tradycje są ważne we współczesnym świecie? Uzasadnij swoją odpowiedź.<br><em style="font-size:13px;opacity:0.8">Do you think traditions are important in the modern world? Justify your answer.</em></span></div>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Rozmowa o polskich tradycjach</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the full conversation. The transcript is locked until you have listened all the way through at least once — then it will become available.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Rozmowa o polskich tradycjach — Anna i jej australijska przyjaciółka</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 4:50 · Polish B1–B2</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <button class="transcript-toggle" id="transcript-btn" onclick="toggleTranscript()"><i class="ti ti-lock"></i> Transcript locked</button>
+      </div>
+      <div class="transcript-locked-note" id="lock-note"><i class="ti ti-info-circle"></i> Listen to the full recording first — the transcript will unlock automatically when it finishes.</div>
+
+      <div class="transcript-box" id="transcript-box">
+        <strong style="color:var(--ink);display:block;margin-bottom:12px;font-size:14px">Transcript — Anna i Kate rozmawiają o polskich tradycjach</strong>
+        <p><strong style="color:var(--ink)">Kate:</strong> Anna, byłam na Wigilii u twojej rodziny w zeszłym roku i do tej pory o tym mówię. To było coś naprawdę wyjątkowego.</p>
+        <p><strong style="color:var(--ink)">Anna:</strong> Cieszę się! Wigilia jest dla nas absolutnie najważniejszym wieczorem w roku. Właściwie ważniejszym niż sam Boże Narodzenie.</p>
+        <p><strong style="color:var(--ink)">Kate:</strong> Co mnie najbardziej zaskoczyło, to że czekaliście na pierwszą gwiazdkę zanim usiedliście do stołu. W Australii po prostu siadamy i jemy, kiedy jedzenie jest gotowe.</p>
+        <p><strong style="color:var(--ink)">Anna:</strong> Tak, to stara tradycja. Pierwsza gwiazdka symbolizuje Gwiazdę Betlejemską. Dopóki jej nie zobaczymy, nie zaczynamy kolacji. Mój tata zawsze wychodzi na balkon co kilka minut i sprawdza. To taki nasz rodzinny rytuał — powtarzaliśmy to każdego roku odkąd pamiętam.</p>
+        <p><strong style="color:var(--ink)">Kate:</strong> A te wszystkie potrawy — skąd pochodzi tradycja dwunastu dań?</p>
+        <p><strong style="color:var(--ink)">Anna:</strong> To symbolika miesięcy — każda potrawa symbolizuje jeden miesiąc roku. Moja mama zawsze przygotowywała je przez kilka dni wcześniej. Część potraw zrobiła już w sobotę, część dopiero w niedzielę rano. Teraz pomagam jej i naprawdę to lubię — nauczyłam się od niej gotować bigos i pierogi.</p>
+        <p><strong style="color:var(--ink)">Kate:</strong> A co z Wielkanocą? Słyszałam o jakimś zwyczaju z wodą w poniedziałek.</p>
+        <p><strong style="color:var(--ink)">Anna:</strong> A, Śmigus-Dyngus! To Lany Poniedziałek. Tradycyjnie oblewało się wodą wszystkich napotkanych — rodzinę, sąsiadów, nieznajomych na ulicy. Kiedy byłam mała, mój brat zawsze czaił się ze szklanką wody i oblewał mnie rano zanim wstałam. Kiedyś naprawdę mnie to denerwowało, ale teraz to jeden z moich ulubionych wspomnień.</p>
+        <p><strong style="color:var(--ink)">Kate:</strong> To brzmi jak chaos, ale jednocześnie bardzo zabawnie. A jak obchodzicie Wielkanoc właściwie?</p>
+        <p><strong style="color:var(--ink)">Anna:</strong> W Wielką Sobotę chodzimy do kościoła ze święconką — koszyczkiem z jedzeniem, które ksiądz święci. Jest tam chleb, kiełbasa, jajka, chrzan i baranek z cukru. W niedzielę jemy śniadanie wielkanocne razem — to tradycyjnie jest bardzo obfite.</p>
+        <p><strong style="color:var(--ink)">Kate:</strong> Wiesz, co mnie uderza? To że te tradycje są naprawdę żywe — nie tylko jako muzealny eksponat, ale jako coś, co naprawdę robicie i czujecie.</p>
+        <p><strong style="color:var(--ink)">Anna:</strong> Dokładnie. I myślę, że to właśnie dlatego przetrwały — bo każde pokolenie przekazuje je następnemu nie jako obowiązek, ale jako coś pięknego. Mam nadzieję, że kiedyś też przekażę te tradycje moim dzieciom.</p>
+      </div>
+
+      <!-- Listening questions -->
+      <div class="question-block" style="margin-top:16px">
+        <div class="question-text">1. Skąd Kate zna polskie tradycje wigilijne?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Czytała o nich w książce o polskiej kulturze</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Była na Wigilii u rodziny Anny w zeszłym roku</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Oglądała program telewizyjny o Polsce</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Anna opowiadała jej o tym przez kilka lat</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Co symbolizuje pierwsza gwiazdka w tradycji wigilijnej?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Przyjście Świętego Mikołaja</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Gwiazdę Betlejemską</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Koniec postu adwentowego</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Pierwszą potrawę wigilijną</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jak Anna opisuje przygotowania do Wigilii w swojej rodzinie?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Wszystkie potrawy kupuje się gotowe w sklepie</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Mama gotuje przez kilka dni wcześniej — część w sobotę, część dopiero w niedzielę rano</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Cała rodzina gotuje razem przez jeden dzień</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Anna gotuje sama, bo mama jest już zbyt stara</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co Anna mówi o Śmigusie-Dyngusie ze swojego dzieciństwa?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Zawsze sama oblewała brata wodą jako pierwsza</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Brat czaił się i oblewał ją rano — kiedyś ją to denerwowało, teraz to jedno z ulubionych wspomnień</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Nie lubiła tej tradycji i prosiła rodziców o jej zniesienie</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Brat i Anna oblewali razem rodziców wodą</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co jest w wielkanocnym koszyczku — święconce? Wybierz kompletną odpowiedź.</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Bigos, pierogi, żurek i chleb</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Chleb, kiełbasa, jajka, chrzan i baranek z cukru</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Tylko jajka i chleb — symbolika Wielkanocy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Słodycze, owoce i wino</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Dlaczego według Anny te tradycje przetrwały przez pokolenia?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Bo są wspierane przez rząd i media publiczne</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">B</div>Bo kościół wymaga ich przestrzegania</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">C</div>Bo każde pokolenie przekazuje je następnemu nie jako obowiązek, ale jako coś pięknego</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Bo są zapisane w polskim prawie jako dziedzictwo kulturowe</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Co Kate mówi o polskich tradycjach na końcu rozmowy?</div>
+        <div class="mc-options" id="lq7">
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">A</div>Że są zbyt skomplikowane dla obcokrajowców</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">B</div>Że przypominają australijskie tradycje bożonarodzeniowe</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','correct')"><div class="mc-letter">C</div>Że są naprawdę żywe — nie jak muzealny eksponat, ale coś autentycznie przeżywanego</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">D</div>Że są przestarzałe i powinny się zmienić</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>140–180 words</strong> in Polish describing an important tradition or cultural event — either from Poland or from your own culture. Use at least <strong>6 vocabulary items</strong> from this lesson: <em>tradycja, tożsamość, święto, obchodzić, pielęgnować, twórczość, wpływ, uznanie, wyjątkowy, podtrzymywać</em>.<br><br>
+        Your writing must demonstrate correct use of <strong>verbal aspect</strong>: use at least <strong>2 imperfective verbs</strong> to describe ongoing or repeated actions, and at least <strong>2 perfective verbs</strong> to describe completed events or results. No hints are provided — use what you have learned.
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G5 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: GRAMMAR G5 — VERBAL ASPECT
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 5 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G5</div>
+  <div class="section-title">Verbal Aspect<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Aspekt Czasownika — Imperfective vs Perfective</span></div>
+  <div class="section-desc">Verbal aspect is the most important — and most challenging — grammatical concept for English speakers learning Polish. Unlike English tense (which tells you <em>when</em>), Polish aspect tells you <em>how</em> an action is viewed: as an ongoing process or as a completed whole.</div>
+
+  <!-- CORE DISTINCTION -->
+  <div class="card">
+    <div class="card-title" style="color:var(--rose)"><i class="ti ti-git-branch-2"></i> The Core Distinction</div>
+    <div class="grammar-callout">
+      Every Polish verb belongs to one of two aspects. Most verbs come in <strong>pairs</strong> — one imperfective, one perfective — with the same basic meaning but different perspective.
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="grammar-rule" style="border-color:rgba(30,64,175,0.2);background:var(--blue-light)">
+        <div class="grammar-rule-title" style="color:var(--blue)">Imperfective (niedokonany)</div>
+        <p style="color:var(--blue);font-size:13px;margin-bottom:8px">Views the action as <strong>ongoing, repeated, habitual, or in progress</strong>. Doesn't say whether it finished.</p>
+        <p class="example-pl" style="color:var(--ink)">Czytałam książkę. — I was reading a book.</p>
+        <p class="example-pl" style="color:var(--ink)">Codziennie gotowała obiad. — She cooked lunch every day.</p>
+        <p class="example-pl" style="color:var(--ink)">Piszę list. — I am writing a letter.</p>
+      </div>
+      <div class="grammar-rule" style="border-color:rgba(159,18,57,0.2);background:var(--rose-light)">
+        <div class="grammar-rule-title" style="color:var(--rose)">Perfective (dokonany)</div>
+        <p style="color:var(--rose);font-size:13px;margin-bottom:8px">Views the action as <strong>completed, with a result, a single specific event</strong>.</p>
+        <p class="example-pl" style="color:var(--ink)">Przeczytałam książkę. — I read (finished) the book.</p>
+        <p class="example-pl" style="color:var(--ink)">Ugotowała obiad. — She cooked lunch (and it's done).</p>
+        <p class="example-pl" style="color:var(--ink)">Napiszę list. — I will write the letter (and finish it).</p>
+      </div>
+    </div>
+    <div class="rose-note"><i class="ti ti-bulb"></i><span><strong>Key insight:</strong> The same past event can be described with either aspect — but the meaning changes. <em>Pisałam</em> (impf.) = I was writing / I wrote (process). <em>Napisałam</em> (pf.) = I wrote (and finished it). The difference is perspective, not time.</span></div>
+  </div>
+
+  <!-- COMMON ASPECT PAIRS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--rose)"><i class="ti ti-list"></i> Common Aspect Pairs — learn these in context</div>
+    <div class="grammar-callout">Aspect pairs must be memorised — they are not predictable from form alone. The most reliable strategy is to learn them together as you meet new vocabulary.</div>
+    <div class="pair-grid">
+      <div class="pair-card"><div class="pair-impf">pisać</div><div class="pair-pf">napisać</div><div class="pair-meaning">to write</div></div>
+      <div class="pair-card"><div class="pair-impf">czytać</div><div class="pair-pf">przeczytać</div><div class="pair-meaning">to read</div></div>
+      <div class="pair-card"><div class="pair-impf">jeść</div><div class="pair-pf">zjeść</div><div class="pair-meaning">to eat</div></div>
+      <div class="pair-card"><div class="pair-impf">pić</div><div class="pair-pf">wypić</div><div class="pair-meaning">to drink</div></div>
+      <div class="pair-card"><div class="pair-impf">robić</div><div class="pair-pf">zrobić</div><div class="pair-meaning">to do / make</div></div>
+      <div class="pair-card"><div class="pair-impf">mówić</div><div class="pair-pf">powiedzieć</div><div class="pair-meaning">to say / speak</div></div>
+      <div class="pair-card"><div class="pair-impf">dawać</div><div class="pair-pf">dać</div><div class="pair-meaning">to give</div></div>
+      <div class="pair-card"><div class="pair-impf">kupować</div><div class="pair-pf">kupić</div><div class="pair-meaning">to buy</div></div>
+      <div class="pair-card"><div class="pair-impf">gotować</div><div class="pair-pf">ugotować</div><div class="pair-meaning">to cook</div></div>
+      <div class="pair-card"><div class="pair-impf">oglądać</div><div class="pair-pf">obejrzeć</div><div class="pair-meaning">to watch</div></div>
+      <div class="pair-card"><div class="pair-impf">uczyć się</div><div class="pair-pf">nauczyć się</div><div class="pair-meaning">to learn</div></div>
+      <div class="pair-card"><div class="pair-impf">przychodzić</div><div class="pair-pf">przyjść</div><div class="pair-meaning">to come / arrive</div></div>
+    </div>
+  </div>
+
+  <!-- ASPECT IN TENSES -->
+  <div class="card">
+    <div class="card-title" style="color:var(--rose)"><i class="ti ti-clock"></i> Aspect Across Tenses</div>
+    <table class="aspect-table">
+      <tr><th>Tense</th><th>Imperfective</th><th>Perfective</th><th>Key contrast</th></tr>
+      <tr>
+        <td>Present</td>
+        <td><span class="impf">piszę</span><br><em style="font-size:12px">I am writing / I write</em></td>
+        <td><em style="color:var(--ink-muted);font-size:12px">No present perfective exists — perfective present = future meaning</em></td>
+        <td>Only impf. has true present</td>
+      </tr>
+      <tr>
+        <td>Past</td>
+        <td><span class="impf">pisałam</span><br><em style="font-size:12px">I was writing / I wrote (process)</em></td>
+        <td><span class="pf">napisałam</span><br><em style="font-size:12px">I wrote (and finished)</em></td>
+        <td>Process vs completion</td>
+      </tr>
+      <tr>
+        <td>Future</td>
+        <td><span class="impf">będę pisać</span><br><em style="font-size:12px">I will be writing (ongoing)</em></td>
+        <td><span class="pf">napiszę</span><br><em style="font-size:12px">I will write (and finish)</em></td>
+        <td>Ongoing vs single completed act</td>
+      </tr>
+      <tr>
+        <td>Imperative</td>
+        <td><span class="impf">pisz!</span><br><em style="font-size:12px">Write! (general / keep writing)</em></td>
+        <td><span class="pf">napisz!</span><br><em style="font-size:12px">Write! (this specific thing, now)</em></td>
+        <td>General request vs specific command</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- IMPERSONAL PASSIVE / CULTURAL DESCRIPTIONS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--rose)"><i class="ti ti-users"></i> Impersonal Passive — świętuje się, obchodzi się</div>
+    <div class="grammar-callout">
+      Polish uses the impersonal reflexive construction <strong>verb + się</strong> to describe customs, habits, and cultural practices without naming a subject. The imperfective aspect is used because these are ongoing or repeated actions.
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Structure: imperfective verb + się</div>
+      <p class="example-pl"><strong>W Polsce świętuje się</strong> Wigilię 24 grudnia. — In Poland, Christmas Eve is celebrated on 24 December.</p>
+      <p class="example-pl"><strong>Obchodzi się</strong> wiele tradycyjnych świąt. — Many traditional holidays are observed.</p>
+      <p class="example-pl"><strong>Przygotowuje się</strong> dwanaście potraw. — Twelve dishes are prepared.</p>
+      <p class="example-pl"><strong>Zasiada się</strong> do stołu po pierwszej gwiazdce. — One sits down to the table after the first star appears.</p>
+      <p class="example-en">Note: the verb agrees with no subject — it stays 3rd person singular. Very common in cultural and journalistic writing.</p>
+    </div>
+  </div>
+
+  <!-- ASPECT EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Aspect Exercise — Choose the correct form</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Choose between the imperfective and perfective form. No hints provided — use your understanding of aspect.</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Wczoraj wieczorem ______ (czytałam / przeczytałam) całą tę książkę w jednym siedzeniu.</div>
+      <div class="transform-task">Completed in one sitting — which aspect?</div>
+      <input class="transform-input" id="ti1" data-answer="przeczytałam" placeholder="czytałam / przeczytałam?" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Kiedy byłam mała, mama ______ (gotowała / ugotowała) bigos co roku przed Wigilią.</div>
+      <div class="transform-task">Repeated annual action — which aspect?</div>
+      <input class="transform-input" id="ti2" data-answer="gotowała" placeholder="gotowała / ugotowała?" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. W zeszłym tygodniu Anna w końcu ______ (pisała / napisała) ten artykuł o tradycjach.</div>
+      <div class="transform-task">Finally completed — which aspect?</div>
+      <input class="transform-input" id="ti3" data-answer="napisała" placeholder="pisała / napisała?" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. W Polsce ______ (świętuje się / zaświętuje się) Wielkanoc przez cały tydzień.</div>
+      <div class="transform-task">Cultural habit — impersonal construction</div>
+      <input class="transform-input" id="ti4" data-answer="świętuje się" placeholder="świętuje się / zaświętuje się?" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Proszę ______ (pisz / napisz) mi, jak dotrzesz do domu. (specific message once)</div>
+      <div class="transform-task">Specific single action — imperative aspect?</div>
+      <input class="transform-input" id="ti5" data-answer="napisz" placeholder="pisz / napisz?" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-rose" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: GAP FILL — B2: NO word bank, NO hints
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 5 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence with the correct Polish word or phrase. There is no word bank and no hints at this level — draw on your knowledge of vocabulary and aspect from the lesson.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="font-size:15px">
+      <p class="gap-sentence">1. W Polsce Wigilia <input class="gap-input" id="g1" data-answer="obchodzona jest"> każdego roku 24 grudnia.</p>
+      <p class="gap-sentence">2. Mama <input class="gap-input" id="g2" data-answer="przygotowywała"> potrawy wigilijne przez kilka dni — to była jej tradycja.</p>
+      <p class="gap-sentence">3. W zeszłym roku w końcu <input class="gap-input" id="g3" data-answer="ugotowałam"> bigos samodzielnie po raz pierwszy.</p>
+      <p class="gap-sentence">4. Polskie tradycje <input class="gap-input" id="g4" data-answer="przetrwały"> przez wieki dzięki kolejnym pokoleniom.</p>
+      <p class="gap-sentence">5. Twórczość Chopina <input class="gap-input" id="g5" data-answer="zyskała"> międzynarodowe uznanie już za jego życia.</p>
+      <p class="gap-sentence">6. Co roku w Wielką Sobotę <input class="gap-input" id="g6" data-answer="zanosi się"> koszyki z jedzeniem do kościoła.</p>
+      <p class="gap-sentence">7. Kiedy byłam dzieckiem, zawsze <input class="gap-input" id="g7" data-answer="czekałam"> na pierwszą gwiazdkę z całą rodziną.</p>
+      <p class="gap-sentence">8. Polska kuchnia <input class="gap-input" id="g8" data-answer="ewoluowała"> pod wpływem wielu sąsiednich kultur.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 5 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the correct answer. Questions focus on verbal aspect, cultural vocabulary, and impersonal constructions.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Przez całe dzieciństwo mama ______ nam bajki na dobranoc.</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">A</div>czytała (impf.) — repeated habit</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">B</div>przeczytała (pf.) — single completed act</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>będzie czytać — future</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>przeczytałaby — conditional</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. W końcu ______ tę trudną książkę po trzech miesiącach.</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>czytałam (impf.) — was reading</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>przeczytałam (pf.) — finally finished</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>będę czytać — future ongoing</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>czytałabym — conditional</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. ______ ci, jak tylko dotrę na miejsce. (I'll send you a message — one specific act)</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>Będę pisać</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">B</div>Napiszę</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">C</div>Pisałam</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>Napisałam</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. W Polsce tradycyjnie ______ pierogi na Wigilię. (cultural habit — impersonal)</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">A</div>robi się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">B</div>zrobi się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>robią</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>zrobili</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. Proszę ______ ten formularz i oddać go do sekretariatu. (complete this form — specific task)</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>wypełniaj (impf. imperative — keep filling)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">B</div>wypełnić (pf. infinitive after proszę)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">C</div>wypełnił (past masc.)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>wypełniać (impf. infinitive — general ongoing)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Twórczość Szymborskiej ______ na świat cały — to dorobek jedyny w swoim rodzaju.</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>wpływa (impf.) — is currently influencing</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">B</div>wpłynęła (pf.) — influenced once</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">C</div>wywarła wpływ (pf.) — exerted an influence (completed contribution)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>będzie wpływać — will influence (future)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Polskie festiwale filmowe ______ gości z całego świata każdego roku.</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">A</div>przyciągają (impf.) — repeatedly attract</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">B</div>przyciągnęły (pf.) — attracted once</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>przyciągną (pf. future) — will attract (once)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>przyciągały (impf. past) — used to attract</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. Kiedy byłam mała, mój brat ______ mnie wodą każdego Lanego Poniedziałku.</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">A</div>oblewał (impf.) — did it every year repeatedly</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">B</div>oblał (pf.) — did it once on one specific occasion</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">C</div>będzie oblewać — future</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>oblałby — conditional</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 5 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each imperfective verb on the left to its perfective pair on the right. All 8 pairs must be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--blue);margin-bottom:8px">Imperfective (niedokonany)</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">pisać</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">gotować</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">dawać</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">oglądać</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">uczyć się</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">kupować</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">przychodzić</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">mówić</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--rose);margin-bottom:8px">Perfective (dokonany)</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">nauczyć się</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">powiedzieć</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">ugotować</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">przyjść</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">napisać</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">obejrzeć</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">kupić</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">dać</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 5 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 5 Test</div>
+  <div class="section-desc">Complete all five sections to unlock the test.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock the test.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 5 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">You have completed all 5 sections of Unit 5. The test covers Polish cultural vocabulary, verbal aspect (imperfective vs perfective), impersonal constructions, and reading/listening comprehension. Any mistakes will link back to specific sections for revision.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 5 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div>
+</div>
+</div>
+
+<script>
+// ══ STATE ═══════════════════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let transcriptUnlocked = false;
+let matchLeft = null, matchRight = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 290;
+
+// ══ NAV ═════════════════════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ════════════════════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ TTS ═════════════════════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ AUDIO — transcript locked until full play ════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 4:50 · Polish B1–B2`;
+      if (audioSecs >= AUDIO_DURATION) {
+        clearInterval(audioTimer); clearInterval(audioInterval);
+        isPlaying = false;
+        document.getElementById('play-icon').className = 'ti ti-player-play';
+        resetBars();
+        unlockTranscript();
+      }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+
+function unlockTranscript() {
+  if (transcriptUnlocked) return;
+  transcriptUnlocked = true;
+  const btn = document.getElementById('transcript-btn');
+  btn.classList.add('unlocked');
+  btn.innerHTML = '<i class="ti ti-file-text"></i> Show Transcript';
+  document.getElementById('lock-note').style.display = 'none';
+}
+function toggleTranscript() {
+  if (!transcriptUnlocked) return;
+  const box = document.getElementById('transcript-box');
+  box.classList.toggle('show');
+  document.getElementById('transcript-btn').innerHTML = box.classList.contains('show')
+    ? '<i class="ti ti-file-text"></i> Hide Transcript'
+    : '<i class="ti ti-file-text"></i> Show Transcript';
+}
+
+// ══ MC ══════════════════════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8
+        ? '<strong>Doskonale! 8/8</strong> — Perfect score. You have mastered the imperfective/perfective distinction across past, present, future and imperative, and the impersonal cultural construction.'
+        : '<strong>' + correct + '/8 correct.</strong> Key reminders: imperfective = ongoing/repeated/habitual; perfective = completed/single event/result. Impersonal cultural descriptions use imperfective + się. Imperative: impf. = general request; pf. = specific one-off task.';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR EXERCISE ════════════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  const items = [
+    { id:'ti1', ans:'przeczytałam', exp:'Perfective — completed in one sitting. "Czytałam" would mean the process was ongoing, not that you finished it.' },
+    { id:'ti2', ans:'gotowała',     exp:'Imperfective — repeated annual habit ("co roku"). The perfective "ugotowała" would imply a single one-off event.' },
+    { id:'ti3', ans:'napisała',     exp:'Perfective — "w końcu" (finally/at last) signals a completed result after a wait. "Pisała" would just describe the process.' },
+    { id:'ti4', ans:'świętuje się', exp:'Imperfective impersonal — cultural habit described with verb+się. "Zaświętuje się" does not exist.' },
+    { id:'ti5', ans:'napisz',       exp:'Perfective imperative — specific one-off request (send me one message when you arrive). "Pisz" would mean write to me generally/repeatedly.' },
+  ];
+  let correct = 0;
+  items.forEach((item, n) => {
+    const inp = document.getElementById(item.id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    if (val === norm(item.ans)) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ Answer: ' + item.ans + ' — ' + item.exp; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Świetnie! 5/5</strong> — You correctly chose aspect in all five contexts: completed result (pf.), repeated habit (impf.), "finally done" (pf.), cultural impersonal (impf.+się), and specific imperative (pf.).';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 3 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/5 correct.</strong> Review: perfective = completed single event; imperfective = repeated/ongoing/habitual. Time markers like "co roku", "zawsze", "przez całe lata" signal imperfective. "W końcu", "nareszcie", "w ciągu jednej nocy" signal perfective.';
+  }
+}
+
+// ══ GAP FILL ════════════════════════════════════════
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+  let correct = 0;
+  const alternatives = {
+    g1: ['obchodzona jest','jest obchodzona','obchodzi się'],
+    g6: ['zanosi się','się zanosi'],
+  };
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct','incorrect');
+    const val = norm(inp.value);
+    const main = norm(inp.dataset.answer);
+    const alts = (alternatives[id] || []).map(a => norm(a));
+    if (val === main || alts.includes(val)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const fb = document.getElementById('gf-feedback');
+  if (correct === fields.length) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! 8/8</strong> — All correct. You correctly used both imperfective (repeated/habitual: <em>przygotowywała, czekałam, ewoluowała</em>) and perfective (completed: <em>ugotowałam, przetrwały, zyskała</em>) verbs in context, as well as impersonal constructions.';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/8 correct.</strong> Check highlighted gaps. Focus on aspect: sentences with "przez lata", "co roku", "kiedy byłam mała" require imperfective; sentences with "w końcu", "po raz pierwszy", "już za jego życia" require perfective.';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(id=>{const inp=document.getElementById(id);if(inp){inp.value='';inp.classList.remove('correct','incorrect');}});
+  document.getElementById('gf-feedback').classList.remove('show');
+}
+
+// ══ MATCHING ════════════════════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All aspect pairs matched correctly. Memorising these pairs in context is the most effective way to master Polish aspect.';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ════════════════════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ═════════════════════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 20) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B2-level English-speaking learner's writing. This is Unit 5 — the first B2 unit, so higher standards apply.
+
+Task: Write 140-180 words in Polish describing an important tradition or cultural event. Use at least 6 of: tradycja, tożsamość, święto, obchodzić, pielęgnować, twórczość, wpływ, uznanie, wyjątkowy, podtrzymywać. Use at least 2 imperfective verbs (ongoing/repeated) and at least 2 perfective verbs (completed events/results). No scaffolding is provided.
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <integer 0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2-3 sentences overall assessment in English — be specific about B2 expectations>",
+  "vocab_used": ["<target words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "imperfective_verbs": ["<imperfective verbs found in text — comment on correctness>"],
+  "perfective_verbs": ["<perfective verbs found in text — comment on correctness>"],
+  "aspect_errors": [{"error": "<verb form used>", "correction": "<correct form>", "explanation": "<why aspect is wrong here>"}],
+  "correct_structures": ["<2-3 things done well with Polish examples>"],
+  "other_errors": [{"error":"<phrase>","correction":"<correction>","explanation":"<rule>"}],
+  "recommendation": "<one specific B2-level improvement tip>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1400, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  // Aspect panels
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">';
+  if (r.imperfective_verbs&&r.imperfective_verbs.length) {
+    html += '<div style="background:var(--blue-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--blue);margin-bottom:4px">Imperfective verbs used</div>'
+      + r.imperfective_verbs.map(v=>'<div>'+v+'</div>').join('') + '</div>';
+  }
+  if (r.perfective_verbs&&r.perfective_verbs.length) {
+    html += '<div style="background:var(--rose-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--rose);margin-bottom:4px">Perfective verbs used</div>'
+      + r.perfective_verbs.map(v=>'<div>'+v+'</div>').join('') + '</div>';
+  }
+  html += '</div>';
+
+  // Aspect errors
+  if (r.aspect_errors&&r.aspect_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--rose);margin-bottom:6px">✗ Aspect errors</div>';
+    r.aspect_errors.forEach(e=>{ html += '<div style="background:var(--rose-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--rose);text-decoration:line-through">'+e.error+'</span> → <strong style="color:var(--green)">'+e.correction+'</strong></div><div style="color:var(--ink-muted);margin-top:4px">'+e.explanation+'</div></div>'; });
+    html += '</div>';
+  }
+
+  if (r.vocab_used&&r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v=>html+='<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">'+v+'</span>');
+    html+='</div></div>';
+  }
+  if (r.correct_structures&&r.correct_structures.length) {
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s=>html+='<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ '+s+'</p>');
+    html+='</div>';
+  }
+  if (r.other_errors&&r.other_errors.length) {
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Other errors</div>';
+    r.other_errors.forEach(e=>{ html+='<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">'+e.error+'</span> → <strong style="color:var(--green)">'+e.correction+'</strong></div><div style="color:var(--ink-muted);margin-top:4px">'+e.explanation+'</div></div>'; });
+    html+='</div>';
+  }
+  if (r.recommendation) html+='<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 B2 tip:</strong> '+r.recommendation+'</div>';
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

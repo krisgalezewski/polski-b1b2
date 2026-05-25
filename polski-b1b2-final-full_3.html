@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Full-Course Final Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --violet:#5B21B6;--violet-light:#EDE9FE;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+  --shadow:0 2px 8px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+  --u1:#7C3AED;--u1l:#EDE9FE; --u2:#B45309;--u2l:#FEF3C7;
+  --u3:#0F766E;--u3l:#CCFBF1; --u4:#9F1239;--u4l:#FFE4E6;
+  --u5:#0F4C81;--u5l:#E0F0FF; --u6:#166534;--u6l:#DCFCE7;
+  --u7:#3730A3;--u7l:#E0E7FF; --u8:#0E7490;--u8l:#CFFAFE;
+  --u9:#065F46;--u9l:#D1FAE5; --u10:#701A75;--u10l:#FAE8FF;
+  --u11:#92400E;--u11l:#FEF3C7; --u12:#5B21B6;--u12l:#EDE9FE;
+}
+html,body{min-height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;min-height:100vh}
+#sidebar{width:280px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;transition:transform 0.3s}
+#main{flex:1}
+.main-inner{max-width:720px;margin:0 auto;padding:36px 32px 100px}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:3px;text-transform:uppercase;letter-spacing:0.8px}
+.sidebar-section{padding:14px 20px 6px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#57534E}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:12px;color:#A8A29E;cursor:pointer;transition:all 0.15s;position:relative;user-select:none}
+.sidebar-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.sidebar-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.sidebar-item.active::before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:3px;background:var(--gold);border-radius:0 2px 2px 0}
+.sidebar-item i{font-size:14px;width:16px;text-align:center;flex-shrink:0}
+.tag{margin-left:auto;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:500}
+.tag-correct{background:rgba(22,101,52,0.25);color:#4ADE80}
+.tag-wrong{background:rgba(193,55,42,0.25);color:#FCA5A5}
+.tag-skipped{background:rgba(255,255,255,0.08);color:#78716C}
+.tag-active{background:rgba(180,83,9,0.4);color:#FCD34D}
+.unit-divider{margin:8px 20px;height:0.5px;background:rgba(255,255,255,0.06)}
+.sidebar-footer{margin-top:auto;padding:16px 20px;border-top:0.5px solid rgba(255,255,255,0.06)}
+.score-ring-wrap{display:flex;align-items:center;gap:12px}
+.score-ring{width:52px;height:52px;border-radius:50%;background:conic-gradient(var(--gold) calc(var(--pct,0)*1%),rgba(255,255,255,0.08) 0%);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.score-ring::before{content:'';position:absolute;inset:6px;background:var(--ink);border-radius:50%}
+.score-ring-num{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:#fff}
+.score-ring-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+.score-ring-label{font-size:11px;color:#78716C}
+.test-header{background:var(--ink);border-radius:14px;padding:28px 32px;margin-bottom:28px;position:relative;overflow:hidden}
+.test-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 50%,rgba(180,83,9,0.22) 0%,transparent 60%)}
+.test-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#78716C;margin-bottom:8px;position:relative}
+.test-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px;position:relative}
+.test-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;position:relative}
+.test-meta-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#A8A29E}
+.progress-strip{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+.progress-bar-outer{flex:1;height:6px;background:var(--ink-faint);border-radius:3px;overflow:hidden}
+.progress-bar-inner{height:100%;background:var(--gold);border-radius:3px;transition:width 0.4s}
+.progress-label{font-size:12px;color:var(--ink-muted);white-space:nowrap}
+.progress-nums{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+.question-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);display:none}
+.question-card.active{display:block}
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-muted);font-weight:500}
+.q-unit-tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
+.q-grammar-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--gold-light);color:var(--gold);font-weight:500}
+.q-type-tag{font-size:11px;color:var(--ink-muted)}
+.question-text{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:18px;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;line-height:1.5;user-select:none}
+.option:hover:not(.locked){border-color:var(--gold);background:var(--gold-light)}
+.opt-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px;color:var(--ink-faint)}
+.option:hover:not(.locked) .opt-letter{color:var(--gold)}
+.option.locked{cursor:default}
+.option.revealed-correct{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.option.revealed-correct .opt-letter{border-color:var(--green);color:var(--green)}
+.option.revealed-wrong{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.75}
+.option.revealed-wrong .opt-letter{border-color:var(--red);color:var(--red)}
+.gap-sentence{font-size:15px;line-height:3;margin-bottom:8px}
+.test-gap{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 8px;min-width:160px;outline:none;transition:border-color 0.15s;text-align:center}
+.test-gap:focus{border-bottom-color:var(--gold)}
+.test-gap.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.test-gap.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.answer-feedback{display:none;margin-top:16px;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.6}
+.answer-feedback.show{display:block}
+.answer-feedback.correct-fb{background:var(--green-light);border:0.5px solid rgba(22,101,52,0.2);color:var(--green)}
+.answer-feedback.wrong-fb{background:var(--red-light);border:0.5px solid rgba(193,55,42,0.2);color:var(--red)}
+.revision-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;background:rgba(193,55,42,0.1);color:var(--red);padding:3px 8px;border-radius:6px;margin-top:8px;font-weight:500}
+.q-nav{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}.btn-primary:hover{background:#3C3835}
+.btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:#92400E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.35;cursor:not-allowed}
+.btn-sm{padding:7px 14px;font-size:13px}
+.results-hero{background:var(--ink);border-radius:14px;padding:32px;text-align:center;margin-bottom:24px;position:relative;overflow:hidden}
+.results-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(180,83,9,0.25) 0%,transparent 60%)}
+.results-trophy{font-size:56px;margin-bottom:12px;position:relative}
+.results-grade{font-family:'DM Mono',monospace;font-size:64px;font-weight:500;color:#fff;line-height:1;position:relative}
+.results-score{font-size:16px;color:#A8A29E;margin-top:4px;position:relative}
+.results-summary{font-size:14px;color:#A8A29E;margin-top:12px;max-width:460px;margin-left:auto;margin-right:auto;position:relative;line-height:1.6}
+.results-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-correct .stat-num{color:var(--green)}.stat-wrong .stat-num{color:var(--red)}.stat-score .stat-num{color:var(--gold)}.stat-time .stat-num{color:var(--blue)}
+.unit-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px}
+.unit-breakdown-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+.ubc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.ubc-title{font-size:11px;font-weight:500;color:var(--ink)}
+.ubc-score{font-family:'DM Mono',monospace;font-size:12px;font-weight:500}
+.ubc-bar{height:4px;background:var(--ink-faint);border-radius:2px;overflow:hidden}
+.ubc-fill{height:100%;border-radius:2px;transition:width 0.6s}
+.revision-section{margin-bottom:24px}
+.revision-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px}
+.revision-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:12px}
+.revision-card-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:2px}
+.revision-card-body{flex:1}
+.revision-card-title{font-weight:500;font-size:13px;margin-bottom:2px}
+.revision-card-desc{font-size:12px;color:var(--ink-muted);line-height:1.5;margin-bottom:6px}
+.open-unit-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--gold);background:var(--gold-light);border:none;border-radius:6px;padding:4px 10px;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif}
+.open-unit-btn:hover{background:var(--gold);color:#fff}
+.completion-banner{background:linear-gradient(135deg,#7C3AED,#B45309);border-radius:12px;padding:20px 24px;margin-bottom:20px;color:#fff;font-size:14px;line-height:1.6}
+.completion-banner h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.page{display:none}.page.active{display:block}
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:800px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:20px 16px 80px}
+  .results-stats{grid-template-columns:repeat(2,1fr)}
+  .unit-breakdown{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Full-Course Final · All 12 Units</div>
+  </div>
+  <div class="sidebar-section">Test progress</div>
+  <div id="sidebar-q-list"></div>
+  <div class="unit-divider"></div>
+  <div class="sidebar-section">Jump to unit group</div>
+  <div class="sidebar-item" onclick="jumpToUnit(1)"><i class="ti ti-briefcase"></i> Units 1–2</div>
+  <div class="sidebar-item" onclick="jumpToUnit(3)"><i class="ti ti-home"></i> Units 3–4</div>
+  <div class="sidebar-item" onclick="jumpToUnit(5)"><i class="ti ti-flame"></i> Units 5–6</div>
+  <div class="sidebar-item" onclick="jumpToUnit(7)"><i class="ti ti-school"></i> Units 7–8</div>
+  <div class="sidebar-item" onclick="jumpToUnit(9)"><i class="ti ti-leaf"></i> Units 9–10</div>
+  <div class="sidebar-item" onclick="jumpToUnit(11)"><i class="ti ti-chart-bar"></i> Units 11–12</div>
+  <div class="sidebar-item" onclick="jumpToUnit('mixed')"><i class="ti ti-layers-intersect"></i> Mixed Synthesis</div>
+  <div class="sidebar-footer">
+    <div class="score-ring-wrap">
+      <div class="score-ring" id="sidebar-ring" style="--pct:0"><div class="score-ring-num" id="sidebar-ring-num">0%</div></div>
+      <div>
+        <div class="score-ring-title" id="sidebar-ring-title">Not started</div>
+        <div class="score-ring-label" id="sidebar-ring-label">0 / 50 answered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main"><div class="main-inner">
+
+<div class="page active" id="page-start">
+  <div class="test-header">
+    <div class="test-eyebrow"><i class="ti ti-award"></i> Full-Course Final Assessment</div>
+    <div class="test-title">Final Assessment: All 12 Units</div>
+    <div style="color:#A8A29E;font-size:14px;margin-top:4px;position:relative">Complete B1→B2+ · Grammar G1 through G8 · Full course synthesis</div>
+    <div class="test-meta">
+      <div class="test-meta-item"><i class="ti ti-help-circle"></i> 50 questions</div>
+      <div class="test-meta-item"><i class="ti ti-layers-intersect"></i> All 12 units · Grammar G1–G8</div>
+      <div class="test-meta-item"><i class="ti ti-refresh"></i> Retakes allowed</div>
+      <div class="test-meta-item"><i class="ti ti-target"></i> Pass mark: 70%</div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px">The definitive course assessment</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px">
+      <div style="padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;font-size:12px"><div style="font-weight:500;color:var(--u1);margin-bottom:2px">Units 1–2 · G1–G2</div><div style="color:var(--ink-muted)">Cases · Gen/Dat</div></div>
+      <div style="padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;font-size:12px"><div style="font-weight:500;color:var(--u3);margin-bottom:2px">Units 3–4 · G3–G4</div><div style="color:var(--ink-muted)">Locative · Reflexive</div></div>
+      <div style="padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;font-size:12px"><div style="font-weight:500;color:var(--u5);margin-bottom:2px">Units 5–6 · G5–G6</div><div style="color:var(--ink-muted)">Aspect · Reported speech</div></div>
+      <div style="padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;font-size:12px"><div style="font-weight:500;color:var(--u7);margin-bottom:2px">Units 7–8 · G7</div><div style="color:var(--ink-muted)">Complex sentences · Future</div></div>
+      <div style="padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;font-size:12px"><div style="font-weight:500;color:var(--u9);margin-bottom:2px">Units 9–10 · G8 Pt1–2</div><div style="color:var(--ink-muted)">Passive · Concessives</div></div>
+      <div style="padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;font-size:12px"><div style="font-weight:500;color:var(--u11);margin-bottom:2px">Units 11–12 · G8 Pt3</div><div style="color:var(--ink-muted)">Conditionals · Full G8</div></div>
+    </div>
+    <div style="background:var(--gold-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold);margin-bottom:20px;line-height:1.6">
+      <strong>50 questions · Full B1→B2+ range:</strong> This assessment tests everything from the 7 cases and verbal aspect through to Type 3 conditionals, passive voice, formal argumentation, and cross-unit synthesis. Questions progress from B1 difficulty at the start to B2+ synthesis at the end. Instant feedback after every answer. No time limit. Retakes unlimited.
+    </div>
+    <button class="btn btn-gold" onclick="startTest()" style="font-size:15px;padding:12px 28px"><i class="ti ti-player-play-filled"></i> Start Full-Course Final</button>
+  </div>
+</div>
+
+<div class="page" id="page-test">
+  <div class="progress-strip">
+    <div class="progress-nums" id="prog-nums">1 / 50</div>
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog-bar" style="width:2%"></div></div>
+    <div class="progress-label" id="prog-label">0 correct so far</div>
+  </div>
+  <div id="questions-container"></div>
+</div>
+
+<div class="page" id="page-results">
+  <div class="results-hero">
+    <div class="results-trophy" id="results-trophy">🎯</div>
+    <div class="results-grade" id="results-grade">–</div>
+    <div class="results-score" id="results-score">– / 50 correct</div>
+    <div class="results-summary" id="results-summary"></div>
+  </div>
+  <div id="completion-banner-wrap"></div>
+  <div class="results-stats">
+    <div class="stat-card stat-correct"><div class="stat-num" id="stat-correct">0</div><div class="stat-label">Correct</div></div>
+    <div class="stat-card stat-wrong"><div class="stat-num" id="stat-wrong">0</div><div class="stat-label">Incorrect</div></div>
+    <div class="stat-card stat-score"><div class="stat-num" id="stat-pct">0%</div><div class="stat-label">Score</div></div>
+    <div class="stat-card stat-time"><div class="stat-num" id="stat-time">0:00</div><div class="stat-label">Time taken</div></div>
+  </div>
+  <div class="unit-breakdown" id="unit-breakdown"></div>
+  <div class="revision-section" id="revision-section" style="display:none">
+    <div class="revision-title"><i class="ti ti-refresh" style="color:var(--gold)"></i> Revision Recommendations</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:14px">Based on your answers, revisit these specific sections.</p>
+    <div id="revision-cards"></div>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+    <button class="btn btn-gold" onclick="retakeTest()"><i class="ti ti-refresh"></i> Retake Final</button>
+    <button class="btn btn-outline" onclick="showPage('start')"><i class="ti ti-home"></i> Start Screen</button>
+  </div>
+</div>
+
+</div></div></div>
+
+<script>
+const QUESTIONS = [
+
+  // ── UNITS 1–2 · G1–G2 ─────────────────────────────────────────────────────
+
+  { id:1, unit:1, grammar:true, grammarUnit:'G1', type:'mc',
+    topic:'G1 — Instrumental after być',
+    revisionSection:'Unit 1 → Grammar G1 (Cases)',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Zostałam ______ w nowej firmie po rocznym stażu. (I became the head of the department)',
+    options:['kierownik działu','kierownika działu','kierownikiem działu','kierowniku działu'],
+    correct:2,
+    explanation:'"Kierownikiem działu" — after "zostać" (to become), the complement takes Instrumental, just like "być". Pattern: zostać + Instrumental. "Kierownik" (masc.) → Instrumental: "kierownikiem" (-iem). "Działu" is Genitive of "dział" (department) — Genitive of belonging follows the role noun.'
+  },
+  { id:2, unit:1, grammar:false, type:'mc',
+    topic:'Work Vocabulary',
+    revisionSection:'Unit 1 → Extended Lesson',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Umowa o pracę gwarantuje pracownikowi prawo do ______ płatnego.',
+    options:['urlopu','stażu','szkolenia','awansu'],
+    correct:0,
+    explanation:'"Urlopu płatnego" (paid leave) — "urlop" = holiday/leave entitlement; the phrase "prawo do urlopu płatnego" = right to paid leave is a standard employment law term. "Staż" = internship. "Szkolenie" = training. "Awans" = promotion. All are employment-related, but only "urlop" collocates with "płatny" in this fixed expression.'
+  },
+  { id:3, unit:1, grammar:true, grammarUnit:'G1', type:'gapfill',
+    topic:'G1 — Locative after "o"',
+    revisionSection:'Unit 1 → Grammar G1 (Cases)',
+    revisionFile:'polski-b1b2-course-v2.html',
+    question:'Complete: Rozmawialiśmy o ______ (nowa strategia — Locative) sprzedażowej firmy.',
+    gapAnswer:'nowej strategii',
+    gapHint:'Locative fem. — nowa strategia',
+    explanation:'"Nowej strategii" — Locative after "o" (about). Feminine nouns in -a → Locative ending -i/-y: "strategia" → "strategii". Feminine adjectives in Locative: -ej: "nowej". Compare: mówić o pracy, myśleć o strategii, rozmawiać o projekcie.'
+  },
+  { id:4, unit:2, grammar:true, grammarUnit:'G2', type:'mc',
+    topic:'G2 — Genitive negation',
+    revisionSection:'Unit 2 → Grammar G2 (Genitive & Dative)',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Nie widziałam ______ od miesięcy. (my older brother)',
+    options:['mojego starszego brata','mój starszy brat','moim starszym bratem','moim starszym bratu'],
+    correct:0,
+    explanation:'"Mojego starszego brata" — Genitive after negation. "Widziałam brata" (Acc.) → "nie widziałam brata" (Gen.). Masc. animate nouns: Accusative = Genitive form ("brata"). Adjectives in Genitive masc.: -ego (moj-ego, starsz-ego). The entire noun phrase shifts to Genitive.'
+  },
+  { id:5, unit:2, grammar:true, grammarUnit:'G2', type:'mc',
+    topic:'G2 — Dative: smakować',
+    revisionSection:'Unit 2 → Grammar G2 (Genitive & Dative)',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'______ smakuje ta zupa — zrobiłaś ją doskonale.',
+    options:['Mnie','Ja','Mną','Moje'],
+    correct:0,
+    explanation:'"Mnie smakuje" — "smakować" (to taste good to someone) takes Dative. First person Dative: "mi" (short form) or "mnie" (long form, used at the start of a sentence for emphasis). Pattern: Dative person + smakuje + Nominative subject (zupa). Same construction as "podobać się", "brakować".'
+  },
+  { id:6, unit:2, grammar:false, type:'mc',
+    topic:'Family & Relationships Vocabulary',
+    revisionSection:'Unit 2 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit2.html',
+    question:'Moja babcia wychowała ______ dzieci jako samotna matka. (five)',
+    options:['pięcioro','pięć','piątka','pięci'],
+    correct:0,
+    explanation:'"Pięcioro dzieci" — collective numeral "pięcioro" for groups of children (mixed gender or unspecified). After "pięcioro", the noun takes Genitive plural: "dzieci". Standard "pięć" also works with Gen. pl. ("pięć dzieci"), but "pięcioro" is the preferred form when referring specifically to children raised as a group.'
+  },
+
+  // ── UNITS 3–4 · G3–G4 ─────────────────────────────────────────────────────
+
+  { id:7, unit:3, grammar:true, grammarUnit:'G3', type:'mc',
+    topic:'G3 — Location prepositions',
+    revisionSection:'Unit 3 → Grammar G3 (Locative & Prepositions)',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Biblioteka jest ______ szkoły, a sklep jest ______ biblioteki.',
+    options:['naprzeciwko … obok','w … na','przy … za','na … w'],
+    correct:0,
+    explanation:'"Naprzeciwko szkoły … obok biblioteki" — both prepositions take Genitive. "Naprzeciwko" = opposite/across from. "Obok" = next to. Both are fixed-case prepositions: always + Genitive. Option B (w … na) uses Locative prepositions for location inside enclosed spaces and surfaces — wrong here: these sentences describe relative position, not containment. "Naprzeciwko szkoły" (Gen.) = opposite the school. "Obok biblioteki" (Gen.) = next to the library.'
+  },
+  { id:8, unit:3, grammar:true, grammarUnit:'G3', type:'mc',
+    topic:'G3 — Direction vs location',
+    revisionSection:'Unit 3 → Grammar G3 (Locative & Prepositions)',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Idę ______ (to the shop) i ______ (I will return home) za godzinę.',
+    options:['do sklepu … wrócę do domu','w sklep … wrócę domem','na sklep … wrócę w dom','do sklep … wrócę na dom'],
+    correct:0,
+    explanation:'"Do sklepu" — direction TO a place: "do" + Genitive. "Sklep" → Gen.: "sklepu". "Wrócę do domu" — return HOME: "do domu" (Genitive direction). Note: "wrócę do domu" = I will return home. Compare: "jestem w domu" (Locative: I am at home) vs "idę do domu" (Genitive: I am going home).'
+  },
+  { id:9, unit:3, grammar:false, type:'mc',
+    topic:'Home Vocabulary',
+    revisionSection:'Unit 3 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Szukamy mieszkania z ______ — chcemy móc wychodzić bezpośrednio do ogrodu.',
+    options:['tarasem','antresolą','piwnicą','poddaszem'],
+    correct:0,
+    explanation:'"Tarasem" (a terrace) — "wychodzić bezpośrednio do ogrodu" (step directly into the garden) is the defining feature of a ground-floor terrace or patio. "Antresola" = mezzanine level. "Piwnica" = cellar/basement. "Poddasze" = attic. Only a terrace gives direct garden access.'
+  },
+  { id:10, unit:4, grammar:true, grammarUnit:'G4', type:'mc',
+    topic:'G4 — Modal verbs',
+    revisionSection:'Unit 4 → Grammar G4 (Reflexive Verbs & Modals)',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'______ więcej spać — masz poważny niedobór snu.',
+    options:['Warto','Trzeba','Wolno','Musisz się'],
+    correct:1,
+    explanation:'"Trzeba więcej spać" — impersonal obligation: "trzeba" + infinitive = one must / it is necessary to. When a doctor or concerned person says you NEED to sleep more, "trzeba" is the correct impersonal modal (stronger than "warto"). "Warto" = it is worth (softer suggestion). "Wolno" = it is permitted (not an obligation). "Musisz się" — "się" doesn\'t belong after "musisz spać".'
+  },
+  { id:11, unit:4, grammar:true, grammarUnit:'G4', type:'mc',
+    topic:'G4 — Reflexive verb types',
+    revisionSection:'Unit 4 → Grammar G4 (Reflexive Verbs & Modals)',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'Which sentence uses "się" INCORRECTLY?',
+    options:[
+      'Myję się rano przed śniadaniem.',
+      'Spotykamy się z przyjaciółmi w weekend.',
+      'Ona martwi się o swoje zdrowie.',
+      'Ja się idę do lekarza jutro.'
+    ],
+    correct:3,
+    explanation:'"Ja się idę do lekarza jutro." ✗ — "iść" (to go) is not a reflexive verb and does not take "się". Correct: "Idę jutro do lekarza." Options A–C are all correct: "myć się" (reciprocal reflexive — wash oneself), "spotykać się" (reciprocal — meet each other), "martwić się" (idiomatic reflexive — worry about). "Się" should never be added to non-reflexive verbs.'
+  },
+  { id:12, unit:4, grammar:false, type:'mc',
+    topic:'Health Vocabulary',
+    revisionSection:'Unit 4 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit4.html',
+    question:'Po długim biegu ______ mnie nogi i kolana.',
+    options:['bolą','boli','bolało','bolałyby'],
+    correct:0,
+    explanation:'"Bolą mnie nogi i kolana" — "boleć" agrees with the body part (the grammatical subject), not the person. "Nogi i kolana" is plural → "bolą" (3rd pl.). The person is in Accusative: "mnie" (me). Pattern: body part [Nom.] + boli/bolą + person [Acc.]. "Boli" would be 3rd sg. — wrong for plural body parts.'
+  },
+
+  // ── UNITS 5–6 · G5–G6 ─────────────────────────────────────────────────────
+
+  { id:13, unit:5, grammar:true, grammarUnit:'G5', type:'mc',
+    topic:'G5 — Aspect: selecting impf. vs pf.',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Codziennie ______ godzinę po obiedzie. (I read for an hour — routine)',
+    options:['przeczytam','przeczytałam','czytam','będę przeczytać'],
+    correct:2,
+    explanation:'"Czytam" — imperfective present for habitual/routine action. "Codziennie" (every day) is the signal: repeated habit → imperfective. "Przeczytam" (pf.) = I will finish reading (single future completion). "Przeczytałam" (pf. past) = I have finished reading. "Będę przeczytać" is ungrammatical — you cannot combine "będę" with a perfective infinitive.'
+  },
+  { id:14, unit:5, grammar:true, grammarUnit:'G5', type:'mc',
+    topic:'G5 — Aspect pair recognition',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Which is the correct PERFECTIVE/IMPERFECTIVE pair?',
+    options:['pisać / napisać','mówić / powiedzieć','robić / zrobić','All three are correct pairs'],
+    correct:3,
+    explanation:'All three are correct aspect pairs: "pisać" (impf.) / "napisać" (pf.) — prefix na- creates the pf. "Mówić" (impf.) / "powiedzieć" (pf.) — suppletive pair (different root). "Robić" (impf.) / "zrobić" (pf.) — prefix z- creates the pf. Polish aspect pairs can be formed by prefixation (most common) or suppletive forms (different roots).'
+  },
+  { id:15, unit:5, grammar:false, type:'mc',
+    topic:'Polish Culture Vocabulary',
+    revisionSection:'Unit 5 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Które z poniższych to tradycyjna polska potrawa wigilijno-bożonarodzeniowa?',
+    options:['barszcz z uszkami','żurek','bigos','kotlet schabowy'],
+    correct:0,
+    explanation:'"Barszcz z uszkami" (beetroot soup with tiny dumplings filled with mushrooms and sauerkraut) — this is specifically the Christmas Eve dish. "Żurek" (sour rye soup) is traditional but for Easter. "Bigos" (hunter\'s stew) is served at various occasions, including Christmas. "Kotlet schabowy" (pork cutlet) is an everyday dish. Barszcz z uszkami is the most distinctly Wigilia dish.'
+  },
+  { id:16, unit:5, grammar:true, grammarUnit:'G5', type:'gapfill',
+    topic:'G5 — Imperfective impersonal for customs',
+    revisionSection:'Unit 5 → Grammar G5 (Verbal Aspect)',
+    revisionFile:'polski-b1b2-unit5.html',
+    question:'Complete: W Polsce ______ (chodzić — impersonal present) na grzyby jesienią.',
+    gapAnswer:'chodzi się',
+    gapHint:'impersonal impf. present (verb + się)',
+    explanation:'"Chodzi się" — impersonal reflexive for cultural customs: "chodzić" (impf.) + się = one goes / people go. The imperfective signals the ongoing, seasonal habit. The impersonal "się" construction describes what is customarily done without naming a specific subject. Perfective would imply a single completed event.'
+  },
+  { id:17, unit:6, grammar:true, grammarUnit:'G6', type:'mc',
+    topic:'G6 — Reported speech conjunction',
+    revisionSection:'Unit 6 → Grammar G6 (Reported Speech)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Poprosiła mnie, ______ przyszedł na spotkanie punktualnie.',
+    options:['że','żeby','czy','jak'],
+    correct:1,
+    explanation:'"Żeby przyszedł" — "prosić" (to ask someone to do something) takes "żeby" + past tense form. This is a request/wish, not a statement ("że") or question ("czy"). "Żeby" + past = purpose/request: she asked him TO come (a wish directed at him). The past form of "przyjść" (pf.): "przyszedł" (masc. sg.).'
+  },
+  { id:18, unit:6, grammar:true, grammarUnit:'G6', type:'mc',
+    topic:'G6 — Time clause tense rule',
+    revisionSection:'Unit 6 → Grammar G6 (Time Clauses)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'______ skończy się konferencja, wszyscy pójdziemy na kolację.',
+    options:['Gdy tylko','Zanim','Skoro','Ponieważ'],
+    correct:0,
+    explanation:'"Gdy tylko" = as soon as — an immediate sequence: the conference ends → everyone goes to dinner. After "gdy tylko" in a future context, use the present-tense form of the verb (pf. present = future meaning): "skończy się" (pf. present of "skończyć się"). Never use "będzie" after time conjunctions. "Zanim" = before. "Skoro" = since/given that. "Ponieważ" = because.'
+  },
+  { id:19, unit:6, grammar:false, type:'mc',
+    topic:'Media Vocabulary',
+    revisionSection:'Unit 6 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Redaktor naczelny ______ artykuł przed publikacją — znalazł kilka błędów faktograficznych.',
+    options:['zweryfikował','opublikował','przeredagował','ocenzurował'],
+    correct:0,
+    explanation:'"Zweryfikował" (verified/fact-checked) — finding factual errors is the result of verification/fact-checking. "Opublikował" = published (opposite — this was done before publication). "Przeredagował" = rewrote/reedited (possible, but the specific action of finding factual errors points to verification). "Ocenzurował" = censored (removed, not checked for accuracy).'
+  },
+  { id:20, unit:6, grammar:true, grammarUnit:'G6', type:'mc',
+    topic:'G6 — Indirect question',
+    revisionSection:'Unit 6 → Grammar G6 (Reported Speech)',
+    revisionFile:'polski-b1b2-unit6.html',
+    question:'Nie wiedziałam, ______ tak długo trwa ta dyskusja.',
+    options:['skoro','żeby','dlaczego','czy'],
+    correct:2,
+    explanation:'"Dlaczego" — indirect wh-question: "Dlaczego tak długo trwa?" → "Nie wiedziałam, dlaczego tak długo trwa." Wh-question words (dlaczego, gdzie, kiedy, jak, co, kto) are retained in indirect questions. "Czy" is used only for indirect yes/no questions. "Skoro" is a causal/concessional conjunction (since/given that) — it introduces a reason, not an indirect question of any kind. Introduces statements. "Żeby" introduces wishes/requests.'
+  },
+
+  // ── UNITS 7–8 · G7 ────────────────────────────────────────────────────────
+
+  { id:21, unit:7, grammar:true, grammarUnit:'G7', type:'mc',
+    topic:'G7 — Purpose clause: żeby',
+    revisionSection:'Unit 7 → Grammar G7 Pt1 (Complex Sentences)',
+    revisionFile:'polski-b1b2-unit7.html',
+    question:'Uczę się polskiego, ______ móc rozmawiać z rodziną mojego partnera.',
+    options:['że','żeby','aby','Both B and C are correct'],
+    correct:3,
+    explanation:'"Żeby" and "aby" are both correct for purpose clauses (same subject → infinitive). "Uczę się, żeby móc…" and "Uczę się, aby móc…" are both grammatically correct and stylistically equivalent. "Żeby" is more common in everyday speech; "aby" is slightly more formal but entirely standard. "Że" is for reported statements, not purpose.'
+  },
+  { id:22, unit:7, grammar:true, grammarUnit:'G7', type:'mc',
+    topic:'G7 — im…tym comparative',
+    revisionSection:'Unit 7 → Grammar G7 Pt1 (Comparatives)',
+    revisionFile:'polski-b1b2-unit7.html',
+    question:'______ więcej podróżujesz, ______ lepiej rozumiesz inne kultury.',
+    options:['Tym … im','Im … tym','Kiedy … wtedy','Jeśli … to'],
+    correct:1,
+    explanation:'"Im … tym" — the proportional comparative construction: "im" introduces the first clause (the more X), "tym" introduces the main clause (the more/better Y). Both halves are required and in this fixed order. "Im więcej podróżujesz" = the more you travel; "tym lepiej rozumiesz" = the better you understand. Neither "kiedy…wtedy" nor "jeśli…to" creates a proportional comparison.'
+  },
+  { id:23, unit:7, grammar:false, type:'mc',
+    topic:'Education Vocabulary',
+    revisionSection:'Unit 7 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit7.html',
+    question:'Aby dostać się na studia medyczne, trzeba zdać ______ na poziomie rozszerzonym.',
+    options:['maturę','egzamin wstępny','kolokwium','obronę pracy'],
+    correct:0,
+    explanation:'"Maturę" — the "matura" (Polish school-leaving exam) is the standard entry qualification for Polish universities, including medical faculties. "Egzamin wstępny" = entrance exam (historically used, now largely replaced by matura results for most Polish universities). "Kolokwium" = class test (university level). "Obrona pracy" = thesis defence (postgraduate).'
+  },
+  { id:24, unit:8, grammar:true, grammarUnit:'G7', type:'mc',
+    topic:'G7 — Conditional: chciałabym',
+    revisionSection:'Unit 8 → Grammar G7 Pt2 (Conditional & Future)',
+    revisionFile:'polski-b1b2-unit8.html',
+    question:'______ odwiedzić Kraków podczas następnej wizyty w Polsce. (I would like — fem.)',
+    options:['Chcę','Chciałabym','Chciałabym była','Będę chciała'],
+    correct:1,
+    explanation:'"Chciałabym" — the conditional of "chcieć" for a polite wish: "chciałabym" (I would like — 1st sg. fem.). Pattern: stem "chcia-" + -ła (fem. past) + -by + -m (1st sg.). This is a hypothetical wish, not a firm plan — hence conditional, not future ("będę chciała") or plain present ("chcę"). Polite requests in Polish use the conditional.'
+  },
+  { id:25, unit:8, grammar:false, type:'mc',
+    topic:'Travel & Transport Vocabulary',
+    revisionSection:'Unit 8 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit8.html',
+    question:'Kupiliśmy bilety ______ — będziemy mogli wrócić z tym samym biletem.',
+    options:['w obie strony','w jedną stronę','ekspresowe','ulgowe'],
+    correct:0,
+    explanation:'"W obie strony" = return ticket (literally: in both directions). The context confirms it: "będziemy mogli wrócić tym samym biletem" = we will be able to return on the same ticket. "W jedną stronę" = one-way. "Ekspresowe" = express (speed class). "Ulgowe" = reduced price (student/senior discount).'
+  },
+  { id:26, unit:8, grammar:true, grammarUnit:'G7', type:'gapfill',
+    topic:'G7 — Perfective future',
+    revisionSection:'Unit 8 → Grammar G7 Pt2 (Future Tense)',
+    revisionFile:'polski-b1b2-unit8.html',
+    question:'Complete: Kiedy ______ (dotrzeć — pf., 1st sg.) na miejsce, zadzwonię do ciebie.',
+    gapAnswer:'dotrę',
+    gapHint:'pf. future 1st sg. of dotrzeć',
+    explanation:'"Dotrę" — perfective future of "dotrzeć" (to arrive/reach). Perfective verbs form the future with present-tense endings: "dotrzeć" → "dotrę" (1st sg.). After time conjunctions like "kiedy" (when) in a future context, use the present-tense form — NEVER "będę dotrzeć". "Dotrę" = I will have arrived / when I get there.'
+  },
+
+  // ── UNITS 9–10 · G8 Pt1–Pt2 ───────────────────────────────────────────────
+
+  { id:27, unit:9, grammar:true, grammarUnit:'G8 Pt1', type:'mc',
+    topic:'G8 Pt1 — być vs zostać passive',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Passive Voice)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Raport o stanie klimatu ______ przez cały rok przez zespół ekspertów. (ongoing process)',
+    options:['był przygotowywany','został przygotowany','jest przygotowywany','przygotowano'],
+    correct:0,
+    explanation:'"Był przygotowywany" — być + imperfective participle for an ongoing process over a period ("przez cały rok"). The report was being prepared throughout the year — emphasis on the process, not the completion. "Został przygotowany" (pf.) would signal a completed single event. "Przez cały rok" is the duration signal for the imperfective być-passive.'
+  },
+  { id:28, unit:9, grammar:true, grammarUnit:'G8 Pt1', type:'mc',
+    topic:'G8 Pt1 — Cause & Effect',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Cause & Effect)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Temperatura oceanów wzrosła o 1,5°C, ______ doprowadziło do masowego blaknięcia raf koralowych.',
+    options:['ponieważ','co','mimo że','zatem'],
+    correct:1,
+    explanation:'"Co" — relative pronoun "co" (which) refers back to the entire preceding clause as a cause, linking it to its consequence. Pattern: [cause clause], co [doprowadziło do / spowodowało / oznaczało…]. "Ponieważ" (because) introduces a cause, not a consequence. "Mimo że" is concessive. "Zatem" = therefore (can work but "co" is more natural for immediate consequence of a specific fact).'
+  },
+  { id:29, unit:9, grammar:false, type:'mc',
+    topic:'Environment Vocabulary',
+    revisionSection:'Unit 9 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Polska zobowiązała się do osiągnięcia ______ do 2050 roku.',
+    options:['neutralności klimatycznej','zrównoważonego rozwoju','bioróżnorodności','ekosystemu'],
+    correct:0,
+    explanation:'"Neutralności klimatycznej" (climate neutrality / net zero) — the specific 2050 commitment made by EU member states (including Poland, with various caveats) is "neutralność klimatyczna" (net-zero carbon emissions). "Zrównoważony rozwój" = sustainable development (broader concept). "Bioróżnorodność" = biodiversity (separate target). "Ekosystem" = ecosystem (not a commitment).'
+  },
+  { id:30, unit:9, grammar:true, grammarUnit:'G8 Pt1', type:'mc',
+    topic:'G8 Pt1 — Passive agreement',
+    revisionSection:'Unit 9 → Grammar G8 Pt1 (Passive Voice)',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Nowe przepisy dotyczące emisji ______ w całej Unii Europejskiej od przyszłego roku.',
+    options:['zostaną wdrożone','zostanie wdrożony','będą wdrażane','zostanie wdrożone'],
+    correct:0,
+    explanation:'"Zostaną wdrożone" — "przepisy" (regulations, masculine non-personal plural) → pf. passive future: "zostaną" (3rd pl. future of "zostać") + "wdrożone" (pl. masc. non-pers. passive participle). "Zostanie wdrożony" (masc. sg.) — agreement error. "Będą wdrażane" (impf. passive) — possible for an ongoing process, but "od przyszłego roku" implies a discrete implementation event → pf. passive.'
+  },
+  { id:31, unit:10, grammar:true, grammarUnit:'G8 Pt2', type:'mc',
+    topic:'G8 Pt2 — Concessive clause',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Concessive Clauses)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'______ zmiany były kontrowersyjne, rząd zdecydował się je wprowadzić.',
+    options:['Ponieważ','Jakkolwiek','W wyniku czego','Zatem'],
+    correct:1,
+    explanation:'"Jakkolwiek" = however/whatever the case — a formal concessive conjunction admitting the controversy but asserting the decision regardless. It is synonymous with "choć" / "mimo że" but registers as more formal/written. "Ponieważ" (because) introduces cause, not concession. "W wyniku czego" = as a result of which (consequence). "Zatem" = therefore.'
+  },
+  { id:32, unit:10, grammar:true, grammarUnit:'G8 Pt2', type:'mc',
+    topic:'G8 Pt2 — Formal argumentation device',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Formal Argumentation)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'______ twierdzić, że migracja ekonomiczna jest jednym z kluczowych czynników wzrostu PKB. (formal)',
+    options:['Można zasadnie','Moim zdaniem można','Chyba można','Wszyscy wiemy że można'],
+    correct:0,
+    explanation:'"Można zasadnie twierdzić, że…" = one can reasonably argue that — a formal academic argumentative device. "Zasadnie" (reasonably/justifiably) elevates the register and signals evidence-based reasoning rather than personal opinion. Options B–D are informal registers: "moim zdaniem" is personal; "chyba" is uncertain/colloquial; "wszyscy wiemy" is an appeal to consensus.'
+  },
+  { id:33, unit:10, grammar:false, type:'mc',
+    topic:'Society & Politics Vocabulary',
+    revisionSection:'Unit 10 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'Instytucje ______ pełnią kluczową rolę w kontrolowaniu władzy wykonawczej.',
+    options:['demokratyczne','autorytarne','biurokratyczne','korporacyjne'],
+    correct:0,
+    explanation:'"Demokratyczne" (democratic institutions) — the function described (kontrolowanie władzy wykonawczej = checking executive power) is the hallmark of democratic oversight: independent judiciary, parliament, free press. "Autorytarne" = authoritarian (opposite — concentrates, not checks, power). "Biurokratyczne" = bureaucratic (administrative, not a defining role). "Korporacyjne" = corporate (commercial).'
+  },
+  { id:34, unit:10, grammar:true, grammarUnit:'G8 Pt2', type:'gapfill',
+    topic:'G8 Pt2 — bądź co bądź',
+    revisionSection:'Unit 10 → Grammar G8 Pt2 (Concessive Clauses)',
+    revisionFile:'polski-b1b2-unit10.html',
+    question:'Complete: ______ (after all), każde rozwiązanie ma swoje wady i zalety.',
+    gapAnswer:'bądź co bądź',
+    gapHint:'concessive bridging phrase: "after all"',
+    explanation:'"Bądź co bądź" = after all / be that as it may — a concessive bridging phrase that acknowledges the full complexity of a situation and then asserts a balanced conclusion. It bridges a concession to a restatement of the main point. More formal than "w końcu"; more nuanced than "choć". Fixed phrase — always these three words.'
+  },
+
+  // ── UNITS 11–12 · G8 Pt3 ─────────────────────────────────────────────────
+
+  { id:35, unit:11, grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'G8 Pt3 — Type 2 conditional',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Conditionals)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Gdyby podatki ______ niższe, przedsiębiorcy ______ więcej inwestować.',
+    options:['są … chcą','były … chcieliby','będą … będą chcieć','byłyby … chcieliby'],
+    correct:1,
+    explanation:'"Gdyby były … chcieliby" — Type 2 hypothetical conditional: gdyby + past tense (były — 3rd pl. fem. of "być") in the condition; conditional (-łby form) in the main clause ("chcieliby" — 3rd pl. masc. pers.). The taxes are NOT currently lower — this is hypothetical. "Byłyby" in option D would create a double conditional (non-standard). Type 2 = gdyby + past → -łby.'
+  },
+  { id:36, unit:11, grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'G8 Pt3 — Type 3 counterfactual',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Conditionals)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Gdyby Polska nie przeprowadziła reform rynkowych w latach 90., gospodarka ______ tak szybko.',
+    options:['nie rozwinęłaby się','nie rozwija się','nie rozwinęła się','nie byłaby rozwinięta'],
+    correct:0,
+    explanation:'"Nie rozwinęłaby się" — Type 3 counterfactual past: Poland DID carry out market reforms. This imagines the alternative history. Main clause: conditional past of "rozwinąć się" → "rozwinęłaby się" (3rd sg. fem. — "gospodarka" is feminine). "Nie rozwinęła się" is factual past — not conditional. "Nie byłaby rozwinięta" (passive conditional) — grammatically possible but less natural than the active conditional.'
+  },
+  { id:37, unit:11, grammar:true, grammarUnit:'G8 Pt3', type:'mc',
+    topic:'G8 Pt3 — Probability',
+    revisionSection:'Unit 11 → Grammar G8 Pt3 (Probability)',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Analitycy uważają, że inflacja ______ spadnie poniżej 3% w ciągu roku. (~90% certainty)',
+    options:['może','prawdopodobnie','najprawdopodobniej','nie jest wykluczone że'],
+    correct:2,
+    explanation:'"Najprawdopodobniej" = most probably (~90%) — the highest probability short of certainty. The context ("analitycy uważają" — analysts believe, with strong professional consensus) signals high confidence. "Prawdopodobnie" (~75%). "Może" (~50%). "Nie jest wykluczone że" (~30–50% = cannot be ruled out). Professional analyst consensus → "najprawdopodobniej".'
+  },
+  { id:38, unit:11, grammar:false, type:'mc',
+    topic:'Economics Vocabulary',
+    revisionSection:'Unit 11 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Bank centralny podniósł ______, aby ograniczyć inflację.',
+    options:['stopy procentowe','kurs walutowy','deficyt budżetowy','dług publiczny'],
+    correct:0,
+    explanation:'"Stopy procentowe" (interest rates) — raising interest rates is the primary monetary policy tool used by central banks to combat inflation (higher rates reduce borrowing, dampen spending, slow price rises). "Kurs walutowy" = exchange rate (a separate tool, less commonly "raised"). "Deficyt budżetowy" = budget deficit (fiscal, not monetary policy). "Dług publiczny" = public debt.'
+  },
+  { id:39, unit:12, grammar:true, grammarUnit:'G8 Consolidation', type:'mc',
+    topic:'G8 Full — Error identification',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Three sentences are correct. Which contains an ERROR?',
+    options:[
+      'Marzenia zostają zrealizowane przez tych, którzy nie poddają się.',
+      'Gdyby Einstein nie kwestionował utartych teorii, fizyka byłaby uboższa.',
+      'O ile ambicja jest ważna, o tyle bez wytrwałości pozostaje bezużyteczna.',
+      'Trudno zaprzeczyć, że bez marzeń jest niemożliwe osiągnąć sukces.'
+    ],
+    correct:3,
+    explanation:'"Trudno zaprzeczyć, że bez marzeń jest niemożliwe osiągnąć sukces." ✗ — Mixed construction: "jest niemożliwe" + infinitive is not standard Polish. Correct forms: "nie sposób osiągnąć sukcesu" OR "osiągnięcie sukcesu jest niemożliwe" OR "trudno zaprzeczyć, że bez marzeń nie można osiągnąć sukcesu." Options A–C are all correct: zostać-passive (A), Type 3 counterfactual (B, Einstein DID question theories), o ile…o tyle paired (C).'
+  },
+  { id:40, unit:12, grammar:true, grammarUnit:'G8 Consolidation', type:'mc',
+    topic:'G8 Full — Consolidation synthesis',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which sentence demonstrates the WIDEST range of B2+ grammar in a single clause?',
+    options:[
+      'Marzenia są ważne i każdy powinien je mieć.',
+      'Choć marzenia nie zawsze się spełniają, warto do nich dążyć.',
+      'Nie ulega wątpliwości, że gdyby pokolenia poprzednie nie marzyły o lepszym świecie, wiele osiągnięć, które dziś uznajemy za oczywiste, nigdy nie zostałoby urzeczywistnionych.',
+      'Prawdopodobnie marzenia są ważne dla ludzkiego życia.'
+    ],
+    correct:2,
+    explanation:'"Nie ulega wątpliwości, że gdyby pokolenia poprzednie nie marzyły o lepszym świecie, wiele osiągnięć, które dziś uznajemy za oczywiste, nigdy nie zostałoby urzeczywistnionych." — This integrates: formal argumentative device ("nie ulega wątpliwości"), Type 3 counterfactual conditional (previous generations DID dream), a relative clause ("które dziś uznajemy"), and zostać-passive of a perfective verb ("zostałoby urzeczywistnionych"). Full B2+ synthesis. Options A and D are B1. Option B is B2 but uses only a concessive.'
+  },
+  { id:41, unit:12, grammar:false, type:'mc',
+    topic:'Dreams & Future Vocabulary',
+    revisionSection:'Unit 12 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Która para słów NAJLEPIEJ opisuje drogę od marzenia do jego realizacji?',
+    options:['dążenie i wytrwałość','porażka i rezygnacja','odwaga i lenistwo','sukces i pewność'],
+    correct:0,
+    explanation:'"Dążenie i wytrwałość" (striving and perseverance) — "dążenie" = the active pursuit of a goal; "wytrwałość" = the persistence to keep going through difficulties. Together they describe the journey from dream to reality. "Porażka i rezygnacja" = failure and giving up (the opposite path). "Odwaga i lenistwo" is contradictory. "Sukces i pewność" describe the outcome, not the process.'
+  },
+  { id:42, unit:12, grammar:true, grammarUnit:'G8 Consolidation', type:'gapfill',
+    topic:'G8 Full — nie sposób',
+    revisionSection:'Unit 12 → Grammar G8 Consolidation',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Complete: ______ (it is impossible to) przewidzieć, które z naszych marzeń staną się rzeczywistością.',
+    gapAnswer:'nie sposób',
+    gapHint:'formal device: it is impossible to',
+    explanation:'"Nie sposób" + infinitive = it is impossible to. A formal, literary argumentative device (G8 Pt2). "Nie sposób przewidzieć" = it is impossible to predict. Compare the family: "trudno zaprzeczyć że" (it is hard to deny), "nie ulega wątpliwości że" (there is no doubt that), "można zasadnie twierdzić że" (one can reasonably argue). All are B2+ formal register markers.'
+  },
+
+  // ── MIXED CROSS-UNIT SYNTHESIS ─────────────────────────────────────────────
+
+  { id:43, unit:'mixed', grammar:true, grammarUnit:'G1–G8', type:'mc',
+    topic:'Full-course synthesis — identify error',
+    revisionSection:'Full course → Grammar G1–G8',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Three sentences are grammatically correct. Which one contains an ERROR?',
+    options:[
+      'Nie mam czasu na spotkanie w tym tygodniu.',
+      'Gdyby stopy procentowe były niższe, więcej ludzi kupiłoby mieszkania.',
+      'Ona pracuje jako lekarka od dziesięciu lat.',
+      'Bolą go zęby, więc idzie do dentysta.'
+    ],
+    correct:3,
+    explanation:'"Do dentysta" ✗ — "do" takes Genitive: "dentysta" (masc. animate) → Genitive: "dentysty". Correct: "idzie do dentysty". Option A is correct (Genitive negation: "czasu"). Option B is correct (Type 2 conditional). Option C is correct ("pracować jako" + Nominative: "lekarka"). The Genitive after "do" (direction preposition) is one of the most important rules from G1/G3.'
+  },
+  { id:44, unit:'mixed', grammar:true, grammarUnit:'G1–G8', type:'mc',
+    topic:'Full-course synthesis — aspect + conditional',
+    revisionSection:'Full course → Grammar G5 + G8 Pt3',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which sentence CORRECTLY combines a Type 2 conditional with a perfective verb in the main clause?',
+    options:[
+      'Gdybym miała więcej wolnego czasu, czytałabym więcej książek.',
+      'Gdybym miała więcej wolnego czasu, przeczytałabym tę książkę w weekend.',
+      'Gdybym będę miała czas, przeczytam tę książkę.',
+      'Gdybym miała czas, będę przeczytała książkę.'
+    ],
+    correct:1,
+    explanation:'"Gdybym miała więcej wolnego czasu, przeczytałabym tę książkę w weekend." ✓ — Type 2: gdybym + past (miała) → conditional of a perfective verb: "przeczytałabym" (I would read/finish — pf. conditional, result achievable). Option A uses "czytałabym" (impf. conditional) — correct but describes ongoing reading habit, not completing a specific book. Option C wrongly uses "będę" inside the condition. Option D wrongly mixes "będę" with the conditional.'
+  },
+  { id:45, unit:'mixed', grammar:true, grammarUnit:'G1–G8', type:'mc',
+    topic:'Full-course synthesis — all grammar, choose most sophisticated',
+    revisionSection:'Full course → Grammar G1–G8',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which response to "Czy warto uczyć się polskiego?" demonstrates the highest B2+ grammatical and stylistic competence?',
+    options:[
+      'Tak, warto, bo polski jest ważny.',
+      'Tak, bo polska kultura jest ciekawa i dużo się nauczysz.',
+      'Nie ulega wątpliwości, że nauka polskiego otwiera drzwi do bogatej kultury i historii, choć wymaga dużego wysiłku — i właśnie dlatego wytrwałość jest kluczem do sukcesu.',
+      'Moim zdaniem warto, bo jak już się nauczysz, to będziesz umiała gadać po polsku.'
+    ],
+    correct:2,
+    explanation:'"Nie ulega wątpliwości, że nauka polskiego otwiera drzwi do bogatej kultury i historii, choć wymaga dużego wysiłku — i właśnie dlatego wytrwałość jest kluczem do sukcesu." — This response demonstrates: formal argumentative device ("nie ulega wątpliwości że"), a concessive clause ("choć wymaga dużego wysiłku"), a causal connector ("i właśnie dlatego"), a verbal noun subject ("nauka polskiego"), and course vocabulary ("wytrwałość"). Options A and B are B1. Option D is colloquial register ("gadać").'
+  },
+
+  // ── EXTRA QUESTIONS (to reach 50) ────────────────────────────────────────
+
+  { id:46, unit:3, grammar:true, grammarUnit:'G3', type:'mc',
+    topic:'G3 — przy + Locative',
+    revisionSection:'Unit 3 → Grammar G3 (Locative & Prepositions)',
+    revisionFile:'polski-b1b2-unit3.html',
+    question:'Stoi ______ i patrzy na ulicę.',
+    options:['przy oknie','na oknie','za oknem','pod oknem'],
+    correct:0,
+    explanation:'"Przy oknie" = by/at the window. "Przy" + Locative = close to / beside (standing next to the window). "Na oknie" = on the window (on the glass surface — unnatural for a person). "Za oknem" = behind/beyond the window (outside, on the other side — wrong for someone standing inside by it). "Pod oknem" = under the window (below the window). "Stać przy" = to stand by/at is the natural collocation.'
+  },
+  { id:47, unit:7, grammar:true, grammarUnit:'G7', type:'mc',
+    topic:'G7 — Formal connector',
+    revisionSection:'Unit 7 → Grammar G7 Pt1 (Formal Connectors)',
+    revisionFile:'polski-b1b2-unit7.html',
+    question:'Wyniki badań są obiecujące. ______, potrzebne są dalsze testy kliniczne.',
+    options:['Niemniej jednak','Dlatego że','Zanim','Gdy tylko'],
+    correct:0,
+    explanation:'"Niemniej jednak" = nevertheless / nonetheless — a formal connector that introduces a contrasting or limiting point. The sentence structure: promising results → BUT further tests are still needed. "Niemniej jednak" signals the reservation. "Dlatego że" (because) would introduce a cause, not a contrast. "Zanim" and "gdy tylko" are time conjunctions.'
+  },
+  { id:48, unit:9, grammar:false, type:'mc',
+    topic:'Environment Vocabulary',
+    revisionSection:'Unit 9 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit9.html',
+    question:'Produkcja energii ze źródeł ______ (wiatr, słońce, woda) gwałtownie wzrosła w ostatnich latach.',
+    options:['odnawialnych','kopalnych','jądrowych','konwencjonalnych'],
+    correct:0,
+    explanation:'"Odnawialnych" (renewable) — wind, solar and water are the three main renewable energy sources. "Kopalne" = fossil fuels (coal, oil, gas — the opposite). "Jądrowe" = nuclear (separate category, not from wind/sun/water). "Konwencjonalne" = conventional (generally refers to fossil fuels or traditional methods).'
+  },
+  { id:49, unit:11, grammar:false, type:'mc',
+    topic:'Economics Vocabulary',
+    revisionSection:'Unit 11 → Extended Lesson',
+    revisionFile:'polski-b1b2-unit11.html',
+    question:'Rząd wprowadził pakiet ______, aby pobudzić gospodarkę w czasie recesji.',
+    options:['stymulacyjny','oszczędnościowy','protekcjonistyczny','monetarny'],
+    correct:0,
+    explanation:'"Stymulacyjny" (stimulus) — a stimulus package (pakiet stymulacyjny) is specifically designed to boost economic activity during a recession (increased public spending, tax cuts, investment). "Oszczędnościowy" = austerity (the opposite — cuts spending). "Protekcjonistyczny" = protectionist (trade barriers, not recession stimulus). "Monetarny" = monetary (central bank tool, not fiscal package).'
+  },
+  { id:50, unit:'mixed', grammar:true, grammarUnit:'G1–G8', type:'mc',
+    topic:'Full-course synthesis — G2 + G5 + G8',
+    revisionSection:'Full course → Grammar G2, G5, G8 Pt2',
+    revisionFile:'polski-b1b2-unit12.html',
+    question:'Which sentence correctly uses THREE different grammar rules (Genitive negation, perfective aspect, concessive clause)?',
+    options:[
+      'Choć nie miałam czasu, przeczytałam cały raport przed spotkaniem.',
+      'Nie miałam czas i nie przeczytam raport choć.',
+      'Choć miałam czasu, czytałam raport.',
+      'Nie miałam czas, przeczytałam raport, choć.'
+    ],
+    correct:0,
+    explanation:'"Choć nie miałam czasu, przeczytałam cały raport przed spotkaniem." ✓ — Three structures correctly used: (1) "Choć" = concessive clause (G8 Pt2); (2) "nie miałam czasu" = Genitive of negation (G2: "czas" → "czasu" after negation); (3) "przeczytałam" = perfective past (G5: completed reading before the meeting). Option B: "nie miałam czas" (wrong — should be "czasu") and "choć" at the end is ungrammatical. Option C: "miałam czasu" in an affirmative sentence is wrong (Gen. only under negation). Option D: same errors.'
+  }
+];
+
+const UNIT_META = {
+  1:{ label:'Unit 1 — Praca', color:'var(--u1)', bg:'var(--u1l)', file:'polski-b1b2-course-v2.html' },
+  2:{ label:'Unit 2 — Rodzina', color:'var(--u2)', bg:'var(--u2l)', file:'polski-b1b2-unit2.html' },
+  3:{ label:'Unit 3 — Dom', color:'var(--u3)', bg:'var(--u3l)', file:'polski-b1b2-unit3.html' },
+  4:{ label:'Unit 4 — Zdrowie', color:'var(--u4)', bg:'var(--u4l)', file:'polski-b1b2-unit4.html' },
+  5:{ label:'Unit 5 — Kultura', color:'var(--u5)', bg:'var(--u5l)', file:'polski-b1b2-unit5.html' },
+  6:{ label:'Unit 6 — Media', color:'var(--u6)', bg:'var(--u6l)', file:'polski-b1b2-unit6.html' },
+  7:{ label:'Unit 7 — Edukacja', color:'var(--u7)', bg:'var(--u7l)', file:'polski-b1b2-unit7.html' },
+  8:{ label:'Unit 8 — Podróże', color:'var(--u8)', bg:'var(--u8l)', file:'polski-b1b2-unit8.html' },
+  9:{ label:'Unit 9 — Środowisko', color:'var(--u9)', bg:'var(--u9l)', file:'polski-b1b2-unit9.html' },
+  10:{ label:'Unit 10 — Społeczeństwo', color:'var(--u10)', bg:'var(--u10l)', file:'polski-b1b2-unit10.html' },
+  11:{ label:'Unit 11 — Gospodarka', color:'var(--u11)', bg:'var(--u11l)', file:'polski-b1b2-unit11.html' },
+  12:{ label:'Unit 12 — Przyszłość', color:'var(--u12)', bg:'var(--u12l)', file:'polski-b1b2-unit12.html' },
+  mixed:{ label:'Mixed / Synthesis', color:'var(--gold)', bg:'var(--gold-light)', file:'polski-b1b2-unit12.html' },
+};
+
+let answers={}, revealed={}, currentQ=0, startTime=null, timerInterval=null;
+
+function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('page-'+id).classList.add('active'); window.scrollTo(0,0); }
+function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+function buildSidebar(){
+  const list=document.getElementById('sidebar-q-list'); let html='';
+  QUESTIONS.forEach((q,i)=>{
+    const isRevealed=revealed[q.id], ans=answers[q.id];
+    let tagClass='tag-skipped', tagText='–';
+    if(isRevealed&&ans!==undefined){tagClass=ans.correct?'tag-correct':'tag-wrong';tagText=ans.correct?'✓':'✗';}
+    else if(i===currentQ){tagClass='tag-active';tagText='▶';}
+    const uMeta=UNIT_META[q.unit]||UNIT_META.mixed;
+    html+=`<div class="sidebar-item ${i===currentQ?'active':''}" onclick="goToQuestion(${i})">
+      <i class="ti ti-${q.grammar?'math-function':'help-circle'}"></i>
+      <span style="flex:1">Q${q.id} · <span style="color:${uMeta.color};font-size:11px">${q.unit==='mixed'?'Mix':'U'+q.unit}</span></span>
+      <span class="tag ${tagClass}">${tagText}</span></div>`;
+  });
+  list.innerHTML=html;
+}
+
+function buildQuestions(){
+  const container=document.getElementById('questions-container'); container.innerHTML='';
+  QUESTIONS.forEach((q,i)=>{
+    const uMeta=UNIT_META[q.unit]||UNIT_META.mixed;
+    let inner='';
+    if(q.type==='mc'){
+      inner=`<div class="options" id="opts-${q.id}">${q.options.map((opt,oi)=>`
+        <div class="option" id="opt-${q.id}-${oi}" onclick="selectOption(${q.id},${oi})">
+          <div class="opt-letter">${String.fromCharCode(65+oi)}</div><div>${opt}</div></div>`).join('')}</div>`;
+    } else {
+      const qd=q.question.replace(/Complete: /,'').replace(/______/,`<input class="test-gap" id="gap-${q.id}" placeholder="${q.gapHint}">`);
+      inner=`<div class="gap-sentence">${qd}</div>
+        <button class="btn btn-outline btn-sm" id="gap-check-${q.id}" onclick="checkGap(${q.id})"><i class="ti ti-check"></i> Check Answer</button>`;
+    }
+    const card=document.createElement('div');
+    card.className='question-card'+(i===0?' active':''); card.id='qcard-'+q.id;
+    card.innerHTML=`<div class="q-meta">
+      <span class="q-num">Q${q.id} of ${QUESTIONS.length}</span>
+      <span class="q-unit-tag" style="background:${uMeta.bg};color:${uMeta.color}">${uMeta.label.split('—')[0].trim()}</span>
+      ${q.grammar?`<span class="q-grammar-tag"><i class="ti ti-math-function" style="font-size:10px"></i> ${q.grammarUnit}</span>`:''}
+      <span class="q-type-tag">${q.topic}</span></div>
+      <div class="question-text">${q.type==='gapfill'?'Complete: '+q.question.replace(/Complete: /,''):q.question}</div>
+      ${inner}
+      <div class="answer-feedback" id="fb-${q.id}"></div>
+      <div class="q-nav">
+        ${i>0?`<button class="btn btn-outline btn-sm" onclick="goToQuestion(${i-1})"><i class="ti ti-arrow-left"></i> Back</button>`:''}
+        <div style="flex:1"></div>
+        ${i<QUESTIONS.length-1
+          ?`<button class="btn btn-primary btn-sm" onclick="goToQuestion(${i+1})">Next <i class="ti ti-arrow-right"></i></button>`
+          :`<button class="btn btn-gold btn-sm" onclick="finishTest()"><i class="ti ti-flag-filled"></i> Finish Final Assessment</button>`}
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+function selectOption(qId,optIdx){
+  if(revealed[qId]) return;
+  const q=QUESTIONS.find(q=>q.id===qId);
+  q.options.forEach((_,oi)=>document.getElementById(`opt-${qId}-${oi}`)?.classList.remove('selected'));
+  const isCorrect=optIdx===q.correct;
+  answers[qId]={selected:optIdx,correct:isCorrect}; revealed[qId]=true;
+  q.options.forEach((_,oi)=>{
+    const el=document.getElementById(`opt-${qId}-${oi}`); if(!el) return;
+    el.classList.add('locked');
+    if(oi===q.correct) el.classList.add('revealed-correct');
+    else if(oi===optIdx&&!isCorrect) el.classList.add('revealed-wrong');
+  });
+  showFeedback(qId,isCorrect,q.explanation,q.revisionSection,q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+function checkGap(qId){
+  if(revealed[qId]) return;
+  const q=QUESTIONS.find(q=>q.id===qId);
+  const inp=document.getElementById(`gap-${qId}`);
+  const val=inp.value.trim().toLowerCase();
+  const ans=q.gapAnswer.toLowerCase();
+  const isCorrect=val===ans||val.replace(/,/g,'')===ans.replace(/,/g,'');
+  inp.classList.add(isCorrect?'correct':'incorrect');
+  if(!isCorrect) setTimeout(()=>{inp.value=q.gapAnswer;inp.classList.remove('incorrect');inp.classList.add('correct');},1200);
+  document.getElementById(`gap-check-${qId}`).disabled=true;
+  revealed[qId]=true; answers[qId]={selected:val,correct:isCorrect};
+  showFeedback(qId,isCorrect,q.explanation,q.revisionSection,q.revisionFile);
+  updateProgress(); buildSidebar();
+}
+
+function showFeedback(qId,isCorrect,explanation,revSection,revFile){
+  const fb=document.getElementById(`fb-${qId}`);
+  fb.className=`answer-feedback show ${isCorrect?'correct-fb':'wrong-fb'}`;
+  fb.innerHTML=`<strong>${isCorrect?'✓ Correct!':'✗ Incorrect'}</strong> — ${explanation}
+    ${!isCorrect?`<div style="margin-top:8px"><span class="revision-link"><i class="ti ti-refresh"></i> Revise: ${revSection}</span></div>`:''}`;
+}
+
+function goToQuestion(idx){
+  document.querySelectorAll('.question-card').forEach(c=>c.classList.remove('active'));
+  document.getElementById('qcard-'+QUESTIONS[idx].id)?.classList.add('active');
+  currentQ=idx; buildSidebar(); updateProgress();
+  document.getElementById('main').scrollTo(0,0); closeSidebar();
+}
+function jumpToUnit(unit){ const idx=QUESTIONS.findIndex(q=>q.unit===unit); if(idx>=0) goToQuestion(idx); }
+
+function updateProgress(){
+  const answered=Object.keys(revealed).length;
+  const correct=Object.values(answers).filter(a=>a.correct).length;
+  const pct=Math.round((answered/QUESTIONS.length)*100);
+  document.getElementById('prog-nums').textContent=(currentQ+1)+' / '+QUESTIONS.length;
+  document.getElementById('prog-bar').style.width=Math.max(pct,2)+'%';
+  document.getElementById('prog-label').textContent=correct+' correct so far';
+  const scorePct=answered>0?Math.round((correct/QUESTIONS.length)*100):0;
+  document.getElementById('sidebar-ring').style.setProperty('--pct',scorePct);
+  document.getElementById('sidebar-ring-num').textContent=scorePct+'%';
+  document.getElementById('sidebar-ring-title').textContent=answered+' answered';
+  document.getElementById('sidebar-ring-label').textContent=correct+' / '+QUESTIONS.length+' correct';
+}
+
+function startTest(){
+  answers={}; revealed={}; currentQ=0; startTime=Date.now();
+  buildQuestions(); buildSidebar(); updateProgress(); showPage('test');
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    const secs=Math.floor((Date.now()-startTime)/1000);
+    document.getElementById('stat-time').textContent=Math.floor(secs/60)+':'+(secs%60<10?'0':'')+secs%60;
+  },1000);
+}
+function finishTest(){
+  QUESTIONS.forEach(q=>{if(!revealed[q.id]){answers[q.id]={selected:null,correct:false};revealed[q.id]=true;}});
+  clearInterval(timerInterval); buildResults(); showPage('results');
+}
+function retakeTest(){ startTest(); }
+
+function buildResults(){
+  const total=QUESTIONS.length;
+  const correct=Object.values(answers).filter(a=>a.correct).length;
+  const wrong=total-correct;
+  const pct=Math.round((correct/total)*100);
+  const secs=startTime?Math.floor((Date.now()-startTime)/1000):0;
+  let grade,trophy,summary;
+  if(pct>=90){grade='A';trophy='🏆';summary='Exceptional performance across the full course. You have demonstrated mastery of all grammar from G1 through G8 — from the seven cases through to Type 3 conditionals, passive voice, formal argumentation, and cross-unit synthesis. Gratulacje!';}
+  else if(pct>=80){grade='B';trophy='🎯';summary='Very strong result. A few B2+ structures — Type 3 conditionals, passive agreement, or formal argumentative devices — need polishing. Check the recommendations and retake when ready.';}
+  else if(pct>=70){grade='C';trophy='📚';summary='You passed the Full-Course Final. Some grammar areas need further consolidation. Work through the revision recommendations carefully before retaking.';}
+  else if(pct>=55){grade='D';trophy='💪';summary='You have covered a lot of challenging ground. Revisit the specific grammar sections flagged below, especially aspect, passive voice, and the conditional types. Retake when ready.';}
+  else{grade='F';trophy='🔄';summary='Don\'t be discouraged. The full course covers twelve units of increasingly complex Polish grammar. Revisit the units flagged below section by section, then retake. Progress takes time and the retake is unlimited.';}
+  document.getElementById('results-trophy').textContent=trophy;
+  document.getElementById('results-grade').textContent=grade;
+  document.getElementById('results-score').textContent=correct+' / '+total+' correct';
+  document.getElementById('results-summary').textContent=summary;
+  document.getElementById('stat-correct').textContent=correct;
+  document.getElementById('stat-wrong').textContent=wrong;
+  document.getElementById('stat-pct').textContent=pct+'%';
+  document.getElementById('stat-time').textContent=Math.floor(secs/60)+':'+(secs%60<10?'0':'')+secs%60;
+
+  if(pct>=70){
+    document.getElementById('completion-banner-wrap').innerHTML=`<div class="completion-banner">
+      <h3>🎉 Kurs ukończony! — Course Complete!</h3>
+      <p>You have passed the Full-Course Final Assessment. You have worked through the full B1→B2+ range of Polish grammar — from the seven-case system through verbal aspect, reported speech, passive voice, concessive clauses, and Type 3 conditionals. This is a real achievement. Gratulacje!</p>
+    </div>`;
+  }
+
+  const units=[1,2,3,4,5,6,7,8,9,10,11,12,'mixed'];
+  let bdHtml='';
+  units.forEach(u=>{
+    const uQs=QUESTIONS.filter(q=>q.unit===u);
+    if(!uQs.length) return;
+    const uCorrect=uQs.filter(q=>answers[q.id]?.correct).length;
+    const uPct=Math.round((uCorrect/uQs.length)*100);
+    const uMeta=UNIT_META[u]||UNIT_META.mixed;
+    const fillColor=uPct>=70?'var(--green)':uPct>=50?'var(--gold)':'var(--red)';
+    bdHtml+=`<div class="unit-breakdown-card">
+      <div class="ubc-header"><div class="ubc-title">${uMeta.label.split('—').pop().trim()}</div>
+      <div class="ubc-score" style="color:${fillColor}">${uCorrect}/${uQs.length}</div></div>
+      <div class="ubc-bar"><div class="ubc-fill" style="width:${uPct}%;background:${fillColor}"></div></div>
+    </div>`;
+  });
+  document.getElementById('unit-breakdown').innerHTML=bdHtml;
+
+  const wrongQs=QUESTIONS.filter(q=>answers[q.id]&&!answers[q.id].correct);
+  if(!wrongQs.length){document.getElementById('revision-section').style.display='none';return;}
+  document.getElementById('revision-section').style.display='block';
+  const revMap={};
+  wrongQs.forEach(q=>{
+    const key=q.revisionSection;
+    if(!revMap[key]) revMap[key]={section:q.revisionSection,file:q.revisionFile,unit:q.unit,topics:new Set()};
+    revMap[key].topics.add(q.topic);
+  });
+  const iconMap={1:'briefcase',2:'heart',3:'home',4:'activity',5:'flame',6:'device-tv',7:'school',8:'train',9:'leaf',10:'building-community',11:'chart-bar',12:'star',mixed:'layers-intersect'};
+  const colMap={1:'#EDE9FE,#7C3AED',2:'#FEF3C7,#B45309',3:'#CCFBF1,#0F766E',4:'#FFE4E6,#9F1239',5:'#E0F0FF,#0F4C81',6:'#DCFCE7,#166534',7:'#E0E7FF,#3730A3',8:'#CFFAFE,#0E7490',9:'#D1FAE5,#065F46',10:'#FAE8FF,#701A75',11:'#FEF3C7,#92400E',12:'#EDE9FE,#5B21B6',mixed:'#FEF3C7,#B45309'};
+  let revHtml='';
+  Object.values(revMap).forEach(r=>{
+    const [bg,col]=(colMap[r.unit]||colMap.mixed).split(',');
+    revHtml+=`<div class="revision-card">
+      <div class="revision-card-icon" style="background:${bg};color:${col}"><i class="ti ti-${iconMap[r.unit]||'book'}"></i></div>
+      <div class="revision-card-body">
+        <div class="revision-card-title">${r.section}</div>
+        <div class="revision-card-desc">${[...r.topics].join(' · ')}</div>
+        <button class="open-unit-btn" onclick="window.open('${r.file}','_blank')"><i class="ti ti-external-link"></i> Open unit</button>
+      </div></div>`;
+  });
+  document.getElementById('revision-cards').innerHTML=revHtml;
+}
+
+document.addEventListener('DOMContentLoaded',()=>buildSidebar());
+</script>
+</body>
+</html>

@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 8: Podróże i Transport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --amber:#92400E;--amber-light:#FEF3C7;
+  --teal:#0F766E;--teal-light:#CCFBF1;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(193,55,42,0.15);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#FCA5A5;line-height:1.5}
+.scaffolding-note strong{color:#fff}
+
+/* ── GRAMMAR (teal for G7 Part 2) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--teal-light);color:var(--teal);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--teal-light);border:0.5px solid rgba(15,118,110,0.2);border-left:3px solid var(--teal);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--teal)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--teal);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#0D6B63}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.95;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:22px 26px;margin-bottom:16px}
+.reading-text p{margin-bottom:16px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--teal-light);color:var(--teal);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:200px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:150px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);padding:2px 6px;min-width:130px;width:160px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-sentence{line-height:3.2;font-size:15px;margin-bottom:6px}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:16px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:190px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── GRAMMAR TABLES ── */
+.gram-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.gram-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.gram-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.gram-table tr:nth-child(even) td{background:#FAF7F2}
+.gram-table td:first-child{font-weight:500;color:var(--teal)}
+
+/* ── CONNECTOR GRID ── */
+.connector-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.connector-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px}
+.connector-word{font-size:15px;font-weight:700;color:var(--teal);font-family:'Playfair Display',serif;margin-bottom:3px}
+.connector-meaning{font-size:12px;color:var(--ink-muted);margin-bottom:5px}
+.connector-ex{font-size:12px;color:var(--ink);font-style:italic}
+
+/* ── TRANSFORM ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── UNIT NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .connector-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+<div id="app">
+
+<!-- ══ SIDEBAR ══ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 8 — B2:</strong> No word bank. No hints. No transcript. Inference-based comprehension. Polite register writing task.
+  </div>
+  <div class="unit-label">Unit 8 — Podróże i Transport</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G7 (Part 2)<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 7 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 7 — Edukacja i Nauka</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 9 — Środowisko i Przyroda</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 8 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 8 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Podróże i Transport<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Travel &amp; Transport</span></div>
+  <div class="section-desc">Navigate Polish transport systems, plan journeys, and handle travel situations in Polish. Grammar focus: both future tense forms, conditional for polite requests, and directional cases (do, przez, z, skąd/dokąd).</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Reportaż podróżniczy</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary. Hover <span style="background:var(--teal-light);color:var(--teal);padding:1px 6px;border-radius:3px;font-weight:500">teal</span> for grammar notes on future tense, conditional, and directional cases. Click <i class="ti ti-volume"></i> to hear vocabulary.</span>
+      </div>
+      <div class="reading-text">
+        <p>Karolina <span class="grammar-highlight">zamierza odbyć<span class="vocab-tip">zamierzać + infinitive = to intend to<br>Impf. modal — ongoing intention<br>odbyć podróż (pf.) = to make a journey</span></span> podróż przez całą Polskę <span class="vocab-highlight">wyłącznie środkami komunikacji publicznej<span class="vocab-tip">wyłącznie = exclusively / only<br>środki komunikacji publicznej<br>= public transport (Instr. — "by means of")</span></span>. <span class="grammar-highlight">Wyjedzie<span class="vocab-tip">wyjechać (pf.) = to leave / depart<br>Future perfective: wyjedzie<br>= she will depart (single completed act)</span></span> z Gdańska w piątkowy poranek i <span class="grammar-highlight">będzie jechać<span class="vocab-tip">być + jechać (impf.) = will be travelling<br>Future imperfective: będzie jechać<br>= she will be travelling (ongoing process)</span></span> przez całą Polskę, zatrzymując się w <span class="vocab-highlight">kilku miastach po drodze<span class="vocab-tip">kilku miastach = a few cities (Loc. pl.)<br>po drodze = along the way</span></span>. Jej trasa <span class="grammar-highlight">prowadzi<span class="vocab-tip">prowadzić (impf.) = to lead / go (route)<br>Present used for planned itinerary</span></span> <span class="grammar-highlight">przez Bydgoszcz, Poznań i Wrocław<span class="vocab-tip">przez + Accusative = through (direction)<br>Use "przez" for passing through places<br>All cities in Acc. — same form as Nom. for most</span></span> aż <span class="grammar-highlight">do Krakowa<span class="vocab-tip">do + Genitive = to (destination)<br>Kraków → Krakowa (Gen.)<br>Direction: where are you going TO?</span></span>.</p>
+
+        <p>Planując podróż, Karolina <span class="grammar-highlight">skonsultowała się<span class="vocab-tip">skonsultować się (pf. refl.) = to consult<br>Perfective — one completed consultation<br>przed podróżą = before the journey</span></span> z rozkładem jazdy na stronie <span class="vocab-highlight">PKP Intercity<span class="vocab-tip">PKP Intercity = Polish national rail operator<br>PKP = Polskie Koleje Państwowe</span></span>. Pociąg <span class="grammar-highlight">wyrusza z<span class="vocab-tip">wyruszać z + Gen. = to depart from<br>wyruszać (impf.) = to set off<br>z + Genitive = from (origin)</span></span> <span class="grammar-highlight">Gdańska Głównego<span class="vocab-tip">Gdańsk Główny = Gdańsk Main Station<br>→ Gdańska Głównego (Gen.)<br>after "z" = from Gdańsk Main</span></span> o 6:47 i <span class="grammar-highlight">dotrze do<span class="vocab-tip">dotrzeć do + Gen. (pf.) = to reach / arrive at<br>Future perfective — single completed arrival<br>Bydgoszcz → Bydgoszczy (Gen.)</span></span> <span class="grammar-highlight">Bydgoszczy<span class="vocab-tip">Bydgoszcz → Bydgoszczy (Gen.)<br>Soft consonant stem: -cz → -czy<br>after "do" = to Bydgoszcz</span></span> o 8:23. <span class="grammar-highlight">Chciałaby<span class="vocab-tip">chcieć → chciałaby (conditional fem.)<br>= she would like to<br>Used for polite requests / wishes</span></span> przy okazji <span class="vocab-highlight">zwiedzić<span class="vocab-tip">zwiedzić (pf.) = to visit / sightsee<br>Perfective — complete the sightseeing</span></span> <span class="vocab-highlight">Stare Miasto<span class="vocab-tip">Stare Miasto = Old Town<br>(Acc. — direct object of "zwiedzić")</span></span> w Bydgoszczy, <span class="grammar-highlight">gdyby miała wystarczająco dużo czasu<span class="vocab-tip">gdyby + past = conditional clause<br>= if she had (enough) time<br>Counterfactual / uncertain condition</span></span>.</p>
+
+        <p>Następnego dnia <span class="grammar-highlight">wyruszy z Bydgoszczy<span class="vocab-tip">wyruszyć z + Gen. (pf.) = to set off from<br>Future perfective — single departure<br>z Bydgoszczy (Gen.) = from Bydgoszcz</span></span> <span class="grammar-highlight">do Poznania<span class="vocab-tip">do + Gen. = to (destination)<br>Poznań → Poznania (Gen.)<br>Direction — where heading?</span></span> autobusem PKS. <span class="grammar-highlight">Będzie podróżować<span class="vocab-tip">być + podróżować (impf.) = will be travelling<br>Future imperfective — ongoing journey<br>Duration: przez trzy godziny</span></span> przez trzy godziny, więc <span class="grammar-highlight">zarezerwowała miejsce przy oknie<span class="vocab-tip">zarezerwować (pf.) = to reserve (completed)<br>Past — she already did this<br>miejsce przy oknie = window seat (Loc.)</span></span>, <span class="grammar-highlight">żeby móc oglądać<span class="vocab-tip">żeby + móc + infinitive = in order to be able to<br>Purpose clause (Unit 7 revision)<br>Same subject → infinitive</span></span> <span class="vocab-highlight">krajobraz<span class="vocab-tip">krajobraz = landscape / scenery<br>(Acc. — object of oglądać)</span></span>. W Poznaniu <span class="grammar-highlight">będzie zwiedzać<span class="vocab-tip">być + zwiedzać (impf.) = will be sightseeing<br>Future imperfective — repeated/ongoing<br>visiting various places over time</span></span> miasto przez cały dzień, a wieczorem <span class="grammar-highlight">pojedzie<span class="vocab-tip">pojechać (pf.) = to go / travel<br>Future perfective: pojedzie<br>= will travel (one completed journey)</span></span> <span class="grammar-highlight">do Wrocławia<span class="vocab-tip">do + Gen. = to (destination)<br>Wrocław → Wrocławia (Gen.)<br>Direction — heading to Wrocław</span></span> pociągiem nocnym.</p>
+
+        <p>We Wrocławiu Karolina <span class="grammar-highlight">zatrzyma się<span class="vocab-tip">zatrzymać się (pf. refl.) = to stop / stay<br>Future perfective — she will stay (completed)<br>w + Loc. = location (in Wrocław)</span></span> u <span class="vocab-highlight">przyjaciółki<span class="vocab-tip">przyjaciółka → przyjaciółki (Gen.)<br>u + Gen. = at someone's place</span></span>. <span class="grammar-highlight">Gdyby miała czas<span class="vocab-tip">gdyby + past = conditional<br>= if she had time (uncertain/hypothetical)<br>Similar to Unit 7's "żeby" — different subject signal</span></span>, <span class="grammar-highlight">zwiedziłaby<span class="vocab-tip">zwiedzić → zwiedziłaby (conditional fem. pf.)<br>= she would visit (if the condition were met)<br>Conditional: chciałby / chciałaby / zwiedziliby</span></span> <span class="vocab-highlight">Ostrów Tumski<span class="vocab-tip">Ostrów Tumski = Cathedral Island<br>Wrocław's historic island — Acc. case</span></span> i <span class="vocab-highlight">Halę Stulecia<span class="vocab-tip">Hala Stulecia = Centennial Hall<br>UNESCO World Heritage Site in Wrocław<br>→ Halę Stulecia (Acc.)</span></span>. Na końcu podróży <span class="grammar-highlight">dotrze do Krakowa<span class="vocab-tip">dotrzeć do + Gen. (pf.) = to reach Kraków<br>Future perfective — final destination reached<br>Kraków → Krakowa (Gen.)</span></span> i <span class="grammar-highlight">będzie tam mieszkać<span class="vocab-tip">być + mieszkać (impf.) = will be living<br>Future imperfective — ongoing stay<br>przez tydzień = for a week</span></span> przez tydzień.</p>
+
+        <p>Karolina <span class="grammar-highlight">chciałaby<span class="vocab-tip">chcieć → chciałaby (conditional polite)<br>= she would like — expressing polite wish<br>More formal/hesitant than "chce"</span></span> napisać <span class="vocab-highlight">reportaż<span class="vocab-tip">reportaż = travel piece / report<br>(Acc. — object of "napisać")</span></span> o tej podróży — o tym, <span class="grammar-highlight">skąd pochodzi<span class="vocab-tip">skąd = from where? (origin question)<br>= where ... comes from<br>skąd ≠ gdzie (where is it) ≠ dokąd (where going)</span></span> polska <span class="vocab-highlight">tradycja podróżowania koleją<span class="vocab-tip">tradycja podróżowania koleją<br>= tradition of travelling by train<br>(Gen. verbal noun + Instr. means)</span></span>, <span class="grammar-highlight">dokąd<span class="vocab-tip">dokąd = to where? (destination question)<br>= where ... is going to<br>Direction: dokąd jedziesz? = where are you going?</span></span> Polacy najchętniej <span class="vocab-highlight">wyjeżdżają na wakacje<span class="vocab-tip">wyjeżdżać na wakacje (impf.) = to go on holiday<br>na + Acc. = onto / for (purpose/time)</span></span>, i jak <span class="vocab-highlight">transport publiczny<span class="vocab-tip">transport publiczny = public transport<br>(Nom. — subject)</span></span> <span class="grammar-highlight">zmieni się<span class="vocab-tip">zmienić się (pf. refl.) = to change<br>Future perfective: zmieni się<br>= will change (one complete transformation)</span></span> w nadchodzących dekadach. Jej <span class="vocab-highlight">pierwsza podróż pociągiem<span class="vocab-tip">pierwsza podróż = first journey<br>(Nom. — subject of "była")</span></span> przez całą Polskę <span class="vocab-highlight">zaowocowała<span class="vocab-tip">zaowocować (pf.) = to bear fruit / result in<br>Perfective — completed outcome</span></span> <span class="vocab-highlight">miłością do kolei<span class="vocab-tip">miłość do + Gen. = love of/for<br>koleją → kolei (Gen.)<br>= love of trains</span></span>, która <span class="grammar-highlight">będzie jej towarzyszyć<span class="vocab-tip">towarzyszyć + Dat. (impf.) = to accompany<br>Future imperfective: będzie towarzyszyć<br>= will accompany (ongoing into future)</span></span> przez całe życie.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Teal highlights show future tense forms, conditional structures, and directional cases — the grammar focus of this unit.</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>rozkład jazdy<button class="vocab-audio-btn" onclick="speak('rozkład jazdy')"><i class="ti ti-volume"></i></button></td><td>(masc.)</td><td>timetable / schedule</td></tr>
+        <tr><td>peron<button class="vocab-audio-btn" onclick="speak('peron')"><i class="ti ti-volume"></i></button></td><td>peronu (Gen.)</td><td>platform</td></tr>
+        <tr><td>bilet powrotny<button class="vocab-audio-btn" onclick="speak('bilet powrotny')"><i class="ti ti-volume"></i></button></td><td>(masc.)</td><td>return ticket</td></tr>
+        <tr><td>rezerwacja<button class="vocab-audio-btn" onclick="speak('rezerwacja')"><i class="ti ti-volume"></i></button></td><td>rezerwacji (Gen.)</td><td>reservation / booking</td></tr>
+        <tr><td>przesiadka<button class="vocab-audio-btn" onclick="speak('przesiadka')"><i class="ti ti-volume"></i></button></td><td>przesiadki (Gen.)</td><td>connection / transfer</td></tr>
+        <tr><td>opóźnienie<button class="vocab-audio-btn" onclick="speak('opóźnienie')"><i class="ti ti-volume"></i></button></td><td>opóźnienia (Gen.)</td><td>delay</td></tr>
+        <tr><td>wyruszyć<button class="vocab-audio-btn" onclick="speak('wyruszyć')"><i class="ti ti-volume"></i></button></td><td>(pf.) / wyruszać (impf.)</td><td>to set off / depart</td></tr>
+        <tr><td>dotrzeć do<button class="vocab-audio-btn" onclick="speak('dotrzeć')"><i class="ti ti-volume"></i></button></td><td>+ Genitive</td><td>to reach / arrive at</td></tr>
+        <tr><td>krajobraz<button class="vocab-audio-btn" onclick="speak('krajobraz')"><i class="ti ti-volume"></i></button></td><td>krajobrazu (Gen.)</td><td>landscape / scenery</td></tr>
+        <tr><td>zwiedzać<button class="vocab-audio-btn" onclick="speak('zwiedzać')"><i class="ti ti-volume"></i></button></td><td>(impf.) / zwiedzić (pf.)</td><td>to sightsee / visit</td></tr>
+        <tr><td>zatrzymać się<button class="vocab-audio-btn" onclick="speak('zatrzymać się')"><i class="ti ti-volume"></i></button></td><td>(pf. refl.)</td><td>to stop / stay (overnight)</td></tr>
+        <tr><td>komunikacja miejska<button class="vocab-audio-btn" onclick="speak('komunikacja miejska')"><i class="ti ti-volume"></i></button></td><td>(fem.)</td><td>city / urban transport</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Answer all questions. Several require close reading of travel details and understanding of grammatical nuance in the text.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Jaką trasę planuje Karolina i jakim środkiem transportu?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Kraków → Gdańsk samochodem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Gdańsk → Bydgoszcz → Poznań → Wrocław → Kraków wyłącznie komunikacją publiczną</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Gdańsk → Kraków bezpośrednim pociągiem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Warszawa → Wrocław → Gdańsk autobusem</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. O której godzinie wyjeżdża pociąg z Gdańska i kiedy dotrze do Bydgoszczy?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Wyjazd 7:30, przyjazd 9:15</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Wyjazd 6:47, przyjazd 8:23</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Wyjazd 8:00, przyjazd 10:30</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Tekst nie podaje dokładnych godzin</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Dlaczego Karolina zarezerwowała miejsce przy oknie w autobusie?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Bo boi się zamkniętych przestrzeni</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">B</div>Żeby móc oglądać krajobraz podczas trzygodzinnej jazdy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">C</div>Bo miejsce przy oknie jest tańsze</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Bo podróżuje z dużym bagażem</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Jak Karolina dotrze z Poznania do Wrocławia?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Autobusem PKS w ciągu dnia</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Pociągiem nocnym wieczorem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Samolotem — bo trasa jest zbyt długa</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Taksówką — komunikacja publiczna nie kursuje</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co Karolina "chciałaby" zwiedzić we Wrocławiu — i co to zdanie sugeruje gramatycznie?</div>
+        <div class="question-note">This question tests understanding of the conditional mood.</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Halę Stulecia — i jest pewna, że to zrobi</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">B</div>Ostrów Tumski i Halę Stulecia — ale tylko jeśli będzie miała czas (forma warunkowa "zwiedziłaby" = she would visit)</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">C</div>Centrum handlowe — tekst mówi, że lubi zakupy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Stary Rynek — standardowy punkt turystyczny</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. O czym Karolina chce napisać reportaż?</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>O historii polskiej architektury kolejowej</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">B</div>O tradycji podróżowania koleją, dokąd Polacy jeżdżą na wakacje i jak zmieni się transport w przyszłości</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">C</div>O problemach z opóźnieniami pociągów w Polsce</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>O porównaniu polskich i niemieckich kolei</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Jaka jest różnica między "wyjedzie" a "będzie jechać" w kontekście tego tekstu?</div>
+        <div class="question-note">This question tests understanding of both future tense forms.</div>
+        <div class="mc-options" id="cq7">
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">A</div>Nie ma żadnej różnicy — oba wyrażają przyszłość jednakowo</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','correct')"><div class="mc-letter">B</div>"Wyjedzie" = perfective future (single completed departure); "będzie jechać" = imperfective future (ongoing journey in progress)</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">C</div>"Wyjedzie" jest bardziej formalne; "będzie jechać" jest potoczne</div>
+          <div class="mc-option" onclick="checkMC(this,'cq7','wrong')"><div class="mc-letter">D</div>"Będzie jechać" odnosi się do dalszej przyszłości niż "wyjedzie"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jakie jest twoje ulubione środki transportu i dlaczego? Czy wolisz podróżować pociągiem, samolotem czy samochodem?<br><em style="font-size:13px;opacity:0.8">What is your favourite mode of transport and why? Do you prefer travelling by train, plane or car?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Opisz niezapomnianą podróż — dokąd pojechałaś, jak długo trwała i co zobaczyłaś?<br><em style="font-size:13px;opacity:0.8">Describe an unforgettable journey — where did you go, how long did it take and what did you see?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Gdybyś miała zaplanować tydzień w Polsce, dokąd byś pojechała i dlaczego?<br><em style="font-size:13px;opacity:0.8">If you were to plan a week in Poland, where would you go and why?</em></span></div>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Na dworcu kolejowym</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the conversations at a Polish train station. No transcript is available. You may listen as many times as needed.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Na dworcu — rozmowy przy kasie i na peronie</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 5:00 · Polish B2</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <div style="font-size:11px;color:#57534E;display:flex;align-items:center;gap:5px"><i class="ti ti-lock" style="font-size:13px"></i> No transcript</div>
+      </div>
+
+      <div style="background:var(--teal-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--teal);margin-bottom:20px;display:flex;gap:8px">
+        <i class="ti ti-info-circle"></i>
+        <span>Listen for: <strong>buying a ticket</strong> (where to / when / class / return?), <strong>asking about platforms and delays</strong>, <strong>polite requests</strong> using the conditional (chciałbym/chciałabym, czy mógłby pan/pani), and <strong>directional language</strong> (do, z, przez, skąd/dokąd).</span>
+      </div>
+
+      <!-- TRANSCRIPT (for course creator reference — not shown to learner):
+        Scene 1 — Kasa biletowa
+        Podróżna: Dzień dobry. Chciałabym kupić bilet do Krakowa na jutro rano.
+        Kasjer: Dzień dobry. W jedną stronę czy powrotny?
+        Podróżna: Powrotny, proszę. Wracam w niedzielę wieczorem.
+        Kasjer: Którą klasą? Mamy miejsca w drugiej klasie i w klasie Premium.
+        Podróżna: Drugą klasą, miejscówka przy oknie, jeśli możliwe.
+        Kasjer: Mam wolne miejsce w wagonie czwartym, rząd szósty, strona prawa. Pociąg wyjeżdża z peronu trzeciego o 7:15 i dotrze do Krakowa o 10:40. Będzie jedna przesiadka w Katowicach.
+        Podróżna: Czy mógłby pan powiedzieć, ile czasu mam na przesiadkę?
+        Kasjer: Dwanaście minut. To wystarczy — oba pociągi stoją na tym samym peronie.
+        Podróżna: Ile kosztuje bilet?
+        Kasjer: Sto dwanaście złotych w obie strony. Czy zapłaci pani kartą czy gotówką?
+        Podróżna: Kartą, proszę. Dziękuję.
+        Scene 2 — Na peronie
+        Pasażer: Przepraszam, czy mógłby mi pan powiedzieć, z którego peronu odjeżdża pociąg do Gdańska?
+        Pracownik: Z peronu drugiego. Ale proszę się pospieszić — odjedzie za osiem minut.
+        Pasażer: A czy jest jakieś opóźnienie?
+        Pracownik: Na razie nie, ale sprawdzę. Nie, pociąg jest punktualny.
+        Pasażer: Dziękuję bardzo.
+        Scene 3 — W pociągu
+        Konduktor: Bilety do kontroli, proszę.
+        Pasażerka: Proszę. Jadę do Wrocławia.
+        Konduktor: Dziękuję. Pani jedzie przez Łódź?
+        Pasażerka: Tak, właśnie. Czy będziemy jechać przez centrum Łodzi czy obwodnicą?
+        Konduktor: Przez centrum, przez dworzec Łódź Fabryczna. Ale proszę nie wychodzić — pociąg stoi tam tylko dwie minuty.
+        Pasażerka: Rozumiem. A o której dojedziemy do Wrocławia?
+        Konduktor: Zgodnie z rozkładem o 14:35. Teraz mamy małe opóźnienie — może pięć minut — ale powinniśmy nadrobić czas.
+      -->
+
+      <div class="question-block" style="margin-top:4px">
+        <div class="question-text">1. Dokąd jedzie pierwsza podróżna i jaki bilet kupuje?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Do Gdańska — bilet w jedną stronę</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Do Krakowa — bilet powrotny, druga klasa, miejsce przy oknie</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Do Wrocławia — bilet w jedną stronę, klasa Premium</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Do Katowic — bilet powrotny</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. O której godzinie wyjeżdża pociąg i kiedy dotrze do celu?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">A</div>Wyjazd 7:15 z peronu trzeciego, przyjazd 10:40 — z przesiadką w Katowicach</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">B</div>Wyjazd 8:00, przyjazd 12:00 bez przesiadek</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Wyjazd 6:47, przyjazd 10:40 z Gdańska</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Tekst audio nie podaje konkretnych godzin</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jak podróżna wyraża swoją prośbę o informację na przesiadkę?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Mówi: „Powiedz mi o przesiadce!"</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Używa formy grzecznościowej: „Czy mógłby pan powiedzieć, ile czasu mam na przesiadkę?"</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Mówi po prostu: „Chcę wiedzieć o przesiadce."</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Nie pyta o przesiadkę w ogóle</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Z którego peronu odjeżdża pociąg do Gdańska i jaki jest jego status?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Peron pierwszy — pociąg ma 10 minut opóźnienia</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Peron drugi — pociąg jest punktualny, odjeżdża za 8 minut</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Peron trzeci — pociąg jest punktualny</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Peron czwarty — pociąg ma małe opóźnienie</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Przez jakie miasto jedzie pociąg do Wrocławia?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Przez Kraków</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">B</div>Przez Łódź — przez centrum, przez dworzec Łódź Fabryczna</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">C</div>Przez Gdańsk i Bydgoszcz</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Pociąg jedzie bezpośrednio bez zatrzymań</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. O której według rozkładu pociąg dotrze do Wrocławia i jaka jest sytuacja z opóźnieniem?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Godz. 15:00 — bez opóźnienia</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">B</div>Godz. 14:35 według rozkładu — małe opóźnienie ok. 5 minut, ale powinni nadrobić czas</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">C</div>Godz. 14:00 — pociąg jedzie szybciej niż planowano</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Konduktor nie podaje godziny przyjazdu</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. Ile wynosi cena biletu powrotnego do Krakowa i czym zapłaciła podróżna?</div>
+        <div class="mc-options" id="lq7">
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">A</div>90 zł — gotówką</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','correct')"><div class="mc-letter">B</div>112 zł — kartą</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">C</div>150 zł — przelewem online</div>
+          <div class="mc-option" onclick="checkMC(this,'lq7','wrong')"><div class="mc-letter">D</div>Cena nie zostaje podana w nagraniu</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>160–200 words</strong> in Polish describing a journey you have made or would like to make. Use at least <strong>6 vocabulary items</strong>: <em>rozkład jazdy, peron, bilet powrotny, rezerwacja, przesiadka, opóźnienie, wyruszyć, dotrzeć do, krajobraz, zwiedzać, zatrzymać się, komunikacja miejska</em>.<br><br>
+        Your answer must include: at least <strong>one perfective future form</strong> (e.g. <em>wyjedzie, dotrze, zatrzyma się</em>), at least <strong>one imperfective future form</strong> (<em>będzie jechać / będzie zwiedzać</em>), at least <strong>one conditional polite form</strong> (<em>chciałbym/chciałabym, czy mógłby pan/pani, gdybym miał/miała</em>), and at least <strong>two directional case structures</strong> (<em>do + Gen., z + Gen., przez + Acc.</em>).
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G7 Part 2 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GRAMMAR G7 PART 2
+═══════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 8 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G7 · Part 2</div>
+  <div class="section-title">Future Tense, Conditional &amp; Directional Cases<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Czas Przyszły, Tryb Warunkowy i Przypadki Kierunkowe</span></div>
+  <div class="section-desc">Three grammar systems that are essential for talking about travel: expressing what will happen (two ways), making polite requests, and describing movement and direction with the correct cases.</div>
+
+  <!-- FUTURE TENSE -->
+  <div class="card">
+    <div class="card-title" style="color:var(--teal)"><i class="ti ti-clock"></i> Future Tense — Czas Przyszły (Two Forms)</div>
+    <div class="grammar-callout">
+      Polish has <strong>two future tense forms</strong>, directly linked to verbal aspect. Choosing the right one depends on whether you want to express a completed event or an ongoing process.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. Perfective future — single completed event</div>
+      <p class="example-pl">Pociąg <strong>wyjedzie</strong> o 7:15. — The train will depart at 7:15.</p>
+      <p class="example-pl">Anna <strong>dotrze</strong> do Krakowa wieczorem. — Anna will reach Kraków in the evening.</p>
+      <p class="example-pl">Czy <strong>kupisz</strong> bilet online? — Will you buy the ticket online?</p>
+      <p class="example-en">Form: use the present tense conjugation of the perfective verb — it automatically means future. No "będę" needed.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. Imperfective future — ongoing process or repeated action</div>
+      <p class="example-pl">Przez trzy godziny <strong>będę jechać</strong> autobusem. — For three hours I will be travelling by bus.</p>
+      <p class="example-pl">Ona <strong>będzie zwiedzać</strong> miasto cały dzień. — She will be sightseeing the city all day.</p>
+      <p class="example-pl"><strong>Będziesz czekać</strong> na mnie, prawda? — You will be waiting for me, right?</p>
+      <p class="example-en">Form: będę/będziesz/będzie/będziemy/będziecie/będą + infinitive (impf.) OR + past form of impf. verb.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Choosing between the two — practical guide</div>
+      <table class="gram-table">
+        <tr><th>Signal</th><th>Use</th><th>Example</th></tr>
+        <tr><td>Single, one-off event</td><td>Perfective future</td><td>Kupię bilet. (I'll buy the ticket.)</td></tr>
+        <tr><td>Duration (przez godzinę, cały dzień)</td><td>Imperfective future</td><td>Będę czekać godzinę.</td></tr>
+        <tr><td>Repeated / habitual</td><td>Imperfective future</td><td>Będę jeździć pociągiem co tydzień.</td></tr>
+        <tr><td>"Will have done" / result</td><td>Perfective future</td><td>Do wieczoru dotrę do Krakowa.</td></tr>
+        <tr><td>Background process</td><td>Imperfective future</td><td>Będę spać, kiedy przyjedzie.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- CONDITIONAL -->
+  <div class="card">
+    <div class="card-title" style="color:var(--teal)"><i class="ti ti-message-question"></i> Conditional for Polite Requests — Tryb Warunkowy</div>
+    <div class="grammar-callout">
+      The conditional mood (formed with past tense + -by) is used in Polish for <strong>polite requests, wishes, and hypothetical situations</strong>. It is far more common in spoken Polish than English speakers expect.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. Polite wishes — chciałbym / chciałabym (I would like)</div>
+      <p class="example-pl"><strong>Chciałbym</strong> kupić bilet do Warszawy. — I would like to buy a ticket to Warsaw. (masc.)</p>
+      <p class="example-pl"><strong>Chciałabym</strong> zarezerwować miejscówkę. — I would like to reserve a seat. (fem.)</p>
+      <p class="example-en">More polite than "chcę" (I want). Gender-specific: -łbym (masc.), -łabym (fem.).</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. Polite requests — Czy mógłby pan / mogłaby pani…?</div>
+      <p class="example-pl"><strong>Czy mógłby pan</strong> powiedzieć, z którego peronu odjeżdża pociąg?</p>
+      <p class="example-en">Could you (masc. formal) tell me which platform the train leaves from?</p>
+      <p class="example-pl"><strong>Czy mogłaby pani</strong> sprawdzić mój bilet?</p>
+      <p class="example-en">Could you (fem. formal) check my ticket?</p>
+      <p class="example-en" style="margin-top:6px">Structure: Czy + mógłby/mogłaby/mogliby + pan/pani/państwo + infinitive?</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">3. Hypothetical conditions — gdybym miał/miała…</div>
+      <p class="example-pl"><strong>Gdybym miała</strong> więcej czasu, zwiedziłabym całe miasto.</p>
+      <p class="example-en">If I had more time, I would visit the whole city.</p>
+      <p class="example-pl"><strong>Gdybyś</strong> kupił bilet wcześniej, <strong>byłoby</strong> taniej.</p>
+      <p class="example-en">If you had bought the ticket earlier, it would have been cheaper.</p>
+      <p class="example-en" style="margin-top:6px">Form: gdyby + past tense (conditional clause) + -by form (main clause). Relates to Unit 7's purpose clauses — both use past-tense forms in subordinate clauses.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Conditional endings — full paradigm</div>
+      <table class="gram-table">
+        <tr><th>Person</th><th>Masc.</th><th>Fem.</th><th>Plural masc.-pers.</th><th>Plural other</th></tr>
+        <tr><td>ja</td><td>robiłbym</td><td>robiłabym</td><td>—</td><td>—</td></tr>
+        <tr><td>ty</td><td>robiłbyś</td><td>robiłabyś</td><td>—</td><td>—</td></tr>
+        <tr><td>on/ona/ono</td><td>robiłby</td><td>robiłaby</td><td>—</td><td>—</td></tr>
+        <tr><td>my</td><td>—</td><td>—</td><td>robilibyśmy</td><td>robiłybyśmy</td></tr>
+        <tr><td>wy</td><td>—</td><td>—</td><td>robilibyście</td><td>robiłybyście</td></tr>
+        <tr><td>oni/one</td><td>—</td><td>—</td><td>robiliby</td><td>robiłyby</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- DIRECTIONAL CASES -->
+  <div class="card">
+    <div class="card-title" style="color:var(--teal)"><i class="ti ti-map-2"></i> Directional Cases — Przypadki Kierunkowe</div>
+    <div class="grammar-callout">
+      Polish expresses direction, origin, and passage through places using specific preposition-case combinations. These are critical for travel language.
+    </div>
+
+    <div class="connector-grid">
+      <div class="connector-card">
+        <div class="connector-word">do + Gen.</div>
+        <div class="connector-meaning">to (destination)</div>
+        <div class="connector-ex">Jadę do Krakowa.<br>Wracam do domu.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">z + Gen.</div>
+        <div class="connector-meaning">from (origin)</div>
+        <div class="connector-ex">Wyruszam z Gdańska.<br>Przyjeżdżam z Warszawy.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">przez + Acc.</div>
+        <div class="connector-meaning">through / via</div>
+        <div class="connector-ex">Jadę przez Łódź.<br>Przejeżdżamy przez most.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">na + Acc.</div>
+        <div class="connector-meaning">to (events/some places)</div>
+        <div class="connector-ex">Jadę na wakacje.<br>Idę na dworzec.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">skąd?</div>
+        <div class="connector-meaning">from where? (origin question)</div>
+        <div class="connector-ex">Skąd jedziesz?<br>Skąd pochodzi ta tradycja?</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">dokąd?</div>
+        <div class="connector-meaning">to where? (destination question)</div>
+        <div class="connector-ex">Dokąd jedziesz?<br>Dokąd zmierza ten pociąg?</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">u + Gen.</div>
+        <div class="connector-meaning">at someone's place</div>
+        <div class="connector-ex">Zatrzymuję się u przyjaciółki.<br>Nocuję u rodziny.</div>
+      </div>
+      <div class="connector-card">
+        <div class="connector-word">w/na + Loc.</div>
+        <div class="connector-meaning">location (where you ARE)</div>
+        <div class="connector-ex">Jestem w Krakowie.<br>Czekam na peronie.</div>
+      </div>
+    </div>
+
+    <div class="grammar-rule" style="margin-top:12px">
+      <div class="grammar-rule-title">Key contrast: dokąd vs gdzie vs skąd</div>
+      <p class="example-pl"><strong>Gdzie</strong> jesteś? — Where are you? (static location)</p>
+      <p class="example-pl"><strong>Dokąd</strong> jedziesz? — Where are you going (to)? (direction)</p>
+      <p class="example-pl"><strong>Skąd</strong> jedziesz? — Where are you coming from? (origin)</p>
+      <p class="example-en">This three-way distinction has no direct parallel in English. "Where" in English covers all three; Polish requires different words.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">City name declension — common travel destinations</div>
+      <table class="gram-table">
+        <tr><th>Nominative</th><th>Genitive (do/z/ze)</th><th>Locative (w/we)</th><th>Accusative (przez)</th></tr>
+        <tr><td>Kraków</td><td>Krakowa</td><td>Krakowie</td><td>Kraków</td></tr>
+        <tr><td>Gdańsk</td><td>Gdańska</td><td>Gdańsku</td><td>Gdańsk</td></tr>
+        <tr><td>Poznań</td><td>Poznania</td><td>Poznaniu</td><td>Poznań</td></tr>
+        <tr><td>Wrocław</td><td>Wrocławia</td><td>Wrocławiu</td><td>Wrocław</td></tr>
+        <tr><td>Bydgoszcz</td><td>Bydgoszczy</td><td>Bydgoszczy</td><td>Bydgoszcz</td></tr>
+        <tr><td>Łódź</td><td>Łodzi</td><td>Łodzi</td><td>Łódź</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Grammar Exercise — Future, Conditional &amp; Directional</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Complete or transform each item. No hints provided.</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Anna podróżuje (process — 4 hours). Future imperfective:</div>
+      <div class="transform-task">Complete: Anna ______ przez cztery godziny.</div>
+      <input class="transform-input" id="ti1" data-answer="będzie podróżować" placeholder="będzie / wyjedzie / pojedzie?" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Pociąg (departs at a specific time — single event). Future perfective:</div>
+      <div class="transform-task">Complete: Pociąg ______ z Poznania o 18:30. (odjechać)</div>
+      <input class="transform-input" id="ti2" data-answer="odjedzie" placeholder="Future perfective of odjechać" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Make this polite: "Chcę kupić bilet do Gdańska."</div>
+      <div class="transform-task">Rewrite using the conditional (female speaker):</div>
+      <input class="transform-input" id="ti3" data-answer="chciałabym kupić bilet do gdańska" placeholder="Chciałabym…" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Add the correct directional case: Jadę ______ (Kraków) przez ______ (Łódź).</div>
+      <div class="transform-task">Fill in the correct case forms:</div>
+      <input class="transform-input" id="ti4" data-answer="do krakowa przez łódź" placeholder="do ______, przez ______" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Translate using the correct question word: "Where are you going to?" (direction)</div>
+      <div class="transform-task">One word only:</div>
+      <input class="transform-input" id="ti5" data-answer="dokąd" placeholder="gdzie / dokąd / skąd?" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-teal" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: GAP FILL
+═══════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 8 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence. No word bank, no hints. Draw on vocabulary, future tense forms, conditional, and directional cases from this unit.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="font-size:15px">
+      <p class="gap-sentence">1. Jutro rano <input class="gap-input" id="g1" data-answer="wyjedziemy" style="width:180px"> z Warszawy o 6:30.</p>
+      <p class="gap-sentence">2. Przez całą dobę <input class="gap-input" id="g2" data-answer="będziemy jechać" style="width:200px"> pociągiem przez Polskę.</p>
+      <p class="gap-sentence">3. <input class="gap-input" id="g3" data-answer="chciałabym" style="width:170px"> zarezerwować miejsce przy oknie, proszę.</p>
+      <p class="gap-sentence">4. Czy <input class="gap-input" id="g4" data-answer="mógłby pan" style="width:170px"> powiedzieć, z którego peronu odjeżdża pociąg do Gdańska?</p>
+      <p class="gap-sentence">5. Pociąg jedzie <input class="gap-input" id="g5" data-answer="przez Łódź"> i dotrze <input class="gap-input" id="g6" data-answer="do Wrocławia"> o 14:35.</p>
+      <p class="gap-sentence">6. <input class="gap-input" id="g7" data-answer="skąd"> przyjeżdżasz? — Z Gdańska.</p>
+      <p class="gap-sentence">7. <input class="gap-input" id="g8" data-answer="dokąd"> jedziesz? — Do Krakowa na weekend.</p>
+      <p class="gap-sentence">8. Gdybym miała więcej czasu, <input class="gap-input" id="g9" data-answer="zwiedziłabym" style="width:190px"> całe Stare Miasto.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 8 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the correct answer. Questions focus on future tense forms, conditional mood, directional cases, and travel vocabulary.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Przez całą noc ______ pociągiem do Wrocławia. (ongoing journey — 8 hours)</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">A</div>będę jechać (impf. future — ongoing)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">B</div>pojadę (pf. future — single event)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>jechałam (past — already happened)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>jadę (present — happening now)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. O 8:15 pociąg ______ z Gdańska Głównego. (single departure)</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>będzie wyjeżdżać</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>wyjedzie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>będzie wyjeżdżać już</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>wyjeżdżał</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. ______ zarezerwować dwa miejsca w przedziale pierwszej klasy. (polite wish, female speaker)</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>Chcę</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">B</div>Chciałbym</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">C</div>Chciałabym</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>Chciałoby</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. Jedziemy ______ Krakowa autostradą. (from — origin)</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>do</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">B</div>z</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>przez</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>w</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. Trasa prowadzi ______ Łódź i Piotrków Trybunalski. (passing through)</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>do</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">B</div>z</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">C</div>przez</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>na</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. ______ jedziesz? — Jadę do babci, do Krakowa. (destination question)</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>Gdzie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">B</div>Skąd</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">C</div>Dokąd</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>Dlaczego</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Gdybym miał więcej czasu, ______ całe Stare Miasto. (conditional — male speaker)</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>zwiedziłabym</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">B</div>zwiedziłbym</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>zwiedzę</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>zwiedzałem</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. Which sentence about future travel is CORRECT?</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>Będę kupię bilet jutro.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">B</div>Ja będę pojadę pociągiem.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">C</div>Jutro wyjedziemy z Gdańska o świcie i będziemy jechać przez cały dzień.</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>Będę wyjedzie pociąg o ósmej.</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 8 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each Polish directional expression or travel phrase on the left to its English equivalent on the right. All 8 pairs must be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--teal);margin-bottom:8px">Polish expression</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">Jadę do Krakowa.</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">Przyjeżdżam z Gdańska.</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">Jedziemy przez Łódź.</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">Dokąd jedziesz?</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">Skąd przyjeżdżasz?</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">Chciałabym kupić bilet.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">Czy mógłby pan pomóc?</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">Będę czekać godzinę.</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English equivalent</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">Where are you going (to)?</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">Could you help? (masc. formal)</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">I'm arriving from Gdańsk.</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">I will be waiting for an hour.</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">I'm going to Kraków.</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">Where are you coming from?</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">We're going through Łódź.</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">I would like to buy a ticket.</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 8 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 8 Test</div>
+  <div class="section-desc">Complete all five sections to unlock the test.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 8 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">All sections complete. The test covers travel vocabulary, both future tense forms, the conditional mood, directional cases (do/z/przez), and skąd/dokąd/gdzie distinctions. Retakes allowed — mistakes link back to specific sections.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 8 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div></div></div>
+
+<script>
+// ══ STATE ════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 300;
+
+// ══ NAV ══════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ═════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ TTS ══════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ AUDIO ════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
+      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
+      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 5:00 · Polish B2`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying=false; document.getElementById('play-icon').className='ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+
+// ══ MC ═══════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8
+        ? '<strong>Doskonale! 8/8</strong> — Perfect. You correctly used: imperfective future (będę jechać) for ongoing processes, perfective future (wyjedzie) for single events, feminine conditional (chciałabym), directional prepositions (z=from, przez=through), destination question (dokąd), masculine conditional (zwiedziłbym), and identified correct combined future usage.'
+        : '<strong>' + correct + '/8 correct.</strong> Key reminders: impf. future = będę + infinitive (ongoing/duration); pf. future = present conjugation of pf. verb (single event); "będę kupię" and "będę pojadę" are impossible — never combine "będę" with a perfective; chciałabym/chciałbym = gender-specific; z = from, przez = through, do = to; dokąd = where going to; conditional ends in -łbym (masc.) or -łabym (fem.).';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR ══════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/[,\.!?]/g,'').replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  const items = [
+    { id:'ti1', key:['będzie','podróżować'], ans:'będzie podróżować',
+      exp:'Imperfective future: będzie + impf. infinitive. Duration ("przez cztery godziny") signals ongoing process → impf. future.' },
+    { id:'ti2', key:['odjedzie'], ans:'odjedzie',
+      exp:'Perfective future: use the present conjugation of the pf. verb "odjechać" → "odjedzie". A specific timetable departure = single completed event.' },
+    { id:'ti3', key:['chciałabym'], ans:'chciałabym kupić bilet do gdańska',
+      exp:'"Chciałabym" is the feminine conditional of "chcieć" — more polite than "chcę". Feminine speaker: -łabym ending.' },
+    { id:'ti4', key:['do krakowa','przez łódź'], ans:'do krakowa przez łódź',
+      exp:'"Do + Gen." for destination (Kraków → Krakowa); "przez + Acc." for passage through (Łódź stays Łódź in Acc.).' },
+    { id:'ti5', key:['dokąd'], ans:'dokąd',
+      exp:'"Dokąd" = to where? (direction/destination). "Gdzie" = where (location). "Skąd" = from where (origin).' },
+  ];
+  let correct = 0;
+  items.forEach((item, n) => {
+    const inp = document.getElementById(item.id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    const matched = item.key.every(k => val.includes(norm(k)));
+    if (matched) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ ' + item.exp; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Świetnie! 5/5</strong> — Excellent. You correctly chose imperfective future (ongoing duration), perfective future (single timetable event), feminine conditional, do+Gen./przez+Acc. for direction, and "dokąd" for destination questions.';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 3 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/5 correct.</strong> Key rules: duration → impf. future (będzie + inf.); single event → pf. future (present conjugation); polite wishes → chciałabym/chciałbym; destination = do + Gen.; passage = przez + Acc.; destination question = dokąd (not gdzie).';
+  }
+}
+
+// ══ GAP FILL ═════════════════════════
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8','g9'];
+  const alts = {
+    g1: ['wyjedziemy','wyjedziemy z'],
+    g2: ['będziemy jechać','będziemy jeździć','będziemy podróżować'],
+    g3: ['chciałabym','chciałbym'],
+    g4: ['mógłby pan','mogłaby pani'],
+    g9: ['zwiedziłabym','zwiedziłbym'],
+  };
+  let correct = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.classList.remove('correct','incorrect');
+    const val = norm(inp.value);
+    const main = norm(inp.dataset.answer);
+    const altList = (alts[id] || []).map(a => norm(a));
+    if (val === main || altList.includes(val)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const total = fields.filter(id => document.getElementById(id)).length;
+  const fb = document.getElementById('gf-feedback');
+  if (correct === total) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! ' + total + '/' + total + '</strong> — All correct! You correctly used: perfective future (wyjedziemy = single departure), imperfective future (będziemy jechać = ongoing 24h journey), feminine conditional (chciałabym = polite wish), polite request (mógłby pan), directional prepositions (przez + Acc., do + Gen.), direction/origin question words (skąd/dokąd), and hypothetical conditional (zwiedziłabym = would visit if…).';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/' + total + ' correct.</strong> Check: single event → pf. future; duration/ongoing → impf. future (będziemy + inf.); polite wish → chciałabym (fem.) / chciałbym (masc.); formal request → czy mógłby pan / mogłaby pani; przez + Acc. = through; do + Gen. = to; skąd = from where; dokąd = where to; gdybym/gdyby + conditional = hypothetical.';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (inp) { inp.value = ''; inp.classList.remove('correct','incorrect'); }
+  });
+  document.getElementById('gf-feedback').classList.remove('show');
+}
+
+// ══ MATCHING ══════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All matched. Note the key three-way distinction: "Jadę do Krakowa" (do + Gen. = destination), "Przyjeżdżam z Gdańska" (z + Gen. = origin), "Jedziemy przez Łódź" (przez + Acc. = passage through). And: "Dokąd jedziesz?" (where to?) vs "Skąd przyjeżdżasz?" (where from?) vs "Gdzie jesteś?" (where, static).';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ══════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ═══════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 20) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B2-level English-speaking learner's writing. Unit 8 focuses on travel vocabulary, both future tense forms, conditional mood, and directional cases.
+
+Task: Write 160-200 words in Polish describing a journey (real or imagined). Use at least 6 of: rozkład jazdy, peron, bilet powrotny, rezerwacja, przesiadka, opóźnienie, wyruszyć, dotrzeć do, krajobraz, zwiedzać, zatrzymać się, komunikacja miejska. Include: at least 1 perfective future form, at least 1 imperfective future form (będę + inf.), at least 1 conditional polite form (chciałabym/chciałbym / czy mógłby pan / gdybym), and at least 2 directional case structures (do+Gen., z+Gen., przez+Acc.).
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2-3 sentences — comment on fluency, accuracy of travel language, and B2 expectations>",
+  "vocab_used": ["<target words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "future_perfective": ["<perfective future forms found — correct?>"],
+  "future_imperfective": ["<imperfective future forms found — correct?>"],
+  "future_errors": [{"error":"<form>","correction":"<correction>","explanation":"<rule>"}],
+  "conditional_forms": ["<conditional forms found with comment>"],
+  "directional_cases": ["<directional structures found — preposition + case correct?>"],
+  "directional_errors": [{"error":"<structure>","correction":"<correction>","explanation":"<case rule>"}],
+  "correct_structures": ["<2-3 things done well>"],
+  "other_errors": [{"error":"<phrase>","correction":"<correction>","explanation":"<rule>"}],
+  "recommendation": "<one specific B2 travel writing tip>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1400, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  // Three grammar panels
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">';
+  const fp = r.future_perfective && r.future_perfective.length ? r.future_perfective.join(', ') : 'None found';
+  const fi = r.future_imperfective && r.future_imperfective.length ? r.future_imperfective.join(', ') : 'None found';
+  const cond = r.conditional_forms && r.conditional_forms.length ? r.conditional_forms.join(', ') : 'None found';
+  html += `<div style="background:var(--teal-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--teal);margin-bottom:4px">Pf. Future</div>${fp}</div>`;
+  html += `<div style="background:var(--blue-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--blue);margin-bottom:4px">Impf. Future</div>${fi}</div>`;
+  html += `<div style="background:var(--gold-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--gold);margin-bottom:4px">Conditional</div>${cond}</div>`;
+  html += '</div>';
+
+  if (r.future_errors && r.future_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Future Tense Errors</div>';
+    r.future_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+
+  if (r.directional_cases && r.directional_cases.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Directional Cases Found</div>';
+    r.directional_cases.forEach(d => html += `<p style="font-size:13px;margin-bottom:4px">• ${d}</p>`);
+    html += '</div>';
+  }
+  if (r.directional_errors && r.directional_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Directional Case Errors</div>';
+    r.directional_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+
+  if (r.vocab_used && r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v => html += `<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">${v}</span>`);
+    html += '</div></div>';
+  }
+  if (r.correct_structures && r.correct_structures.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s => html += `<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ ${s}</p>`);
+    html += '</div>';
+  }
+  if (r.other_errors && r.other_errors.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Other errors</div>';
+    r.other_errors.forEach(e => { html += `<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">${e.error}</span> → <strong style="color:var(--green)">${e.correction}</strong></div><div style="color:var(--ink-muted);margin-top:4px">${e.explanation}</div></div>`; });
+    html += '</div>';
+  }
+  if (r.recommendation) html += `<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 B2 travel writing tip:</strong> ${r.recommendation}</div>`;
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 4: Zdrowie i Styl Życia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --purple:#6D28D9;--purple-light:#EDE9FE;
+  --emerald:#065F46;--emerald-light:#D1FAE5;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+.scaffolding-note{background:rgba(193,55,42,0.12);border-radius:6px;padding:8px 12px;margin:12px 20px;font-size:11px;color:#A8A29E;line-height:1.5}
+.scaffolding-note strong{color:var(--red-light)}
+
+/* ── GRAMMAR COLOURS (emerald for G4) ── */
+.grammar-badge{display:inline-flex;align-items:center;gap:6px;background:var(--emerald-light);color:var(--emerald);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout{background:var(--emerald-light);border:0.5px solid rgba(6,95,70,0.2);border-left:3px solid var(--emerald);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout strong{color:var(--emerald)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--emerald);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.emerald-note{background:var(--emerald-light);border:0.5px solid rgba(6,95,70,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--emerald);margin-bottom:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+
+/* ── CARDS ── */
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── STEPS ── */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* ── READING ── */
+.reading-text{font-size:15px;line-height:1.9;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:20px 24px;margin-bottom:16px}
+.reading-text p{margin-bottom:14px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:200;pointer-events:none;font-weight:400;line-height:1.5;text-align:center;min-width:160px}
+.vocab-highlight:hover .vocab-tip{display:block}
+.grammar-highlight{background:var(--emerald-light);color:var(--emerald);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
+.grammar-highlight:hover .vocab-tip{display:block}
+
+/* ── VOCAB TABLE ── */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:170px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:150px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-emerald{background:var(--emerald);color:#fff}
+.btn-emerald:hover{background:#044F3A}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);flex-wrap:wrap;gap:10px}
+
+/* ── MC ── */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+.question-note{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic}
+
+/* ── GAP FILL — Polish grammar-label hints ── */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:2px 6px;min-width:110px;width:130px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.gap-wrap{display:inline-flex;flex-direction:column;align-items:center;vertical-align:bottom;gap:2px}
+.gap-hint{font-size:10px;color:var(--emerald);font-weight:500;text-transform:uppercase;letter-spacing:0.4px;text-align:center}
+.word-bank-item{background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:6px;font-size:13px;cursor:pointer;color:var(--ink);transition:all 0.15s;user-select:none}
+.word-bank-item:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+.word-bank-item.selected-bank{border-color:var(--blue);color:var(--blue);background:var(--blue-light);font-weight:500}
+
+/* ── MATCHING ── */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ── AUDIO ── */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:16px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+.transcript-toggle{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;white-space:nowrap}
+.transcript-toggle:hover{background:rgba(255,255,255,0.2)}
+.transcript-box{background:var(--cream);border-radius:8px;padding:16px;margin-bottom:16px;font-size:13px;color:var(--ink-muted);line-height:1.8;display:none}
+.transcript-box.show{display:block}
+.transcript-box p+p{margin-top:8px}
+
+/* ── FEEDBACK ── */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* ── AI FEEDBACK ── */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* ── WRITING ── */
+.writing-textarea{width:100%;min-height:170px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* ── DISCUSSION ── */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* ── GRAMMAR TABLE ── */
+.gram-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.gram-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.gram-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.5}
+.gram-table tr:nth-child(even) td{background:#FAF7F2}
+.gram-table td:first-child{font-weight:500;color:var(--emerald);white-space:nowrap}
+
+/* ── MODAL VERB CARDS ── */
+.modal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.modal-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 16px}
+.modal-word{font-size:18px;font-weight:700;color:var(--emerald);font-family:'Playfair Display',serif;margin-bottom:4px}
+.modal-meaning{font-size:12px;color:var(--ink-muted);margin-bottom:6px}
+.modal-ex{font-size:12px;color:var(--ink);font-style:italic}
+
+/* ── TRANSFORM ── */
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+
+/* ── INFO NOTE ── */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ── SPINNER ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MOBILE ── */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{width:100%;justify-content:center}
+  .modal-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="app">
+
+<!-- ══ SIDEBAR ══════════════════════════════════════ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="scaffolding-note">
+    <strong>Unit 4 scaffolding:</strong> Word bank active with distractors. Gap hints are Polish grammar labels. Transcript hidden by default. Writing target: 120–160 words.
+  </div>
+  <div class="unit-label">Unit 4 — Zdrowie i Styl Życia</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G4<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Other Units</div>
+  <div class="nav-item" style="opacity:0.5;font-size:12px" onclick="alert('Open Unit 3 file to go back.')"><span class="nav-icon"><i class="ti ti-arrow-left"></i></span>Unit 3 — Dom i Mieszkanie</div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none;font-size:12px"><span class="nav-icon"><i class="ti ti-lock"></i></span>Unit 5 — Polska Kultura</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 4 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- ══ MAIN ═════════════════════════════════════════ -->
+<div id="main"><div class="main-inner">
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: LESSON
+═══════════════════════════════════════════════════ -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 4 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Zdrowie i Styl Życia<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Health &amp; Lifestyle</span></div>
+  <div class="section-desc">Explore health, wellbeing and daily habits in Polish. This lesson covers vocabulary for describing how you feel, visiting a doctor, and talking about lifestyle choices. Grammar focus: reflexive verbs, modal verbs, and the Accusative-to-Genitive shift under negation.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-comp" onclick="lessonDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-listen" onclick="lessonDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line"></div>
+    <div class="step" id="step-write" onclick="lessonDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Artykuł</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i>
+        <span>Hover <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">gold</span> for vocabulary. Hover <span style="background:var(--emerald-light);color:var(--emerald);padding:1px 6px;border-radius:3px;font-weight:500">green</span> for grammar notes. Click <i class="ti ti-volume"></i> for pronunciation.</span>
+      </div>
+      <div class="reading-text">
+        <p>Ewa <span class="grammar-highlight">czuje się<span class="vocab-tip">czuć się = to feel (reflexive)<br>czuję się / czujesz się / czuje się<br>Green = reflexive verb with się</span></span> ostatnio bardzo zmęczona. <span class="grammar-highlight">Nie ma<span class="vocab-tip">negation: mieć → nie mieć<br>Direct object shifts: Acc. → Gen.<br>ma energię → nie ma energii</span></span> energii na nic — <span class="vocab-highlight">nawet<span class="vocab-tip">nawet = even<br>(particle of emphasis)</span></span> jej ulubiony jogging <span class="grammar-highlight">nie sprawia jej<span class="vocab-tip">sprawiać komuś przyjemność<br>= to give someone pleasure<br>Dative: jej (to her)</span></span> już takiej przyjemności jak kiedyś. Od tygodnia <span class="grammar-highlight">boli ją<span class="vocab-tip">boleć + Accusative of person<br>boli mnie = I have pain (lit. "it hurts me")<br>głowa, gardło, brzuch → Nom. subject</span></span> głowa i <span class="vocab-highlight">gardło<span class="vocab-tip">gardło = throat<br>(neuter noun)</span></span>.</p>
+
+        <p>Przyjaciółka Ewy, Zosia, <span class="grammar-highlight">martwi się<span class="vocab-tip">martwić się (o kogoś) = to worry (about sb)<br>reflexive verb — inherent się</span></span> o nią i <span class="vocab-highlight">namówiła ją<span class="vocab-tip">namówić kogoś = to persuade sb<br>(perfective — one completed action)</span></span>, żeby poszła do lekarza. Ewa <span class="grammar-highlight">nie chciała<span class="vocab-tip">chcieć → nie chcieć<br>Note: no case change here — chcieć<br>takes Genitive even without negation</span></span> iść — <span class="vocab-highlight">nie lubi<span class="vocab-tip">nie lubić = not to like<br>(imperfective, habitual dislike)</span></span> <span class="grammar-highlight">lekarzy<span class="vocab-tip">lekarz → lekarzy (Gen. pl.)<br>Negation: nie lubić → Gen.<br>(lubi lekarzy → nie lubi lekarzy)</span></span> i boi się złych wiadomości. Ale Zosia <span class="vocab-highlight">przekonała ją<span class="vocab-tip">przekonać kogoś = to convince sb<br>(perfective)</span></span>, że <span class="grammar-highlight">trzeba<span class="vocab-tip">trzeba + infinitive = one must / it is necessary<br>impersonal modal — no subject needed</span></span> to zrobić.</p>
+
+        <p>W gabinecie lekarskim lekarka zapytała Ewę o <span class="vocab-highlight">objawy<span class="vocab-tip">objawy = symptoms (pl.)<br>objaw → objawy (Acc. pl.)</span></span>. Ewa powiedziała, że <span class="grammar-highlight">nie śpi dobrze<span class="vocab-tip">spać → nie spać dobrze<br>Intransitive verb — no case change<br>under negation (no direct object)</span></span>, <span class="grammar-highlight">nie je regularnie<span class="vocab-tip">jeść → nie jeść regularnie<br>Also intransitive here — no object<br>to shift to Genitive</span></span> i często <span class="grammar-highlight">boli ją<span class="vocab-tip">boleć mnie/cię/ją/go + Nominative<br>The body part is the SUBJECT<br>głowa boli → boli ją głowa</span></span> głowa. Lekarka <span class="vocab-highlight">zbadała ją<span class="vocab-tip">zbadać kogoś = to examine sb<br>(perfective — completed examination)</span></span> i <span class="vocab-highlight">przepisała<span class="vocab-tip">przepisać = to prescribe<br>(perfective)</span></span> <span class="grammar-highlight">witaminy<span class="vocab-tip">witamina → witaminy (Acc. pl.)<br>Direct object of "przepisała"<br>Positive sentence → Accusative</span></span> i <span class="vocab-highlight">suplementy<span class="vocab-tip">suplement → suplementy (Acc. pl.)</span></span>.</p>
+
+        <p>Lekarka powiedziała, że Ewa <span class="grammar-highlight">powinna<span class="vocab-tip">powinien/powinna/powinno + inf.<br>= should / ought to<br>Modal verb — changes for gender</span></span> <span class="grammar-highlight">zadbać o siebie<span class="vocab-tip">zadbać o siebie = to take care of oneself<br>(reflexive: siebie / się)</span></span>. Przede wszystkim <span class="grammar-highlight">należy<span class="vocab-tip">należy + infinitive = one should<br>impersonal, formal tone<br>stronger than "warto"</span></span> więcej <span class="grammar-highlight">odpoczywać<span class="vocab-tip">odpoczywać = to rest<br>(imperfective — ongoing/habitual)</span></span>, <span class="grammar-highlight">można<span class="vocab-tip">można + infinitive = one can / it is possible<br>impersonal — no subject</span></span> też <span class="vocab-highlight">zacząć<span class="vocab-tip">zacząć = to start<br>(perfective — beginning of new habit)</span></span> <span class="grammar-highlight">ćwiczyć<span class="vocab-tip">ćwiczyć = to exercise<br>(imperfective — ongoing activity)</span></span> regularnie, i <span class="grammar-highlight">warto<span class="vocab-tip">warto + infinitive = it is worth<br>impersonal modal — gentler suggestion</span></span> <span class="grammar-highlight">zastanowić się<span class="vocab-tip">zastanowić się = to consider / think over<br>(perfective reflexive — one reflection)</span></span> nad <span class="vocab-highlight">dietą<span class="vocab-tip">dieta (Instr. after "nad") = diet<br>dieta → dietą</span></span>.</p>
+
+        <p>Ewa <span class="grammar-highlight">wróciła do domu<span class="vocab-tip">wrócić do + Gen. = to return to<br>perfective — completed journey</span></span> z nową energią. <span class="grammar-highlight">Postanowiła<span class="vocab-tip">postanowić = to decide<br>(perfective — one firm decision)</span></span> <span class="grammar-highlight">nie jeść<span class="vocab-tip">negation of infinitive: nie + jeść<br>Direct object after "nie jeść" shifts<br>from Acc. to Gen. (nie jeść słodyczy)</span></span> <span class="grammar-highlight">słodyczy<span class="vocab-tip">słodycze → słodyczy (Gen. pl.)<br>After nie jeść — negation shifts<br>Acc. (słodycze) → Gen. (słodyczy)</span></span> przez miesiąc, <span class="grammar-highlight">kłaść się spać<span class="vocab-tip">kłaść się spać = to go to bed<br>reflexive + direction infinitive</span></span> przed północą i <span class="grammar-highlight">chodzić na spacery<span class="vocab-tip">chodzić na + Acc. = to go regularly to<br>(imperfective — habitual activity)</span></span> każdego wieczoru. <span class="grammar-highlight">Nie wolno<span class="vocab-tip">nie wolno + infinitive = one must not<br>the strongest modal prohibition<br>impersonal, no subject needed</span></span> <span class="vocab-highlight">zaniedbywać<span class="vocab-tip">zaniedbywać = to neglect<br>(imperfective — ongoing neglect)</span></span> zdrowia — to wie każdy.</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:20px"><i class="ti ti-info-circle"></i> Green highlights show reflexive verbs, modal verbs, and Accusative-Genitive negation — the grammar focus of this unit.</p>
+
+      <div class="card-title"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>czuć się<button class="vocab-audio-btn" onclick="speak('czuć się')"><i class="ti ti-volume"></i></button></td><td>(reflexive verb)</td><td>to feel (a certain way)</td></tr>
+        <tr><td>boleć mnie<button class="vocab-audio-btn" onclick="speak('boleć')"><i class="ti ti-volume"></i></button></td><td>boli mnie + Nom.</td><td>I have pain (lit. "it hurts me")</td></tr>
+        <tr><td>martwić się<button class="vocab-audio-btn" onclick="speak('martwić się')"><i class="ti ti-volume"></i></button></td><td>o + Accusative</td><td>to worry about</td></tr>
+        <tr><td>zadbać o siebie<button class="vocab-audio-btn" onclick="speak('zadbać o siebie')"><i class="ti ti-volume"></i></button></td><td>(reflexive)</td><td>to take care of oneself</td></tr>
+        <tr><td>odpoczywać<button class="vocab-audio-btn" onclick="speak('odpoczywać')"><i class="ti ti-volume"></i></button></td><td>(imperfective)</td><td>to rest / to relax</td></tr>
+        <tr><td>ćwiczyć<button class="vocab-audio-btn" onclick="speak('ćwiczyć')"><i class="ti ti-volume"></i></button></td><td>(imperfective)</td><td>to exercise / work out</td></tr>
+        <tr><td>objawy<button class="vocab-audio-btn" onclick="speak('objawy')"><i class="ti ti-volume"></i></button></td><td>objawów (Gen. pl.)</td><td>symptoms</td></tr>
+        <tr><td>przepisać<button class="vocab-audio-btn" onclick="speak('przepisać')"><i class="ti ti-volume"></i></button></td><td>(perfective)</td><td>to prescribe</td></tr>
+        <tr><td>zbadać<button class="vocab-audio-btn" onclick="speak('zbadać')"><i class="ti ti-volume"></i></button></td><td>(perfective)</td><td>to examine (medically)</td></tr>
+        <tr><td>zaniedbywać<button class="vocab-audio-btn" onclick="speak('zaniedbywać')"><i class="ti ti-volume"></i></button></td><td>(imperfective)</td><td>to neglect</td></tr>
+        <tr><td>witaminy<button class="vocab-audio-btn" onclick="speak('witaminy')"><i class="ti ti-volume"></i></button></td><td>witamin (Gen. pl.)</td><td>vitamins</td></tr>
+        <tr><td>dieta<button class="vocab-audio-btn" onclick="speak('dieta')"><i class="ti ti-volume"></i></button></td><td>dietą (Instr.)</td><td>diet</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px"><i class="ti ti-arrow-left"></i> Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Choose the best answer based on the text.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Jakie objawy ma Ewa?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Boli ją brzuch i ma gorączkę</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Jest zmęczona, boli ją głowa i gardło, źle śpi i nie je regularnie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Ma alergie i boli ją plecy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Jest przeziębiona i ma katar</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Dlaczego Ewa nie chciała iść do lekarza?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Nie miała czasu — była bardzo zajęta w pracy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">B</div>Nie lubi lekarzy i boi się złych wiadomości</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">C</div>Myślała, że sama wyzdrowieje bez pomocy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Nie miała ubezpieczenia zdrowotnego</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Co przepisała lekarka?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Antybiotyki i tabletki na ból głowy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">B</div>Zastrzyki i tygodniowe zwolnienie lekarskie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">C</div>Witaminy i suplementy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Tylko odpoczynek — bez żadnych leków</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Jakie zmiany postanowiła wprowadzić Ewa?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Zapisać się na siłownię i zrezygnować z pracy</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">B</div>Nie jeść słodyczy przez miesiąc, kłaść się spać przed północą i chodzić na spacery</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">C</div>Przejść na weganizm i zacząć medytować</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Pić więcej wody i unikać stresu w pracy</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Co oznacza wyrażenie "boli ją głowa"?</div>
+        <div class="question-note">This question tests grammar awareness from the text.</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>She is hurting someone's head</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">B</div>Her head hurts — "głowa" is the subject, "ją" is the person affected (Accusative)</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">C</div>She is thinking hard about something</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>"Głowa" is the direct object of "boleć"</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Jaką rolę odegrała Zosia w tej historii?</div>
+        <div class="mc-options" id="cq6">
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">A</div>Zawiozła Ewę do szpitala samochodem</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">B</div>Sama była lekarką i zbadała Ewę</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','correct')"><div class="mc-letter">C</div>Martwiła się o Ewę i przekonała ją, żeby poszła do lekarza</div>
+          <div class="mc-option" onclick="checkMC(this,'cq6','wrong')"><div class="mc-letter">D</div>Zaproponowała Ewie, żeby razem zaczęły ćwiczyć</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jak dbasz o swoje zdrowie na co dzień? Co mogłabyś robić lepiej?<br><em style="font-size:13px;opacity:0.8">How do you take care of your health daily? What could you do better?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy uważasz, że styl życia ma większy wpływ na zdrowie niż geny? Dlaczego?<br><em style="font-size:13px;opacity:0.8">Do you think lifestyle has more impact on health than genetics? Why?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Co robisz, gdy się źle czujesz — idziesz od razu do lekarza czy wolisz poczekać?<br><em style="font-size:13px;opacity:0.8">What do you do when you feel unwell — do you go to the doctor immediately or prefer to wait?</em></span></div>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:12px">Try using modal verbs in your answers: <em>trzeba, należy, można, warto, nie wolno</em>.</p>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — U lekarza</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the doctor's appointment. Try the questions first — reveal the transcript only if needed.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">U lekarza — At the doctor's</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 4:30 · Polish B1–B2</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div><div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div><div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <button class="transcript-toggle" onclick="toggleTranscript()" id="transcript-btn"><i class="ti ti-file-text"></i> Show Transcript</button>
+      </div>
+
+      <div class="transcript-box" id="transcript-box">
+        <strong style="color:var(--ink);display:block;margin-bottom:12px;font-size:14px">Transcript — Wizyta u lekarza pierwszego kontaktu</strong>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Dzień dobry. Proszę usiąść. Co pana sprowadza?</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Dzień dobry. Źle się czuję od kilku dni. Boli mnie gardło i klatka piersiowa, i mam gorączkę — trzydzieści osiem i pół.</p>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Od jak dawna ma pan te objawy?</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Od środy, czyli od czterech dni. Najpierw tylko bolało mnie gardło, ale od wczoraj też klatka piersiowa. Nie mogę spać w nocy, bo trudno mi oddychać.</p>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Rozumiem. Czy ma pan kaszel?</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Tak, suchy kaszel. Nie mam kataru, ale nie mam też apetytu. Nie jadłem prawie nic od dwóch dni.</p>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Proszę się rozebrać — zbadamy pana. Proszę wziąć głęboki oddech…<br>
+        (po badaniu)<br>
+        Pan ma zapalenie gardła i początki zapalenia oskrzeli. Trzeba wziąć antybiotyk.</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Czy to poważne?</p>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Nie, ale nie wolno tego zaniedbywać. Przepiszę panu antybiotyk na siedem dni, syrop na kaszel i tabletki przeciwbólowe. Należy brać antybiotyk regularnie co dwanaście godzin — nie można przerywać kuracji przed upływem tygodnia, nawet jeśli pan poczuje się lepiej.</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Czy mogę chodzić do pracy?</p>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Radzę zostać w domu przez najbliższe dwa, trzy dni. Warto odpoczywać i dużo pić — głównie wodę i herbatę z cytryną. Nie powinien pan pić alkoholu podczas kuracji antybiotykowej.</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Czy trzeba przyjść na kontrolę?</p>
+        <p><strong style="color:var(--ink)">Lekarz:</strong> Jeśli za tydzień nie będzie pan czuł się lepiej, proszę wrócić. W przeciwnym razie nie trzeba. Życzę szybkiego powrotu do zdrowia.</p>
+        <p><strong style="color:var(--ink)">Pacjent:</strong> Dziękuję bardzo. Do widzenia.</p>
+      </div>
+
+      <div class="question-block" style="margin-top:8px">
+        <div class="question-text">1. Jakie objawy ma pacjent?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Katar, kaszel i ból głowy</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">B</div>Ból gardła, ból klatki piersiowej, gorączka i suchy kaszel</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">C</div>Gorączka, katar i trudności z jedzeniem</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Ból głowy i zmęczenie bez gorączki</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Co zdiagnozował lekarz?</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Grypę i zapalenie ucha</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Zapalenie gardła i początki zapalenia oskrzeli</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Alergie sezonowe i infekcję wirusową</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Zapalenie płuc</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jak długo pacjent powinien brać antybiotyk?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Pięć dni</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Siedem dni — nawet jeśli poczuje się lepiej wcześniej</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Dziesięć dni</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Do momentu, gdy poczuje się lepiej</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Czego pacjent nie powinien robić podczas kuracji?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Pić herbaty z cytryną</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">B</div>Odpoczywać w domu</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">C</div>Pić alkoholu</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Chodzić na spacery</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Ile modalnych wyrażeń usłyszałaś w dialogu? Wybierz właściwą listę.</div>
+        <div class="question-note">Listen for: trzeba, nie wolno, należy, warto, można, nie powinien, nie trzeba</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Tylko dwa: trzeba i można</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">B</div>Cztery: trzeba, nie wolno, należy, warto</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">C</div>Co najmniej sześć: trzeba, nie wolno, należy, warto, nie powinien, nie trzeba</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Tylko jeden: nie wolno</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Kiedy pacjent powinien wrócić do lekarza?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Po trzech dniach — na obowiązkową kontrolę</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">B</div>Po zakończeniu antybiotyku — zawsze</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">C</div>Tylko jeśli za tydzień nie będzie czuł się lepiej</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Po dwóch tygodniach na kolejne badania</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>120–160 words</strong> in Polish describing your health habits or a time when you felt unwell. Use at least <strong>5 vocabulary items</strong>: <em>czuć się, boleć, odpoczywać, ćwiczyć, zadbać o siebie, objawy, dieta, witaminy, zaniedbywać, martwić się</em>.<br><br>
+        Include at least <strong>2 reflexive verbs</strong> (e.g. <em>czuję się, martwię się, kłaść się</em>), at least <strong>2 modal verbs</strong> (<em>trzeba, można, warto, należy, nie wolno, powinnam</em>), and at least <strong>one negated sentence</strong> where the object shifts to Genitive (e.g. <em>nie mam czasu, nie jem słodyczy</em>).
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G4 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div><!-- end page-lesson -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: GRAMMAR G4
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 4 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge"><i class="ti ti-math-function"></i> Grammar Unit G4</div>
+  <div class="section-title">Reflexive Verbs &amp; Accusative Negation<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Czasowniki Zwrotne i Zaprzeczenie</span></div>
+  <div class="section-desc">Two of the most productive patterns in everyday Polish — reflexive się-verbs and the case shift that happens under negation. Master these and your Polish will immediately sound more natural.</div>
+
+  <!-- REFLEXIVE VERBS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--emerald)"><i class="ti ti-refresh"></i> Reflexive Verbs — Czasowniki zwrotne</div>
+    <div class="grammar-callout">
+      Reflexive verbs use the particle <strong>się</strong>, which can mean "oneself", signal a reciprocal action, or simply be part of the verb with no literal meaning. There are three main types.
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Type 1 — True reflexives (action done to/for oneself)</div>
+      <p class="example-pl"><strong>myć się</strong> — to wash (oneself): Myję się rano. — I wash in the morning.</p>
+      <p class="example-pl"><strong>ubierać się</strong> — to dress (oneself): Ona ubiera się szybko. — She gets dressed quickly.</p>
+      <p class="example-pl"><strong>kłaść się spać</strong> — to go to bed (lit. to lay oneself down): Kładę się spać o dziesiątej.</p>
+      <p class="example-en">Compare: <em>myć kogoś</em> (to wash someone else) vs <em>myć się</em> (to wash oneself).</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Type 2 — Reciprocal (actions done to each other)</div>
+      <p class="example-pl"><strong>spotykać się</strong> — to meet each other: Spotykamy się w piątek.</p>
+      <p class="example-pl"><strong>kochać się</strong> — to love each other: Oni bardzo się kochają.</p>
+      <p class="example-pl"><strong>rozmawiać się</strong> — No! ❌ (rozmawiać is already reciprocal without się)</p>
+      <p class="example-en">Reciprocal się only adds meaning where the action is genuinely mutual.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Type 3 — Inherent reflexives (się is part of the verb — no literal meaning)</div>
+      <p class="example-pl"><strong>czuć się</strong> — to feel: Czuję się dobrze / źle / zmęczona.</p>
+      <p class="example-pl"><strong>martwić się</strong> — to worry: Martwię się o ciebie.</p>
+      <p class="example-pl"><strong>bać się</strong> — to be afraid: Boję się lekarzy.</p>
+      <p class="example-pl"><strong>zastanowić się</strong> — to think over / consider: Zastanowiłam się i zdecydowałam.</p>
+      <p class="example-pl"><strong>spóźniać się</strong> — to be late: Znowu się spóźniam!</p>
+      <p class="example-en">These verbs MUST have się — removing it either changes meaning completely or produces nonsense.</p>
+    </div>
+
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Position of się in the sentence</div>
+      <p class="example-pl">Się is a clitic — it cannot start a sentence and prefers second position:</p>
+      <p class="example-pl">✓ <strong>Czuję się</strong> dobrze. / Ona <strong>czuje się</strong> dobrze. / Dobrze <strong>się czuję</strong>.</p>
+      <p class="example-pl">✗ <strong>Się czuję</strong> dobrze. ← Never start with się!</p>
+      <p class="example-pl">In negative sentences: <strong>Nie czuję się</strong> dobrze. (się stays after the verb)</p>
+    </div>
+  </div>
+
+  <!-- BOLEĆ MNIE -->
+  <div class="card">
+    <div class="card-title" style="color:var(--emerald)"><i class="ti ti-heart-broken"></i> Expressing Pain — boleć + Accusative</div>
+    <div class="grammar-callout">
+      Polish expresses bodily pain differently from English. The body part is the <strong>subject</strong>, and the person in pain takes the <strong>Accusative</strong>.
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Structure: body part (Nom. subject) + boli/bolą + person (Accusative)</div>
+      <table class="gram-table">
+        <tr><th>Polish</th><th>Literal</th><th>English</th></tr>
+        <tr><td>Boli <strong>mnie</strong> głowa.</td><td>Head hurts me.</td><td>I have a headache.</td></tr>
+        <tr><td>Boli <strong>ją</strong> gardło.</td><td>Throat hurts her.</td><td>She has a sore throat.</td></tr>
+        <tr><td>Boli <strong>go</strong> brzuch.</td><td>Stomach hurts him.</td><td>He has a stomachache.</td></tr>
+        <tr><td>Bolą <strong>mnie</strong> plecy.</td><td>Back (pl.) hurts me.</td><td>My back hurts.</td></tr>
+        <tr><td>Bolą <strong>ją</strong> nogi.</td><td>Legs hurt her.</td><td>Her legs ache.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:8px">Note: <em>boli</em> (sg.) for one body part; <em>bolą</em> (pl.) for plural body parts (plecy, nogi, ręce).</p>
+    </div>
+  </div>
+
+  <!-- MODAL VERBS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--emerald)"><i class="ti ti-slashes"></i> Modal Verbs — Czasowniki modalne</div>
+    <div class="grammar-callout">
+      Polish has a rich set of <strong>impersonal modal expressions</strong> — they have no grammatical subject and are followed by the infinitive. Each carries a different degree of obligation or possibility.
+    </div>
+    <div class="modal-grid">
+      <div class="modal-card"><div class="modal-word">trzeba</div><div class="modal-meaning">one must / it is necessary</div><div class="modal-ex">Trzeba ćwiczyć regularnie.</div></div>
+      <div class="modal-card"><div class="modal-word">należy</div><div class="modal-meaning">one should (formal/stronger)</div><div class="modal-ex">Należy brać antybiotyk.</div></div>
+      <div class="modal-card"><div class="modal-word">można</div><div class="modal-meaning">one can / it is allowed</div><div class="modal-ex">Można odpocząć jutro.</div></div>
+      <div class="modal-card"><div class="modal-word">warto</div><div class="modal-meaning">it is worth (doing)</div><div class="modal-ex">Warto pić wodę.</div></div>
+      <div class="modal-card"><div class="modal-word">nie wolno</div><div class="modal-meaning">one must not (prohibition)</div><div class="modal-ex">Nie wolno palić tutaj.</div></div>
+      <div class="modal-card"><div class="modal-word">nie trzeba</div><div class="modal-meaning">it is not necessary</div><div class="modal-ex">Nie trzeba się martwić.</div></div>
+    </div>
+    <div class="grammar-rule" style="margin-top:12px">
+      <div class="grammar-rule-title">Personal modal: powinien / powinna / powinno</div>
+      <p class="example-pl">Unlike the impersonal modals above, <strong>powinien</strong> agrees with the subject in gender and number:</p>
+      <p class="example-pl">Powinien (masc.) / Powinna (fem.) / Powinni (masc. pl.) / Powinny (fem./neut. pl.) + infinitive</p>
+      <p class="example-pl">Powinna ćwiczyć więcej. — She should exercise more.</p>
+      <p class="example-pl">Powinniśmy zadbać o zdrowie. — We should take care of our health.</p>
+    </div>
+  </div>
+
+  <!-- ACCUSATIVE NEGATION -->
+  <div class="card">
+    <div class="card-title" style="color:var(--red)"><i class="ti ti-arrows-exchange"></i> Accusative → Genitive Under Negation</div>
+    <div class="grammar-callout">
+      When a positive sentence with an Accusative direct object is negated, the direct object <strong>shifts from Accusative to Genitive</strong>. This is one of the most consistent and important rules in Polish grammar.
+    </div>
+    <table class="gram-table">
+      <tr><th>Positive (Accusative)</th><th>Negative (Genitive)</th><th>English</th></tr>
+      <tr><td>Mam <strong>czas</strong>.</td><td>Nie mam <strong>czasu</strong>.</td><td>I (don't) have time.</td></tr>
+      <tr><td>Jem <strong>słodycze</strong>.</td><td>Nie jem <strong>słodyczy</strong>.</td><td>I (don't) eat sweets.</td></tr>
+      <tr><td>Piję <strong>kawę</strong>.</td><td>Nie piję <strong>kawy</strong>.</td><td>I (don't) drink coffee.</td></tr>
+      <tr><td>Mam <strong>apetyt</strong>.</td><td>Nie mam <strong>apetytu</strong>.</td><td>I (don't) have appetite.</td></tr>
+      <tr><td>Lubię <strong>lekarzy</strong>.</td><td>Nie lubię <strong>lekarzy</strong>.</td><td>I (don't) like doctors.</td></tr>
+      <tr><td>Widzę <strong>problem</strong>.</td><td>Nie widzę <strong>problemu</strong>.</td><td>I (don't) see a problem.</td></tr>
+    </table>
+    <div class="grammar-rule" style="margin-top:12px">
+      <div class="grammar-rule-title">⚠ Important exceptions — no case change</div>
+      <p class="example-pl"><strong>Intransitive verbs</strong> (no direct object): Nie śpię. Nie pracuję. Nie chodzę. — No case change possible.</p>
+      <p class="example-pl"><strong>Dative verbs</strong>: Nie ufam jej. Nie podobam się. — Dative stays Dative under negation.</p>
+      <p class="example-pl"><strong>Verbs already taking Genitive</strong>: Nie szukam <em>czasu</em>. (szukać already + Gen.) — No change.</p>
+    </div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Quick Grammar Check — Negate these sentences</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Rewrite each sentence as a negation. Remember: Accusative direct objects shift to Genitive.</p>
+
+    <div class="transform-row">
+      <div class="transform-task">Example: Mam energię. → <span style="color:var(--green)">Nie mam energii.</span> ✓ (energia → energii, Gen. fem.)</div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Piję kawę rano.</div>
+      <div class="transform-task">Negate (kawa → ?)</div>
+      <input class="transform-input" id="ti1" data-answer="nie piję kawy rano" placeholder="Nie piję…" oninput="autoCheck('ti1','tf1')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Jem słodycze wieczorami.</div>
+      <div class="transform-task">Negate (słodycze → ?)</div>
+      <input class="transform-input" id="ti2" data-answer="nie jem słodyczy wieczorami" placeholder="Nie jem…" oninput="autoCheck('ti2','tf2')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Ona czuje się dobrze.</div>
+      <div class="transform-task">Negate — does "się" cause a case change? (No object to shift!)</div>
+      <input class="transform-input" id="ti3" data-answer="ona nie czuje się dobrze" placeholder="Ona nie…" oninput="autoCheck('ti3','tf3')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Mam apetyt.</div>
+      <div class="transform-task">Negate (apetyt → ?)</div>
+      <input class="transform-input" id="ti4" data-answer="nie mam apetytu" placeholder="Nie mam…" oninput="autoCheck('ti4','tf4')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Trzeba ćwiczyć. — Is it "Nie trzeba ćwiczyć" or "Trzeba nie ćwiczyć"?</div>
+      <div class="transform-task">Choose the correct negation of "it is necessary to exercise":</div>
+      <input class="transform-input" id="ti5" data-answer="nie trzeba ćwiczyć" placeholder="Nie trzeba… / Trzeba nie…?" oninput="autoCheck('ti5','tf5')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-emerald" onclick="checkAllGrammar()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: GAP FILL
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 4 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence. Hints show <span style="color:var(--emerald);font-weight:500">Polish grammar labels</span>. The word bank has distractors — use the hints to choose correctly.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="line-height:3.2;font-size:15px">
+      <p>1. Ona <span class="gap-wrap"><input class="gap-input" id="g1" data-answer="czuje się"><span class="gap-hint">czasownik zwrotny</span></span> bardzo zmęczona.</p>
+      <p>2. <span class="gap-wrap"><input class="gap-input" id="g2" data-answer="boli mnie"><span class="gap-hint">boleć + Acc. osoby</span></span> <span class="gap-wrap"><input class="gap-input" id="g3" data-answer="gardło"><span class="gap-hint">Nom. — część ciała</span></span> od trzech dni.</p>
+      <p>3. Nie mam <span class="gap-wrap"><input class="gap-input" id="g4" data-answer="apetytu"><span class="gap-hint">Gen. — po negacji</span></span> na nic.</p>
+      <p>4. <span class="gap-wrap"><input class="gap-input" id="g5" data-answer="trzeba"><span class="gap-hint">modal bezosobowy</span></span> brać antybiotyk regularnie.</p>
+      <p>5. Nie <span class="gap-wrap"><input class="gap-input" id="g6" data-answer="wolno"><span class="gap-hint">zakaz — nie wolno</span></span> przerywać kuracji.</p>
+      <p>6. Ona <span class="gap-wrap"><input class="gap-input" id="g7" data-answer="martwi się"><span class="gap-hint">czasownik zwrotny</span></span> o swoje zdrowie.</p>
+      <p>7. Nie jem <span class="gap-wrap"><input class="gap-input" id="g8" data-answer="słodyczy"><span class="gap-hint">Gen. pl. — po negacji</span></span> przez miesiąc.</p>
+      <p>8. <span class="gap-wrap"><input class="gap-input" id="g9" data-answer="warto"><span class="gap-hint">modal — zalecenie</span></span> <span class="gap-wrap"><input class="gap-input" id="g10" data-answer="odpoczywać"><span class="gap-hint">inf. — czynność</span></span> więcej.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="card" style="background:var(--cream)">
+    <div class="card-title">Word Bank — click a word, then click a gap</div>
+    <p style="font-size:13px;color:var(--ink-muted);margin-bottom:12px">Contains distractors — grammar labels will guide you.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="word-bank">
+      <button class="word-bank-item" data-word="czuje się" onclick="selectBank(this)">czuje się</button>
+      <button class="word-bank-item" data-word="czuje" onclick="selectBank(this)">czuje</button>
+      <button class="word-bank-item" data-word="boli mnie" onclick="selectBank(this)">boli mnie</button>
+      <button class="word-bank-item" data-word="boli mi" onclick="selectBank(this)">boli mi</button>
+      <button class="word-bank-item" data-word="gardło" onclick="selectBank(this)">gardło</button>
+      <button class="word-bank-item" data-word="gardła" onclick="selectBank(this)">gardła</button>
+      <button class="word-bank-item" data-word="apetytu" onclick="selectBank(this)">apetytu</button>
+      <button class="word-bank-item" data-word="apetyt" onclick="selectBank(this)">apetyt</button>
+      <button class="word-bank-item" data-word="trzeba" onclick="selectBank(this)">trzeba</button>
+      <button class="word-bank-item" data-word="potrzeba" onclick="selectBank(this)">potrzeba</button>
+      <button class="word-bank-item" data-word="wolno" onclick="selectBank(this)">wolno</button>
+      <button class="word-bank-item" data-word="można" onclick="selectBank(this)">można</button>
+      <button class="word-bank-item" data-word="martwi się" onclick="selectBank(this)">martwi się</button>
+      <button class="word-bank-item" data-word="martwi" onclick="selectBank(this)">martwi</button>
+      <button class="word-bank-item" data-word="słodyczy" onclick="selectBank(this)">słodyczy</button>
+      <button class="word-bank-item" data-word="słodycze" onclick="selectBank(this)">słodycze</button>
+      <button class="word-bank-item" data-word="warto" onclick="selectBank(this)">warto</button>
+      <button class="word-bank-item" data-word="trzeba" onclick="selectBank(this)">warto by</button>
+      <button class="word-bank-item" data-word="odpoczywać" onclick="selectBank(this)">odpoczywać</button>
+      <button class="word-bank-item" data-word="odpocząć" onclick="selectBank(this)">odpocząć</button>
+    </div>
+    <p style="font-size:12px;color:var(--ink-muted);margin-top:10px" id="bank-status">No word selected. Click a word above, then click a gap.</p>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end gap fill -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: MULTIPLE CHOICE
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 4 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the correct form. Focus on reflexive verbs, modal verbs, boleć constructions, and negation case shifts.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Jak ______ dzisiaj?</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>czujesz</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>czujesz się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>się czujesz</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>się czuje</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. Boli ______ noga od rana.</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>mi (Dative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">B</div>mnie (Accusative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">C</div>mną (Instrumental)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>mnie (Genitive)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. Nie mam ______ na jogging dzisiaj.</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>energię (Accusative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">B</div>energii (Genitive)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">C</div>energią (Instrumental)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>energio (Vocative — not used here)</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. ______ brać lekarstwo dwa razy dziennie. (obligation — it is necessary)</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">A</div>Warto</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">B</div>Można</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">C</div>Trzeba</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>Nie wolno</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. ______ palić w szpitalu. (prohibition — it is forbidden)</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>Nie trzeba</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">B</div>Nie można</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">C</div>Nie wolno</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>Nie należy</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Ona ______ o zdrowie bardziej niż ktokolwiek inny.</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>martwi</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">B</div>martwi się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">C</div>martwię się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>martwiąc się</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Powinna ______ więcej, żeby lepiej spać.</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>ćwiczyła</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">B</div>ćwiczyć</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">C</div>ćwiczenia</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>ćwicząc</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. Nie widzę ______ w tej sytuacji.</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>problem (Accusative)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">B</div>problemu (Genitive)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">C</div>problemem (Instrumental)</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>problemie (Locative)</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end mc -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: MATCHING
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 4 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Match each Polish expression to its English equivalent. All 8 pairs must be matched.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">Polish</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">Czuję się źle.</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">Boli mnie głowa.</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">Nie mam apetytu.</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">Trzeba odpocząć.</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">Nie wolno palić.</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">Martwię się o nią.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">Warto ćwiczyć.</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'L')">Nie jem słodyczy.</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">One must rest.</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">It is worth exercising.</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">I have a headache.</div>
+          <div class="match-item" data-id="8" onclick="selectMatch(this,'R')">I don't eat sweets.</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">I feel unwell.</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">Smoking is forbidden.</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">I have no appetite.</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">I'm worried about her.</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end matching -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: UNIT TEST
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 4 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 4 Test</div>
+  <div class="section-desc">Complete all five sections to unlock the test. This is the final unit with full scaffolding — from Unit 5 onwards, difficulty increases significantly.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:8px">Complete all five sections to unlock the test.</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Sections remaining: <span id="sections-remaining" style="font-weight:600;color:var(--red)">5</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 4 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:12px">You've completed all sections of Unit 4. Well done — this completes the first phase of the course (Units 1–4).</p>
+      <p style="font-size:14px;color:var(--blue);background:var(--blue-light);border-radius:8px;padding:10px 16px;margin-bottom:24px">After this test, a <strong>Combined Test (Units 1–4)</strong> will become available in the course shell. Units 5–12 have reduced scaffolding — no word banks, grammar labels only, and harder texts.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit 4 Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div></div><!-- end main-inner / main -->
+</div><!-- end app -->
+
+<script>
+// ══ STATE ═══════════════════════════════════════════
+let completedSections = new Set();
+let lessonDone = new Set();
+let isPlaying = false, audioSecs = 0;
+let audioInterval = null, audioTimer = null;
+let matchLeft = null, matchRight = null;
+let bankWord = null, selectedGap = null;
+let mcAnswered = new Set(), mcCorrect = {};
+const AUDIO_DURATION = 270;
+
+// ══ NAV ═════════════════════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0, 0);
+  if (page === 'test') updateTestPage();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ══ LESSON STEPS ════════════════════════════════════
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tc-' + step).classList.add('active');
+  const prev = { comp:'read', listen:'comp', write:'listen' };
+  if (prev[step]) lessonDone.add(prev[step]);
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0, 0);
+}
+function updateStepUI(current) {
+  ['read','comp','listen','write'].forEach((s, i) => {
+    const el = document.getElementById('step-' + s);
+    if (!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if (lessonDone.has(s)) { el.classList.add('done'); dot.innerHTML = '<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if (s === current) { el.classList.add('active'); dot.textContent = i + 1; }
+    else dot.textContent = i + 1;
+  });
+}
+
+// ══ AUDIO ═══════════════════════════════════════════
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
+  if (isPlaying) {
+    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
+    audioTimer = setInterval(() => {
+      audioSecs = Math.min(audioSecs+1, AUDIO_DURATION);
+      const m=Math.floor(audioSecs/60), s=audioSecs%60;
+      document.getElementById('audio-time').textContent=`${m}:${s<10?'0'+s:s} / 4:30 · Polish B1–B2`;
+      if (audioSecs >= AUDIO_DURATION) { clearInterval(audioTimer); clearInterval(audioInterval); isPlaying=false; document.getElementById('play-icon').className='ti ti-player-play'; resetBars(); }
+    }, 1000);
+  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
+}
+function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+function toggleTranscript() {
+  const box = document.getElementById('transcript-box');
+  box.classList.toggle('show');
+  document.getElementById('transcript-btn').innerHTML = box.classList.contains('show')
+    ? '<i class="ti ti-file-text"></i> Hide Transcript'
+    : '<i class="ti ti-file-text"></i> Show Transcript';
+}
+
+// ══ TTS ═════════════════════════════════════════════
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'pl-PL'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ══ MC ══════════════════════════════════════════════
+function checkMC(el, qid, result) {
+  const container = document.getElementById(qid);
+  if (container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result === 'correct' ? 'correct' : 'incorrect');
+  if (result !== 'correct') {
+    setTimeout(() => {
+      container.querySelectorAll('.mc-option').forEach(opt => {
+        if (opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    }, 700);
+  }
+  if (qid.startsWith('mq')) {
+    mcAnswered.add(qid); mcCorrect[qid] = result === 'correct';
+    if (mcAnswered.size === 8) {
+      completedSections.add('mc');
+      const correct = Object.values(mcCorrect).filter(Boolean).length;
+      const fb = document.getElementById('mc-feedback');
+      fb.className = 'feedback-box show ' + (correct >= 6 ? 'success' : correct >= 4 ? 'info' : 'error');
+      fb.innerHTML = correct === 8 ? '<strong>Doskonale! 8/8</strong> — Perfect! You have mastered reflexive się, boleć + Accusative, modal verbs, and the negation case shift.'
+        : '<strong>' + correct + '/8 correct.</strong> Key reminders: <em>czuć się / martwić się</em> always need <em>się</em>; <em>boleć mnie</em> = Accusative of person; after negation, Acc. → Gen.; <em>nie wolno</em> = strongest prohibition; <em>powinien/powinna</em> + infinitive.';
+      updateProgress();
+    }
+  }
+}
+
+// ══ GRAMMAR CHECK ════════════════════════════════════
+function norm(s) { return s.trim().toLowerCase().replace(/\s+/g,' '); }
+
+function autoCheck(inputId, fbId) {
+  const inp = document.getElementById(inputId);
+  const fb = document.getElementById(fbId);
+  const val = norm(inp.value);
+  const ans = norm(inp.dataset.answer);
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === ans) { inp.classList.add('correct'); inp.classList.remove('incorrect'); fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; }
+  else { inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none'; }
+}
+
+function checkAllGrammar() {
+  let correct = 0;
+  const answers = {
+    ti1: { ans: 'nie piję kawy rano', exp: 'nie piję kawy — kawa (Acc.) → kawy (Gen.) under negation' },
+    ti2: { ans: 'nie jem słodyczy wieczorami', exp: 'nie jem słodyczy — słodycze (Acc.pl.) → słodyczy (Gen.pl.) under negation' },
+    ti3: { ans: 'ona nie czuje się dobrze', exp: 'Correct! czuć się is intransitive (no direct object), so no case shifts — only "nie" is added' },
+    ti4: { ans: 'nie mam apetytu', exp: 'nie mam apetytu — apetyt (Acc.) → apetytu (Gen.) under negation' },
+    ti5: { ans: 'nie trzeba ćwiczyć', exp: 'Nie trzeba ćwiczyć = it is not necessary to exercise. "Trzeba nie ćwiczyć" would mean the exercise itself is negated, which is not what we want here' },
+  };
+  Object.entries(answers).forEach(([id, data], n) => {
+    const inp = document.getElementById(id);
+    const fb = document.getElementById('tf' + (n+1));
+    const val = norm(inp.value);
+    inp.classList.remove('correct','incorrect');
+    fb.style.display = 'block';
+    if (val === norm(data.ans)) { inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++; }
+    else { inp.classList.add('incorrect'); fb.style.color='var(--red)'; fb.textContent='✗ ' + data.exp + '. Answer: ' + data.ans; }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className = 'feedback-box show success';
+    gfb.innerHTML = '<strong>Świetnie! 5/5</strong> — Excellent! You correctly applied Accusative→Genitive under negation, recognised that intransitive verbs have no case shift, and chose the right modal negation pattern.';
+    completedSections.add('grammar'); updateProgress();
+  } else {
+    gfb.className = 'feedback-box show ' + (correct >= 3 ? 'info' : 'error');
+    gfb.innerHTML = '<strong>' + correct + '/5 correct.</strong> Core rule: transitive verbs (those with a direct object) shift that object from Acc. → Gen. under negation. Intransitive verbs and Dative verbs do NOT change case.';
+  }
+}
+
+// ══ GAP FILL ════════════════════════════════════════
+function selectBank(btn) {
+  document.querySelectorAll('.word-bank-item').forEach(b => b.classList.remove('selected-bank'));
+  btn.classList.add('selected-bank');
+  bankWord = btn.dataset.word;
+  document.getElementById('bank-status').textContent = '"' + bankWord + '" selected — click a gap to fill it.';
+  if (selectedGap) {
+    selectedGap.value = bankWord;
+    selectedGap.classList.remove('correct','incorrect');
+    selectedGap = null; bankWord = null;
+    btn.classList.remove('selected-bank');
+    document.getElementById('bank-status').textContent = 'Inserted! Select another word.';
+  }
+}
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('gap-input')) {
+    selectedGap = e.target;
+    if (bankWord) {
+      e.target.value = bankWord;
+      e.target.classList.remove('correct','incorrect');
+      document.querySelectorAll('.word-bank-item').forEach(b => b.classList.remove('selected-bank'));
+      bankWord = null; selectedGap = null;
+      document.getElementById('bank-status').textContent = 'Inserted! Select another word.';
+    } else {
+      document.getElementById('bank-status').textContent = 'Gap selected. Click a word from the bank above.';
+    }
+  }
+});
+function checkGapFill() {
+  const fields = ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'];
+  let correct = 0, total = 0;
+  fields.forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    total++;
+    inp.classList.remove('correct','incorrect');
+    if (norm(inp.value) === norm(inp.dataset.answer)) { inp.classList.add('correct'); correct++; }
+    else inp.classList.add('incorrect');
+  });
+  const fb = document.getElementById('gf-feedback');
+  if (correct === total) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '<strong>Doskonale! '+total+'/'+total+'</strong> — All correct! You properly used reflexive verbs with się, boleć + Accusative, Genitive after negation, and modal verbs.';
+    completedSections.add('gapfill'); updateProgress();
+  } else {
+    fb.className = 'feedback-box show error';
+    fb.innerHTML = '<strong>' + correct + '/' + total + ' correct.</strong> Check: <em>czuć się / martwić się</em> need się; <em>boli mnie</em> (Acc. not Dat.); after <em>nie mam / nie jem</em> the object shifts to Genitive; <em>warto / trzeba / nie wolno</em> + infinitive.';
+  }
+}
+function resetGapFill() {
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].forEach(id => { const inp=document.getElementById(id); if(inp){inp.value='';inp.classList.remove('correct','incorrect');} });
+  document.getElementById('gf-feedback').classList.remove('show');
+  document.querySelectorAll('.word-bank-item').forEach(b => b.classList.remove('selected-bank'));
+  bankWord = null; selectedGap = null;
+  document.getElementById('bank-status').textContent = 'No word selected. Click a word above, then click a gap.';
+}
+
+// ══ MATCHING ════════════════════════════════════════
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (side === 'L') { document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchLeft=el; }
+  else { document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); matchRight=el; }
+  if (matchLeft && matchRight) {
+    if (matchLeft.dataset.id === matchRight.dataset.id) {
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      if (document.querySelectorAll('.match-item.matched').length === 16) {
+        const fb = document.getElementById('match-feedback');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '<strong>Idealnie! 8/8</strong> — All matched. You know all key health expressions including reflexive verbs, boleć constructions, and modal prohibitions.';
+        completedSections.add('matching'); updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ══ PROGRESS ════════════════════════════════════════
+function updateProgress() {
+  const done = completedSections.size;
+  const pct = Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width = pct+'%';
+  document.getElementById('sidebar-progress-label').textContent = done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s => {
+    const nd = document.getElementById('nd-'+s);
+    if (nd) nd.style.display = completedSections.has(s) ? 'inline' : 'none';
+  });
+}
+function updateTestPage() {
+  const done = completedSections.size;
+  const rem = document.getElementById('sections-remaining');
+  if (rem) rem.textContent = 5 - done;
+  if (done === 5) {
+    document.getElementById('test-locked').style.display = 'none';
+    document.getElementById('test-unlocked').style.display = 'block';
+    document.getElementById('test-lock').innerHTML = '';
+  }
+}
+
+// ══ WRITING ════════════════════════════════════════
+const writingInput = document.getElementById('writing-input');
+if (writingInput) {
+  writingInput.addEventListener('input', function() {
+    const w = this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent = w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting() {
+  const text = document.getElementById('writing-input').value.trim();
+  if (text.split(/\s+/).filter(x=>x).length < 15) { alert('Please write at least a few sentences before submitting.'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb = document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent = '…';
+  document.getElementById('feedback-content').innerHTML = '<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt = `You are an experienced Polish language teacher assessing a B1-B2 English-speaking adult learner's writing.
+
+Task: Write 120-160 words in Polish describing health habits or a time when they felt unwell. Use at least 5 of: czuć się, boleć, odpoczywać, ćwiczyć, zadbać o siebie, objawy, dieta, witaminy, zaniedbywać, martwić się. Include at least 2 reflexive verbs (czuję się, martwię się, kłaść się), at least 2 modal verbs (trzeba, można, warto, należy, nie wolno, powinnam), and at least one negated sentence with Genitive object (nie mam czasu, nie jem słodyczy).
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown):
+{
+  "score": <integer 0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2 sentences overall in English>",
+  "vocab_used": ["<target words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "reflexive_verbs": "<comment on reflexive verb usage — correct się placement? types used?>",
+  "modal_verbs": "<comment on modal verb usage — correct? appropriate choices?>",
+  "negation_genitive": "<comment on whether Acc.→Gen. shift under negation was applied correctly>",
+  "correct_structures": ["<2-3 specific things done well with Polish examples>"],
+  "errors": [{"error":"<phrase from text>","correction":"<corrected version>","explanation":"<English rule>"}],
+  "recommendation": "<one clear actionable tip>"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1200, messages:[{role:'user',content:prompt}] })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r = JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson'); updateProgress();
+  } catch(e) {
+    document.getElementById('score-pill').textContent = 'Error';
+    document.getElementById('feedback-content').innerHTML = '<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect. Check your connection and try again.</p>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r) {
+  const pill = document.getElementById('score-pill');
+  pill.textContent = r.score+'/100 · '+r.grade;
+  pill.style.background = r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color = r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html = '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div><p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+
+  // Three grammar focus panels
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">';
+  if (r.reflexive_verbs) html += '<div style="background:var(--emerald-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--emerald);margin-bottom:4px">Reflexive Verbs</div>'+r.reflexive_verbs+'</div>';
+  if (r.modal_verbs) html += '<div style="background:var(--blue-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--blue);margin-bottom:4px">Modal Verbs</div>'+r.modal_verbs+'</div>';
+  if (r.negation_genitive) html += '<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;font-size:13px"><div style="font-weight:500;color:var(--red);margin-bottom:4px">Negation + Genitive</div>'+r.negation_genitive+'</div>';
+  html += '</div>';
+
+  if (r.vocab_used&&r.vocab_used.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v=>html+='<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">'+v+'</span>');
+    html+='</div></div>';
+  }
+  if (r.vocab_missing&&r.vocab_missing.length) {
+    html += '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Not yet used</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_missing.forEach(v=>html+='<span style="background:var(--cream);border:0.5px solid var(--border);color:var(--ink-muted);padding:3px 10px;border-radius:20px;font-size:13px">'+v+'</span>');
+    html+='</div></div>';
+  }
+  if (r.correct_structures&&r.correct_structures.length) {
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s=>html+='<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ '+s+'</p>');
+    html+='</div>';
+  }
+  if (r.errors&&r.errors.length) {
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Errors to correct</div>';
+    r.errors.forEach(e=>{html+='<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">'+e.error+'</span> → <strong style="color:var(--green)">'+e.correction+'</strong></div><div style="color:var(--ink-muted);margin-top:4px">'+e.explanation+'</div></div>';});
+    html+='</div>';
+  }
+  if (r.recommendation) html+='<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 Next step:</strong> '+r.recommendation+'</div>';
+  document.getElementById('feedback-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

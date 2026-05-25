@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polski B1–B2 · Unit 1: Praca i Kariera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF7F2;--ink:#1C1917;--ink-muted:#78716C;--ink-faint:#D6D3D0;
+  --red:#C1372A;--red-light:#FDECEA;--gold:#B45309;--gold-light:#FEF3C7;
+  --green:#166534;--green-light:#DCFCE7;--blue:#1E40AF;--blue-light:#DBEAFE;
+  --surface:#FFFFFF;--border:rgba(28,25,23,0.12);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+#app{display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+#sidebar{width:260px;background:var(--ink);color:#E7E5E4;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:transform 0.3s}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.course-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2}
+.course-subtitle{font-size:11px;color:#A8A29E;margin-top:4px;text-transform:uppercase;letter-spacing:0.8px}
+.unit-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#78716C;padding:16px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;font-size:13px;color:#A8A29E;transition:all 0.15s;position:relative;user-select:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#E7E5E4}
+.nav-item.active{background:rgba(255,255,255,0.08);color:#fff}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.nav-lock{margin-left:auto;font-size:12px;color:#57534E}
+.nav-done{margin-left:auto;font-size:12px;color:#4ADE80}
+.nav-sep{margin-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px}
+.sidebar-footer{padding:16px 20px;margin-top:auto;border-top:1px solid rgba(255,255,255,0.06)}
+.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin:8px 0 4px}
+.progress-bar-fill{background:var(--red);height:100%;border-radius:4px;transition:width 0.5s}
+.progress-label{font-size:11px;color:#78716C}
+
+/* MAIN */
+#main{flex:1;overflow-y:auto;background:var(--cream)}
+.main-inner{max-width:740px;margin:0 auto;padding:32px 32px 80px}
+.breadcrumb{font-size:12px;color:var(--ink-muted);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+.breadcrumb span{color:var(--ink-faint)}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.6px}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.section-desc{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+
+/* CARDS */
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card-title{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;color:var(--ink-muted);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* STEPS */
+.steps{display:flex;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border);overflow-x:auto;gap:0}
+.step{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;cursor:pointer}
+.step-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:var(--cream);color:var(--ink-faint);flex-shrink:0}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--red);border-color:var(--red);color:#fff}
+.step.active{color:var(--red);font-weight:500}
+.step-line{flex:1;min-width:12px;height:1px;background:var(--ink-faint);margin:0 5px}
+
+/* READING */
+.reading-text{font-size:15px;line-height:1.9;color:var(--ink);background:#FFFDF9;border:0.5px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:20px 24px;margin-bottom:16px}
+.reading-text p{margin-bottom:14px}
+.reading-text p:last-child{margin-bottom:0}
+.vocab-highlight{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-weight:500;position:relative;display:inline-flex;align-items:center;gap:3px}
+.vocab-tip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px;white-space:nowrap;z-index:100;pointer-events:none;font-weight:400;line-height:1.4;text-align:center}
+.vocab-highlight:hover .vocab-tip{display:block}
+.audio-word-btn{background:none;border:none;cursor:pointer;color:var(--gold);padding:0;font-size:13px;display:inline-flex;align-items:center;transition:color 0.15s;vertical-align:middle}
+.audio-word-btn:hover{color:var(--red)}
+
+/* VOCAB TABLE */
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px}
+.vocab-table tr{border-bottom:0.5px solid var(--border)}
+.vocab-table tr:last-child{border-bottom:none}
+.vocab-table td{padding:10px 8px;vertical-align:middle}
+.vocab-table td:first-child{font-weight:500;color:var(--red);width:140px}
+.vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:13px;width:160px}
+.vocab-table td:last-child{color:var(--ink)}
+.vocab-audio-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px;color:var(--ink-muted);display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;margin-left:6px}
+.vocab-audio-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+.vocab-audio-btn.playing{border-color:var(--green);color:var(--green);background:var(--green-light)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#3C3835}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#A8291E}
+.btn-outline{background:transparent;border:0.5px solid var(--border);color:var(--ink-muted)}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border)}
+
+/* MC */
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:14px;user-select:none}
+.mc-option:hover:not(.correct):not(.incorrect){border-color:var(--red);background:var(--red-light)}
+.mc-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.mc-option.incorrect{border-color:var(--red);background:var(--red-light);color:var(--red);opacity:0.7;cursor:default}
+.mc-letter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.question-block{margin-bottom:28px;padding-bottom:20px;border-bottom:0.5px solid var(--border)}
+.question-block:last-of-type{border-bottom:none;margin-bottom:0}
+.question-text{font-weight:500;margin-bottom:12px;font-size:15px;line-height:1.5}
+
+/* GAP FILL */
+.gap-input{display:inline-block;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:2px 6px;min-width:100px;width:120px;text-align:center;outline:none;transition:border-color 0.15s}
+.gap-input:focus{border-bottom-color:var(--red)}
+.gap-input.correct{border-bottom-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px}
+.gap-input.incorrect{border-bottom-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px}
+.word-bank-item{background:var(--surface);border:0.5px solid var(--border);padding:6px 12px;border-radius:6px;font-size:13px;cursor:pointer;color:var(--ink);font-weight:400;transition:all 0.15s;user-select:none}
+.word-bank-item:hover{border-color:var(--red);color:var(--red);background:var(--red-light)}
+.word-bank-item.selected-bank{border-color:var(--blue);color:var(--blue);background:var(--blue-light);font-weight:500}
+.word-bank-item.used{opacity:0.35;pointer-events:none;text-decoration:line-through}
+
+/* MATCHING */
+.match-item{padding:10px 14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;user-select:none}
+.match-item:hover:not(.matched){border-color:var(--blue);background:var(--blue-light)}
+.match-item.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:500}
+.match-item.matched{border-color:var(--green);background:var(--green-light);color:var(--green);cursor:default}
+.match-item.wrong{border-color:var(--red);background:var(--red-light);animation:shake 0.3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* AUDIO PLAYER */
+.audio-player{display:flex;align-items:center;gap:14px;background:var(--ink);border-radius:10px;padding:16px 20px;color:#fff;margin-bottom:20px}
+.play-btn{width:40px;height:40px;background:var(--red);border:none;border-radius:50%;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}
+.play-btn:hover{background:#A8291E;transform:scale(1.05)}
+.audio-bar{width:3px;background:rgba(255,255,255,0.3);border-radius:2px;transition:height 0.15s}
+.transcript-toggle{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;white-space:nowrap}
+.transcript-toggle:hover{background:rgba(255,255,255,0.2)}
+.transcript-box{background:var(--cream);border-radius:8px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--ink-muted);line-height:1.8;display:none}
+.transcript-box.show{display:block}
+
+/* FEEDBACK */
+.feedback-box{border-radius:8px;padding:16px;margin-top:16px;font-size:14px;line-height:1.6;display:none}
+.feedback-box.show{display:block}
+.feedback-box.success{background:var(--green-light);color:var(--green);border:0.5px solid rgba(22,101,52,0.2)}
+.feedback-box.error{background:var(--red-light);color:var(--red);border:0.5px solid rgba(193,55,42,0.2)}
+.feedback-box.info{background:var(--blue-light);color:var(--blue);border:0.5px solid rgba(30,64,175,0.2)}
+
+/* AI FEEDBACK */
+.ai-feedback{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none}
+.ai-feedback.show{display:block}
+.ai-feedback-header{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.score-pill{display:inline-flex;align-items:center;background:var(--green-light);color:var(--green);font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto}
+
+/* WRITING */
+.writing-textarea{width:100%;min-height:160px;padding:16px;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--ink);background:var(--surface);border:0.5px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.15s}
+.writing-textarea:focus{border-color:var(--red)}
+
+/* DISCUSSION */
+.discussion-prompt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--gold-light);border-radius:8px;font-size:14px;color:var(--gold);margin-bottom:8px;line-height:1.5}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* SPINNER */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* UNIT NOTE */
+.unit-note{background:var(--blue-light);border:0.5px solid rgba(30,64,175,0.15);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;gap:8px;align-items:flex-start}
+
+/* GRAMMAR G1 — orange/amber accent */
+--orange:#92400E;--orange-light:#FEF3C7;
+.grammar-badge-g1{display:inline-flex;align-items:center;gap:6px;background:var(--gold-light);color:var(--gold);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
+.grammar-callout-g1{background:var(--gold-light);border:0.5px solid rgba(180,83,9,0.2);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.7}
+.grammar-callout-g1 strong{color:var(--gold)}
+.grammar-rule{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7}
+.grammar-rule-title{font-weight:500;color:var(--gold);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+.example-pl{color:var(--ink);font-style:italic;margin-bottom:3px}
+.example-en{color:var(--ink-muted);font-size:13px}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#92400E}
+.case-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.case-table th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:12px}
+.case-table td{padding:9px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.5}
+.case-table tr:nth-child(even) td{background:#FAF7F2}
+.case-table td:first-child{font-weight:500;color:var(--gold)}
+.transform-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:8px;border:0.5px solid var(--border)}
+.transform-original{font-size:14px;color:var(--ink);font-style:italic}
+.transform-task{font-size:12px;color:var(--ink-muted);margin-bottom:2px}
+.transform-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);padding:4px 2px;outline:none;transition:border-color 0.15s}
+.transform-input:focus{border-bottom-color:var(--red)}
+.transform-input.correct{border-bottom-color:var(--green);color:var(--green)}
+.transform-input.incorrect{border-bottom-color:var(--red);color:var(--red)}
+.case-pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:500;margin:2px 3px}
+.case-nom{background:#EFF6FF;color:#1D4ED8}
+.case-gen{background:#FEF3C7;color:#92400E}
+.case-dat{background:#F0FDF4;color:#166534}
+.case-acc{background:#FDF4FF;color:#7E22CE}
+.case-ins{background:#FFF7ED;color:#C2410C}
+.case-loc{background:#F0F9FF;color:#0369A1}
+.case-voc{background:#FFF1F2;color:#BE123C}
+
+/* MOBILE */
+#menu-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:8px;width:40px;height:40px;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:99}
+#overlay.show{display:block}
+@media(max-width:720px){
+  #menu-toggle{display:flex}
+  #sidebar{position:fixed;top:0;left:0;height:100%;z-index:100;transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  .main-inner{padding:16px 14px 60px;margin-top:56px}
+  .section-title{font-size:22px}
+  .steps{gap:0}
+  .step{font-size:9px}
+  .step-dot{width:18px;height:18px;font-size:9px}
+  .nav-btns{flex-direction:column;gap:10px}
+  .nav-btns .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+<button id="menu-toggle" onclick="toggleSidebar()" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="app">
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="course-title">Polski B1–B2</div>
+    <div class="course-subtitle">Intermediate Polish Course</div>
+  </div>
+  <div class="unit-label">Unit 1 — Praca i Kariera</div>
+  <div class="nav-item active" id="nav-lesson" onclick="navigate('lesson')"><span class="nav-icon"><i class="ti ti-book-2"></i></span>Extended Lesson<span class="nav-done" id="nd-lesson" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-grammar" onclick="navigate('grammar')"><span class="nav-icon"><i class="ti ti-math-function"></i></span>Grammar: G1<span class="nav-done" id="nd-grammar" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-gapfill" onclick="navigate('gapfill')"><span class="nav-icon"><i class="ti ti-pencil"></i></span>Gap Fill<span class="nav-done" id="nd-gapfill" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-mc" onclick="navigate('mc')"><span class="nav-icon"><i class="ti ti-list-check"></i></span>Multiple Choice<span class="nav-done" id="nd-mc" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-item" id="nav-matching" onclick="navigate('matching')"><span class="nav-icon"><i class="ti ti-arrows-exchange"></i></span>Matching<span class="nav-done" id="nd-matching" style="display:none"><i class="ti ti-circle-check"></i></span></div>
+  <div class="nav-sep">
+    <div class="nav-item" id="nav-test" onclick="navigate('test')"><span class="nav-icon"><i class="ti ti-clipboard-check"></i></span>Unit Test<span class="nav-lock" id="test-lock"><i class="ti ti-lock"></i></span></div>
+  </div>
+  <div class="unit-label" style="margin-top:4px">Unit 2 — Relacje <span style="font-size:9px;opacity:0.5">(coming soon)</span></div>
+  <div class="nav-item" style="opacity:0.3;pointer-events:none"><span class="nav-icon"><i class="ti ti-lock"></i></span>Locked</div>
+  <div class="sidebar-footer">
+    <div class="progress-label">Unit 1 progress</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+<div class="main-inner">
+
+<!-- ==================== LESSON PAGE ==================== -->
+<div class="page active" id="page-lesson">
+  <div class="breadcrumb">Unit 1 <span>›</span> Extended Lesson</div>
+  <div class="section-badge"><i class="ti ti-book-2"></i> Extended Lesson</div>
+  <div class="section-title">Praca i Kariera<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Work &amp; Career</span></div>
+  <div class="section-desc">Work through all four parts: reading with vocabulary, comprehension and discussion, listening, then an AI-assessed writing task. Complete this lesson to unlock the practice exercises.</div>
+
+  <div class="steps">
+    <div class="step active" id="step-read" onclick="goStep('read')"><div class="step-dot">1</div>&nbsp;Reading</div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step" id="step-comp" onclick="lessonStepsDone.has('read')&&goStep('comp')"><div class="step-dot">2</div>&nbsp;Comprehension</div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step" id="step-listen" onclick="lessonStepsDone.has('comp')&&goStep('listen')"><div class="step-dot">3</div>&nbsp;Listening</div>
+    <div class="step-line" id="sl3"></div>
+    <div class="step" id="step-write" onclick="lessonStepsDone.has('listen')&&goStep('write')"><div class="step-dot">4</div>&nbsp;Writing</div>
+  </div>
+
+  <!-- ---- READING ---- -->
+  <div class="tab-content active" id="tc-read">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-article"></i> Reading — Artykuł</div>
+      <div class="unit-note"><i class="ti ti-info-circle"></i><span>Hover or tap <span style="background:var(--gold-light);color:var(--gold);padding:1px 6px;border-radius:3px;font-weight:500">highlighted words</span> to see translations. Tap <i class="ti ti-volume"></i> to hear pronunciation.</span></div>
+      <div class="reading-text">
+        <p>Anna <span class="vocab-highlight">pracuje<span class="vocab-tip">pracować = to work<br>(3rd pers. sg. present)</span></span> jako <span class="vocab-highlight">kierownik projektu<span class="vocab-tip">= project manager</span></span> w dużej firmie informatycznej w Warszawie. Codziennie <span class="vocab-highlight">zarządza<span class="vocab-tip">zarządzać = to manage<br>(3rd pers. sg. present)</span></span> <span class="vocab-highlight">zespołem<span class="vocab-tip">zespół → zespołem<br>(Instrumental case after zarządzać)</span></span> dziesięciu programistów i odpowiada za realizację kilku projektów jednocześnie.</p>
+        <p>Od trzech lat Anna marzy o tym, żeby <span class="vocab-highlight">awansować<span class="vocab-tip">awansować = to get promoted<br>(infinitive after żeby)</span></span> na <span class="vocab-highlight">stanowisko<span class="vocab-tip">stanowisko = position / post<br>(neuter noun, Accusative here)</span></span> dyrektora regionalnego. W tym celu regularnie uczestniczy w <span class="vocab-highlight">szkoleniach<span class="vocab-tip">szkolenie → szkoleniach<br>(Locative pl. after uczestniczyć w)</span></span> menedżerskich i kursach językowych organizowanych przez firmę.</p>
+        <p>W wolnym czasie Anna <span class="vocab-highlight">doskonali<span class="vocab-tip">doskonalić = to improve / perfect<br>(3rd pers. sg. present)</span></span> swoje <span class="vocab-highlight">umiejętności<span class="vocab-tip">umiejętność → umiejętności<br>(pl. Accusative = skills/abilities)</span></span> negocjacyjne i przywódcze. Niedawno <span class="vocab-highlight">ukończyła<span class="vocab-tip">ukończyć = to complete / finish<br>(past tense, feminine)</span></span> kurs z zakresu <span class="vocab-highlight">zarządzania<span class="vocab-tip">zarządzanie = management<br>(Genitive after z zakresu)</span></span> zmianą, który bardzo jej pomógł w codziennej pracy.</p>
+        <p>Jej <span class="vocab-highlight">pracodawca<span class="vocab-tip">pracodawca = employer<br>(masculine noun)</span></span> docenia jej zaangażowanie i <span class="vocab-highlight">zapowiedział<span class="vocab-tip">zapowiedzieć = to announce<br>(past tense, masculine)</span></span>, że jeśli wyniki <span class="vocab-highlight">działu<span class="vocab-tip">dział = department<br>(Genitive after wyniki)</span></span> będą dobre w tym kwartale, Anna otrzyma <span class="vocab-highlight">podwyżkę<span class="vocab-tip">podwyżka = pay rise<br>(Accusative after otrzymać)</span></span> i nowy <span class="vocab-highlight">zakres obowiązków<span class="vocab-tip">= scope of responsibilities</span></span>.</p>
+        <p>Anna uważa, że dobra <span class="vocab-highlight">komunikacja<span class="vocab-tip">komunikacja = communication<br>(feminine noun)</span></span> i <span class="vocab-highlight">empatia<span class="vocab-tip">empatia = empathy<br>(feminine noun)</span></span> są kluczem do sukcesu w każdej karierze. Dlatego stara się <span class="vocab-highlight">motywować<span class="vocab-tip">motywować = to motivate<br>(infinitive after starać się)</span></span> swój zespół i tworzyć atmosferę wzajemnego <span class="vocab-highlight">szacunku<span class="vocab-tip">szacunek → szacunku<br>(Genitive = respect)</span></span> i <span class="vocab-highlight">zaufania<span class="vocab-tip">zaufanie → zaufania<br>(Genitive = trust)</span></span>.</p>
+      </div>
+
+      <div class="card-title" style="margin-top:8px"><i class="ti ti-vocabulary"></i> Key Vocabulary — click <i class="ti ti-volume" style="font-size:13px"></i> to hear pronunciation</div>
+      <table class="vocab-table" style="margin-bottom:24px">
+        <tr><td>pracować<button class="vocab-audio-btn" onclick="speakPolish('pracować')"><i class="ti ti-volume"></i></button></td><td>pracuję / pracuje</td><td>to work</td></tr>
+        <tr><td>zarządzać<button class="vocab-audio-btn" onclick="speakPolish('zarządzać')"><i class="ti ti-volume"></i></button></td><td>zarządzam / zarządza</td><td>to manage</td></tr>
+        <tr><td>awansować<button class="vocab-audio-btn" onclick="speakPolish('awansować')"><i class="ti ti-volume"></i></button></td><td>awansuję / awansuje</td><td>to get promoted</td></tr>
+        <tr><td>stanowisko<button class="vocab-audio-btn" onclick="speakPolish('stanowisko')"><i class="ti ti-volume"></i></button></td><td>(neuter noun)</td><td>position / post</td></tr>
+        <tr><td>umiejętność<button class="vocab-audio-btn" onclick="speakPolish('umiejętność')"><i class="ti ti-volume"></i></button></td><td>umiejętności (pl.)</td><td>skill / ability</td></tr>
+        <tr><td>szkolenie<button class="vocab-audio-btn" onclick="speakPolish('szkolenie')"><i class="ti ti-volume"></i></button></td><td>szkoleniach (Loc. pl.)</td><td>training / workshop</td></tr>
+        <tr><td>pracodawca<button class="vocab-audio-btn" onclick="speakPolish('pracodawca')"><i class="ti ti-volume"></i></button></td><td>(masculine noun)</td><td>employer</td></tr>
+        <tr><td>podwyżka<button class="vocab-audio-btn" onclick="speakPolish('podwyżka')"><i class="ti ti-volume"></i></button></td><td>podwyżkę (Acc.)</td><td>pay rise</td></tr>
+        <tr><td>motywować<button class="vocab-audio-btn" onclick="speakPolish('motywować')"><i class="ti ti-volume"></i></button></td><td>motyuję / motywuje</td><td>to motivate</td></tr>
+        <tr><td>zaufanie<button class="vocab-audio-btn" onclick="speakPolish('zaufanie')"><i class="ti ti-volume"></i></button></td><td>zaufania (Gen.)</td><td>trust</td></tr>
+      </table>
+
+      <div class="nav-btns">
+        <span style="color:var(--ink-faint);font-size:13px">Start of lesson</span>
+        <button class="btn btn-red" onclick="goStep('comp')">Continue to Comprehension <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- COMPREHENSION ---- -->
+  <div class="tab-content" id="tc-comp">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-help-circle"></i> Reading Comprehension</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:20px">Answer all questions based on the text. Choose the best answer for each.</p>
+
+      <div class="question-block">
+        <div class="question-text">1. Jakie stanowisko zajmuje Anna?</div>
+        <div class="mc-options" id="cq1">
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">A</div>Dyrektora regionalnego</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','correct')"><div class="mc-letter">B</div>Kierownika projektu</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">C</div>Programistki</div>
+          <div class="mc-option" onclick="checkMC(this,'cq1','wrong')"><div class="mc-letter">D</div>Specjalistki ds. szkoleń</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Czym zajmuje się Anna na co dzień?</div>
+        <div class="mc-options" id="cq2">
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">A</div>Prowadzi kursy językowe dla firm</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">B</div>Pisze oprogramowanie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','correct')"><div class="mc-letter">C</div>Zarządza zespołem programistów i realizuje projekty</div>
+          <div class="mc-option" onclick="checkMC(this,'cq2','wrong')"><div class="mc-letter">D</div>Rekrutuje nowych pracowników</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. Jaki kurs niedawno ukończyła Anna?</div>
+        <div class="mc-options" id="cq3">
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">A</div>Kurs programowania w Pythonie</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','correct')"><div class="mc-letter">B</div>Kurs zarządzania zmianą</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">C</div>Kurs negocjacji handlowych</div>
+          <div class="mc-option" onclick="checkMC(this,'cq3','wrong')"><div class="mc-letter">D</div>Kurs języka angielskiego</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Co pracodawca Anny zapowiedział, jeśli wyniki działu będą dobre?</div>
+        <div class="mc-options" id="cq4">
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">A</div>Przeniesienie Anny do innego działu</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">B</div>Organizację wyjazdu integracyjnego</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','correct')"><div class="mc-letter">C</div>Podwyżkę i nowy zakres obowiązków</div>
+          <div class="mc-option" onclick="checkMC(this,'cq4','wrong')"><div class="mc-letter">D</div>Awans na dyrektora regionalnego</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Według Anny, co jest kluczem do sukcesu w karierze?</div>
+        <div class="mc-options" id="cq5">
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">A</div>Wysokie wykształcenie i znajomość języków</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','correct')"><div class="mc-letter">B</div>Dobra komunikacja i empatia</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">C</div>Długie godziny pracy i ambicja</div>
+          <div class="mc-option" onclick="checkMC(this,'cq5','wrong')"><div class="mc-letter">D</div>Dobre relacje z przełożonymi</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="ti ti-messages"></i> Discussion Prompts</div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy awans zawodowy jest dla ciebie ważny? Co motywuje cię bardziej — wyższe stanowisko czy wyższe zarobki?<br><em style="font-size:13px;opacity:0.8">Is career advancement important to you? What motivates you more — a higher position or higher pay?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Jakie umiejętności są najważniejsze w twoim zawodzie lub wymarzonym zawodzie?<br><em style="font-size:13px;opacity:0.8">What skills are most important in your profession or dream job?</em></span></div>
+      <div class="discussion-prompt"><i class="ti ti-bulb"></i><span>Czy wolisz pracować samodzielnie czy w zespole? Dlaczego?<br><em style="font-size:13px;opacity:0.8">Do you prefer working independently or in a team? Why?</em></span></div>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:12px">Think about your answers — you'll use these ideas in the writing task later.</p>
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('read')"><i class="ti ti-arrow-left"></i> Back to Reading</button>
+        <button class="btn btn-red" onclick="goStep('listen')">Continue to Listening <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- LISTENING ---- -->
+  <div class="tab-content" id="tc-listen">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-headphones"></i> Listening — Rozmowa kwalifikacyjna</div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the full job interview. You can show or hide the transcript. Then answer all comprehension questions below.</p>
+
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay()" id="play-btn-el" aria-label="Play">
+          <i class="ti ti-player-play" id="play-icon"></i>
+        </button>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500">Rozmowa kwalifikacyjna — Pełna rozmowa</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 3:24 · Polish B1–B2</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:24px">
+          <div class="audio-bar" style="height:8px" id="ab1"></div>
+          <div class="audio-bar" style="height:14px" id="ab2"></div>
+          <div class="audio-bar" style="height:6px" id="ab3"></div>
+          <div class="audio-bar" style="height:18px" id="ab4"></div>
+          <div class="audio-bar" style="height:10px" id="ab5"></div>
+          <div class="audio-bar" style="height:16px" id="ab6"></div>
+          <div class="audio-bar" style="height:8px" id="ab7"></div>
+        </div>
+        <button class="transcript-toggle" onclick="toggleTranscript()"><i class="ti ti-file-text"></i> Transcript</button>
+      </div>
+
+      <div class="transcript-box" id="transcript-box">
+        <strong style="color:var(--ink);display:block;margin-bottom:10px;font-size:14px">Transcript — Rozmowa kwalifikacyjna</strong>
+        <p><strong style="color:var(--ink)">Rekruter:</strong> Dzień dobry. Proszę usiąść. Miło mi panią poznać. Widziałem pani CV — ma pani siedem lat doświadczenia w marketingu i sprzedaży?</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Kandydatka:</strong> Tak, zgadza się. Przez ostatnie trzy lata <em>kierowałam</em> działem marketingu w firmie farmaceutycznej. Byłam odpowiedzialna za strategię komunikacji i zarządzanie budżetem reklamowym.</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Rekruter:</strong> Imponujące. Co uważa pani za swój największy sukces zawodowy?</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Kandydatka:</strong> Zdecydowanie <em>wdrożenie</em> nowej strategii cyfrowej, dzięki której <em>sprzedaż wzrosła</em> o czterdzieści procent w ciągu jednego roku. Zespół pracował bardzo intensywnie, ale efekty były naprawdę satysfakcjonujące.</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Rekruter:</strong> Jak pani radzi sobie z presją i trudnymi sytuacjami w pracy?</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Kandydatka:</strong> Staram się zachować spokój i <em>koncentrować się</em> na rozwiązaniach, nie na problemach. Regularnie <em>organizuję</em> spotkania z zespołem, żeby omawiać trudności na bieżąco i szukać konstruktywnych odpowiedzi.</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Rekruter:</strong> Dlaczego chce pani zmienić pracę?</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Kandydatka:</strong> Szukam nowych wyzwań i możliwości <em>dalszego rozwoju</em>. Wasza firma ma świetną reputację i innowacyjne podejście do rynku. Wierzę, że moje <em>doświadczenie</em> i <em>umiejętności</em> mogą wnieść realną wartość do waszego zespołu.</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Rekruter:</strong> Jakie są pani oczekiwania finansowe?</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Kandydatka:</strong> Oczekuję wynagrodzenia na poziomie ośmiu do dziesięciu tysięcy złotych brutto miesięcznie, w zależności od zakresu obowiązków i możliwości <em>awansu</em>.</p>
+        <p style="margin-top:8px"><strong style="color:var(--ink)">Rekruter:</strong> Dziękuję. Skontaktujemy się z panią w ciągu tygodnia.</p>
+      </div>
+
+      <!-- Listening Comprehension Questions -->
+      <div class="question-block" style="margin-top:4px">
+        <div class="question-text">1. Ile lat doświadczenia ma kandydatka?</div>
+        <div class="mc-options" id="lq1">
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">A</div>Pięć lat</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">B</div>Trzy lata</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','correct')"><div class="mc-letter">C</div>Siedem lat</div>
+          <div class="mc-option" onclick="checkMC(this,'lq1','wrong')"><div class="mc-letter">D</div>Dziesięć lat</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Przez ostatnie trzy lata kandydatka kierowała:</div>
+        <div class="mc-options" id="lq2">
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">A</div>Działem sprzedaży w banku</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','correct')"><div class="mc-letter">B</div>Działem marketingu w firmie farmaceutycznej</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">C</div>Zespołem programistów</div>
+          <div class="mc-option" onclick="checkMC(this,'lq2','wrong')"><div class="mc-letter">D</div>Projektem informatycznym</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. O ile procent wzrosła sprzedaż po wdrożeniu nowej strategii?</div>
+        <div class="mc-options" id="lq3">
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">A</div>Trzydzieści procent</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','correct')"><div class="mc-letter">B</div>Czterdzieści procent</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">C</div>Pięćdziesiąt procent</div>
+          <div class="mc-option" onclick="checkMC(this,'lq3','wrong')"><div class="mc-letter">D</div>Dwadzieścia procent</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Jak kandydatka radzi sobie z presją w pracy?</div>
+        <div class="mc-options" id="lq4">
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">A</div>Unika trudnych sytuacji</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','correct')"><div class="mc-letter">B</div>Koncentruje się na rozwiązaniach i regularnie spotyka się z zespołem</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">C</div>Deleguje problemy do przełożonych</div>
+          <div class="mc-option" onclick="checkMC(this,'lq4','wrong')"><div class="mc-letter">D</div>Pracuje samodzielnie bez angażowania zespołu</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Dlaczego kandydatka chce zmienić pracę?</div>
+        <div class="mc-options" id="lq5">
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">A</div>Bo nie lubi swojego obecnego szefa</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">B</div>Bo chce pracować bliżej domu</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','correct')"><div class="mc-letter">C</div>Szuka nowych wyzwań i możliwości rozwoju</div>
+          <div class="mc-option" onclick="checkMC(this,'lq5','wrong')"><div class="mc-letter">D</div>Bo jej firma ogłosiła bankructwo</div>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">6. Które zdanie najlepiej opisuje oczekiwania finansowe kandydatki?</div>
+        <div class="mc-options" id="lq6">
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">A</div>Oczekuje stałej pensji bez możliwości negocjacji</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','correct')"><div class="mc-letter">B</div>Oczekuje 8–10 tys. zł brutto, zależnie od zakresu obowiązków</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">C</div>Chce negocjować stawkę godzinową</div>
+          <div class="mc-option" onclick="checkMC(this,'lq6','wrong')"><div class="mc-letter">D</div>Nie wspomniała o oczekiwaniach finansowych</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-outline" onclick="goStep('comp')"><i class="ti ti-arrow-left"></i> Back to Comprehension</button>
+        <button class="btn btn-red" onclick="goStep('write')">Continue to Writing <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- WRITING ---- -->
+  <div class="tab-content" id="tc-write">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-pencil-plus"></i> Writing Task — AI Assessed</div>
+      <div style="background:var(--gold-light);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:14px;color:var(--gold);line-height:1.6">
+        <strong>Task:</strong> Write <strong>100–140 words</strong> in Polish describing your job or ideal job. Use at least <strong>5 vocabulary words</strong> from today's lesson: <em>pracować, zarządzać, awansować, stanowisko, umiejętność, szkolenie, pracodawca, podwyżka, motywować, zaufanie</em>. Your answer must include both <strong>present tense</strong> and at least <strong>one past tense</strong> form.
+      </div>
+      <textarea class="writing-textarea" id="writing-input" placeholder="Zacznij pisać tutaj… (Start writing here…)"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span id="word-count" style="font-size:13px;color:var(--ink-muted)">0 words</span>
+        <button class="btn btn-red" onclick="submitWriting()" id="submit-btn">Submit for AI Assessment <i class="ti ti-robot"></i></button>
+      </div>
+    </div>
+    <div class="ai-feedback" id="ai-feedback">
+      <div class="ai-feedback-header"><i class="ti ti-robot"></i> AI Assessment<div class="score-pill" id="score-pill">…</div></div>
+      <div id="feedback-content"></div>
+    </div>
+    <div class="nav-btns" style="margin-top:20px;padding-top:0;border-top:none">
+      <button class="btn btn-outline" onclick="goStep('listen')"><i class="ti ti-arrow-left"></i> Back to Listening</button>
+      <button class="btn btn-primary" onclick="navigate('grammar')">Next: Grammar G1 <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== GRAMMAR G1 PAGE ==================== -->
+<div class="page" id="page-grammar">
+  <div class="breadcrumb">Unit 1 <span>›</span> Grammar Focus</div>
+  <div class="grammar-badge-g1"><i class="ti ti-math-function"></i> Grammar Unit G1</div>
+  <div class="section-title">The Case System: A Complete Map<br><span style="font-size:18px;color:var(--ink-muted);font-weight:400">Przypadki — Przegląd wszystkich 7 przypadków</span></div>
+  <div class="section-desc">Polish has 7 grammatical cases. You have already encountered several in the reading — this unit gives you the full map, explains when each case is used, and shows how they appear in work and career vocabulary. End with the diagnostic quiz to identify your weakest cases.</div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--gold)"><i class="ti ti-table"></i> The 7 Cases at a Glance</div>
+    <div class="grammar-callout-g1">Every Polish noun, pronoun and adjective changes its ending depending on its grammatical role in the sentence. The ending change is called <strong>declension</strong>, and the role is called a <strong>case</strong>. Each case answers a specific question and is triggered by specific verbs and prepositions.</div>
+    <table class="case-table">
+      <tr><th>#</th><th>Case (Polish)</th><th>Answers</th><th>Core function</th><th>Work vocabulary example</th></tr>
+      <tr><td><span class="case-pill case-nom">1</span></td><td><strong>Nominative</strong> — Mianownik</td><td>kto? co?</td><td>Subject of the sentence</td><td><em>Kierownik</em> zarządza zespołem.</td></tr>
+      <tr><td><span class="case-pill case-gen">2</span></td><td><strong>Genitive</strong> — Dopełniacz</td><td>kogo? czego?</td><td>Possession; absence; negation; after do/z/od/dla/bez</td><td>Wyniki <em>działu</em>. Nie mam <em>czasu</em>.</td></tr>
+      <tr><td><span class="case-pill case-dat">3</span></td><td><strong>Dative</strong> — Celownik</td><td>komu? czemu?</td><td>Indirect object; ufać, dziękować, pomagać</td><td>Szef podziękował <em>Annie</em>.</td></tr>
+      <tr><td><span class="case-pill case-acc">4</span></td><td><strong>Accusative</strong> — Biernik</td><td>kogo? co?</td><td>Direct object; direction (na/do + Acc.)</td><td>Anna dostała <em>podwyżkę</em>.</td></tr>
+      <tr><td><span class="case-pill case-ins">5</span></td><td><strong>Instrumental</strong> — Narzędnik</td><td>kim? czym?</td><td>After być/zostać/pracować jako; zarządzać/kierować</td><td>Zarządza <em>zespołem</em>. Jest <em>kierownikiem</em>.</td></tr>
+      <tr><td><span class="case-pill case-loc">6</span></td><td><strong>Locative</strong> — Miejscownik</td><td>o kim? o czym?</td><td>Always with preposition: w, na, przy, o, po</td><td>Uczestniczy w <em>szkoleniu</em>.</td></tr>
+      <tr><td><span class="case-pill case-voc">7</span></td><td><strong>Vocative</strong> — Wołacz</td><td>(direct address)</td><td>Addressing someone by name or title</td><td>Panie <em>dyrektorze</em>, mam pytanie.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--gold)"><i class="ti ti-tool"></i> Instrumental Case — most important for work vocabulary</div>
+    <div class="grammar-callout-g1">The Instrumental appears constantly in professional Polish. It is triggered by key verbs and the preposition <strong>z</strong> (together with).</div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">1. After być / zostać — role and identity (Instrumental)</div>
+      <p class="example-pl">Jestem <strong>kierownikiem</strong>. — I am a manager. ✓ (not "kierownik")</p>
+      <p class="example-pl">Została <strong>dyrektorką</strong>. — She became a director.</p>
+      <p class="example-en">After <strong>być / zostać</strong>, the role takes Instrumental — never Nominative.</p>
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">⚠ Exception: pracować jako — Nominative!</div>
+      <p class="example-pl">Pracuję jako <strong>kierownik</strong>. — I work as a manager. ✓ (Nominative)</p>
+      <p class="example-en">"Pracować jako" is an exception — the role stays in the <strong>Nominative</strong>, unlike after "być/zostać". Think of "jako" as introducing a comparison or label, not an identity transformation.</p>
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">2. After zarządzać, kierować, zajmować się, interesować się</div>
+      <p class="example-pl">Zarządza <strong>zespołem</strong>. (zespół → <em>zespołem</em>)</p>
+      <p class="example-pl">Kieruje <strong>projektem</strong>. — He leads the project.</p>
+      <p class="example-pl">Zajmuje się <strong>marketingiem</strong>. — She deals with marketing.</p>
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Instrumental endings</div>
+      <table class="case-table" style="margin-top:6px">
+        <tr><th>Gender</th><th>Nominative</th><th>Instrumental</th></tr>
+        <tr><td>Masculine hard</td><td>zespół, projekt</td><td>zespołem, projektem</td></tr>
+        <tr><td>Masculine soft</td><td>kierownik, szef</td><td>kierownikiem, szefem</td></tr>
+        <tr><td>Feminine</td><td>firma, praca</td><td>firmą, pracą</td></tr>
+        <tr><td>Neuter</td><td>stanowisko, szkolenie</td><td>stanowiskiem, szkoleniem</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--gold)"><i class="ti ti-map-pin"></i> Locative Case — location and topic</div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Core prepositions → always Locative</div>
+      <p class="example-pl"><strong>w</strong>: w <em>firmie</em>, w <em>Warszawie</em>, w <em>dziale</em> — in the company / Warsaw / department</p>
+      <p class="example-pl"><strong>na</strong>: na <em>spotkaniu</em>, na <em>szkoleniu</em> — at a meeting / training</p>
+      <p class="example-pl"><strong>o</strong>: mówić o <em>projekcie</em>, myśleć o <em>karierze</em> — talk about the project / think about career</p>
+      <p class="example-pl"><strong>przy</strong>: przy <em>biurku</em>, przy <em>komputerze</em> — at the desk / computer</p>
+    </div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Locative endings</div>
+      <table class="case-table" style="margin-top:6px">
+        <tr><th>Gender</th><th>Nominative</th><th>Locative</th></tr>
+        <tr><td>Masculine</td><td>projekt, dział</td><td>projekcie, dziale</td></tr>
+        <tr><td>Feminine</td><td>firma, kariera</td><td>firmie, karierze</td></tr>
+        <tr><td>Neuter</td><td>szkolenie, stanowisko</td><td>szkoleniu, stanowisku</td></tr>
+        <tr><td>Plural (all genders)</td><td>szkolenia, działy</td><td>szkoleniach, działach</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--gold)"><i class="ti ti-git-branch"></i> Genitive — the most versatile case</div>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">Key uses in work vocabulary</div>
+      <p class="example-pl"><strong>Possession:</strong> wyniki <em>działu</em>, szef <em>firmy</em>, zakres <em>obowiązków</em></p>
+      <p class="example-pl"><strong>After negation:</strong> nie mam <em>czasu</em> / <em>energii</em> / <em>doświadczenia</em></p>
+      <p class="example-pl"><strong>After do:</strong> iść do <em>pracy</em>, do <em>biura</em>, do <em>szefa</em></p>
+      <p class="example-pl"><strong>After z (origin):</strong> wrócić z <em>pracy</em>, z zakresu <em>zarządzania</em></p>
+      <p class="example-pl"><strong>After quantities:</strong> dużo <em>doświadczenia</em>, trochę <em>czasu</em>, mało <em>szkoleń</em></p>
+    </div>
+  </div>
+
+  <!-- DIAGNOSTIC QUIZ -->
+  <div class="card">
+    <div class="card-title"><i class="ti ti-clipboard-check"></i> Diagnostic Quiz — Which case is it?</div>
+    <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Identify the case of the underlined word in each sentence. Type the case name in English (e.g. <em>instrumental</em>, <em>locative</em>, <em>genitive</em>, <em>accusative</em>, <em>dative</em>).</p>
+
+    <div class="transform-row">
+      <div class="transform-original">1. Anna zarządza <u>zespołem</u> dziesięciu osób.</div>
+      <div class="transform-task">Which case is "zespołem"?</div>
+      <input class="transform-input" id="ti1" data-answer="instrumental" placeholder="Case name…" oninput="autoCheckG1('ti1','tf1','instrumental')">
+      <div id="tf1" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">2. Uczestniczy w <u>szkoleniach</u> menedżerskich.</div>
+      <div class="transform-task">Which case is "szkoleniach"?</div>
+      <input class="transform-input" id="ti2" data-answer="locative" placeholder="Case name…" oninput="autoCheckG1('ti2','tf2','locative')">
+      <div id="tf2" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">3. Anna otrzyma <u>podwyżkę</u> w przyszłym kwartale.</div>
+      <div class="transform-task">Which case is "podwyżkę"?</div>
+      <input class="transform-input" id="ti3" data-answer="accusative" placeholder="Case name…" oninput="autoCheckG1('ti3','tf3','accusative')">
+      <div id="tf3" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">4. Nie mam <u>czasu</u> na lunch dzisiaj.</div>
+      <div class="transform-task">Which case is "czasu" — and why does negation cause this?</div>
+      <input class="transform-input" id="ti4" data-answer="genitive" placeholder="Case name…" oninput="autoCheckG1('ti4','tf4','genitive')">
+      <div id="tf4" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="transform-row">
+      <div class="transform-original">5. Szef podziękował <u>Annie</u> za świetną pracę.</div>
+      <div class="transform-task">Which case is "Annie" (Anna → Annie)?</div>
+      <input class="transform-input" id="ti5" data-answer="dative" placeholder="Case name…" oninput="autoCheckG1('ti5','tf5','dative')">
+      <div id="tf5" style="font-size:13px;margin-top:4px;display:none"></div>
+    </div>
+
+    <div class="feedback-box" id="grammar-feedback"></div>
+    <button class="btn btn-gold" onclick="checkAllG1()" style="margin-top:16px">Check All Answers</button>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('lesson')"><i class="ti ti-arrow-left"></i> Back to Lesson</button>
+    <button class="btn btn-primary" onclick="navigate('gapfill')">Next: Gap Fill <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div><!-- end grammar page -->
+
+<!-- ==================== GAP FILL PAGE ==================== -->
+<div class="page" id="page-gapfill">
+  <div class="breadcrumb">Unit 1 <span>›</span> Gap Fill</div>
+  <div class="section-badge"><i class="ti ti-pencil"></i> Controlled Practice</div>
+  <div class="section-title">Gap Fill</div>
+  <div class="section-desc">Complete each sentence with the correct Polish word from the word bank. The word bank contains <strong>two forms of each word</strong> — only one is grammatically correct. Hints in the gaps are in English.</div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-pencil"></i> Complete the sentences</div>
+    <div style="line-height:2.8;font-size:15px">
+      <p>1. Ona <input class="gap-input" id="g1" data-answer="pracuje" placeholder="she works…"> w korporacji od pięciu lat.</p>
+      <p>2. Kierownik <input class="gap-input" id="g2" data-answer="zarządza" placeholder="manages…"> dużym <input class="gap-input" id="g3" data-answer="zespołem" placeholder="a team (instr.)…">.</p>
+      <p>3. Chcę <input class="gap-input" id="g4" data-answer="awansować" placeholder="to get promoted…"> na wyższe <input class="gap-input" id="g5" data-answer="stanowisko" placeholder="position (acc.)…">.</p>
+      <p>4. Uczestniczyłam w wielu <input class="gap-input" id="g6" data-answer="szkoleniach" placeholder="trainings (loc.)…"> zawodowych.</p>
+      <p>5. Mój <input class="gap-input" id="g7" data-answer="pracodawca" placeholder="employer…"> docenia moje <input class="gap-input" id="g8" data-answer="umiejętności" placeholder="skills (pl.)…">.</p>
+      <p>6. Po rocznej pracy dostałam <input class="gap-input" id="g9" data-answer="podwyżkę" placeholder="pay rise (acc.)…">.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+      <button class="btn btn-primary" onclick="checkGapFill()">Check Answers</button>
+      <button class="btn btn-outline" onclick="resetGapFill()">Reset</button>
+    </div>
+    <div class="feedback-box" id="gf-feedback"></div>
+  </div>
+
+  <div class="card" style="background:var(--cream)">
+    <div class="card-title">Word Bank — select a word, then click a gap</div>
+    <p style="font-size:13px;color:var(--ink-muted);margin-bottom:12px">Each correct form has one distractor — choose carefully!</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="word-bank">
+      <button class="word-bank-item" data-word="pracuje" onclick="selectBank(this)">pracuje</button>
+      <button class="word-bank-item" data-word="pracować" onclick="selectBank(this)">pracować</button>
+      <button class="word-bank-item" data-word="zarządza" onclick="selectBank(this)">zarządza</button>
+      <button class="word-bank-item" data-word="zarządzają" onclick="selectBank(this)">zarządzają</button>
+      <button class="word-bank-item" data-word="zespołem" onclick="selectBank(this)">zespołem</button>
+      <button class="word-bank-item" data-word="zespół" onclick="selectBank(this)">zespół</button>
+      <button class="word-bank-item" data-word="awansować" onclick="selectBank(this)">awansować</button>
+      <button class="word-bank-item" data-word="awansowałam" onclick="selectBank(this)">awansowałam</button>
+      <button class="word-bank-item" data-word="stanowisko" onclick="selectBank(this)">stanowisko</button>
+      <button class="word-bank-item" data-word="stanowisku" onclick="selectBank(this)">stanowisku</button>
+      <button class="word-bank-item" data-word="szkoleniach" onclick="selectBank(this)">szkoleniach</button>
+      <button class="word-bank-item" data-word="szkolenia" onclick="selectBank(this)">szkolenia</button>
+      <button class="word-bank-item" data-word="pracodawca" onclick="selectBank(this)">pracodawca</button>
+      <button class="word-bank-item" data-word="pracodawcy" onclick="selectBank(this)">pracodawcy</button>
+      <button class="word-bank-item" data-word="umiejętności" onclick="selectBank(this)">umiejętności</button>
+      <button class="word-bank-item" data-word="umiejętność" onclick="selectBank(this)">umiejętność</button>
+      <button class="word-bank-item" data-word="podwyżkę" onclick="selectBank(this)">podwyżkę</button>
+      <button class="word-bank-item" data-word="podwyżki" onclick="selectBank(this)">podwyżki</button>
+    </div>
+    <p style="font-size:12px;color:var(--ink-muted);margin-top:10px" id="bank-status">No word selected. Click a word above, then click a gap.</p>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('grammar')"><i class="ti ti-arrow-left"></i> Back to Grammar</button>
+    <button class="btn btn-primary" onclick="navigate('mc')">Next: Multiple Choice <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ==================== MULTIPLE CHOICE PAGE ==================== -->
+<div class="page" id="page-mc">
+  <div class="breadcrumb">Unit 1 <span>›</span> Multiple Choice</div>
+  <div class="section-badge"><i class="ti ti-list-check"></i> Controlled Practice</div>
+  <div class="section-title">Multiple Choice</div>
+  <div class="section-desc">Choose the grammatically correct option to complete each sentence. Focus on verb conjugation, aspect, and case government.</div>
+
+  <div class="card">
+    <div class="question-block">
+      <div class="question-text">1. Mój szef ______ dużą firmą od dziesięciu lat.</div>
+      <div class="mc-options" id="mq1">
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">A</div>kieruje się</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','correct')"><div class="mc-letter">B</div>kieruje</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">C</div>jest kierowany</div>
+        <div class="mc-option" onclick="checkMC(this,'mq1','wrong')"><div class="mc-letter">D</div>kierowania</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">2. Ona marzy o tym, żeby ______ na wyższe stanowisko.</div>
+      <div class="mc-options" id="mq2">
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">A</div>awansowała</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">B</div>awansuje</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','correct')"><div class="mc-letter">C</div>awansować</div>
+        <div class="mc-option" onclick="checkMC(this,'mq2','wrong')"><div class="mc-letter">D</div>awansowałaby</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">3. Uczestniczył w ______ językowych przez cały rok.</div>
+      <div class="mc-options" id="mq3">
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">A</div>szkolenie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">B</div>szkolenia</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','correct')"><div class="mc-letter">C</div>szkoleniach</div>
+        <div class="mc-option" onclick="checkMC(this,'mq3','wrong')"><div class="mc-letter">D</div>szkoleniu</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">4. Piotr ______ nową pracę już od miesiąca.</div>
+      <div class="mc-options" id="mq4">
+        <div class="mc-option" onclick="checkMC(this,'mq4','correct')"><div class="mc-letter">A</div>szuka</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">B</div>poszuka</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">C</div>znalazł</div>
+        <div class="mc-option" onclick="checkMC(this,'mq4','wrong')"><div class="mc-letter">D</div>szukałby</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">5. Firma zaoferowała jej pracę, ______ odmówiła.</div>
+      <div class="mc-options" id="mq5">
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">A</div>bo</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','correct')"><div class="mc-letter">B</div>ale</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">C</div>żeby</div>
+        <div class="mc-option" onclick="checkMC(this,'mq5','wrong')"><div class="mc-letter">D</div>jeśli</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">6. Proszę ______ CV na adres e-mail podany w ogłoszeniu.</div>
+      <div class="mc-options" id="mq6">
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">A</div>wysyłanie</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">B</div>wysyła</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','correct')"><div class="mc-letter">C</div>przesłać</div>
+        <div class="mc-option" onclick="checkMC(this,'mq6','wrong')"><div class="mc-letter">D</div>przesyłała</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">7. Gdybym ______ więcej czasu, zapisałabym się na kurs.</div>
+      <div class="mc-options" id="mq7">
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">A</div>mam</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">B</div>będę miała</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','correct')"><div class="mc-letter">C</div>miała</div>
+        <div class="mc-option" onclick="checkMC(this,'mq7','wrong')"><div class="mc-letter">D</div>miałam</div>
+      </div>
+    </div>
+    <div class="question-block">
+      <div class="question-text">8. On jest bardzo ______ pracownikiem — zawsze wykonuje zadania na czas.</div>
+      <div class="mc-options" id="mq8">
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">A</div>odpowiedzialność</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','correct')"><div class="mc-letter">B</div>odpowiedzialnym</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">C</div>odpowiedzialni</div>
+        <div class="mc-option" onclick="checkMC(this,'mq8','wrong')"><div class="mc-letter">D</div>odpowiedzialna</div>
+      </div>
+    </div>
+    <div class="feedback-box" id="mc-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('gapfill')"><i class="ti ti-arrow-left"></i> Back to Gap Fill</button>
+    <button class="btn btn-primary" onclick="navigate('matching')">Next: Matching <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ==================== MATCHING PAGE ==================== -->
+<div class="page" id="page-matching">
+  <div class="breadcrumb">Unit 1 <span>›</span> Matching</div>
+  <div class="section-badge"><i class="ti ti-arrows-exchange"></i> Controlled Practice</div>
+  <div class="section-title">Matching</div>
+  <div class="section-desc">Select a Polish word on the left, then click its English meaning on the right. Match all 7 pairs to complete the exercise.</div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">Polish</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-left">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'L')">awansować</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'L')">umiejętność</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'L')">zarządzać</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'L')">stanowisko</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'L')">szkolenie</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'L')">podwyżka</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'L')">pracodawca</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink-muted);margin-bottom:8px">English</p>
+        <div style="display:flex;flex-direction:column;gap:8px" id="match-right">
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'R')">to manage</div>
+          <div class="match-item" data-id="6" onclick="selectMatch(this,'R')">pay rise</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'R')">to get promoted</div>
+          <div class="match-item" data-id="7" onclick="selectMatch(this,'R')">employer</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'R')">job position</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'R')">skill / ability</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'R')">training</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="resetMatching()"><i class="ti ti-refresh"></i> Reset</button>
+    <div class="feedback-box" id="match-feedback"></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('mc')"><i class="ti ti-arrow-left"></i> Back to Multiple Choice</button>
+    <button class="btn btn-primary" onclick="navigate('test')">Next: Unit Test <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- ==================== TEST PAGE ==================== -->
+<div class="page" id="page-test">
+  <div class="breadcrumb">Unit 1 <span>›</span> Unit Test</div>
+  <div class="section-badge"><i class="ti ti-clipboard-check"></i> Unit Test</div>
+  <div class="section-title">Unit 1 Test</div>
+  <div class="section-desc">Complete all four sections to unlock your unit test. You can retake the test as many times as you like — mistakes generate personalised revision recommendations.</div>
+  <div id="test-locked">
+    <div style="background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
+      <i class="ti ti-lock" style="font-size:48px;color:var(--ink-faint)"></i>
+      <p style="font-weight:500;font-size:16px;margin-top:16px;margin-bottom:8px">Test locked</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">Complete all four sections of Unit 1 to unlock the test.<br>Sections remaining: <span id="sections-remaining" style="font-weight:500;color:var(--red)">4</span></p>
+      <button class="btn btn-outline" onclick="navigate('lesson')">Start with the Lesson <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div id="test-unlocked" style="display:none">
+    <div class="card" style="text-align:center;padding:40px">
+      <i class="ti ti-trophy" style="font-size:48px;color:var(--gold)"></i>
+      <p style="font-weight:500;font-size:18px;margin-top:16px;margin-bottom:8px">Unit 1 Test — Unlocked!</p>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:24px">You've completed all sections. The full test combines 25 questions across all exercise types. Any mistakes will link back to specific sections for revision.</p>
+      <button class="btn btn-red" style="font-size:15px;padding:12px 28px">Start Unit Test <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn btn-outline" onclick="navigate('matching')"><i class="ti ti-arrow-left"></i> Back to Matching</button>
+    <span></span>
+  </div>
+</div>
+
+</div><!-- end main-inner -->
+</div><!-- end main -->
+</div><!-- end app -->
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let completedSections = new Set();
+let lessonStepsDone = new Set();
+let isPlaying = false;
+let audioInterval = null;
+let audioSecs = 0;
+let audioTimer = null;
+let matchLeft = null, matchRight = null;
+let bankWord = null;
+let selectedGap = null;
+let mcDone = {mq1:false,mq2:false,mq3:false,mq4:false,mq5:false,mq6:false,mq7:false,mq8:false};
+let mcAnswered = new Set();
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+const pageOrder = ['lesson','grammar','gapfill','mc','matching','test'];
+
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  const navEl = document.getElementById('nav-'+page);
+  if(navEl) navEl.classList.add('active');
+  closeSidebar();
+  document.getElementById('main').scrollTo(0,0);
+  if(page==='test') updateTestPage();
+}
+
+function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
+function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+
+// ============================================================
+// LESSON STEPS
+// ============================================================
+function goStep(step) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tc-'+step).classList.add('active');
+  if(step==='comp') lessonStepsDone.add('read');
+  if(step==='listen') lessonStepsDone.add('comp');
+  if(step==='write') lessonStepsDone.add('listen');
+  updateStepUI(step);
+  document.getElementById('main').scrollTo(0,0);
+}
+
+function updateStepUI(current) {
+  const order = ['read','comp','listen','write'];
+  order.forEach((s,i)=>{
+    const el = document.getElementById('step-'+s);
+    if(!el) return;
+    el.classList.remove('active','done');
+    const dot = el.querySelector('.step-dot');
+    if(lessonStepsDone.has(s)){ el.classList.add('done'); dot.innerHTML='<i class="ti ti-check" style="font-size:10px"></i>'; }
+    else if(s===current){ el.classList.add('active'); dot.textContent=i+1; }
+    else { dot.textContent=i+1; }
+  });
+}
+
+// ============================================================
+// AUDIO (simulated)
+// ============================================================
+const AUDIO_DURATION = 204; // 3:24
+
+function togglePlay(){
+  isPlaying=!isPlaying;
+  document.getElementById('play-icon').className=isPlaying?'ti ti-player-pause':'ti ti-player-play';
+  if(isPlaying){
+    audioInterval=setInterval(()=>{ for(let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} },180);
+    audioTimer=setInterval(()=>{ audioSecs=Math.min(audioSecs+1,AUDIO_DURATION); updateAudioTime(); if(audioSecs>=AUDIO_DURATION){clearInterval(audioTimer);clearInterval(audioInterval);isPlaying=false;document.getElementById('play-icon').className='ti ti-player-play';resetBars();} },1000);
+  } else {
+    clearInterval(audioInterval); clearInterval(audioTimer); resetBars();
+  }
+}
+function resetBars(){ [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
+function updateAudioTime(){
+  const m=Math.floor(audioSecs/60), s=audioSecs%60;
+  document.getElementById('audio-time').textContent=`${m}:${s<10?'0'+s:s} / 3:24 · Polish B1–B2`;
+}
+function toggleTranscript(){
+  const box=document.getElementById('transcript-box');
+  box.classList.toggle('show');
+}
+
+// ============================================================
+// VOCABULARY AUDIO (TTS via Web Speech API)
+// ============================================================
+function speakPolish(word){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);
+  u.lang='pl-PL'; u.rate=0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// ============================================================
+// MULTIPLE CHOICE (shared)
+// ============================================================
+function checkMC(el, qid, result){
+  const container=document.getElementById(qid);
+  if(container.querySelector('.correct,.incorrect')) return;
+  el.classList.add(result==='correct'?'correct':'incorrect');
+  if(result!=='correct'){
+    setTimeout(()=>{
+      container.querySelectorAll('.mc-option').forEach(opt=>{
+        if(opt.getAttribute('onclick')&&opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+      });
+    },700);
+  }
+  // track MC section completion
+  if(qid.startsWith('mq')){
+    mcAnswered.add(qid);
+    mcDone[qid]=result==='correct';
+    if(mcAnswered.size===8){
+      completedSections.add('mc');
+      const correct=Object.values(mcDone).filter(Boolean).length;
+      const fb=document.getElementById('mc-feedback');
+      fb.className='feedback-box show '+(correct>=6?'success':correct>=4?'info':'error');
+      fb.innerHTML=correct===8?'<strong>Doskonale! 8/8</strong> — Perfect score. Excellent command of Polish grammar.'
+        :'<strong>'+correct+'/8 correct.</strong> Review any highlighted errors. Focus on: aspect (imperfective for ongoing actions), case government after verbs, and the conditional mood.';
+      updateProgress();
+    }
+  }
+}
+
+// ============================================================
+// GAP FILL
+// ============================================================
+function selectBank(btn){
+  document.querySelectorAll('.word-bank-item').forEach(b=>b.classList.remove('selected-bank'));
+  btn.classList.add('selected-bank');
+  bankWord=btn.dataset.word;
+  document.getElementById('bank-status').textContent='"'+bankWord+'" selected — now click a gap to fill it.';
+  if(selectedGap){
+    selectedGap.value=bankWord;
+    selectedGap.classList.remove('correct','incorrect');
+    selectedGap=null; bankWord=null;
+    btn.classList.remove('selected-bank');
+    document.getElementById('bank-status').textContent='Inserted! Select another word.';
+  }
+}
+
+document.addEventListener('click',function(e){
+  if(e.target.classList.contains('gap-input')){
+    selectedGap=e.target;
+    if(bankWord){
+      e.target.value=bankWord;
+      e.target.classList.remove('correct','incorrect');
+      document.querySelectorAll('.word-bank-item').forEach(b=>b.classList.remove('selected-bank'));
+      bankWord=null; selectedGap=null;
+      document.getElementById('bank-status').textContent='Inserted! Select another word.';
+    } else {
+      document.getElementById('bank-status').textContent='Gap selected. Now click a word from the bank above.';
+    }
+  }
+});
+
+function checkGapFill(){
+  const fields=['g1','g2','g3','g4','g5','g6','g7','g8','g9'];
+  let correct=0;
+  fields.forEach(id=>{
+    const inp=document.getElementById(id);
+    if(!inp) return;
+    inp.classList.remove('correct','incorrect');
+    if(inp.value.trim().toLowerCase()===inp.dataset.answer.toLowerCase()){inp.classList.add('correct');correct++;}
+    else inp.classList.add('incorrect');
+  });
+  const fb=document.getElementById('gf-feedback');
+  if(correct===fields.length){
+    fb.className='feedback-box show success';
+    fb.innerHTML='<strong>Świetnie! 9/9</strong> — All correct! You correctly applied verb conjugation, case endings after zarządzać (Instrumental), uczestniczyć w (Locative), and dostać (Accusative).';
+    completedSections.add('gapfill');
+    updateProgress();
+  } else {
+    fb.className='feedback-box show error';
+    fb.innerHTML='<strong>'+correct+'/9 correct.</strong> Check highlighted gaps. Key rules: after <em>zarządzać</em> → Instrumental (<em>zespołem</em>); after <em>uczestniczyć w</em> → Locative (<em>szkoleniach</em>); after <em>dostać / otrzymać</em> → Accusative (<em>podwyżkę</em>).';
+  }
+}
+
+function resetGapFill(){
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach(id=>{const inp=document.getElementById(id);if(inp){inp.value='';inp.classList.remove('correct','incorrect');}});
+  document.getElementById('gf-feedback').classList.remove('show');
+  document.querySelectorAll('.word-bank-item').forEach(b=>b.classList.remove('selected-bank','used'));
+  bankWord=null; selectedGap=null;
+  document.getElementById('bank-status').textContent='No word selected. Click a word above, then click a gap.';
+}
+
+// ============================================================
+// MATCHING
+// ============================================================
+function selectMatch(el, side){
+  if(el.classList.contains('matched')) return;
+  if(side==='L'){
+    document.querySelectorAll('#match-left .match-item').forEach(i=>i.classList.remove('selected'));
+    el.classList.add('selected'); matchLeft=el;
+  } else {
+    document.querySelectorAll('#match-right .match-item').forEach(i=>i.classList.remove('selected'));
+    el.classList.add('selected'); matchRight=el;
+  }
+  if(matchLeft&&matchRight){
+    if(matchLeft.dataset.id===matchRight.dataset.id){
+      matchLeft.classList.remove('selected'); matchLeft.classList.add('matched');
+      matchRight.classList.remove('selected'); matchRight.classList.add('matched');
+      const total=document.querySelectorAll('.match-item.matched').length;
+      if(total===14){
+        const fb=document.getElementById('match-feedback');
+        fb.className='feedback-box show success';
+        fb.innerHTML='<strong>Idealnie! 7/7</strong> — All pairs matched correctly.';
+        completedSections.add('matching');
+        updateProgress();
+      }
+    } else {
+      matchLeft.classList.add('wrong'); matchRight.classList.add('wrong');
+      setTimeout(()=>{ matchLeft.classList.remove('wrong','selected'); matchRight.classList.remove('wrong','selected'); },600);
+    }
+    matchLeft=null; matchRight=null;
+  }
+}
+
+function resetMatching(){
+  document.querySelectorAll('.match-item').forEach(el=>el.classList.remove('selected','matched','wrong'));
+  matchLeft=null; matchRight=null;
+  document.getElementById('match-feedback').classList.remove('show');
+}
+
+// ============================================================
+// PROGRESS
+// ============================================================
+function updateProgress(){
+  const done=completedSections.size;
+  const pct=Math.round((done/5)*100);
+  document.getElementById('sidebar-progress').style.width=pct+'%';
+  document.getElementById('sidebar-progress-label').textContent=done+' / 5 sections complete';
+  ['lesson','grammar','gapfill','mc','matching'].forEach(s=>{
+    const nd=document.getElementById('nd-'+s);
+    if(nd) nd.style.display=completedSections.has(s)?'inline':'none';
+  });
+}
+
+function updateTestPage(){
+  const done=completedSections.size;
+  const remaining=5-done;
+  const remEl=document.getElementById('sections-remaining');
+  if(remEl) remEl.textContent=remaining;
+  if(done===5){
+    document.getElementById('test-locked').style.display='none';
+    document.getElementById('test-unlocked').style.display='block';
+    document.getElementById('test-lock').innerHTML='';
+  }
+}
+
+// ============================================================
+// WRITING / AI ASSESSMENT
+// ============================================================
+const writingInput=document.getElementById('writing-input');
+if(writingInput){
+  writingInput.addEventListener('input',function(){
+    const w=this.value.trim().split(/\s+/).filter(x=>x).length;
+    document.getElementById('word-count').textContent=w+' word'+(w!==1?'s':'');
+  });
+}
+
+async function submitWriting(){
+  const text=document.getElementById('writing-input').value.trim();
+  if(text.split(/\s+/).filter(x=>x).length<15){ alert('Please write at least a few sentences before submitting.'); return; }
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;
+  btn.innerHTML='<div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></div> Analysing…';
+  const fb=document.getElementById('ai-feedback');
+  fb.classList.add('show');
+  document.getElementById('score-pill').textContent='…';
+  document.getElementById('feedback-content').innerHTML='<div style="display:flex;justify-content:center;padding:24px"><div class="spinner"></div></div>';
+
+  const prompt=`You are an experienced Polish language teacher assessing a B1-B2 learner's writing.
+
+Task given to the student: Write 100-140 words in Polish describing their job or ideal job. Use at least 5 of these vocabulary words: pracować, zarządzać, awansować, stanowisko, umiejętność, szkolenie, pracodawca, podwyżka, motywować, zaufanie. Include present tense and at least one past tense form.
+
+Student's text:
+"""
+${text}
+"""
+
+Respond ONLY with valid JSON (no markdown, no extra text):
+{
+  "score": <integer 0-100>,
+  "grade": "<A/B/C/D/F>",
+  "word_count": <integer>,
+  "summary": "<2 sentences of overall feedback in English>",
+  "vocab_used": ["<list of target vocab words correctly used>"],
+  "vocab_missing": ["<target words not used>"],
+  "correct_structures": ["<2-3 specific things done well with Polish examples from the text>"],
+  "errors": [{"error": "<exact phrase from text>", "correction": "<corrected version>", "explanation": "<brief English explanation of the rule>"}],
+  "tenses_used": "<brief comment on tense use>",
+  "recommendation": "<one clear actionable improvement tip>"
+}`;
+
+  try {
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await res.json();
+    const raw=data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const r=JSON.parse(raw);
+    renderFeedback(r);
+    completedSections.add('lesson');
+    updateProgress();
+  } catch(e){
+    document.getElementById('score-pill').textContent='Error';
+    document.getElementById('feedback-content').innerHTML='<p style="color:var(--red);font-size:14px;padding:8px 0">Could not connect to AI assessment. Please check your connection and try again.</p>';
+  }
+  btn.disabled=false;
+  btn.innerHTML='Resubmit <i class="ti ti-robot"></i>';
+}
+
+function renderFeedback(r){
+  const pill=document.getElementById('score-pill');
+  pill.textContent=r.score+'/100 · '+r.grade;
+  pill.style.background=r.score>=75?'var(--green-light)':r.score>=50?'var(--gold-light)':'var(--red-light)';
+  pill.style.color=r.score>=75?'var(--green)':r.score>=50?'var(--gold)':'var(--red)';
+
+  let html='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Overall</div>';
+  html+='<p style="font-size:14px;line-height:1.6">'+r.summary+'</p></div>';
+  if(r.tenses_used) html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Tenses</div><p style="font-size:14px">'+r.tenses_used+'</p></div>';
+  if(r.vocab_used&&r.vocab_used.length){
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Vocabulary used ✓</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_used.forEach(v=>html+='<span style="background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500">'+v+'</span>');
+    html+='</div></div>';
+  }
+  if(r.vocab_missing&&r.vocab_missing.length){
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted);margin-bottom:6px">Not yet used</div><div style="display:flex;gap:6px;flex-wrap:wrap">';
+    r.vocab_missing.forEach(v=>html+='<span style="background:var(--cream);border:0.5px solid var(--border);color:var(--ink-muted);padding:3px 10px;border-radius:20px;font-size:13px">'+v+'</span>');
+    html+='</div></div>';
+  }
+  if(r.correct_structures&&r.correct_structures.length){
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--green);margin-bottom:6px">✓ What you did well</div>';
+    r.correct_structures.forEach(s=>html+='<p style="font-size:14px;line-height:1.6;margin-bottom:4px">✓ '+s+'</p>');
+    html+='</div>';
+  }
+  if(r.errors&&r.errors.length){
+    html+='<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;color:var(--red);margin-bottom:6px">✗ Errors to correct</div>';
+    r.errors.forEach(e=>{ html+='<div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px"><div><span style="color:var(--red);text-decoration:line-through">'+e.error+'</span> → <strong style="color:var(--green)">'+e.correction+'</strong></div><div style="color:var(--ink-muted);margin-top:4px">'+e.explanation+'</div></div>'; });
+    html+='</div>';
+  }
+  if(r.recommendation) html+='<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 Next step:</strong> '+r.recommendation+'</div>';
+  document.getElementById('feedback-content').innerHTML=html;
+}
+
+// ============================================================
+// GRAMMAR G1 — DIAGNOSTIC QUIZ
+// ============================================================
+const G1_EXPLANATIONS = {
+  ti1: { ans:'instrumental', text:'Instrumental — after zarządzać, the object always takes Instrumental. (zespół → zespołem)' },
+  ti2: { ans:'locative',    text:'Locative — after "w", the noun takes Locative. (szkolenie → szkoleniach, Loc. pl.)' },
+  ti3: { ans:'accusative',  text:'Accusative — direct object of "otrzyma" (will receive). (podwyżka → podwyżkę)' },
+  ti4: { ans:'genitive',    text:'Genitive — after negation "nie mam", the direct object shifts from Acc. → Gen. (czas → czasu)' },
+  ti5: { ans:'dative',      text:'Dative — "dziękować" (to thank) always takes Dative. (Anna → Annie, Dat. fem.)' },
+};
+
+function autoCheckG1(inputId, fbId, expected) {
+  const inp = document.getElementById(inputId);
+  const fb  = document.getElementById(fbId);
+  const val = inp.value.trim().toLowerCase();
+  if (val.length < 3) { inp.classList.remove('correct','incorrect'); fb.style.display='none'; return; }
+  if (val === expected || val.startsWith(expected)) {
+    inp.classList.add('correct'); inp.classList.remove('incorrect');
+    fb.style.display='block'; fb.style.color='var(--green)'; fb.textContent='✓ Correct!';
+  } else {
+    inp.classList.remove('correct'); inp.classList.add('incorrect'); fb.style.display='none';
+  }
+}
+
+function checkAllG1() {
+  let correct = 0;
+  Object.entries(G1_EXPLANATIONS).forEach(([id, data]) => {
+    const inp = document.getElementById(id);
+    const fbNum = id.replace('ti','');
+    const fb  = document.getElementById('tf'+fbNum);
+    const val = inp.value.trim().toLowerCase();
+    inp.classList.remove('correct','incorrect');
+    fb.style.display='block';
+    if (val === data.ans || val.startsWith(data.ans)) {
+      inp.classList.add('correct'); fb.style.color='var(--green)'; fb.textContent='✓ Correct!'; correct++;
+    } else {
+      inp.classList.add('incorrect'); fb.style.color='var(--red)';
+      fb.textContent='✗ Answer: ' + data.ans + ' — ' + data.text;
+    }
+  });
+  const gfb = document.getElementById('grammar-feedback');
+  if (correct === 5) {
+    gfb.className='feedback-box show success';
+    gfb.innerHTML='<strong>Doskonale! 5/5</strong> — You correctly identified all 5 cases. You have a solid grasp of case functions in work vocabulary. Move on to Gap Fill to practise using them actively.';
+    completedSections.add('grammar');
+    updateProgress();
+  } else {
+    gfb.className='feedback-box show '+(correct>=3?'info':'error');
+    const weak = Object.entries(G1_EXPLANATIONS).filter(([id])=>{
+      const v = document.getElementById(id).value.trim().toLowerCase();
+      return v !== G1_EXPLANATIONS[id].ans && !v.startsWith(G1_EXPLANATIONS[id].ans);
+    }).map(([,d])=>d.ans);
+    gfb.innerHTML='<strong>'+correct+'/5 correct.</strong> Review the cases you missed: '
+      + weak.map(c=>'<strong>'+c+'</strong>').join(', ')
+      + '. Refer to the case tables above and try again before moving on.';
+  }
+}
+</script>
+</body>
+</html>
