@@ -1326,6 +1326,50 @@ function renderFeedback(r) {
   if (r.recommendation) html+='<div style="background:var(--gold-light);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--gold);line-height:1.5"><strong>💡 Next step:</strong> '+r.recommendation+'</div>';
   document.getElementById('feedback-content').innerHTML = html;
 }
+
+// ══════════════════════════════════════════════════════════════
+// PROGRESS PERSISTENCE — localStorage
+// ══════════════════════════════════════════════════════════════
+const UNIT_KEY = 'polski_unit_4';
+const SECTION_KEYS = ['lesson','grammar','gapfill','mc','matching'];
+
+function saveProgress() {
+  const data = {
+    sectionsComplete: completedSections.size,
+    sections: [...completedSections],
+    lastPage: document.querySelector('.page.active')?.id?.replace('page-','') || 'lesson',
+    ts: Date.now()
+  };
+  try { localStorage.setItem(UNIT_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function restoreProgress() {
+  try {
+    const raw = localStorage.getItem(UNIT_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    // Restore completed sections
+    if (data.sections) {
+      data.sections.forEach(s => completedSections.add(s));
+      updateProgress();
+    }
+    // Restore last page visited
+    if (data.lastPage && document.getElementById('page-' + data.lastPage)) {
+      navigate(data.lastPage);
+    }
+  } catch(e) {}
+}
+
+// Hook into updateProgress to also persist
+const _origUpdateProgress = updateProgress;
+function updateProgress() {
+  _origUpdateProgress();
+  saveProgress();
+}
+
+// Restore on load
+document.addEventListener('DOMContentLoaded', restoreProgress);
+
 </script>
 </body>
 </html>

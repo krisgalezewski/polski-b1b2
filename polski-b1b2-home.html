@@ -855,17 +855,60 @@ const FINAL_TESTS = [
 ];
 
 // ══════════════════════════════════════════════════════════════
-// STATE (would use localStorage in a full PWA)
+// STATE — backed by localStorage
 // ══════════════════════════════════════════════════════════════
-const state = {
-  unitProgress: {
-    1: { status:'complete',  pct:100, sectionsComplete:4 },
-    2: { status:'in-progress', pct:40, sectionsComplete:2 },
-    3: { status:'available', pct:0,   sectionsComplete:0 },
-  },
-  settings: { name:'Anna', level:'B1–B2', audio:true, transcript:true, highlights:true, badges:true },
-  streak: 3,
-};
+const STORAGE_KEY = 'polski_b1b2_progress';
+const TOTAL_SECTIONS = 5; // lesson, grammar, gapfill, mc, matching per unit
+
+function defaultState() {
+  return {
+    unitProgress: {},
+    settings: { name:'', level:'B1–B2', audio:true, transcript:true, highlights:true, badges:true },
+    streak: 0,
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return Object.assign(defaultState(), JSON.parse(raw));
+  } catch(e) {}
+  return defaultState();
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+const state = loadState();
+
+// Listen for progress updates written by unit tabs
+window.addEventListener('storage', (e) => {
+  if (e.key && e.key.startsWith('polski_unit_')) {
+    const unitId = parseInt(e.key.replace('polski_unit_', ''));
+    if (e.newValue) {
+      const data = JSON.parse(e.newValue);
+      applyUnitProgress(unitId, data);
+    }
+  }
+});
+
+function applyUnitProgress(unitId, data) {
+  const done = data.sectionsComplete || 0;
+  const pct  = Math.round((done / TOTAL_SECTIONS) * 100);
+  const status = pct >= 100 ? 'complete' : done > 0 ? 'in-progress' : 'available';
+  state.unitProgress[unitId] = { status, pct, sectionsComplete: done };
+  // Unlock next unit
+  if (status === 'complete') {
+    const nextId = unitId + 1;
+    if (nextId <= 12 && !state.unitProgress[nextId]) {
+      state.unitProgress[nextId] = { status:'available', pct:0, sectionsComplete:0 };
+    }
+  }
+  saveState();
+  renderUnits();
+  updateOverallProgress();
+}
 
 // ══════════════════════════════════════════════════════════════
 // RENDER UNITS
@@ -1032,6 +1075,8 @@ function saveSetting(key, val) {
 }
 function resetProgress() {
   if (!confirm('Reset all progress? This cannot be undone.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  for (let i = 1; i <= 12; i++) localStorage.removeItem('polski_unit_' + i);
   Object.keys(state.unitProgress).forEach(k => {
     if (k > 1) delete state.unitProgress[k];
     else state.unitProgress[k] = { status:'complete', pct:100, sectionsComplete:4 };
@@ -1078,13 +1123,30 @@ function updateOverallProgress() {
     const p = state.unitProgress[u.id];
     return p && (p.status === 'in-progress' || p.status === 'available');
   });
-  if (nextUnit) document.getElementById('fab').innerHTML = '<i class="ti ti-player-play-filled"></i> Resume: Unit ' + nextUnit.id;
+  const fab = document.getElementById('fab');
+  if (fab) {
+    if (nextUnit) fab.innerHTML = '<i class="ti ti-player-play-filled"></i> Resume: Unit ' + nextUnit.id;
+    else if (Object.values(state.unitProgress).some(p => p.status === 'complete'))
+      fab.innerHTML = '<i class="ti ti-trophy"></i> Course complete!';
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
+  // Seed unit 1 as available if no progress at all
+  if (Object.keys(state.unitProgress).length === 0) {
+    state.unitProgress[1] = { status:'available', pct:0, sectionsComplete:0 };
+    saveState();
+  }
+  // Re-apply any unit progress written since last shell visit
+  for (let i = 1; i <= 12; i++) {
+    try {
+      const raw = localStorage.getItem('polski_unit_' + i);
+      if (raw) applyUnitProgress(i, JSON.parse(raw));
+    } catch(e) {}
+  }
   renderUnits();
   renderGrammar();
   renderTests();
