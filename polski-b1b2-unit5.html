@@ -419,11 +419,12 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
       <div class="card-title"><i class="ti ti-headphones"></i> Listening — Rozmowa o polskich tradycjach</div>
       <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the full conversation. The transcript is locked until you have listened all the way through at least once — then it will become available.</p>
 
+      <audio id="audio-el" src="audio-unit5.mp3" preload="metadata"></audio>
       <div class="audio-player">
         <button class="play-btn" onclick="togglePlay()"><i class="ti ti-player-play" id="play-icon"></i></button>
         <div style="flex:1">
           <div style="font-size:13px;font-weight:500">Rozmowa o polskich tradycjach — Anna i jej australijska przyjaciółka</div>
-          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 4:50 · Polish B1–B2</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / --:-- · Polish B2</div>
         </div>
         <div style="display:flex;align-items:center;gap:2px;height:24px">
           <div class="audio-bar" style="height:8px" id="ab1"></div><div class="audio-bar" style="height:14px" id="ab2"></div>
@@ -923,18 +924,58 @@ let audioInterval = null, audioTimer = null;
 let transcriptUnlocked = false;
 let matchLeft = null, matchRight = null;
 let mcAnswered = new Set(), mcCorrect = {};
-const AUDIO_DURATION = 290;
+// ── AUDIO PLAYER ──────────────────────────────────────────
+const _aud = document.getElementById('audio-el');
 
-// ══ NAV ═════════════════════════════════════════════
-function navigate(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  const el = document.getElementById('nav-' + page);
-  if (el) el.classList.add('active');
-  closeSidebar();
-  document.getElementById('main').scrollTo(0, 0);
-  if (page === 'test') updateTestPage();
+_aud.addEventListener('loadedmetadata', () => {
+  _updateAudioDisplay();
+});
+_aud.addEventListener('timeupdate', () => {
+  _updateAudioDisplay();
+  _animateBars();
+  // Units 5+: unlock transcript after audio has played at least once through
+  if (typeof audioPlayed !== 'undefined' && _aud.currentTime > 2) audioPlayed = true;
+});
+_aud.addEventListener('ended', () => {
+  document.getElementById('play-icon').className = 'ti ti-player-play';
+  _resetBars();
+  if (typeof audioPlayed !== 'undefined') audioPlayed = true;
+});
+_aud.addEventListener('play', () => {
+  document.getElementById('play-icon').className = 'ti ti-player-pause';
+});
+_aud.addEventListener('pause', () => {
+  document.getElementById('play-icon').className = 'ti ti-player-play';
+  _resetBars();
+});
+
+function _fmtTime(s) {
+  if (!isFinite(s)) return '0:00';
+  s = Math.floor(s);
+  return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+}
+function _updateAudioDisplay() {
+  const cur = _fmtTime(_aud.currentTime);
+  const tot = isFinite(_aud.duration) ? _fmtTime(_aud.duration) : '--:--';
+  const el = document.getElementById('audio-time');
+  if (el) el.textContent = cur + ' / ' + tot + ' · Polish B2';
+}
+function _animateBars() {
+  if (_aud.paused) return;
+  for (let i=1;i<=7;i++){
+    const b=document.getElementById('ab'+i);
+    if(b) b.style.height=(Math.random()*20+4)+'px';
+  }
+}
+function _resetBars() {
+  [8,14,6,18,10,16,8].forEach((h,i)=>{
+    const b=document.getElementById('ab'+(i+1));
+    if(b) b.style.height=h+'px';
+  });
+}
+function togglePlay() {
+  if (_aud.paused) { _aud.play(); }
+  else { _aud.pause(); }
 }
 function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('show'); }
 function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
@@ -976,16 +1017,7 @@ function togglePlay() {
   if (isPlaying) {
     audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
     audioTimer = setInterval(() => {
-      audioSecs = Math.min(audioSecs + 1, AUDIO_DURATION);
       const m = Math.floor(audioSecs/60), s = audioSecs % 60;
-      document.getElementById('audio-time').textContent = `${m}:${s<10?'0'+s:s} / 4:50 · Polish B1–B2`;
-      if (audioSecs >= AUDIO_DURATION) {
-        clearInterval(audioTimer); clearInterval(audioInterval);
-        isPlaying = false;
-        document.getElementById('play-icon').className = 'ti ti-player-play';
-        resetBars();
-        unlockTranscript();
-      }
     }, 1000);
   } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
 }

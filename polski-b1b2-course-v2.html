@@ -374,13 +374,14 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
       <div class="card-title"><i class="ti ti-headphones"></i> Listening — Rozmowa kwalifikacyjna</div>
       <p style="font-size:14px;color:var(--ink-muted);margin-bottom:16px">Listen to the full job interview. You can show or hide the transcript. Then answer all comprehension questions below.</p>
 
+      <audio id="audio-el" src="audio-unit1.mp3" preload="metadata"></audio>
       <div class="audio-player">
         <button class="play-btn" onclick="togglePlay()" id="play-btn-el" aria-label="Play">
           <i class="ti ti-player-play" id="play-icon"></i>
         </button>
         <div style="flex:1">
           <div style="font-size:13px;font-weight:500">Rozmowa kwalifikacyjna — Pełna rozmowa</div>
-          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / 3:24 · Polish B1–B2</div>
+          <div style="font-size:11px;color:#A8A29E;margin-top:2px" id="audio-time">0:00 / --:-- · Polish B1</div>
         </div>
         <div style="display:flex;align-items:center;gap:2px;height:24px">
           <div class="audio-bar" style="height:8px" id="ab1"></div>
@@ -923,17 +924,58 @@ function updateStepUI(current) {
 // ============================================================
 // AUDIO (simulated)
 // ============================================================
-const AUDIO_DURATION = 204; // 3:24
+// ── AUDIO PLAYER ──────────────────────────────────────────
+const _aud = document.getElementById('audio-el');
 
-function togglePlay(){
-  isPlaying=!isPlaying;
-  document.getElementById('play-icon').className=isPlaying?'ti ti-player-pause':'ti ti-player-play';
-  if(isPlaying){
-    audioInterval=setInterval(()=>{ for(let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} },180);
-    audioTimer=setInterval(()=>{ audioSecs=Math.min(audioSecs+1,AUDIO_DURATION); updateAudioTime(); if(audioSecs>=AUDIO_DURATION){clearInterval(audioTimer);clearInterval(audioInterval);isPlaying=false;document.getElementById('play-icon').className='ti ti-player-play';resetBars();} },1000);
-  } else {
-    clearInterval(audioInterval); clearInterval(audioTimer); resetBars();
+_aud.addEventListener('loadedmetadata', () => {
+  _updateAudioDisplay();
+});
+_aud.addEventListener('timeupdate', () => {
+  _updateAudioDisplay();
+  _animateBars();
+  // Units 5+: unlock transcript after audio has played at least once through
+  if (typeof audioPlayed !== 'undefined' && _aud.currentTime > 2) audioPlayed = true;
+});
+_aud.addEventListener('ended', () => {
+  document.getElementById('play-icon').className = 'ti ti-player-play';
+  _resetBars();
+  if (typeof audioPlayed !== 'undefined') audioPlayed = true;
+});
+_aud.addEventListener('play', () => {
+  document.getElementById('play-icon').className = 'ti ti-player-pause';
+});
+_aud.addEventListener('pause', () => {
+  document.getElementById('play-icon').className = 'ti ti-player-play';
+  _resetBars();
+});
+
+function _fmtTime(s) {
+  if (!isFinite(s)) return '0:00';
+  s = Math.floor(s);
+  return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+}
+function _updateAudioDisplay() {
+  const cur = _fmtTime(_aud.currentTime);
+  const tot = isFinite(_aud.duration) ? _fmtTime(_aud.duration) : '--:--';
+  const el = document.getElementById('audio-time');
+  if (el) el.textContent = cur + ' / ' + tot + ' · Polish B1';
+}
+function _animateBars() {
+  if (_aud.paused) return;
+  for (let i=1;i<=7;i++){
+    const b=document.getElementById('ab'+i);
+    if(b) b.style.height=(Math.random()*20+4)+'px';
   }
+}
+function _resetBars() {
+  [8,14,6,18,10,16,8].forEach((h,i)=>{
+    const b=document.getElementById('ab'+(i+1));
+    if(b) b.style.height=h+'px';
+  });
+}
+function togglePlay() {
+  if (_aud.paused) { _aud.play(); }
+  else { _aud.pause(); }
 }
 function resetBars(){ [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
 function updateAudioTime(){
