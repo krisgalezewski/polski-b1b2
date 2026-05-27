@@ -1037,16 +1037,7 @@ function speak(word) {
 }
 
 // ══ AUDIO ════════════════════════════
-function togglePlay() {
-  isPlaying = !isPlaying;
-  document.getElementById('play-icon').className = isPlaying ? 'ti ti-player-pause' : 'ti ti-player-play';
-  if (isPlaying) {
-    audioInterval = setInterval(() => { for (let i=1;i<=7;i++){const b=document.getElementById('ab'+i);if(b)b.style.height=(Math.random()*20+4)+'px';} }, 180);
-    audioTimer = setInterval(() => {
-      const m = Math.floor(audioSecs/60), s = audioSecs % 60;
-    }, 1000);
-  } else { clearInterval(audioInterval); clearInterval(audioTimer); resetBars(); }
-}
+
 function resetBars() { [8,14,6,18,10,16,8].forEach((h,i)=>{const b=document.getElementById('ab'+(i+1));if(b)b.style.height=h+'px';}); }
 
 // ══ MC ═══════════════════════════════
