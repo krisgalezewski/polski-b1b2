@@ -973,7 +973,7 @@ function openUnit(u) {
     showToast('🚧 Unit ' + u.id + ' coming soon!');
     return;
   }
-  window.open(u.file, '_blank');
+  window.location.href = u.file;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -1032,7 +1032,7 @@ function renderTestSet(gridId, tests, type) {
 
 function handleTestClick(id, locked, file) {
   if (locked) { showToast('Complete the required units to unlock this test'); return; }
-  if (file) window.open(file, '_blank');
+  if (file) window.location.href = file;
   else showToast('Test file not found — check the course folder.');
 }
 

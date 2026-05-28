@@ -236,7 +236,8 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
   </div>
   <div class="unit-label" style="margin-top:4px">Unit 2 — Relacje <span style="font-size:9px;opacity:0.5">(coming soon)</span></div>
   <div class="nav-item" style="opacity:0.3;pointer-events:none"><span class="nav-icon"><i class="ti ti-lock"></i></span>Locked</div>
-  <div class="sidebar-footer">
+  <div style="padding:12px 20px;border-bottom:0.5px solid rgba(255,255,255,0.06)"><button onclick="window.location.href='polski-b1b2-home.html'" style="width:100%;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:9px 14px;color:#A8A29E;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='#A8A29E'"><i class="ti ti-arrow-left" style="font-size:14px"></i> Course Home</button></div>
+<div class="sidebar-footer">
     <div class="progress-label">Unit 1 progress</div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sidebar-progress" style="width:0%"></div></div>
     <div class="progress-label" id="sidebar-progress-label">0 / 5 sections complete</div>
@@ -903,7 +904,7 @@ function goStep(step) {
   document.getElementById('tc-'+step).classList.add('active');
   if(step==='comp') lessonStepsDone.add('read');
   if(step==='listen') lessonStepsDone.add('comp');
-  if(step==='write') lessonStepsDone.add('listen');
+  if(step==='write'){completedSections.add('lesson');updateProgress();lessonStepsDone.add('listen');
   updateStepUI(step);
   document.getElementById('main').scrollTo(0,0);
 }
@@ -1140,6 +1141,7 @@ function updateProgress(){
     const nd=document.getElementById('nd-'+s);
     if(nd) nd.style.display=completedSections.has(s)?'inline':'none';
   });
+  saveProgress();
 }
 
 function updateTestPage(){
@@ -1343,12 +1345,6 @@ function restoreProgress() {
   } catch(e) {}
 }
 
-// Hook into updateProgress to also persist
-const _origUpdateProgress = updateProgress;
-function updateProgress() {
-  _origUpdateProgress();
-  saveProgress();
-}
 
 // Restore on load
 document.addEventListener('DOMContentLoaded', restoreProgress);
