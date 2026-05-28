@@ -904,7 +904,7 @@ function goStep(step) {
   document.getElementById('tc-'+step).classList.add('active');
   if(step==='comp') lessonStepsDone.add('read');
   if(step==='listen') lessonStepsDone.add('comp');
-  if(step==='write'){completedSections.add('lesson');updateProgress();lessonStepsDone.add('listen');
+  if(step==='write'){completedSections.add('lesson');updateProgress();lessonStepsDone.add('listen');}
   updateStepUI(step);
   document.getElementById('main').scrollTo(0,0);
 }

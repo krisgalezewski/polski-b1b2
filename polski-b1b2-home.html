@@ -1137,7 +1137,9 @@ function updateOverallProgress() {
 document.addEventListener('DOMContentLoaded', () => {
   // Seed unit 1 as available if no progress at all
   if (Object.keys(state.unitProgress).length === 0) {
-    state.unitProgress[1] = { status:'available', pct:0, sectionsComplete:0 };
+    [1,2,3].forEach(id => {
+      state.unitProgress[id] = { status:'available', pct:0, sectionsComplete:0 };
+    });
     saveState();
   }
   // Re-apply any unit progress written since last shell visit

@@ -985,6 +985,7 @@ function goStep(step) {
   document.getElementById('tc-' + step).classList.add('active');
   const prev = { comp:'read', listen:'comp', write:'listen' };
   if (prev[step]) lessonDone.add(prev[step]);
+  if (step === 'write') { completedSections.add('lesson'); updateProgress(); }
   updateStepUI(step);
   document.getElementById('main').scrollTo(0, 0);
 }
