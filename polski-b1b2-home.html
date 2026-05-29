@@ -1077,9 +1077,10 @@ function resetProgress() {
   if (!confirm('Reset all progress? This cannot be undone.')) return;
   localStorage.removeItem(STORAGE_KEY);
   for (let i = 1; i <= 12; i++) localStorage.removeItem('polski_unit_' + i);
-  Object.keys(state.unitProgress).forEach(k => {
-    if (k > 1) delete state.unitProgress[k];
-    else state.unitProgress[k] = { status:'complete', pct:100, sectionsComplete:4 };
+  // Reset in-memory state to match cleared localStorage
+  Object.keys(state.unitProgress).forEach(k => delete state.unitProgress[k]);
+  [1,2,3].forEach(id => {
+    state.unitProgress[id] = { status:'available', pct:0, sectionsComplete:0 };
   });
   state.unitProgress[2] = { status:'in-progress', pct:0, sectionsComplete:0 };
   renderUnits();
