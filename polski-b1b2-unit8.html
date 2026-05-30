@@ -1293,7 +1293,7 @@ Respond ONLY with valid JSON (no markdown):
   try {
     const res = await fetch('https://polski-proxy-production.up.railway.app/v1/messages', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1400, messages:[{role:'user',content:prompt}] })
+      body: JSON.stringify({ model:'claude-sonnet-4-6', max_tokens:1400, messages:[{role:'user',content:prompt}] })
     });
     const data = await res.json();
     const raw = data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
